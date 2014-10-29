@@ -5,7 +5,7 @@ var prideClusterControllers = angular.module('prideClusterControllers', []);
 
 prideClusterControllers.controller('ClusterListCtrl', ['$scope', '$routeParams', 'Clusters',
     function($scope, $routeParams, Clusters) {
-        $scope.clusters = Clusters.query({q:$routeParams.q}, function(clusters) {
+        $scope.clusters = Clusters.query({}, function(clusters) {
 
         });
         $scope.sortField = 'id';

@@ -11,7 +11,7 @@ prideClusterServices.factory('Cluster', ['$resource',
 
 prideClusterServices.factory('Clusters', ['$resource',
     function($resource){
-        return $resource(clusterWsUrl + '/list/:q' + '?callback=JSON_CALLBACK', {}, {
-            query: {method:'JSONP', params:{q:'q'}, isArray:true, callback: 'JSON_CALLBACK'}
+        return $resource(clusterWsUrl + '/list' + '?callback=JSON_CALLBACK', {}, {
+            query: {method:'JSONP', params:{}, isArray:true, callback: 'JSON_CALLBACK'}
         });
     }]);
