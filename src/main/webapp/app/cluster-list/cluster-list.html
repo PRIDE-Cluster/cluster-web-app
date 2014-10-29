@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <!--Sidebar content-->
+            Search: <input ng-model="query" type="text" />
+            Sort by:
+            <select ng-model="sortField">
+                <option value="id">By ID</option>
+                <option value="numberOfSpectra">Number of Spectra</option>
+            </select>
+        </div>
+        <div class="col-md-10">
+            <!--Body content-->
+            <ul class="clusters">
+                <li ng-repeat="cluster in clusters | filter:query | orderBy:sortField:reverse">
+                    <a href="#/cluster/{{cluster.id}}"><h3>Cluster {{cluster.id}}</h3></a>
+                    <p>Number of spectra: {{cluster.numberOfSpectra}}</p>
+                    <p>Average precursor M/Z: {{cluster.averagePrecursorMz}}</p>
+                    <p>Average precursor charge: {{cluster.averagePrecursorCharge}}</p>
+                    <p>Max ratio: {{cluster.maxRatio}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
