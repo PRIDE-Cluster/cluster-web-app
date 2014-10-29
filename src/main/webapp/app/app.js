@@ -2,7 +2,8 @@
 /* App Module */
 var prideClusterApp = angular.module('prideClusterApp', [
     'ngRoute',
-    'prideClusterControllers'
+    'prideClusterControllers',
+    'prideClusterServices'
 ]);
 
 prideClusterApp.config(['$routeProvider',
