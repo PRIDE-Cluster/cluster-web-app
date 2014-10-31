@@ -7,6 +7,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.clusterService'
 ]);
 
+/* Default routing (not managed by any other View controller) */
 prideClusterApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
