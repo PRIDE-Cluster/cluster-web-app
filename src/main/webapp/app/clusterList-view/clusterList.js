@@ -1,4 +1,6 @@
 /**
+ * @author Jose A. Dianes <jdianes@ebi.ac.uk>
+ *
  * Each view must define its own routing and Controllers.
  */
 var clusterListModule = angular.module('prideClusterApp.clusterListView', ['ngRoute'])

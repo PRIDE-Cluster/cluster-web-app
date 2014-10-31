@@ -1,7 +1,6 @@
-var clusterDetailWsUrl = "http://127.0.0.1:9091/clusterDetail";
-var clusterSummaryWsUrl = "http://127.0.0.1:9091/clusterSummary";
-
 /**
+ * @author Jose A. Dianes <jdianes@ebi.ac.uk>
+ *
  * The Cluster Service represents the PRIDE Cluster Web-Service through a series of singletons
  * that can be injected into other components (e.g. Controllers) in order to asynchronously acces
  * the back-end data.
@@ -9,6 +8,9 @@ var clusterSummaryWsUrl = "http://127.0.0.1:9091/clusterSummary";
  * Each singleton represents a web-service end point and can potentially define multiple operations.
  *
  */
+var clusterDetailWsUrl = "http://127.0.0.1:9091/clusterDetail";
+var clusterSummaryWsUrl = "http://127.0.0.1:9091/clusterSummary";
+
 var clusterService = angular.module('prideClusterApp.clusterService', ['ngResource'])
 
 /* Services */
