@@ -1,24 +1,14 @@
-var clusterListModule = angular.module('prideClusterApp.cluster-list', ['ngRoute', 'ngResource'])
-var clusterSummaryWsUrl = "http://127.0.0.1:9091/clusterSummary";
+var clusterListModule = angular.module('prideClusterApp.clusterListView', ['ngRoute'])
 
 // ROUTING VIEWS
 clusterListModule.config(['$routeProvider',
         function($routeProvider) {
             $routeProvider.when('/list', {
-                templateUrl: 'app/cluster-list/cluster-list.html',
+                templateUrl: 'app/clusterList-view/clusterList.html',
                 controller: 'ClusterListCtrl'
                 });
         }
     ]);
-
-// SERVICES
-clusterListModule.factory('ClusterSummary', ['$resource',
-    function($resource){
-        return $resource(clusterSummaryWsUrl + '/list' + '?callback=JSON_CALLBACK', {}, {
-            list: {method:'JSONP', params:{}, isArray:true, callback: 'JSON_CALLBACK'}
-        });
-    }
-]);
 
 // CONTROLLERS
 clusterListModule.controller('ClusterListCtrl', ['$scope', '$routeParams', 'ClusterSummary',
