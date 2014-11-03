@@ -1,0 +1,9 @@
+<ul class="clusters">
+    <li ng-repeat="cluster in clusters | filter:query | orderBy:sortField:reverse" ng-animate=" 'slide' ">
+        <a href="#/cluster/{{cluster.id}}"><h3>Cluster {{cluster.id}}</h3></a>
+        <div>Number of spectra: {{cluster.numberOfSpectra}}</div>
+        <div>Average precursor M/Z: {{cluster.averagePrecursorMz}}</div>
+        <div>Average precursor charge: {{cluster.averagePrecursorCharge}}</div>
+        <div>Max ratio: {{cluster.maxRatio}}</div>
+    </li>
+</ul>

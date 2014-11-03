@@ -12,7 +12,7 @@ var spectrumListModule = angular.module('prideClusterApp.spectrumListView', ['ng
 clusterListModule.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.when('/spectra/:clusterId/list', {
-            templateUrl: 'app/spectrumList-view/spectrumList.html',
+            templateUrl: 'app/views/spectrumList-view/spectrumList.html',
             controller: 'SpectrumListCtrl'
         });
     }

@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <!--Sidebar content-->
+            Search: <input ng-model="query" type="text" />
+            Sort by:
+            <select ng-model="sortField">
+                <option value="id">Cluster ID</option>
+                <option value="numberOfSpectra">Number of Spectra</option>
+            </select>
+        </div>
+        <div class="col-md-10">
+            <!-- Body content uses components/clusterList-directive -->
+            <prc-cluster-list query="query" sortField="sortField"></prc-cluster-list>
+        </div>
+    </div>
+</div>
