@@ -2,7 +2,7 @@
 /* App Module + dependencies */
 var prideClusterApp = angular.module('prideClusterApp', [
     'ngRoute',
-
+    'ngAnimate',
     /* Views: thin layer containing layout+model_binding and routing elements */
     'prideClusterApp.clusterListView',
     'prideClusterApp.clusterDetailView',

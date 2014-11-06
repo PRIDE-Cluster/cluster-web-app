@@ -1,11 +1,11 @@
 <ul class="clusters">
-    <div ng-repeat="cluster in clusters | filter:query | orderBy:sortField:reverse" >
+    <div class="animate-repeat" ng-repeat="cluster in clusters | filter:query | orderBy:sortField:reverse" >
         <a href="#/cluster/{{cluster.id}}">
-            <h4>Cluster {{cluster.id}}</h4>
+            <h3>Cluster {{cluster.id}}</h3>
         </a>
-        <p>Number of spectra: {{cluster.numberOfSpectra}}</p>
-        <p>Average precursor M/Z: {{cluster.averagePrecursorMz}}</p>
-        <p>Average precursor charge: {{cluster.averagePrecursorCharge}}</p>
-        <p>Max ratio: {{cluster.maxRatio}}</p>
+        <p>Includes {{cluster.numberOfSpectra}} spectra,
+            with average M/Z of {{cluster.averagePrecursorMz}} and
+            average precursor charge of {{cluster.averagePrecursorCharge}}</p>
+        <p>Max ratio is {{cluster.maxRatio}}</p>
     </div>
 </ul>
