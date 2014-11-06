@@ -35,13 +35,7 @@ clusterDetailView.controller('ClusterListViewCtrl', ['$scope', '$routeParams',
             $routeParams.size = 10;
         }
         $scope.queryTerm = $routeParams.q;
-        console.log("[ClusterListViewCtrl] - q is " + $routeParams.q)
-        console.log("[ClusterListViewCtrl] - queryTerm is " + $scope.queryTerm)
         $scope.pageNumber = $routeParams.page;
-        console.log("[ClusterListViewCtrl] - page is " + $routeParams.page)
-        console.log("[ClusterListViewCtrl] - pageNumber is " + $scope.pageNumber)
         $scope.pageSize = $routeParams.size;
-        console.log("[ClusterListViewCtrl] - size is " + $routeParams.size)
-        console.log("[ClusterListViewCtrl] - pageSize is " + $scope.pageSize)
     }
 ]);
