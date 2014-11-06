@@ -27,7 +27,7 @@ body {
 
 /* ngAnimage for ngRepeat */
 .animate-repeat {
-    line-height:0px;
+    /*line-height:0px;*/
     list-style:none;
     box-sizing:border-box;
 }
