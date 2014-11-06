@@ -16,15 +16,17 @@ var clusterService = angular.module('prideClusterApp.clusterService', ['ngResour
 /* Services */
 clusterService.factory('ClusterSummary', ['$resource',
     function($resource){
-        return $resource(clusterSummaryWsUrl + '/list' + '?callback=JSON_CALLBACK', {}, {
-            list: {method:'JSONP', params:{}, isArray:true, callback: 'JSON_CALLBACK'}
-        });
+        return $resource(
+                clusterSummaryWsUrl + '/list?q=:queryTerm&page=:pageNumber&size=:pageSize&callback=JSON_CALLBACK',
+                {queryTerm:'', pageNumber:1, pageSize:10},
+                {list: {method:'JSONP', params:{}, isArray:true, callback: 'JSON_CALLBACK'}}
+        );
     }
 ]);
 clusterService.factory('ClusterDetail', ['$resource',
     function($resource){
         return $resource(clusterDetailWsUrl + '/:clusterId' + '?callback=JSON_CALLBACK', {}, {
-            get: {method:'JSONP', params:{clusterId:'clusters'}, isArray:false, callback: 'JSON_CALLBACK'}
+            get: {method:'JSONP', params:{clusterId:'cluster'}, isArray:false, callback: 'JSON_CALLBACK'}
         });
     }
 ]);

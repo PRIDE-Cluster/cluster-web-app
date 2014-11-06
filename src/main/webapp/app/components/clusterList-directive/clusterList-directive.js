@@ -8,17 +8,28 @@
 
 var clusterListDirective = angular.module('prideClusterApp.clusterListDirective', [])
 
-clusterListDirective.directive('prcClusterList', function() {
+clusterListDirective.directive('prcClusterList', ['ClusterSummary', function(ClusterSummary) {
+    function link(scope, element, attrs) {
+        console.log("[link] - queryTerm is " + scope.queryTerm);
+        console.log("[link] - pageNumber is " + scope.pageNumber);
+        console.log("[link] - pageSize is " + scope.pageSize);
+        scope.clusters = ClusterSummary.list(
+            { queryTerm:scope.queryTerm, pageNumber:scope.pageNumber, pageSize:scope.pageSize },
+            function(clusters) {}
+        );
+    }
     return {
         restrict: 'E',
         scope: {
-            query: '=query',
-            sortField: '=sortField'
+            queryTerm: '=query',
+            pageNumber: '=page',
+            pageSize: '=size'
         },
-        controller: 'ClusterListDirectiveCtrl',
+//        controller: 'ClusterListDirectiveCtrl',
+        link: link,
         templateUrl: 'app/components/clusterList-directive/clusterList-directive.html'
     };
-});
+}]);
 
 /**
  * Controllers are injected with routing parameters and a singleton to access the backend Web-Service.
@@ -33,9 +44,11 @@ clusterListDirective.directive('prcClusterList', function() {
  */
 clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', 'ClusterSummary',
     function($scope, ClusterSummary) {
-        $scope.clusters = ClusterSummary.list({}, function(clusters) {
+        console.log("[ClusterListDirectiveCtrl] - queryTerm is " + $scope.queryTerm)
+        console.log("[ClusterListDirectiveCtrl] - pageNumber is " + $scope.pageNumber)
+        console.log("[ClusterListDirectiveCtrl] - pageSize is " + $scope.pageSize)
+        $scope.clusters = ClusterSummary.list({q:$scope.queryTerm, page:$scope.pageNumber, size:$scope.pageSize}, function(clusters) {
 
         });
-        $scope.reverse = true;
     }
 ]);

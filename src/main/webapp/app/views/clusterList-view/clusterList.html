@@ -2,7 +2,9 @@
     <div>
         <div class="grid_3 push_1" id="search-controls">
             <!--Sidebar content-->
-            Filter <input ng-model="query" type="text" />
+            Query <input ng-model="query" type="text"/>
+            Page <input ng-model="page" type="text"/>
+            Size <input ng-model="size" type="text"/>
             Sort by
             <select ng-model="sortField">
                 <option value="id">Cluster ID</option>
@@ -11,7 +13,7 @@
         </div>
         <section class="grid_18 push_2" id="search-results">
             <!-- Body content uses components/clusterList-directive -->
-            <prc-cluster-list query="query" sortField="sortField"></prc-cluster-list>
+            <prc-cluster-list query="queryTerm" page="pageNumber" size="pageSize"></prc-cluster-list>
         </section>
     </div>
 </div>
