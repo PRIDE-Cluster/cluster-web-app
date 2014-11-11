@@ -1,10 +1,11 @@
 <div class="container-fluid">
+    <div class="omega grid_24 push_6" id="paging-controls">
+        Page <span ng-repeat="p in pageNumbers track by $index">{{ $index + 1 }} </span>
+    </div>
     <div>
         <div class="grid_3 push_1" id="search-controls">
             <!--Sidebar content-->
             Query <input ng-model="query" type="text"/>
-            Page <input ng-model="page" type="text"/>
-            Size <input ng-model="size" type="text"/>
             Sort by
             <select ng-model="sortField">
                 <option value="id">Cluster ID</option>

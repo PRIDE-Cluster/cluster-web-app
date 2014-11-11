@@ -23,19 +23,30 @@ clusterListModule.config(['$routeProvider',
  * Controllers are injected with routing parameters. In this case the clusterId in the route is put in the $scope
  * for the view template to use.
  */
-clusterDetailView.controller('ClusterListViewCtrl', ['$scope', '$routeParams',
-    function($scope, $routeParams) {
+clusterDetailView.controller('ClusterListViewCtrl', ['$scope', '$routeParams', 'CurrentSearchState',
+    function($scope, $routeParams, CurrentSearchState) {
+        // Capture current search state
         if (!$routeParams.q) {
-            $routeParams.q = "";
+            CurrentSearchState.setQuery("");
+        } else {
+            CurrentSearchState.setQuery($routeParams.q)
         }
         if (!$routeParams.page) {
-            $routeParams.page = 1;
+            CurrentSearchState.setPage(1);
+        } else {
+            CurrentSearchState.setPage($routeParams.page);
         }
         if (!$routeParams.size) {
-            $routeParams.size = 10;
+            CurrentSearchState.setPageSize(10);
+        } else {
+            CurrentSearchState.setPageSize($routeParams.size);
         }
-        $scope.queryTerm = $routeParams.q;
-        $scope.pageNumber = $routeParams.page;
-        $scope.pageSize = $routeParams.size;
+
+        // Put the current search state into the scope for the template to use
+        $scope.queryTerm = CurrentSearchState.getQuery();
+        $scope.pageNumber = CurrentSearchState.getPage();
+        $scope.pageSize = CurrentSearchState.getPageSize();
+        $scope.maxPages = 5;
+        $scope.pageNumbers = new Array($scope.maxPages)
     }
 ]);
