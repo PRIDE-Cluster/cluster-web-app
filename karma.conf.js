@@ -1,7 +1,7 @@
 module.exports = function(config){
     config.set({
 
-        basePath : './',
+        basePath : './src/main/webapp/app/',
 
         files : [
             'bower_components/angular/angular.js',
