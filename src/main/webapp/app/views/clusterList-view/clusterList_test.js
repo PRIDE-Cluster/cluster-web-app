@@ -1,3 +1,10 @@
+/**
+ * @author Jose A. Dianes <jdianes@ebi.ac.uk>
+ *
+ * Jasmine unit tests
+ *
+ */
+
 describe('prideClusterApp.clusterListView module', function() {
 
     beforeEach(module('prideClusterApp'));
