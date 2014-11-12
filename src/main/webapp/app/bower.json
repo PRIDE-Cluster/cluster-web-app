@@ -1,0 +1,25 @@
+{
+  "name": "pride-cluster-webapp",
+  "main": "app.js",
+  "version": "0.1.0-SNAPSHOT",
+  "homepage": "https://github.com/PRIDE-Cluster/cluster-web-app",
+  "authors": [
+    "Jose A Dianes <jadianes@gmail.com>"
+  ],
+  "description": "A web application for the PRIDE-Cluster resource at EBI",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "angular-loader": "1.2.x",
+    "angular-mocks": "~1.2.x"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
