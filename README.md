@@ -1,3 +1,5 @@
+![](https://travis-ci.org/PRIDE-Cluster/cluster-web-app.svg?branch=master)
+
 PRIDE Cluster web-app
 =====================
 
