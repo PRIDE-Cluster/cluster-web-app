@@ -14,7 +14,7 @@ describe('prideClusterApp.appStateService module', function() {
         var searchState;
 
         // Test service availability
-        it('check the existence of CurrentSearchState factory', inject(function(CurrentSearchState) {
+        it('should be defined', inject(function(CurrentSearchState) {
             expect(CurrentSearchState).toBeDefined();
         }));
 

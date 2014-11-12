@@ -22,7 +22,7 @@ describe('prideClusterApp.clusterListView module', function() {
                 {$scope: scope, $routeParams: routeParams, CurrentSearchState: CurrentSearchState});
         }));
 
-        it('should instantiate the controller', function() {
+        it('should be defined', function() {
             expect(ctrl).toBeDefined();
         });
 
