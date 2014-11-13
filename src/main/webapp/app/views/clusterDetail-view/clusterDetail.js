@@ -13,7 +13,7 @@ var clusterDetailView = angular.module('prideClusterApp.clusterDetailView', ['ng
 clusterDetailView.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.when('/cluster/:clusterId', {
-            templateUrl: 'app/views/clusterDetail-view/clusterDetail.html',
+            templateUrl: 'views/clusterDetail-view/clusterDetail.html',
             controller: 'ClusterDetailViewCtrl'
         });
     }

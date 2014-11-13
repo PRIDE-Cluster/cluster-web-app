@@ -13,7 +13,7 @@ clusterDetailDirective.directive('prcClusterDetail', function() {
         restrict: 'E',
         scope: { clusterId : '=clusterid' },
         controller: 'ClusterDetailDirectiveCtrl',
-        templateUrl: 'app/components/clusterDetail-directive/clusterDetail-directive.html'
+        templateUrl: 'components/clusterDetail-directive/clusterDetail-directive.html'
     };
 });
 

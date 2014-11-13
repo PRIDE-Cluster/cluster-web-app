@@ -23,7 +23,7 @@ clusterListDirective.directive('prcClusterList', ['ClusterSummary', function(Clu
             pageSize: '=size'
         },
         link: link,
-        templateUrl: 'app/components/clusterList-directive/clusterList-directive.html'
+        templateUrl: 'components/clusterList-directive/clusterList-directive.html'
     };
 }]);
 

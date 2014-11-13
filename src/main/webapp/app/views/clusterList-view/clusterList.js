@@ -13,7 +13,7 @@ var clusterListModule = angular.module('prideClusterApp.clusterListView', ['ngRo
 clusterListModule.config(['$routeProvider',
         function($routeProvider) {
             $routeProvider.when('/list', {
-                templateUrl: 'app/views/clusterList-view/clusterList.html',
+                templateUrl: 'views/clusterList-view/clusterList.html',
                 controller: 'ClusterListViewCtrl'
             });
         }

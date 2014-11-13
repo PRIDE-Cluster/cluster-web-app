@@ -36,17 +36,17 @@
     <dependencies>
 
         <!-- PRIDE web utilities-->
-        <!--<dependency>-->
-            <!--<groupId>uk.ac.ebi.pride.web</groupId>-->
-            <!--<artifactId>pride-web-utils</artifactId>-->
-            <!--<version>${pride.web.utils.version}</version>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>commons-codec</groupId>-->
-                    <!--<artifactId>commons-codec</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>uk.ac.ebi.pride.web</groupId>
+            <artifactId>pride-web-utils</artifactId>
+            <version>${pride.web.utils.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
 </project>
