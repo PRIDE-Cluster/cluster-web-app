@@ -77,7 +77,11 @@ this server is:
 npm start
 ```
 
-Now browse to the app at `http://localhost:8000/app/index.html`.
+Now browse to the app at `http://localhost:8000/app/index.html`.  
+Right now, in order to see any data we need to deploy the 
+[PRIDE Cluster WS](https://github.com/PRIDE-Cluster/cluster-web-service) 
+locally and have it producing some data. This is something to change in the 
+near future.  
 
 ## Testing
 
