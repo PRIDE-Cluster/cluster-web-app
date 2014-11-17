@@ -4,7 +4,7 @@
  * The prc-spectrum-viewer directive allows us to reuse a spectra visualisations using SpeckTackle.
  *
  */
-var clusterDetailWsUrl = "http://127.0.0.1:9091/clusterDetail";
+var spectrumSummaryWsUrl = "http://127.0.0.1:9091/spectrumSummary";
 var spectrumViewerDirective = angular.module('prideClusterApp.spectrumViewerDirective', [])
 
 spectrumViewerDirective.directive('prcSpectrumViewer', function() {
@@ -20,7 +20,7 @@ spectrumViewerDirective.directive('prcSpectrumViewer', function() {
         },
         controller: 'SpectrumViewerDirectiveCtrl',
         link: link,
-        templateUrl: 'app/components/spectrumViewer-directive/spectrumViewer-directive.html'
+        templateUrl: 'components/spectrumViewer-directive/spectrumViewer-directive.html'
     };
 });
 
@@ -51,7 +51,7 @@ spectrumViewerDirective.controller('SpectrumViewerDirectiveCtrl', ['$scope',
             // bind the data handler to the chart
             chart.load(handle);
             // load the spectrum
-            handle.add(clusterDetailWsUrl + "/" + $scope.sourceId + "/consensus");
+            handle.add(spectrumSummaryWsUrl + "/" + $scope.sourceId + "/consensus");
         } else {
             $scope.spectrum = SpectrumDetail.get({spectrumId: $scope.sourceId}, function (spectrum) {
                 // inject spectrum to SpeckTackle component
