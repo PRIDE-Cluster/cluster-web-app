@@ -26,7 +26,7 @@ clusterDetailDirective.directive('prcClusterDetail', function() {
 clusterDetailDirective.controller('ClusterDetailDirectiveCtrl', ['$scope', 'ClusterDetail',
     function($scope, ClusterDetail) {
         $scope.cluster = ClusterDetail.get({clusterId: $scope.clusterId}, function(cluster) {
-
+//            console.log(cluster);
         });
     }
 ]);

@@ -30,3 +30,11 @@ clusterService.factory('ClusterDetail', ['$resource',
         });
     }
 ]);
+clusterService.factory('ClusterSpecies', ['$resource',
+    function($resource){
+        return $resource(clusterDetailWsUrl + '/:clusterId/species' + '?callback=JSON_CALLBACK',
+            {},
+            {get: {method:'JSONP', params:{clusterId:'cluster'}, isArray:true, callback: 'JSON_CALLBACK'}}
+        );
+    }
+]);
