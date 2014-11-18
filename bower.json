@@ -16,7 +16,7 @@
     "angular-animate": "1.2.x",
     "angular-loader": "1.2.x",
     "angular-mocks": "~1.2.x",
-    "d3": "3.4.x",
+    "d3": "3.4.13",
     "nvd3": "1.1.15-beta",
     "angularjs-nvd3-directives": "0.0.7"
   },
