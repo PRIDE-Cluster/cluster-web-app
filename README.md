@@ -4,7 +4,8 @@ PRIDE Cluster web-app
 =====================
 
 A web application for the *EBI PRIDE Cluster* resource. We use mostly [`AngularJS`](https://angularjs.org/) as 
-a framework for a *JavaEE* container-based web app.
+a framework for a *JavaEE* container-based web app. For visualisation [NVD3](https://github.com/novus/nvd3) and 
+[Angularjs-nvd3-directives](http://cmaurer.github.io/angularjs-nvd3-directives/) are used.  
 
 ### Project structure
 

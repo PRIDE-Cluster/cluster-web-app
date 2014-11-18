@@ -25,8 +25,23 @@ clusterDetailDirective.directive('prcClusterDetail', function() {
  */
 clusterDetailDirective.controller('ClusterDetailDirectiveCtrl', ['$scope', 'ClusterDetail',
     function($scope, ClusterDetail) {
+        var maxRatio;
         $scope.cluster = ClusterDetail.get({clusterId: $scope.clusterId}, function(cluster) {
-//            console.log(cluster);
+            $scope.maxRatioData = {
+                "title": "",
+                "subtitle": "",
+                "ranges": [0.0, 0.5, 1.0],
+                "measures": [cluster.maxRatio],
+                "markers": [0.70]
+            };
+            maxRatio = cluster.maxRatio;
         });
+
+        $scope.toolTipContentFunction = function(){
+            return function(key, x, y, e, graph) {
+                return '<p>Max Ratio is ' + maxRatio + '</p>'
+            }
+        }
+
     }
 ]);

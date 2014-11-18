@@ -45,7 +45,7 @@ speciesChartDirective.controller('SpeciesChartDirectiveCtrl', ['$scope', 'Cluste
             }
             $scope.toolTipContentFunction = function(){
                 return function(key, x, y, e, graph) {
-                    return '<p>' + key + '</p>';
+                    return '<p>' + Math.round(x) + ' PSM for' + key + '</p>';
                 }
             }
         });
