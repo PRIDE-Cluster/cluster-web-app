@@ -1,14 +1,17 @@
 <div>
     <h4>Number of spectra</h4>
-    <p>{{cluster.numberOfSpectra}}</p>
-</div>
-<div>
-    <h4>Average precursor M/Z</h4>
-    <p>{{cluster.averagePrecursorMz | number:3}}</p>
-</div>
-<div>
-    <h4>Average precursor charge</h4>
-    <p>{{cluster.averagePrecursorCharge | number:2}}</p>
+    <!--<p>{{cluster.numberOfSpectra}}</p>-->
+    <nvd3-bullet-chart
+            data="numberOfSpectraData"
+            id="numberOfSpectraChart"
+            margin="{left:10,top:0,bottom:10,right:0}"
+            width="250"
+            height="30"
+            interactive="true"
+            tooltips="true"
+            tooltipcontent="toolTipContentFunctionNumberOfSpectra()">
+        <svg></svg>
+    </nvd3-bullet-chart>
 </div>
 <div>
     <h4>Max ratio</h4>
@@ -24,4 +27,12 @@
             tooltipcontent="toolTipContentFunction()">
         <svg></svg>
     </nvd3-bullet-chart>
+</div>
+<div>
+    <h4>Average precursor M/Z</h4>
+    <p>{{cluster.averagePrecursorMz | number:3}}</p>
+</div>
+<div>
+    <h4>Average precursor charge</h4>
+    <p>{{cluster.averagePrecursorCharge | number:2}}</p>
 </div>

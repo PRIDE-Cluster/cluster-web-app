@@ -25,16 +25,24 @@ clusterDetailDirective.directive('prcClusterDetail', function() {
  */
 clusterDetailDirective.controller('ClusterDetailDirectiveCtrl', ['$scope', 'ClusterDetail',
     function($scope, ClusterDetail) {
-        var maxRatio;
+        var maxRatio, numberOfSpectra;
         $scope.cluster = ClusterDetail.get({clusterId: $scope.clusterId}, function(cluster) {
             $scope.maxRatioData = {
                 "title": "",
                 "subtitle": "",
-                "ranges": [0.0, 0.5, 1.0],
+                "ranges": [0.0, 1.0],
                 "measures": [cluster.maxRatio],
-                "markers": [0.70]
+                "markers": [0.7]
             };
             maxRatio = cluster.maxRatio;
+            $scope.numberOfSpectraData = {
+                "title": "",
+                "subtitle": "",
+                "ranges": [0, cluster.numberOfSpectra],
+                "measures": [cluster.numberOfSpectra],
+                "markers": [10]
+            };
+            numberOfSpectra = cluster.numberOfSpectra;
         });
 
         $scope.toolTipContentFunction = function(){
@@ -43,5 +51,10 @@ clusterDetailDirective.controller('ClusterDetailDirectiveCtrl', ['$scope', 'Clus
             }
         }
 
+        $scope.toolTipContentFunctionNumberOfSpectra = function(){
+            return function(key, x, y, e, graph) {
+                return '<p>' + numberOfSpectra + ' spectra</p>'
+            }
+        }
     }
 ]);
