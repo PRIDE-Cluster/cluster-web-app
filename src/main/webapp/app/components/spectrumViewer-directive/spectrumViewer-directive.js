@@ -34,7 +34,6 @@ spectrumViewerDirective.controller('SpectrumViewerDirectiveCtrl', ['$scope',
     function($scope) {
 
         if ($scope.isConsensus) {
-            $scope.title = "Consensus Spectrum";
             // inject spectrum to SpeckTackle component
             var chart = st.chart          // new chart
                 .ms()                 // of type MS
