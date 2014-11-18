@@ -9,6 +9,7 @@ module.exports = function(config){
             'bower_components/angular-animate/angular-animate.js',
             'bower_components/angular-resource/angular-resource.js',
             'bower_components/angular-mocks/angular-mocks.js',
+            'bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js',
             'app.js',
             'components/**/*.js',
             'view*/**/*.js'

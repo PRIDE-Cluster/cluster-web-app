@@ -16,8 +16,8 @@
     "angular-animate": "1.2.x",
     "angular-loader": "1.2.x",
     "angular-mocks": "~1.2.x",
-    "d3": "3.3.13",
-    "nvd3": "1.1.15-beta",
+      "d3": "~3.4.1",
+      "nvd3": "~v1.1.15-beta",
     "angularjs-nvd3-directives": "0.0.7"
   },
   "ignore": [
@@ -28,6 +28,6 @@
     "tests"
   ],
   "resolutions": {
-    "d3": "3.3.13"
+    "d3": "~3.4.1"
   }
 }
