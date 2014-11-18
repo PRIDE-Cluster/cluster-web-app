@@ -1,21 +1,38 @@
 
-<section class="grid_23 push_1">
+<section class="grid_24 push_1">
     <h2>Cluster {{clusterId}}</h2>
 </section>
-<section class="grid_6 push_1">
-    <prc-cluster-detail clusterid="clusterId"></prc-cluster-detail>
+
+
+<section class="grid_24 push_1">
+    <section class="grid_6">
+        <prc-cluster-detail clusterid="clusterId"></prc-cluster-detail>
+    </section>
+    <section class="grid_6 push_1">
+        <h4>Species Distribution</h4>
+        <prc-species-chart sourceid="clusterId"></prc-species-chart>
+    </section>
+    <section class="grid_6">
+        <h4>Consensus Spectrum</h4>
+        <prc-spectrum-viewer viewerid="viewerId" sourceid="clusterId" isconsensus="true"></prc-spectrum-viewer>
+    </section>
 </section>
 
-<section class="grid_16 push_3">
-    <prc-species-chart sourceid="clusterId"></prc-species-chart>
-</section>
 
-<section class="grid_6 push_1">
-    <h4>Related Publications</h4>
-    <p>Related Publication 1</p>
-    <p>Related Publication 2</p>
-</section>
-
-<section class="grid_16 push_3">
-    <prc-spectrum-viewer viewerid="viewerId" sourceid="clusterId" isconsensus="true"></prc-spectrum-viewer>
+<section class="grid_24 push_1">
+    <section class="grid_6">
+        <h4>Clustered PSM</h4>
+        <p>PSM1</p>
+        <p>PSM2</p>
+        <p>PSM3</p>
+        <p>PSM4</p>
+        <p>PSM5</p>
+    </section>
+    <section class="grid_14 push_1">
+        <h4>Related Publications</h4>
+        <p>Authors of publication. Publication Title 1. In Journal A. Date X</p>
+        <p>Authors of publication. Publication Title 1. In Journal A. Date X</p>
+        <p>Authors of publication. Publication Title 1. In Journal A. Date X</p>
+        <p>Authors of publication. Publication Title 1. In Journal A. Date X</p>
+    </section>
 </section>

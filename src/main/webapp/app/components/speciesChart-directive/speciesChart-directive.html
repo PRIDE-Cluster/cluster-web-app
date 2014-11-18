@@ -1,13 +1,13 @@
 <div id="species-chart">
-    <h4>Species distribution</h4></div>
     <nvd3-pie-chart
         data="speciesData"
         id="Species"
-        width="850"
-        height="350"
+        width="300"
+        height="300"
+        margin="{left:-20,top:-20,bottom:35,right:35}"
         x="xFunction()"
         y="yFunction()"
-        showLegend="true"
+        showLegend="false"
         tooltips="true"
         tooltipcontent="toolTipContentFunction()"
         showLabels="true"
