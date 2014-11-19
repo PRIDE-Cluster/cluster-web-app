@@ -32,6 +32,12 @@ body {
     float: left;
 }
 
+.cluster-summary {
+    border-top: dashed;
+    border-top-width: 1px;
+    border-top-color: #808080;
+}
+
 /* ngAnimage for ngRepeat */
 .animate-repeat {
     /*line-height:0px;*/

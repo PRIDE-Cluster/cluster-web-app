@@ -1,12 +1,25 @@
 <!--Results-->
 <ul class="clusters">
     <div class="animate-repeat" ng-repeat="cluster in clusters" >
-        <a href="#/cluster/{{cluster.id}}">
-            <h3>Cluster {{cluster.id}}</h3>
-        </a>
-        <p>Includes {{cluster.numberOfSpectra}} spectra,
-            with average M/Z of {{cluster.averagePrecursorMz}} and
-            average precursor charge of {{cluster.averagePrecursorCharge}}.
-            Max ratio is {{cluster.maxRatio}}.</p>
+        <section class="grid_6 cluster-summary">
+            <a href="#/cluster/{{cluster.id}}">
+            <span class="grid_24">
+
+                    <h3>Cluster {{cluster.id}}</h3>
+
+            </span>
+            <span class="grid_24">
+                <span class="grid_8"><h6>Spectra</h6><p>{{cluster.numberOfSpectra}}</p></span>
+                <span class="grid_12 push_4"><h6>Max ratio</h6><p>{{cluster.maxRatio | number:3}}</p></span>
+            </span>
+            <span class="grid_24">
+                <span class="grid_8"><h6>Avg. M/Z</h6><p>{{cluster.averagePrecursorMz | number:3}}</p></span>
+                <span class="grid_12 push_4"><h6>Avg. Prec. Charge</h6><p>{{cluster.averagePrecursorCharge | number:2}}</p></span>
+            </span>
+            <span class="grid_24">
+                <h6>Max Ratio Peptide Sequence</h6><p>{{cluster.peptideSequence}}</p>
+            </span>
+            </a>
+        </section>
     </div>
 </ul>

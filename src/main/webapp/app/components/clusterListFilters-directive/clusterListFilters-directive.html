@@ -7,6 +7,6 @@
         <!--<option value="id">Cluster ID</option>-->
         <!--<option value="numberOfSpectra">Number of Spectra</option>-->
         <!--</select>-->
-        <button ng-click="filterSubmit()">Filter</button>
+        <button ng-click="filterSubmit()" ng-disabled="filterSequence.length<5">Filter</button>
     </form>
 </div>
