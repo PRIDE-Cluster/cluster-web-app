@@ -1,10 +1,6 @@
-<!--Paging controls-->
-<div>
-
-</div>
 <!--Results-->
 <ul class="clusters">
-    <div class="animate-repeat" ng-repeat="cluster in clusters | filter:query | orderBy:sortField:reverse" >
+    <div class="animate-repeat" ng-repeat="cluster in clusters" >
         <a href="#/cluster/{{cluster.id}}">
             <h3>Cluster {{cluster.id}}</h3>
         </a>

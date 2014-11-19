@@ -12,7 +12,7 @@ var clusterListModule = angular.module('prideClusterApp.clusterListView', ['ngRo
  */
 clusterListModule.config(['$routeProvider',
         function($routeProvider) {
-            $routeProvider.when('/list', {
+            $routeProvider.when('/', {
                 templateUrl: 'views/clusterList-view/clusterList.html',
                 controller: 'ClusterListViewCtrl'
             });
@@ -27,7 +27,7 @@ clusterDetailView.controller('ClusterListViewCtrl', ['$scope', '$routeParams', '
     function($scope, $routeParams, CurrentSearchState) {
         // Capture current search state
         if (!$routeParams.q) {
-            CurrentSearchState.setQuery("");
+            CurrentSearchState.setQuery($scope.queryTerm);
         } else {
             CurrentSearchState.setQuery($routeParams.q)
         }
@@ -48,5 +48,6 @@ clusterDetailView.controller('ClusterListViewCtrl', ['$scope', '$routeParams', '
         $scope.pageSize = CurrentSearchState.getPageSize();
         $scope.maxPages = 5;
         $scope.pageNumbers = new Array($scope.maxPages)
+
     }
 ]);

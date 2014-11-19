@@ -4,13 +4,7 @@
     </div>
     <div>
         <div class="grid_3 push_1" id="search-controls">
-            <!--Sidebar content-->
-            Query <input ng-model="query" type="text"/>
-            Sort by
-            <select ng-model="sortField">
-                <option value="id">Cluster ID</option>
-                <option value="numberOfSpectra">Number of Spectra</option>
-            </select>
+            <prc-cluster-list-filters sequence="queryTerm"></prc-cluster-list-filters>
         </div>
         <section class="grid_18 push_2" id="search-results">
             <!-- Body content uses components/clusterList-directive -->

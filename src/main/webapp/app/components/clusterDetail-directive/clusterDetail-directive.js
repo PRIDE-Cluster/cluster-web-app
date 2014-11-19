@@ -38,7 +38,7 @@ clusterDetailDirective.controller('ClusterDetailDirectiveCtrl', ['$scope', 'Clus
             $scope.numberOfSpectraData = {
                 "title": "",
                 "subtitle": "",
-                "ranges": [0, cluster.numberOfSpectra],
+                "ranges": [0, Math.max(cluster.numberOfSpectra,10)],
                 "measures": [cluster.numberOfSpectra],
                 "markers": [10]
             };

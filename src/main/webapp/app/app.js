@@ -14,6 +14,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.clusterDetailDirective',
     'prideClusterApp.spectrumViewerDirective',
     'prideClusterApp.speciesChartDirective',
+    'prideClusterApp.clusterListFiltersDirective',
 
     /* Services: singletons used to access the backend or share data between modules */
     'prideClusterApp.clusterService',
@@ -25,7 +26,7 @@ prideClusterApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
             otherwise({
-                redirectTo: '/list'
+                redirectTo: '/'
             });
     }
 ]);
