@@ -10,6 +10,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.clusterDetailView',
 
     /* Directives: reusable view+controller components */
+    'prideClusterApp.psmListDirective',
     'prideClusterApp.clusterListDirective',
     'prideClusterApp.clusterDetailDirective',
     'prideClusterApp.spectrumViewerDirective',
@@ -18,6 +19,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
 
     /* Services: singletons used to access the backend or share data between modules */
     'prideClusterApp.clusterService',
+    'prideClusterApp.psmService',
     'prideClusterApp.appStateService'
 ]);
 
