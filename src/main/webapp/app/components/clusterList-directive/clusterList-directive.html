@@ -3,10 +3,12 @@
     <div class="animate-repeat" ng-repeat="cluster in clusters" >
         <section class="grid_6 cluster-summary">
             <a href="#/cluster/{{cluster.id}}">
+            <!--<span class="grid_24">-->
+                <!--<h3>Cluster {{cluster.id}}</h3>-->
+            <!--</span>-->
             <span class="grid_24">
-
-                    <h3>Cluster {{cluster.id}}</h3>
-
+                <h3 ng-show="cluster.peptideSequence.length<=10">{{cluster.peptideSequence}}</h3>
+                <h3 ng-show="cluster.peptideSequence.length>10">{{cluster.peptideSequence | limitTo: 10 }} ...</h3>
             </span>
             <span class="grid_24">
                 <span class="grid_8"><h6>Spectra</h6><p>{{cluster.numberOfSpectra}}</p></span>
@@ -16,9 +18,7 @@
                 <span class="grid_8"><h6>Avg. M/Z</h6><p>{{cluster.averagePrecursorMz | number:3}}</p></span>
                 <span class="grid_12 push_4"><h6>Avg. Prec. Charge</h6><p>{{cluster.averagePrecursorCharge | number:2}}</p></span>
             </span>
-            <span class="grid_24">
-                <h6>Max Ratio Peptide Sequence</h6><p>{{cluster.peptideSequence}}</p>
-            </span>
+
             </a>
         </section>
     </div>

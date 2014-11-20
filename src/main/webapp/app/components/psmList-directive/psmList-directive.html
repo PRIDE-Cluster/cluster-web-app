@@ -1,7 +1,12 @@
-<ul>
-    <div class="animate-repeat" ng-repeat="psm in psms" >
-        <a href="#/psm/{{psm.id}}">
-            <p>{{psm.sequence}} (ratio:{{psm.ratio}})</p>
-        </a>
-    </div>
-</ul>
+<span class="animate-repeat" ng-repeat="psm in psms">
+    <span class="grid_7 pull_1 tiled-summary"><a href="#/psm/{{psm.id}}">
+        <h6 ng-show="psm.sequence.length>18" class="grid_24">{{psm.sequence | limitTo: 18 }}...</h6>
+        <h6 ng-show="psm.sequence.length<=18" class="grid_24">{{psm.sequence}}</h6>
+        <p class="grid_24">
+            <div class="grid_10"><div>Ratio</div>{{psm.ratio}}</div>
+            <div class="grid_14"><div>Spectrum ID</div>{{psm.spectrumId}}</div>
+        </p>
+        <p class="grid_24"><div>Projects</div><div>...</div></p>
+    </a>
+    </span>
+</span>

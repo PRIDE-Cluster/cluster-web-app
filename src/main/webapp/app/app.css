@@ -32,10 +32,27 @@ body {
     float: left;
 }
 
-.cluster-summary {
-    border-top: dashed;
-    border-top-width: 1px;
-    border-top-color: #808080;
+.tiled-summary {
+    padding-right: 30px;
+}
+
+.tiled-summary p {
+    margin-top: 0em;
+    margin-bottom: 0.8em;
+}
+
+.tiled-summary h6 {
+    border-bottom: dashed;
+    border-bottom-width: 1px;
+    border-bottom-color: #808080;
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+}
+
+.cluster-summary h3 {
+    border-bottom: dashed;
+    border-bottom-width: 1px;
+    border-bottom-color: #808080;
 }
 
 /* ngAnimage for ngRepeat */
