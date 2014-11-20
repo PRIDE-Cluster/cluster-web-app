@@ -4,6 +4,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'ngRoute',
     'ngAnimate',
     'nvd3ChartDirectives',
+    'ui.bootstrap',
 
     /* Views: thin layer containing layout+model_binding and routing elements */
     'prideClusterApp.clusterListView',
@@ -16,6 +17,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.spectrumViewerDirective',
     'prideClusterApp.speciesChartDirective',
     'prideClusterApp.clusterListFiltersDirective',
+    'prideClusterApp.clusterListPagingDirective',
 
     /* Services: singletons used to access the backend or share data between modules */
     'prideClusterApp.clusterService',

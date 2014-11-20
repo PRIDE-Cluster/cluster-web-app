@@ -20,7 +20,7 @@ spectrumViewerDirective.directive('prcSpectrumViewer', function() {
         },
         controller: 'SpectrumViewerDirectiveCtrl',
         link: link,
-        templateUrl: 'components/spectrumViewer-directive/spectrumViewer-directive.html'
+        templateUrl: 'components/directives/spectrumViewer-directive/spectrumViewer-directive.html'
     };
 });
 

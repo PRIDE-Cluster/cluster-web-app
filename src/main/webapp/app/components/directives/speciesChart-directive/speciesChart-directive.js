@@ -18,7 +18,7 @@ speciesChartDirective.directive('prcSpeciesChart', function() {
         },
         controller: 'SpeciesChartDirectiveCtrl',
         link: link,
-        templateUrl: 'components/speciesChart-directive/speciesChart-directive.html'
+        templateUrl: 'components/directives/speciesChart-directive/speciesChart-directive.html'
     };
 });
 

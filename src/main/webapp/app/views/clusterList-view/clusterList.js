@@ -32,9 +32,9 @@ clusterDetailView.controller('ClusterListViewCtrl', ['$scope', '$routeParams', '
             CurrentSearchState.setQuery($routeParams.q)
         }
         if (!$routeParams.page) {
-            CurrentSearchState.setPage(1);
+            CurrentSearchState.setPageNumber(1);
         } else {
-            CurrentSearchState.setPage($routeParams.page);
+            CurrentSearchState.setPageNumber($routeParams.page);
         }
         if (!$routeParams.size) {
             CurrentSearchState.setPageSize(50);
@@ -44,10 +44,7 @@ clusterDetailView.controller('ClusterListViewCtrl', ['$scope', '$routeParams', '
 
         // Put the current search state into the scope for the template to use
         $scope.queryTerm = CurrentSearchState.getQuery();
-        $scope.pageNumber = CurrentSearchState.getPage();
+        $scope.pageNumber = CurrentSearchState.getPageNumber();
         $scope.pageSize = CurrentSearchState.getPageSize();
-        $scope.maxPages = 5;
-        $scope.pageNumbers = new Array($scope.maxPages)
-
     }
 ]);

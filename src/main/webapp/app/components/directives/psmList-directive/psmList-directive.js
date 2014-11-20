@@ -21,6 +21,6 @@ psmListDirective.directive('prcPsmList', ['PsmSummary', function(PsmSummary) {
             clusterId: '=clusterid'
         },
         link: link,
-        templateUrl: 'components/psmList-directive/psmList-directive.html'
+        templateUrl: 'components/directives/psmList-directive/psmList-directive.html'
     };
 }]);

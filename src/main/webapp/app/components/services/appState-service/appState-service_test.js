@@ -26,8 +26,8 @@ describe('prideClusterApp.appStateService module', function() {
 
         it('should keep the page number', inject(function(CurrentSearchState) {
             var testPageNumber = 1234;
-            CurrentSearchState.setPage(testPageNumber);
-            expect(CurrentSearchState.getPage()).toEqual(testPageNumber);
+            CurrentSearchState.setPageNumber(testPageNumber);
+            expect(CurrentSearchState.getPageNumber()).toEqual(testPageNumber);
         }));
 
         it('should keep the page size', inject(function(CurrentSearchState) {
@@ -36,5 +36,10 @@ describe('prideClusterApp.appStateService module', function() {
             expect(CurrentSearchState.getPageSize()).toEqual(testPageSize);
         }));
 
+        it('should keep the total number of results', inject(function(CurrentSearchState) {
+            var testTotalResults = 20;
+            CurrentSearchState.setTotalResults(testTotalResults);
+            expect(CurrentSearchState.getTotalResults()).toEqual(testTotalResults);
+        }));
     });
 });

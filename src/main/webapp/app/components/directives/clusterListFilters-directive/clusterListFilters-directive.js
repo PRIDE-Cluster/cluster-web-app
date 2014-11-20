@@ -14,7 +14,7 @@ clusterListFiltersDirective.directive('prcClusterListFilters', function() {
             sequence : '=sequence'
         },
         controller: "ClusterListFiltersCtrl",
-        templateUrl: 'components/clusterListFilters-directive/clusterListFilters-directive.html'
+        templateUrl: 'components/directives/clusterListFilters-directive/clusterListFilters-directive.html'
     };
 });
 

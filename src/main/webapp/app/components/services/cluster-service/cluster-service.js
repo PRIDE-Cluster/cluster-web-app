@@ -17,9 +17,9 @@ var clusterService = angular.module('prideClusterApp.clusterService', ['ngResour
 clusterService.factory('ClusterSummary', ['$resource',
     function($resource){
         return $resource(
-                clusterSummaryWsUrl + '/list?q=:queryTerm&page=:pageNumber&size=:pageSize&callback=JSON_CALLBACK',
+                clusterSummaryWsUrl + '/search?q=:queryTerm&page=:pageNumber&size=:pageSize&callback=JSON_CALLBACK',
                 {queryTerm:'', pageNumber:1, pageSize:10},
-                {list: {method:'JSONP', params:{}, isArray:true, callback: 'JSON_CALLBACK'}}
+                {list: {method:'JSONP', params:{}, isArray:false, callback: 'JSON_CALLBACK'}}
         );
     }
 ]);

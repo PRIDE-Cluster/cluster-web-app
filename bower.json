@@ -18,7 +18,8 @@
     "angular-mocks": "~1.2.x",
       "d3": "~3.4.1",
       "nvd3": "~v1.1.15-beta",
-    "angularjs-nvd3-directives": "0.0.7"
+    "angularjs-nvd3-directives": "0.0.7",
+    "angular-bootstrap": "0.12.0"
   },
   "ignore": [
     "**/.*",
