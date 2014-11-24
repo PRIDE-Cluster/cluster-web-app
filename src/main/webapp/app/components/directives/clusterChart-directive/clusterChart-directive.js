@@ -48,7 +48,8 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
                         .transitionDuration(350)
                         .color(d3.scale.category10().range())
                         .sizeRange([10,1000])
-                        .forceX([0.0,1.0]);
+                        .forceX([0.0,1.0])
+                        .forceY([1,CurrentSearchState.getPageSize()]);
 
                     //Configure how the tooltip looks.
                     chart.tooltipYContent(null);
