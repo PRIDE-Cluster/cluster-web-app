@@ -47,7 +47,8 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
                         .showLegend(true)
                         .transitionDuration(350)
                         .color(d3.scale.category10().range())
-                        .sizeRange([10,1000]);
+                        .sizeRange([10,1000])
+                        .forceX([0.0,1.0]);
 
                     //Configure how the tooltip looks.
                     chart.tooltipYContent(null);
