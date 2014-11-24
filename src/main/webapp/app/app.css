@@ -49,11 +49,39 @@ body {
     margin-bottom: 0em;
 }
 
-.cluster-summary h3 {
+.cluster-summary h4 {
+    color: #ffffff;
     border-bottom: dashed;
     border-bottom-width: 1px;
-    border-bottom-color: #808080;
+    border-bottom-color: #ffffff;
+    /*border-bottom-color: #808080;*/
 }
+
+.HIGH {
+    background-color: lightgray;
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+}
+
+.MEDIUM {
+    background-color: gray;
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+}
+
+.LOW {
+    background-color: darkgray;
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+}
+
+.prc-pagination.li {
+
+}
+
+/* required by angular bootstrap */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
 
 /* ngAnimage for ngRepeat */
 .animate-repeat {

@@ -3,18 +3,18 @@
  *
  * Each view must define its own routing
  */
-var clusterListView = angular.module('prideClusterApp.clusterListView', ['ngRoute'])
+var clusterChartView = angular.module('prideClusterApp.clusterChartView', ['ngRoute'])
 
 /**
  * Through routing we associate html templates with behaviour.
- * In this case the clusterList.html template is associated with the ClusterListCtrl when the app
- * navigates to the / url
+ * In this case the clusterChart.html template is associated with the ClusterChartCtrl when the app
+ * navigates to the /chart url
  */
-clusterListView.config(['$routeProvider',
+clusterChartView.config(['$routeProvider',
         function($routeProvider) {
-            $routeProvider.when('/', {
-                templateUrl: 'views/clusterList-view/clusterList.html',
-                controller: 'ClusterListViewCtrl'
+            $routeProvider.when('/chart', {
+                templateUrl: 'views/clusterChart-view/clusterChart.html',
+                controller: 'ClusterChartViewCtrl'
             });
         }
     ]);
@@ -23,7 +23,7 @@ clusterListView.config(['$routeProvider',
  * Controllers are injected with routing parameters. In this case the clusterId in the route is put in the $scope
  * for the view template to use.
  */
-clusterListView.controller('ClusterListViewCtrl', ['$scope', '$routeParams', 'CurrentSearchState',
+clusterChartView.controller('ClusterChartViewCtrl', ['$scope', '$routeParams', 'CurrentSearchState',
     function($scope, $routeParams, CurrentSearchState) {
         // Capture current search state
         if (!$routeParams.q) {
@@ -44,7 +44,7 @@ clusterListView.controller('ClusterListViewCtrl', ['$scope', '$routeParams', 'Cu
 
         // Put the current search state into the scope for the template to use
         $scope.queryTerm = CurrentSearchState.getQuery();
-        console.log("[ClusterListViewCtrl] page is " + CurrentSearchState.getPageNumber());
+        console.log("[ClusterChartViewCtrl] page is " + CurrentSearchState.getPageNumber());
         $scope.pageNumber = CurrentSearchState.getPageNumber();
         $scope.pageSize = CurrentSearchState.getPageSize();
     }

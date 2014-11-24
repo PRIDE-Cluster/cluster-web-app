@@ -1,19 +1,19 @@
 <!--Results-->
-<ul class="clusters">
+<div class="clusters">
     <h5>
         Showing {{totalResults}} clusters
         <span ng-show="query"> for query '{{query}}'</span>
     </h5>
-    <span><prc-cluster-list-paging pagenumber="pageNumber" pagesize="pageSize" totalitems="totalItems"></prc-cluster-list-paging></span>
+    <!--<span><prc-cluster-list-paging pagesize="pageSize" totalitems="totalItems"></prc-cluster-list-paging></span>-->
     <div class="animate-repeat" ng-repeat="cluster in clusters" >
-        <section class="grid_6 cluster-summary">
+        <section  class="grid_8 cluster-summary {{cluster.clusterQuality}}">
             <a href="#/cluster/{{cluster.id}}">
             <!--<span class="grid_24">-->
                 <!--<h3>Cluster {{cluster.id}}</h3>-->
             <!--</span>-->
             <span class="grid_24">
-                <h3 ng-show="cluster.peptideSequence.length<=10">{{cluster.peptideSequence}}</h3>
-                <h3 ng-show="cluster.peptideSequence.length>10">{{cluster.peptideSequence | limitTo: 10 }} ...</h3>
+                <h4 ng-show="cluster.peptideSequence.length<=17">{{cluster.peptideSequence}}</h4>
+                <h4 ng-show="cluster.peptideSequence.length>17">{{cluster.peptideSequence | limitTo: 17 }} ..</h4>
             </span>
             <span class="grid_24">
                 <span class="grid_8"><h6>Spectra</h6><p>{{cluster.numberOfSpectra}}</p></span>
@@ -27,4 +27,4 @@
             </a>
         </section>
     </div>
-</ul>
+</div>

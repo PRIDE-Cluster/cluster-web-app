@@ -37,6 +37,7 @@ clusterListDirective.directive('prcClusterList', ['ClusterSummary', 'CurrentSear
 
 clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', 'ClusterSummary', 'CurrentSearchState',
     function($scope, ClusterSummary, CurrentSearchState) {
+
         ClusterSummary.list(
             { queryTerm:$scope.queryTerm, pageNumber:$scope.pageNumber, pageSize:$scope.pageSize },
             function(clusters) {
@@ -46,7 +47,7 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', 'ClusterS
                 $scope.totalResults = CurrentSearchState.getTotalResults();
                 $scope.query = CurrentSearchState.getQuery();
                 $scope.totalItems = CurrentSearchState.getTotalResults();
-                $scope.pageNumber = CurrentSearchState.getPageNumber();
+//                $scope.pageNumber = CurrentSearchState.getPageNumber();
                 $scope.pageSize = CurrentSearchState.getPageSize();
             }
         );

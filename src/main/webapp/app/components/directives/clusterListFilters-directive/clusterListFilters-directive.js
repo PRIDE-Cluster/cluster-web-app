@@ -27,11 +27,32 @@ clusterListFiltersDirective.controller('ClusterListFiltersCtrl', ['$scope', '$lo
         }
 
         // attach filter-submit function
-        $scope.filterSubmit = function() {
+        $scope.listSubmit = function() {
             // Keep the state
-            CurrentSearchState.setQuery($scope.filterSequence);
+            if ($scope.filterSequence && $scope.filterSequence.length>4) {
+                CurrentSearchState.setQuery($scope.filterSequence);
+            }
             // Set location (URL)
-            $location.search({q:CurrentSearchState.getQuery()});
+            $location.path("/");
+            $location.search({
+                q:CurrentSearchState.getQuery(),
+                page:CurrentSearchState.getPageNumber(),
+                size:CurrentSearchState.getPageSize()
+            });
+        }
+
+        $scope.chartSubmit = function() {
+            // Keep the state
+            if ($scope.filterSequence && $scope.filterSequence.length>4) {
+                CurrentSearchState.setQuery($scope.filterSequence);
+            }
+            // Set location (URL)
+            $location.path("/chart");
+            $location.search({
+                q:CurrentSearchState.getQuery(),
+                page:CurrentSearchState.getPageNumber(),
+                size:CurrentSearchState.getPageSize()
+            });
         }
 
     }

@@ -8,11 +8,13 @@ var prideClusterApp = angular.module('prideClusterApp', [
 
     /* Views: thin layer containing layout+model_binding and routing elements */
     'prideClusterApp.clusterListView',
+    'prideClusterApp.clusterChartView',
     'prideClusterApp.clusterDetailView',
 
     /* Directives: reusable view+controller components */
     'prideClusterApp.psmListDirective',
     'prideClusterApp.clusterListDirective',
+    'prideClusterApp.clusterChartDirective',
     'prideClusterApp.clusterDetailDirective',
     'prideClusterApp.spectrumViewerDirective',
     'prideClusterApp.speciesChartDirective',

@@ -9,7 +9,7 @@ var spectrumListModule = angular.module('prideClusterApp.spectrumListView', ['ng
  * In this case the spectrumList.html template is associated with the SpectrumListCtrl when the app
  * requests the /spectra/:clusterId/list url
  */
-clusterListModule.config(['$routeProvider',
+spectrumListModule.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.when('/spectra/:clusterId/list', {
             templateUrl: 'app/views/spectrumList-view/spectrumList.html',
@@ -24,7 +24,7 @@ clusterListModule.config(['$routeProvider',
  * associated to a given Cluster. The list of spectra is assigned to a model object in order to be accessed later on
  * within the html template part of the view.
  */
-clusterListModule.controller('SpectrumListCtrl', ['$scope', '$routeParams', 'SpectrumSummary',
+spectrumListModule.controller('SpectrumListCtrl', ['$scope', '$routeParams', 'SpectrumSummary',
     function($scope, $routeParams, SpectrumSummary) {
         $scope.clusters = SpectrumSummary.list({clusterId: $routeParams.clusterId}, function(spectra) {
 
