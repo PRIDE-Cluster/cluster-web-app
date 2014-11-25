@@ -36,6 +36,8 @@ clusterListFiltersDirective.controller('ClusterListFiltersCtrl', ['$scope', '$lo
             $scope.sequenceFilter = $scope.sequence;
         }
 
+        $scope.totalResults = CurrentSearchState.getTotalResults();
+
         $scope.sequenceFilterChanged = function() {
             var newValue = $scope.sequenceFilter;
             var oldValue = CurrentSearchState.getQuery();

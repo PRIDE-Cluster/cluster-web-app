@@ -58,7 +58,7 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$loca
             var newValue = $scope.pageSize;
             var oldValue = CurrentSearchState.getPageSize();
             if (newValue && newValue!=oldValue) {
-                if (newValue>10 && newValue<=100) {
+                if (newValue>10 && newValue<=200) {
                     CurrentSearchState.setPageSize(newValue);
                 }
                 updateState();

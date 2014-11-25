@@ -49,7 +49,7 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
                         .color(['#5555bb', '#55bb55', '#bb5555'])
                         .sizeRange([10,1000])
                         .forceX([0.0,1.0])
-                        .forceY([1,CurrentSearchState.getPageSize()]);
+                        .forceY([0.0,100.0]);
 
                     //Configure how the tooltip looks.
                     chart.tooltipYContent(null);
@@ -57,24 +57,30 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
                         var item = clusters.pageSize-y;
                         return '<p>Max Ratio ' + x + '</h5>';
                     });
-                    chart.tooltipContent(function(key, x, y) {
-                        var item = clusters.pageSize-y;
+                    chart.tooltipContent(function(key, x, y, i) {
+                        var pageOffset = (CurrentSearchState.getPageNumber()-1) * CurrentSearchState.getPageSize();
+                        var item = ((y * CurrentSearchState.getTotalResults()) / 100) - pageOffset;
                         return '<h4>'+ clusters.results[item].peptideSequence + '</h4>' +
-                        '<h5>'+ clusters.results[item].numberOfSpectra + ' spectra</h5>';
+                        '<h6>'+ clusters.results[item].numberOfSpectra + ' spectra</h6>' +
+                        '<h6>Avg. M/Z '+ clusters.results[item].averagePrecursorMz + '</h6>' +
+                        '<h6>Avg. Prec. Charge '+ clusters.results[item].averagePrecursorCharge + '</h6>'
+
+                            ;
                     });
 
                     //Axis settings
                     chart.xAxis.tickFormat(d3.format('.02f'));
                     chart.xAxis.axisLabel("Max. Peptide Ratio");
-                    chart.yAxis.axisLabel("Cluster Relevancy");
-                    chart.yAxis.tickValues(false);
-                    chart.yAxis.showMaxMin(false);
+                    chart.yAxis.axisLabel("Cluster Distance");
+                    chart.yAxis.tickValues(true);
+                    chart.yAxis.showMaxMin(true);
                     //We want to show shapes other than circles.
                     chart.scatter.onlyCircles(false);
 
                     var myData = asChartData(
                         clusters.results,
                         CurrentSearchState.getTotalResults(),
+                        CurrentSearchState.getPageNumber(),
                         CurrentSearchState.getPageSize()
                     );
                     d3.select('#clusterChart svg')
@@ -93,8 +99,10 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
     }
 ]);
 
-function asChartData(results, numResults, pageSize) {
+function asChartData(results, numResults, pageNumber, pageSize) {
     var maxY = Math.min(numResults, pageSize);
+    var pageOffset = (pageNumber-1) * pageSize;
+    console.info("Page Offset is " + pageOffset);
 
     var chartData = [
         {
@@ -111,9 +119,11 @@ function asChartData(results, numResults, pageSize) {
         }
     ];
     for (i = 0; i<results.length; i++) {
+        var distanceScore = ((pageOffset + i) * 100) / numResults;
+        console.info("Distance is " + distanceScore);
         chartCluster = {
             "x":results[i].maxRatio,
-            "y": (maxY - i),
+            "y": distanceScore,
             "size":(results[i].numberOfSpectra * 50)
         };
         if (results[i].clusterQuality == 'HIGH') {
