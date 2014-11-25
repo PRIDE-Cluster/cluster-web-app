@@ -1,16 +1,11 @@
 <div id="cluster-paging">
-    <div>{{totalItems}}</div>
-    {{pageNumber}}
-    <pagination boundary-links="true"
-                items-per-page="pageSize"
-                total-items="totalItems"
-                ng-model="pageNumber"
-                ng-change="pageChanged()"
-                class="prc-pagination"
-                max-size="5"
-                rotate="false"
-                previous-text="Prev"
-                next-text="Next"
-                first-text="First"
-                last-text="Last"></pagination>
+    <!--Page Controls-->
+    <form novalidate class="simple-form">
+        <!--Sequence <input ng-model="sequenceFilter" ng-model-options="{ updateOn: 'blur', debounce: {'default': 1000, 'blur': 0} }" type="text"/>-->
+        Current page <input ng-model="pageNumber" ng-change="pageNumberChanged()" type="text"/>
+        <button ng-click="previousPage()">Prev</button>
+        <button ng-click="nextPage()">Next</button>
+        Page size <input ng-model="pageSize" ng-change="pageSizeChanged()" type="text"/>
+
+    </form>
 </div>

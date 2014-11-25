@@ -53,6 +53,10 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
 
                     //Configure how the tooltip looks.
                     chart.tooltipYContent(null);
+                    chart.tooltipXContent(function(key, x, y) {
+                        var item = clusters.pageSize-y;
+                        return '<p>Max Ratio ' + x + '</h5>';
+                    });
                     chart.tooltipContent(function(key, x, y) {
                         var item = clusters.pageSize-y;
                         return '<h4>'+ clusters.results[item].peptideSequence + '</h4>' +

@@ -12,8 +12,8 @@ clusterListPagingDirective.directive('prcClusterListPaging', ['CurrentSearchStat
     return {
         restrict: 'E',
         scope: {
-//            pageNumber: CurrentSearchState.getPageNumber(),
-            pageSize: "=pagesize",
+            pageNumberInit: "=pagenumber",
+            pageSizeInit: "=pagesize",
             totalItems: "=totalitems"
         },
         controller: 'ClusterListPagingCtrl',
@@ -23,21 +23,66 @@ clusterListPagingDirective.directive('prcClusterListPaging', ['CurrentSearchStat
 
 clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$location', 'CurrentSearchState',
     function($scope, $location, CurrentSearchState) {
-        console.log("[ClusterListPagingCtrl] controlling...")
-//        if (!$scope.pageNumber) {
-//            $scope.pageNumber = 5; //CurrentSearchState.getPageNumber();
-//        }
-//        console.log("[ClusterListPagingCtrl] page is " + $scope.pageNumber);
-//        $scope.pageChanged = function() {
-//            console.log('Page changed to: ' + $scope.pageNumber);
-////            CurrentSearchState.setPageNumber($scope.pageNumber);
-//            $location.search({page:$scope.pageNumber});
-//        };
 
-        $scope.selectPage = function(page) {
-            console.log('Page changed to: ' + page);
-//            CurrentSearchState.setPageNumber($scope.pageNumber);
-            $location.search({page:page});
+        function updateState() {
+            // Set location (URL)
+            $location.path(CurrentSearchState.getViewPath());
+            $location.search({
+                q:CurrentSearchState.getQuery(),
+                page:CurrentSearchState.getPageNumber(),
+                size:CurrentSearchState.getPageSize()
+            });
+        }
+
+        // set init values if provided
+        if ($scope.pageNumberInit) {
+            $scope.pageNumber = $scope.pageNumberInit;
+        }
+        if ($scope.pageSizeInit) {
+            $scope.pageSize = $scope.pageSizeInit;
+        }
+
+        $scope.pageNumberChanged = function() {
+            var maxPages = Math.floor($scope.totalItems / $scope.pageSize);
+            var newValue = $scope.pageNumber;
+            var oldValue = CurrentSearchState.getPageNumber();
+            if (newValue && newValue!=oldValue) {
+                if (newValue>0 && newValue<=maxPages) {
+                    CurrentSearchState.setPageNumber(newValue);
+                }
+                updateState();
+            }
         };
+
+        $scope.pageSizeChanged = function() {
+            var newValue = $scope.pageSize;
+            var oldValue = CurrentSearchState.getPageSize();
+            if (newValue && newValue!=oldValue) {
+                if (newValue>10 && newValue<=100) {
+                    CurrentSearchState.setPageSize(newValue);
+                }
+                updateState();
+            }
+        };
+
+        // attach filter-submit function
+        $scope.nextPage = function() {
+            var maxPages = Math.floor($scope.totalItems / $scope.pageSize);
+            if ($scope.pageNumber<maxPages) {
+                $scope.pageNumber++;
+                // Keep the state change
+                CurrentSearchState.setPageNumber($scope.pageNumber);
+                updateState();
+            }
+        }
+
+        $scope.previousPage = function() {
+            if ($scope.pageNumber>1) {
+                $scope.pageNumber--;
+                // Keep the state change
+                CurrentSearchState.setPageNumber($scope.pageNumber);
+                updateState();
+            }
+        }
     }
 ]);

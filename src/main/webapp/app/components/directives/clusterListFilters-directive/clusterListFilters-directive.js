@@ -21,39 +21,48 @@ clusterListFiltersDirective.directive('prcClusterListFilters', function() {
 clusterListFiltersDirective.controller('ClusterListFiltersCtrl', ['$scope', '$location', 'CurrentSearchState',
     function($scope, $location, CurrentSearchState) {
 
+        function updateState() {
+            // Set location (URL)
+            $location.path(CurrentSearchState.getViewPath());
+            $location.search({
+                q:CurrentSearchState.getQuery(),
+                page:CurrentSearchState.getPageNumber(),
+                size:CurrentSearchState.getPageSize()
+            });
+        }
+
         // set filter sequence if init value provided
         if ($scope.sequence) {
-            $scope.filterSequence = $scope.sequence;
+            $scope.sequenceFilter = $scope.sequence;
         }
+
+        $scope.sequenceFilterChanged = function() {
+            var newValue = $scope.sequenceFilter;
+            var oldValue = CurrentSearchState.getQuery();
+            if (newValue && newValue!=oldValue) {
+                if (newValue.length>4) {
+                    CurrentSearchState.setQuery(newValue);
+                } else if (newValue.length<=4 && newValue.length<CurrentSearchState.getQuery().length) {
+                    CurrentSearchState.setQuery("");
+                }
+                updateState();
+            }
+        };
 
         // attach filter-submit function
         $scope.listSubmit = function() {
-            // Keep the state
-            if ($scope.filterSequence && $scope.filterSequence.length>4) {
-                CurrentSearchState.setQuery($scope.filterSequence);
-            }
-            // Set location (URL)
-            $location.path("/");
-            $location.search({
-                q:CurrentSearchState.getQuery(),
-                page:CurrentSearchState.getPageNumber(),
-                size:CurrentSearchState.getPageSize()
-            });
+            // Keep the state change
+            CurrentSearchState.setViewPath("/");
+            updateState();
         }
 
         $scope.chartSubmit = function() {
-            // Keep the state
-            if ($scope.filterSequence && $scope.filterSequence.length>4) {
-                CurrentSearchState.setQuery($scope.filterSequence);
-            }
-            // Set location (URL)
-            $location.path("/chart");
-            $location.search({
-                q:CurrentSearchState.getQuery(),
-                page:CurrentSearchState.getPageNumber(),
-                size:CurrentSearchState.getPageSize()
-            });
+            // Keep the state change
+            CurrentSearchState.setViewPath("/chart");
+            updateState();
         }
 
     }
 ]);
+
+

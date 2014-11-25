@@ -4,7 +4,7 @@
         Showing {{totalResults}} clusters
         <span ng-show="query"> for query '{{query}}'</span>
     </h5>
-    <!--<span><prc-cluster-list-paging pagesize="pageSize" totalitems="totalItems"></prc-cluster-list-paging></span>-->
+    <span><prc-cluster-list-paging pagenumber="pageNumber" pagesize="pageSize" totalitems="totalItems"></prc-cluster-list-paging></span>
     <div class="animate-repeat" ng-repeat="cluster in clusters" >
         <section  class="grid_8 cluster-summary {{cluster.clusterQuality}}">
             <a href="#/cluster/{{cluster.id}}">

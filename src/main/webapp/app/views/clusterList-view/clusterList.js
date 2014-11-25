@@ -44,7 +44,6 @@ clusterListView.controller('ClusterListViewCtrl', ['$scope', '$routeParams', 'Cu
 
         // Put the current search state into the scope for the template to use
         $scope.queryTerm = CurrentSearchState.getQuery();
-        console.log("[ClusterListViewCtrl] page is " + CurrentSearchState.getPageNumber());
         $scope.pageNumber = CurrentSearchState.getPageNumber();
         $scope.pageSize = CurrentSearchState.getPageSize();
     }
