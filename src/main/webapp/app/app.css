@@ -58,25 +58,21 @@ body {
 }
 
 .HIGH {
-    background-color: lightgray;
+    background-color: #9999bb;
     margin-top: 1.5em;
     margin-bottom: 0em;
 }
 
 .MEDIUM {
-    background-color: gray;
+    background-color: #99bb99;
     margin-top: 1.5em;
     margin-bottom: 0em;
 }
 
 .LOW {
-    background-color: darkgray;
+    background-color: #bb9999;
     margin-top: 1.5em;
     margin-bottom: 0em;
-}
-
-.prc-pagination.li {
-
 }
 
 /* required by angular bootstrap */

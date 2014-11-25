@@ -46,7 +46,7 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
                         .showControls(false)
                         .showLegend(true)
                         .transitionDuration(350)
-                        .color(d3.scale.category10().range())
+                        .color(['#5555bb', '#55bb55', '#bb5555'])
                         .sizeRange([10,1000])
                         .forceX([0.0,1.0])
                         .forceY([1,CurrentSearchState.getPageSize()]);
