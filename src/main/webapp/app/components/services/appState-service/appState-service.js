@@ -17,7 +17,6 @@ var appStateService = angular.module('prideClusterApp.appStateService', [])
 
 appStateService.service('CurrentSearchState',
     function() {
-        console.log("[CurrentSearchState] starting service")
         var current_search_view_path = "/";
         var current_search_query = "";
         var current_search_pageNumber = 1;
@@ -29,10 +28,9 @@ appStateService.service('CurrentSearchState',
         this.getQuery = function() { return current_search_query; };
         this.setQuery = function(q) { current_search_query = q; };
         this.getPageNumber = function() {
-            console.log("[CurrentSearchState] page request: " + current_search_pageNumber);
             return current_search_pageNumber;
         };
-        this.setPageNumber = function(p) { current_search_pageNumber = p; console.log("[CurrentSearchState] page set to " + current_search_pageNumber) };
+        this.setPageNumber = function(p) { current_search_pageNumber = p; };
         this.getPageSize = function() {
             return current_search_pageSize; };
         this.setPageSize = function(s) { current_search_pageSize = s; };

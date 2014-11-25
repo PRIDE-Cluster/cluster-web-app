@@ -37,7 +37,7 @@ clusterListView.controller('ClusterListViewCtrl', ['$scope', '$routeParams', 'Cu
             CurrentSearchState.setPageNumber($routeParams.page);
         }
         if (!$routeParams.size) {
-            CurrentSearchState.setPageSize(50);
+            CurrentSearchState.setPageSize(100);
         } else {
             CurrentSearchState.setPageSize($routeParams.size);
         }

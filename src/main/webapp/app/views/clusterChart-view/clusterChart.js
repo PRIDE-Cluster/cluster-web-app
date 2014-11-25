@@ -37,14 +37,13 @@ clusterChartView.controller('ClusterChartViewCtrl', ['$scope', '$routeParams', '
             CurrentSearchState.setPageNumber($routeParams.page);
         }
         if (!$routeParams.size) {
-            CurrentSearchState.setPageSize(50);
+            CurrentSearchState.setPageSize(100);
         } else {
             CurrentSearchState.setPageSize($routeParams.size);
         }
 
         // Put the current search state into the scope for the template to use
         $scope.queryTerm = CurrentSearchState.getQuery();
-        console.log("[ClusterChartViewCtrl] page is " + CurrentSearchState.getPageNumber());
         $scope.pageNumber = CurrentSearchState.getPageNumber();
         $scope.pageSize = CurrentSearchState.getPageSize();
     }

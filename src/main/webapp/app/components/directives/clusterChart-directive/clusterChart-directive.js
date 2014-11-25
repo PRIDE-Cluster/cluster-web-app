@@ -31,7 +31,6 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
             function(clusters) {
 
                 CurrentSearchState.setTotalResults(clusters.totalResults);
-                console.log("[prcClusterChart-directive] Total results set to " + CurrentSearchState.getTotalResults())
                 $scope.totalResults = CurrentSearchState.getTotalResults();
                 $scope.query = CurrentSearchState.getQuery();
                 $scope.totalItems = CurrentSearchState.getTotalResults();
@@ -102,8 +101,6 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
 function asChartData(results, numResults, pageNumber, pageSize) {
     var maxY = Math.min(numResults, pageSize);
     var pageOffset = (pageNumber-1) * pageSize;
-    console.info("Page Offset is " + pageOffset);
-
     var chartData = [
         {
             "key":"High Quality",
@@ -120,7 +117,6 @@ function asChartData(results, numResults, pageNumber, pageSize) {
     ];
     for (i = 0; i<results.length; i++) {
         var distanceScore = ((pageOffset + i) * 100) / numResults;
-        console.info("Distance is " + distanceScore);
         chartCluster = {
             "x":results[i].maxRatio,
             "y": distanceScore,
