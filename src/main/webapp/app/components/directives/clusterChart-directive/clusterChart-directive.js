@@ -37,7 +37,8 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
                 $scope.pageNumber = CurrentSearchState.getPageNumber();
                 $scope.pageSize = CurrentSearchState.getPageSize();
 
-
+                var pageOffset = (CurrentSearchState.getPageNumber()-1) * CurrentSearchState.getPageSize();
+                var pageOffsetEnd = pageOffset + parseInt(CurrentSearchState.getPageSize());
                 nv.addGraph(function() {
                     var chart = nv.models.scatterChart()
                         .showDistX(true)    //showDist, when true, will display those little distribution lines on the axis.
@@ -48,7 +49,7 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
                         .color(['#5555bb', '#55bb55', '#bb5555'])
                         .sizeRange([10,1000])
                         .forceX([0.0,1.0])
-                        .forceY([0.0,100.0]);
+                        .forceY([pageOffset,pageOffsetEnd]);
 
                     //Configure how the tooltip looks.
                     chart.tooltipYContent(null);
@@ -57,8 +58,8 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
                         return '<p>Max Ratio ' + x + '</h5>';
                     });
                     chart.tooltipContent(function(key, x, y, i) {
-                        var pageOffset = (CurrentSearchState.getPageNumber()-1) * CurrentSearchState.getPageSize();
-                        var item = ((y * CurrentSearchState.getTotalResults()) / 100) - pageOffset;
+                        console.log("Item i is " + i);
+                        var item = y - pageOffset;
                         return '<h4>'+ clusters.results[item].peptideSequence + '</h4>' +
                         '<h6>'+ clusters.results[item].numberOfSpectra + ' spectra</h6>' +
                         '<h6>Avg. M/Z '+ clusters.results[item].averagePrecursorMz + '</h6>' +
@@ -70,9 +71,19 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
                     //Axis settings
                     chart.xAxis.tickFormat(d3.format('.02f'));
                     chart.xAxis.axisLabel("Max. Peptide Ratio");
+                    chart.xAxis.axisLabelDistance(50);
+//                    chart.xAxis.tickPadding(7);
                     chart.yAxis.axisLabel("Cluster Distance");
-                    chart.yAxis.tickValues(true);
-                    chart.yAxis.showMaxMin(true);
+                    chart.yAxis.tickValues(d3.range('CLOSE','FAR'));
+//                    chart.yAxis.showMaxMin(true);
+//                    chart.yAxis.tickFormat(function(d, i){
+//                        if (d==0) return "low";
+//                        else if (d==100) return "high";
+//                    })
+                    chart.yAxis.axisLabelDistance(50);
+
+                    chart.margin({bottom: 60, right: 80, left: 80, top: 80});
+
                     //We want to show shapes other than circles.
                     chart.scatter.onlyCircles(false);
 
@@ -119,7 +130,8 @@ function asChartData(results, numResults, pageNumber, pageSize) {
         var distanceScore = ((pageOffset + i) * 100) / numResults;
         chartCluster = {
             "x":results[i].maxRatio,
-            "y": distanceScore,
+//            "y": distanceScore,
+            "y": i + (pageNumber-1)*pageSize,
             "size":(results[i].numberOfSpectra * 50)
         };
         if (results[i].clusterQuality == 'HIGH') {

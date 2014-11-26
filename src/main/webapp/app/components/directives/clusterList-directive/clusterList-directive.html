@@ -7,7 +7,10 @@
                 <span ng-show="query"> for query '{{query}}'</span>
             </h5>
         </span>
-        <span class="grid_16">
+        <div class="grid_8" id="search-controls">
+            <prc-cluster-list-filters sequence="queryTerm"></prc-cluster-list-filters>
+        </div>
+        <span class="grid_8">
             <prc-cluster-list-paging pagenumber="pageNumber" pagesize="pageSize" totalitems="totalItems"></prc-cluster-list-paging>
         </span>
     </section>
@@ -18,8 +21,8 @@
                 <!--<h3>Cluster {{cluster.id}}</h3>-->
             <!--</span>-->
             <span class="grid_24">
-                <h4 ng-show="cluster.peptideSequence.length<=17">{{cluster.peptideSequence}}</h4>
-                <h4 ng-show="cluster.peptideSequence.length>17">{{cluster.peptideSequence | limitTo: 17 }} ..</h4>
+                <h4 ng-show="cluster.peptideSequence.length<=20">{{cluster.peptideSequence}}</h4>
+                <h4 ng-show="cluster.peptideSequence.length>20">{{cluster.peptideSequence | limitTo: 20 }} ..</h4>
             </span>
             <span class="grid_24">
                 <span class="grid_8"><h6>Spectra</h6><p>{{cluster.numberOfSpectra}}</p></span>

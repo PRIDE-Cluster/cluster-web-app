@@ -6,7 +6,10 @@
                 <span ng-show="query"> for query '{{query}}'</span>
             </h5>
         </span>
-        <span class="grid_16">
+    <div class="grid_8" id="search-controls">
+        <prc-cluster-list-filters sequence="queryTerm"></prc-cluster-list-filters>
+    </div>
+        <span class="grid_8">
             <prc-cluster-list-paging pagenumber="pageNumber" pagesize="pageSize" totalitems="totalItems"></prc-cluster-list-paging>
         </span>
 </section>

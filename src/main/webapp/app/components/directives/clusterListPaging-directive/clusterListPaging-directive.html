@@ -1,11 +1,15 @@
-<div id="cluster-paging">
+<div class="grid_24">
     <!--Page Controls-->
-    <form novalidate class="simple-form">
-        <!--Sequence <input ng-model="sequenceFilter" ng-model-options="{ updateOn: 'blur', debounce: {'default': 1000, 'blur': 0} }" type="text"/>-->
-        Current page <input ng-model="pageNumber" ng-change="pageNumberChanged()" type="text"/>
+    <span class="grid_8">
+        <span class="grid_18">Current page</span>
+        <input class="grid_4" ng-model="pageNumber" ng-change="pageNumberChanged()" type="text"/>
+    </span>
+    <span class="grid_8">
         <button ng-click="previousPage()">Prev</button>
         <button ng-click="nextPage()">Next</button>
-        Page size <input ng-model="pageSize" ng-change="pageSizeChanged()" type="text"/>
-
-    </form>
+    </span>
+    <span class="grid_8">
+        <span class="grid_16">Page size</span>
+        <input class="grid_6" ng-model="pageSize" ng-change="pageSizeChanged()" type="text"/>
+    </span>
 </div>

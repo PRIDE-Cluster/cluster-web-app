@@ -75,10 +75,6 @@ body {
     margin-bottom: 0em;
 }
 
-/* required by angular bootstrap */
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
-
-
 /* ngAnimage for ngRepeat */
 .animate-repeat {
     /*line-height:0px;*/
