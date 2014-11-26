@@ -7,6 +7,8 @@ A web application for the *EBI PRIDE Cluster* resource. We use mostly [`AngularJ
 a framework for a *JavaEE* container-based web app. For visualisation [NVD3](https://github.com/novus/nvd3) and 
 [Angularjs-nvd3-directives](http://cmaurer.github.io/angularjs-nvd3-directives/) are used.  
 
+In-dev prototype deployed here: [http://wwwdev.ebi.ac.uk/pride/cluster](http://wwwdev.ebi.ac.uk/pride/cluster). 
+
 ### Project structure
 
 The web application code is contained within the `app` folder inside `src/main/webapp`. The structure is as follows:
