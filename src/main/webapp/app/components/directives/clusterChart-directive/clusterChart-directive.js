@@ -23,8 +23,12 @@ clusterChartDirective.directive('prcClusterChart', function(ClusterSummary, Curr
 });
 
 
-clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'ClusterSummary', 'CurrentSearchState',
-    function($scope, ClusterSummary, CurrentSearchState) {
+clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', '$location', 'ClusterSummary', 'CurrentSearchState',
+    function($scope, $location, ClusterSummary, CurrentSearchState) {
+
+        function clusterClicked(clusterId) {
+            $scope.$apply(function() {$location.path("/cluster/" + clusterId);});
+        }
 
         ClusterSummary.list(
             { queryTerm:$scope.queryTerm, pageNumber:$scope.pageNumber, pageSize:$scope.pageSize },
@@ -57,15 +61,18 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
                         var item = clusters.pageSize-y;
                         return '<p>Max Ratio ' + x + '</h5>';
                     });
-                    chart.tooltipContent(function(key, x, y, i) {
-                        console.log("Item i is " + i);
+                    chart.tooltipContent(function(key, x, y) {
                         var item = y - pageOffset;
                         return '<h4>'+ clusters.results[item].peptideSequence + '</h4>' +
                         '<h6>'+ clusters.results[item].numberOfSpectra + ' spectra</h6>' +
                         '<h6>Avg. M/Z '+ clusters.results[item].averagePrecursorMz + '</h6>' +
-                        '<h6>Avg. Prec. Charge '+ clusters.results[item].averagePrecursorCharge + '</h6>'
+                        '<h6>Avg. Prec. Charge '+ clusters.results[item].averagePrecursorCharge + '</h6>';
+                    });
 
-                            ;
+                    // click event handling
+                    chart.scatter.dispatch.on("elementClick", function(e) {
+                        var clusterId = clusters.results[e.point.y - pageOffset].id;
+                        clusterClicked(clusterId);
                     });
 
                     //Axis settings
@@ -110,7 +117,6 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', 'Cluste
 ]);
 
 function asChartData(results, numResults, pageNumber, pageSize) {
-    var maxY = Math.min(numResults, pageSize);
     var pageOffset = (pageNumber-1) * pageSize;
     var chartData = [
         {
@@ -127,11 +133,9 @@ function asChartData(results, numResults, pageNumber, pageSize) {
         }
     ];
     for (i = 0; i<results.length; i++) {
-        var distanceScore = ((pageOffset + i) * 100) / numResults;
         chartCluster = {
             "x":results[i].maxRatio,
-//            "y": distanceScore,
-            "y": i + (pageNumber-1)*pageSize,
+            "y": i + pageOffset,
             "size":(results[i].numberOfSpectra * 50)
         };
         if (results[i].clusterQuality == 'HIGH') {
@@ -145,4 +149,3 @@ function asChartData(results, numResults, pageNumber, pageSize) {
 
     return chartData;
 }
-
