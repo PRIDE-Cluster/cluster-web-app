@@ -9,19 +9,6 @@
 var clusterListDirective = angular.module('prideClusterApp.clusterListDirective', [])
 
 clusterListDirective.directive('prcClusterList', ['ClusterSummary', 'CurrentSearchState', function(ClusterSummary, CurrentSearchState) {
-//    function link(scope, element, attrs) {
-//        ClusterSummary.list(
-//            { queryTerm:scope.queryTerm, pageNumber:scope.pageNumber, pageSize:scope.pageSize },
-//            function(clusters) {
-//                scope.clusters = clusters.results;
-//                scope.$apply(CurrentSearchState.setTotalResults(clusters.totalResults));
-//                console.log("[prcClusterList-directive] Total results set to " + CurrentSearchState.getTotalResults())
-//                scope.totalResults = CurrentSearchState.getTotalResults();
-//                scope.query = CurrentSearchState.getQuery();
-//
-//            }
-//        );
-//    }
     return {
         restrict: 'E',
         scope: {

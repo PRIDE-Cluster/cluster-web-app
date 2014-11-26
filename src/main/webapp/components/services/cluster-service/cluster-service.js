@@ -8,8 +8,8 @@
  * Each singleton represents a web-service end point and can potentially define multiple operations.
  *
  */
-var clusterDetailWsUrl = "http://127.0.0.1:9091/clusterDetail";
-var clusterSummaryWsUrl = "http://127.0.0.1:9091/clusterSummary";
+var clusterDetailWsUrl = "http://ves-ebi-4d.ebi.ac.uk:8110/pride/ws/cluster/clusterDetail";
+var clusterSummaryWsUrl = "http://ves-ebi-4d.ebi.ac.uk:8110/pride/ws/cluster/clusterSummary";
 
 var clusterService = angular.module('prideClusterApp.clusterService', ['ngResource'])
 
