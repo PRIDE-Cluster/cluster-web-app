@@ -4,7 +4,7 @@
   <display-name>PRIDE Cluster</display-name>
 
     <welcome-file-list>
-        <welcome-file>app/index.html</welcome-file>
+        <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
     <!--Force UTF-8 encoding-->
