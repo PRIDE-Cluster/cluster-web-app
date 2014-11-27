@@ -78,101 +78,32 @@
 </div>
 
 <div id="wrapper" class="container_24">
-    <header>
-        <div id="global-masthead" class="masthead grid_24">
-            <!--This has to be one line and no newline characters-->
-            <a href="//www.ebi.ac.uk/" title="Go to the EMBL-EBI homepage"><img
-                    src="//www.ebi.ac.uk/web_guidelines/images/logos/EMBL-EBI/EMBL_EBI_Logo_white.png"
-                    alt="EMBL European Bioinformatics Institute"></a>
+    <!--<header>-->
+    <div id="global-masthead" class="masthead grid_24">
+        <!--This has to be one line and no newline characters-->
+        <a href="//www.ebi.ac.uk/" title="Go to the EMBL-EBI homepage"><img
+                src="//www.ebi.ac.uk/web_guidelines/images/logos/EMBL-EBI/EMBL_EBI_Logo_white.png"
+                alt="EMBL European Bioinformatics Institute"></a>
 
-            <nav>
-                <ul id="global-nav">
-                    <!-- set active class as appropriate -->
-                    <li class="first active" id="services"><a href="//www.ebi.ac.uk/services">Services</a></li>
-                    <li id="research"><a href="//www.ebi.ac.uk/research">Research</a></li>
-                    <li id="training"><a href="//www.ebi.ac.uk/training">Training</a></li>
-                    <li id="industry"><a href="//www.ebi.ac.uk/industry">Industry</a></li>
-                    <li id="about" class="last"><a href="//www.ebi.ac.uk/about">About us</a></li>
-                </ul>
-            </nav>
-
-        </div>
-
-        <div id="local-masthead" class="masthead grid_24 nomenu">
-
-            <!-- local-title -->
-            <!-- NB: for additional title style patterns, see http://frontier.ebi.ac.uk/web/style/patterns -->
-
-            <div class="grid_12 alpha" id="local-title">
-                <h1><a href="/" title="Back to PRIDE Cluster homepage">PRIDE Cluster</a></h1>
-            </div>
-
-            <!-- /local-title -->
-
-            <!-- local-search -->
-            <!-- NB: if you do not have a local-search, delete the following div, and drop the class="grid_12 alpha" class from local-title above -->
-
-            <!--<div class="grid_12 omega">-->
-                <!--<form id="local-search" name="local-search" action="/" method="get">-->
-                    <!--<fieldset>-->
-                        <!--<div class="left">-->
-                            <!--<label>-->
-                                <!--<input type="text" name="q" id="local-searchbox">-->
-                            <!--</label>-->
-                            <!--&lt;!&ndash; Include some example searchterms - keep them short and few! &ndash;&gt;-->
-                            <!--<span class="examples">Examples: <a href="[search-url-1]">[search-text-1]</a>, <a-->
-                                    <!--href="[search-url-1]">[search-text-2]</a>, <a-->
-                                    <!--href="[search-url-1]">[search-text-3]</a></span>-->
-                        <!--</div>-->
-                        <!--<div class="right">-->
-                            <!--<input type="submit" name="submit" value="Search" class="submit">-->
-                            <!--&lt;!&ndash; If your search is more complex than just a keyword search, you can link to an Advanced Search,-->
-                                 <!--with whatever features you want available &ndash;&gt;-->
-                            <!--<span class="adv"><a href="../search" id="adv-search" title="Advanced">Advanced</a></span>-->
-                        <!--</div>-->
-                    <!--</fieldset>-->
-                <!--</form>-->
-            <!--</div>-->
-
-            <!-- /local-search -->
-
-            <!-- local-nav -->
-
-            <nav>
-                <ul class="grid_24" id="local-nav">
-                    <li class="first"><a href="#">Home</a></li>
-                    <li class="active"><a href="#">Documentation</a></li>
-                    <li><a href="#">Help</a></li>
-                    <li class="last"><a href="#">About PRIDE Cluster</a></li>
-                    <!-- If you need to include functional (as opposed to purely navigational) links in your local menu,
-                         add them here, and give them a class of "functional". Remember: you'll need a class of "last" for
-                         whichever one will show up last...
-                         For example: -->
-                    <li class="functional"><a href="#" class="icon icon-generic" data-icon="\">Feedback</a></li>
-                    <li class="functional"><a href="#" class="icon icon-functional" data-icon="r">Share</a></li>
-                </ul>
-            </nav>
-
-            <!-- /local-nav -->
-
-        </div>
-    </header>
-
-
-    <div id="content" role="main" class="grid_24 clearfix view-animate-container">
-
-        <!-- If you require a breadcrumb trail, its root should be your service.
-              You don't need a breadcrumb trail on the homepage of your service... -->
-        <nav id="breadcrumb">
-            <p>
-                <a href="/pride/cluster">PRIDE Cluster</a> &gt;
-                Search
-            </p>
+        <nav>
+            <ul id="global-nav">
+                <!-- set active class as appropriate -->
+                <li class="first active" id="services"><a href="//www.ebi.ac.uk/services">Services</a></li>
+                <li id="research"><a href="//www.ebi.ac.uk/research">Research</a></li>
+                <li id="training"><a href="//www.ebi.ac.uk/training">Training</a></li>
+                <li id="industry"><a href="//www.ebi.ac.uk/industry">Industry</a></li>
+                <li id="about" class="last"><a href="//www.ebi.ac.uk/about">About us</a></li>
+            </ul>
         </nav>
 
-        <div ng-view></div>
-
     </div>
+
+
+    <!--</header>-->
+
+
+    <div ng-view></div>
+
 
 
 
@@ -256,6 +187,7 @@
 <script src="views/clusterChart-view/clusterChart.js"></script>
 
 <!--PRIDE Cluster AngularJS Directives-->
+<script src="components/directives/localHeader-directive/localHeader-directive.js"></script>
 <script src="components/directives/psmList-directive/psmList-directive.js"></script>
 <script src="components/directives/clusterList-directive/clusterList-directive.js"></script>
 <script src="components/directives/clusterChart-directive/clusterChart-directive.js"></script>

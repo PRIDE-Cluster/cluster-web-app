@@ -1,8 +1,16 @@
-<div class="container-fluid">
-    <div>
-        <section class="grid_24" id="search-results">
-            <!-- Body content uses components/clusterList-directive -->
-            <prc-cluster-chart query="queryTerm" page="pageNumber" size="pageSize"></prc-cluster-chart>
-        </section>
-    </div>
+<prc-local-header></prc-local-header>
+
+<div id="content" role="main" class="grid_24 clearfix view-animate-container">
+    <!-- If you require a breadcrumb trail, its root should be your service.
+    You don't need a breadcrumb trail on the homepage of your service... -->
+    <nav id="breadcrumb">
+        <p>
+            <a href="/pride/cluster/#">PRIDE Cluster</a> &gt;
+            Search
+        </p>
+    </nav>
+    <section class="grid_24" id="search-results">
+        <!-- Body content uses components/clusterList-directive -->
+        <prc-cluster-chart query="queryTerm" page="pageNumber" size="pageSize"></prc-cluster-chart>
+    </section>
 </div>

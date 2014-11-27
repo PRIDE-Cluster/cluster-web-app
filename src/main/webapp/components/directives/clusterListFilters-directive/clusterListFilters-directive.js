@@ -38,19 +38,6 @@ clusterListFiltersDirective.controller('ClusterListFiltersCtrl', ['$scope', '$lo
 
         $scope.totalResults = CurrentSearchState.getTotalResults();
 
-        $scope.sequenceFilterChanged = function() {
-            var newValue = $scope.sequenceFilter;
-            var oldValue = CurrentSearchState.getQuery();
-            if (newValue && newValue!=oldValue) {
-                if (newValue.length>4) {
-                    CurrentSearchState.setQuery(newValue);
-                } else if (newValue.length<=4 && newValue.length<CurrentSearchState.getQuery().length) {
-                    CurrentSearchState.setQuery("");
-                }
-                updateState();
-            }
-        };
-
         // attach filter-submit function
         $scope.listSubmit = function() {
             // Keep the state change

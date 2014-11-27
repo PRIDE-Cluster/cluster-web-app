@@ -12,6 +12,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.clusterDetailView',
 
     /* Directives: reusable view+controller components */
+    'prideClusterApp.localHeaderDirective',
     'prideClusterApp.psmListDirective',
     'prideClusterApp.clusterListDirective',
     'prideClusterApp.clusterChartDirective',
