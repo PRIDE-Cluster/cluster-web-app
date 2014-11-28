@@ -3,12 +3,17 @@
 <div id="content" role="main" class="grid_24 clearfix view-animate-container">
     <!-- If you require a breadcrumb trail, its root should be your service.
     You don't need a breadcrumb trail on the homepage of your service... -->
-    <nav id="breadcrumb">
-        <p>
-            <a href="/pride/cluster/#">PRIDE Cluster</a> &gt;
-            Search
-        </p>
-    </nav>
+    <span class="grid_24">
+        <nav id="breadcrumb" class="grid_16">
+            <p>
+                <a href="/pride/cluster/#">PRIDE Cluster</a> &gt;
+                Search
+            </p>
+        </nav>
+        <div class="grid_4 omega">
+            <prc-cluster-list-filters sequence="queryTerm"></prc-cluster-list-filters>
+        </div>
+    </span>
     <section class="grid_24" id="search-results">
         <!-- Body content uses components/clusterList-directive -->
         <prc-cluster-chart query="queryTerm" page="pageNumber" size="pageSize"></prc-cluster-chart>

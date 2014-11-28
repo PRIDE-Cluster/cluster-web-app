@@ -40,6 +40,8 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', '$locat
                 $scope.totalItems = CurrentSearchState.getTotalResults();
                 $scope.pageNumber = CurrentSearchState.getPageNumber();
                 $scope.pageSize = CurrentSearchState.getPageSize();
+                $scope.pageSize = CurrentSearchState.getPageSize();
+                $scope.numPages = Math.floor(CurrentSearchState.getTotalResults() / CurrentSearchState.getPageSize());
 
                 var pageOffset = (CurrentSearchState.getPageNumber()-1) * CurrentSearchState.getPageSize();
                 var pageOffsetEnd = pageOffset + parseInt(CurrentSearchState.getPageSize());

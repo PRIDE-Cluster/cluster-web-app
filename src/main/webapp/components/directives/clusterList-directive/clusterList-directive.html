@@ -2,16 +2,13 @@
 <div class="clusters">
     <section class="grid_24">
         <span class="grid_8">
-            <h5>
+            <h4>
                 Showing {{totalResults}} clusters
                 <span ng-show="query"> for query '{{query}}'</span>
-            </h5>
+            </h4>
         </span>
-        <div class="grid_8" id="search-controls">
-            <prc-cluster-list-filters sequence="queryTerm"></prc-cluster-list-filters>
-        </div>
-        <span class="grid_8">
-            <prc-cluster-list-paging pagenumber="pageNumber" pagesize="pageSize" totalitems="totalItems"></prc-cluster-list-paging>
+        <span class="grid_16">
+            <prc-cluster-list-paging></prc-cluster-list-paging>
         </span>
     </section>
     <div class="animate-repeat" ng-repeat="cluster in clusters" >

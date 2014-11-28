@@ -8,7 +8,7 @@
  * Each singleton represents a web-service end point and can potentially define multiple operations.
  *
  */
-var psmSummaryWsUrl = "http://ves-ebi-4d.ebi.ac.uk:8110/pride/ws/cluster/psmSummary";
+var psmSummaryWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/psmSummary";
 
 var psmService = angular.module('prideClusterApp.psmService', ['ngResource'])
 

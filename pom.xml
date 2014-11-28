@@ -21,7 +21,7 @@
                 <artifactId>maven-jetty-plugin</artifactId>
                 <configuration>
                 <webAppConfig>
-                    <contextPath>/</contextPath>
+                    <contextPath>/pride/cluster</contextPath>
                 </webAppConfig>
                 <connectors>
                     <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">

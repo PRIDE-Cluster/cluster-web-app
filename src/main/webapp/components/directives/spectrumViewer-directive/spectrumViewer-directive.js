@@ -4,7 +4,7 @@
  * The prc-spectrum-viewer directive allows us to reuse a spectra visualisations using SpeckTackle.
  *
  */
-var spectrumSummaryWsUrl = "http://ves-ebi-4d.ebi.ac.uk:8110/pride/ws/cluster/spectrumSummary";
+var spectrumSummaryWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/spectrumSummary";
 var spectrumViewerDirective = angular.module('prideClusterApp.spectrumViewerDirective', [])
 
 spectrumViewerDirective.directive('prcSpectrumViewer', function() {

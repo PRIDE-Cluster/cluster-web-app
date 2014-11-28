@@ -30,12 +30,12 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', 'ClusterS
             function(clusters) {
                 $scope.clusters = clusters.results;
                 CurrentSearchState.setTotalResults(clusters.totalResults);
-                console.log("[prcClusterList-directive] Total results set to " + CurrentSearchState.getTotalResults())
                 $scope.totalResults = CurrentSearchState.getTotalResults();
                 $scope.query = CurrentSearchState.getQuery();
                 $scope.totalItems = CurrentSearchState.getTotalResults();
                 $scope.pageNumber = CurrentSearchState.getPageNumber();
                 $scope.pageSize = CurrentSearchState.getPageSize();
+                $scope.numPages = Math.floor(CurrentSearchState.getTotalResults() / CurrentSearchState.getPageSize());
             }
         );
     }

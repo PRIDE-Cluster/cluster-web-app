@@ -1,15 +1,28 @@
 <div class="grid_24">
     <!--Page Controls-->
-    <span class="grid_8">
-        <span class="grid_18">Current page</span>
-        <input class="grid_4" ng-model="pageNumber" ng-change="pageNumberChanged()" type="text"/>
+    <span class="grid_12">
+        <h6>
+            <span class="grid_6">Showing</span>
+            <span class="grid_18">{{(pageNumber-1) * pageSize + 1}} to {{ Math.min((pageNumber*pageSize),totalResults) }} of {{totalResults}} results</span>
+        </h6>
     </span>
-    <span class="grid_8">
-        <button ng-click="previousPage()">Prev</button>
-        <button ng-click="nextPage()">Next</button>
+    <span class="grid_6">
+        <h6>Page
+        <a href="" ng-click="firstPage()">First</a>
+        <a href="" ng-click="previousPage()"><</a>
+        {{pageNumber}}
+        <a href="" ng-click="nextPage()">></a>
+        <a href="" ng-click="lastPage()">Last</a></h6>
     </span>
-    <span class="grid_8">
-        <span class="grid_16">Page size</span>
-        <input class="grid_6" ng-model="pageSize" ng-change="pageSizeChanged()" type="text"/>
+    <span class="grid_6">
+        <h6>
+        <span class="grid_14">Page size</span>
+        <select class="grid_10" ng-model="pageSize" ng-change="pageSizeChanged()">
+            <option value="10">10</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+        </select>
+        </h6>
     </span>
 </div>
