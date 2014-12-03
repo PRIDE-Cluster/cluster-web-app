@@ -7,7 +7,7 @@
 
 var localHeaderDirective = angular.module('prideClusterApp.localHeaderDirective', [])
 
-localHeaderDirective.directive('prcLocalHeader', ['CurrentSearchState', function(CurrentSearchState) {
+localHeaderDirective.directive('prcLocalHeader', ['CurrentSearchState', function() {
 
     return {
         restrict: 'E',
@@ -19,21 +19,20 @@ localHeaderDirective.directive('prcLocalHeader', ['CurrentSearchState', function
     };
 }]);
 
-localHeaderDirective.controller('LocalHeaderCtrl', ['$scope', '$location', 'CurrentSearchState',
-    function($scope, $location, CurrentSearchState) {
+localHeaderDirective.controller('LocalHeaderCtrl', ['$scope', '$routeParams', '$location',
+    function($scope, $routeParams, $location) {
+
+        $scope.searchTerm = $routeParams.q;
 
         function updateState() {
-            // Set location (URL)
-            $location.path(CurrentSearchState.getViewPath());
             $location.search({
-                q:CurrentSearchState.getQuery(),
-                page:CurrentSearchState.getPageNumber(),
-                size:CurrentSearchState.getPageSize()
+                q:$scope.searchTerm,
+                page:$routeParams.page,
+                size:$routeParams.size
             });
         }
 
         $scope.search = function() {
-            CurrentSearchState.setQuery($scope.searchTerm);
             updateState();
         }
     }
