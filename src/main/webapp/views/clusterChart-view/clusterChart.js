@@ -23,28 +23,21 @@ clusterChartView.config(['$routeProvider',
  * Controllers are injected with routing parameters. In this case the clusterId in the route is put in the $scope
  * for the view template to use.
  */
-clusterChartView.controller('ClusterChartViewCtrl', ['$scope', '$routeParams', 'CurrentSearchState',
-    function($scope, $routeParams, CurrentSearchState) {
-        // Capture current search state
-        if (!$routeParams.q) {
-            CurrentSearchState.setQuery($scope.queryTerm);
-        } else {
-            CurrentSearchState.setQuery($routeParams.q)
-        }
+clusterChartView.controller('ClusterChartViewCtrl', ['$scope', '$routeParams',
+    function($scope, $routeParams) {
+
+        $scope.queryTerm = $routeParams.q;
+
         if (!$routeParams.page) {
-            CurrentSearchState.setPageNumber(1);
+            $scope.pageNumber = 1;
         } else {
-            CurrentSearchState.setPageNumber($routeParams.page);
-        }
-        if (!$routeParams.size) {
-            CurrentSearchState.setPageSize(100);
-        } else {
-            CurrentSearchState.setPageSize($routeParams.size);
+            $scope.pageNumber = $routeParams.page;
         }
 
-        // Put the current search state into the scope for the template to use
-        $scope.queryTerm = CurrentSearchState.getQuery();
-        $scope.pageNumber = CurrentSearchState.getPageNumber();
-        $scope.pageSize = CurrentSearchState.getPageSize();
+        if (!$routeParams.size) {
+            $scope.pageSize = 50;
+        } else {
+            $scope.pageSize = $routeParams.size;
+        }
     }
 ]);

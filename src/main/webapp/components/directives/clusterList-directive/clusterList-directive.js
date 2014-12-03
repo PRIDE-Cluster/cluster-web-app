@@ -8,7 +8,7 @@
 
 var clusterListDirective = angular.module('prideClusterApp.clusterListDirective', [])
 
-clusterListDirective.directive('prcClusterList', ['ClusterSummary', 'CurrentSearchState', function(ClusterSummary, CurrentSearchState) {
+clusterListDirective.directive('prcClusterList', ['ClusterSummary', function(ClusterSummary) {
     return {
         restrict: 'E',
         scope: {
@@ -22,20 +22,18 @@ clusterListDirective.directive('prcClusterList', ['ClusterSummary', 'CurrentSear
 }]);
 
 
-clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', 'ClusterSummary', 'CurrentSearchState',
-    function($scope, ClusterSummary, CurrentSearchState) {
+clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routeParams', 'ClusterSummary',
+    function($scope, $routeParams, ClusterSummary) {
 
         ClusterSummary.list(
             { queryTerm:$scope.queryTerm, pageNumber:$scope.pageNumber, pageSize:$scope.pageSize },
             function(clusters) {
                 $scope.clusters = clusters.results;
-                CurrentSearchState.setTotalResults(clusters.totalResults);
-                $scope.totalResults = CurrentSearchState.getTotalResults();
-                $scope.query = CurrentSearchState.getQuery();
-                $scope.totalItems = CurrentSearchState.getTotalResults();
-                $scope.pageNumber = CurrentSearchState.getPageNumber();
-                $scope.pageSize = CurrentSearchState.getPageSize();
-                $scope.numPages = Math.floor(CurrentSearchState.getTotalResults() / CurrentSearchState.getPageSize());
+                $scope.totalResults = clusters.totalResults;
+                $scope.query = $routeParams.q;
+                $scope.pageNumber = $routeParams.page;
+                $scope.pageSize = $routeParams.size;
+                $scope.numPages = Math.floor($scope.totalResults / $scope.pageSize);
             }
         );
     }

@@ -23,8 +23,8 @@ clusterChartDirective.directive('prcClusterChart', function(ClusterSummary, Curr
 });
 
 
-clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', '$location', 'ClusterSummary', 'CurrentSearchState',
-    function($scope, $location, ClusterSummary, CurrentSearchState) {
+clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', '$location', 'ClusterSummary',
+    function($scope, $location, ClusterSummary) {
 
         function clusterClicked(clusterId) {
             $scope.$apply(function() {$location.path("/cluster/" + clusterId);});
