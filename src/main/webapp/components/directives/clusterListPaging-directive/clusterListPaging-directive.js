@@ -7,25 +7,23 @@
 
 var clusterListPagingDirective = angular.module('prideClusterApp.clusterListPagingDirective', [])
 
-clusterListPagingDirective.directive('prcClusterListPaging', ['CurrentSearchState', function(CurrentSearchState) {
+clusterListPagingDirective.directive('prcClusterListPaging', function() {
 
     return {
         restrict: 'E',
         controller: 'ClusterListPagingCtrl',
         templateUrl: 'components/directives/clusterListPaging-directive/clusterListPaging-directive.html'
     };
-}]);
+});
 
-clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$location', 'CurrentSearchState',
-    function($scope, $location, CurrentSearchState) {
+clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$routeParams', '$location',
+    function($scope, $routeParams, $location) {
 
         function updateState() {
-            // Set location (URL)
-            $location.path(CurrentSearchState.getViewPath());
             $location.search({
-                q:CurrentSearchState.getQuery(),
-                page:CurrentSearchState.getPageNumber(),
-                size:CurrentSearchState.getPageSize()
+                q:$routeParams.q,
+                page:$scope.pageNumber,
+                size:$scope.pageSize
             });
         }
 
@@ -36,8 +34,6 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$loca
         $scope.firstPage = function() {
             if ($scope.pageNumber>1) {
                 $scope.pageNumber = 1;
-                // Keep the state change
-                CurrentSearchState.setPageNumber($scope.pageNumber);
                 updateState();
             }
         };
@@ -46,8 +42,6 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$loca
             var maxPages = Math.floor($scope.totalItems / $scope.pageSize) + 1;
             if ($scope.pageNumber!=maxPages) {
                 $scope.pageNumber = maxPages;
-                // Keep the state change
-                CurrentSearchState.setPageNumber($scope.pageNumber);
                 updateState();
             }
         };
@@ -56,8 +50,6 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$loca
             var maxPages = Math.floor($scope.totalItems / $scope.pageSize) + 1;
             if ($scope.pageNumber<maxPages) {
                 $scope.pageNumber++;
-                // Keep the state change
-                CurrentSearchState.setPageNumber($scope.pageNumber);
                 updateState();
             }
         }
@@ -65,19 +57,14 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$loca
         $scope.previousPage = function() {
             if ($scope.pageNumber!=1) {
                 $scope.pageNumber--;
-                // Keep the state change
-                CurrentSearchState.setPageNumber($scope.pageNumber);
                 updateState();
             }
         }
 
         $scope.pageSizeChanged = function() {
             var newValue = $scope.pageSize;
-            var oldValue = CurrentSearchState.getPageSize();
+            var oldValue = $routeParams.size;
             if (newValue && newValue!=oldValue) {
-                if (newValue>10 && newValue<=200) {
-                    CurrentSearchState.setPageSize(newValue);
-                }
                 updateState();
             }
         };
