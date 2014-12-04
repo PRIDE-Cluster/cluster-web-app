@@ -26,7 +26,11 @@ clusterChartView.config(['$routeProvider',
 clusterChartView.controller('ClusterChartViewCtrl', ['$scope', '$routeParams',
     function($scope, $routeParams) {
 
-        $scope.queryTerm = $routeParams.q;
+        if (!$routeParams.q) {
+            $scope.queryTerm = "";
+        } else {
+            $scope.queryTerm = $routeParams.q;
+        }
 
         if (!$routeParams.page) {
             $scope.pageNumber = 1;

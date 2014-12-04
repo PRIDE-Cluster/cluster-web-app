@@ -11,12 +11,12 @@
             <prc-cluster-list-paging></prc-cluster-list-paging>
         </span>
     </section>
-    <div class="animate-repeat" ng-repeat="cluster in clusters" >
-        <section  class="grid_8 cluster-summary {{cluster.clusterQuality}}">
+    <div class="animate-repeat" ng-repeat="cluster in clusters">
+        <section class="grid_8 cluster-summary {{cluster.clusterQuality}}">
             <a href="#/cluster/{{cluster.id}}">
-            <!--<span class="grid_24">-->
+                <!--<span class="grid_24">-->
                 <!--<h3>Cluster {{cluster.id}}</h3>-->
-            <!--</span>-->
+                <!--</span>-->
             <span class="grid_24">
                 <h4 ng-show="cluster.peptideSequence.length<=20">{{cluster.peptideSequence}}</h4>
                 <h4 ng-show="cluster.peptideSequence.length>20">{{cluster.peptideSequence | limitTo: 20 }} ..</h4>
@@ -27,7 +27,8 @@
             </span>
             <span class="grid_24">
                 <span class="grid_8"><h6>Prec. M/Z</h6><p>{{cluster.averagePrecursorMz | number:3}}</p></span>
-                <span class="grid_12 push_4"><h6>Prec. Charge</h6><p>{{cluster.averagePrecursorCharge | number:2}}</p></span>
+                <span class="grid_12 push_4"><h6>Prec. Charge</h6><p>{{cluster.averagePrecursorCharge |
+                    number:2}}</p></span>
             </span>
 
             </a>

@@ -1,16 +1,17 @@
 <!--Results-->
-<section class="grid_24">
+<div class="clusters">
+    <section class="grid_24">
         <span class="grid_8">
-            <h5>
+            <h4>
                 Showing {{totalResults}} clusters
                 <span ng-show="query"> for query '{{query}}'</span>
-            </h5>
+            </h4>
         </span>
-
         <span class="grid_16">
-            <prc-cluster-list-paging pagenumber="pageNumber" pagesize="pageSize" totalitems="totalItems"></prc-cluster-list-paging>
+            <prc-cluster-list-paging></prc-cluster-list-paging>
         </span>
-</section>
-<div id="clusterChart">
-    <svg height="600"></svg>
+    </section>
+    <div id="clusterChart">
+        <svg height="600"></svg>
+    </div>
 </div>

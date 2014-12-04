@@ -25,17 +25,23 @@ clusterListView.config(['$routeProvider',
  */
 clusterListView.controller('ClusterListViewCtrl', ['$scope', '$routeParams',
     function($scope, $routeParams) {
-        // Put the current search state into the scope for the template to use
 
-        $scope.queryTerm = $routeParams.q;
+        if (!$routeParams.q) {
+            $routeParams.q = "";
+            $scope.queryTerm = "";
+        } else {
+            $scope.queryTerm = $routeParams.q;
+        }
 
         if (!$routeParams.page) {
+            $routeParams.page = 1;
             $scope.pageNumber = 1;
         } else {
             $scope.pageNumber = $routeParams.page;
         }
 
         if (!$routeParams.size) {
+            $routeParams.size = 10;
             $scope.pageSize = 10;
         } else {
             $scope.pageSize = $routeParams.size;

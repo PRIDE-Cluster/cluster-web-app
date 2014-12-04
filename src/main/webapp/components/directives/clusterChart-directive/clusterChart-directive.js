@@ -8,7 +8,7 @@
 
 var clusterChartDirective = angular.module('prideClusterApp.clusterChartDirective', [])
 
-clusterChartDirective.directive('prcClusterChart', function(ClusterSummary, CurrentSearchState) {
+clusterChartDirective.directive('prcClusterChart', ['ClusterSummary', function(ClusterSummary) {
 
     return {
         restrict: 'E',
@@ -20,11 +20,11 @@ clusterChartDirective.directive('prcClusterChart', function(ClusterSummary, Curr
         controller: 'ClusterChartDirectiveCtrl',
         templateUrl: 'components/directives/clusterChart-directive/clusterChart-directive.html'
     };
-});
+}]);
 
 
-clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', '$location', 'ClusterSummary',
-    function($scope, $location, ClusterSummary) {
+clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', '$routeParams', '$location', 'ClusterSummary',
+    function($scope, $routeParams, $location, ClusterSummary) {
 
         function clusterClicked(clusterId) {
             $scope.$apply(function() {$location.path("/cluster/" + clusterId);});
@@ -34,17 +34,14 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', '$locat
             { queryTerm:$scope.queryTerm, pageNumber:$scope.pageNumber, pageSize:$scope.pageSize },
             function(clusters) {
 
-                CurrentSearchState.setTotalResults(clusters.totalResults);
-                $scope.totalResults = CurrentSearchState.getTotalResults();
-                $scope.query = CurrentSearchState.getQuery();
-                $scope.totalItems = CurrentSearchState.getTotalResults();
-                $scope.pageNumber = CurrentSearchState.getPageNumber();
-                $scope.pageSize = CurrentSearchState.getPageSize();
-                $scope.pageSize = CurrentSearchState.getPageSize();
-                $scope.numPages = Math.floor(CurrentSearchState.getTotalResults() / CurrentSearchState.getPageSize());
+                $scope.totalResults = clusters.totalResults;
+                $scope.query = $routeParams.q;
+                $scope.pageNumber = $routeParams.page;
+                $scope.pageSize = $routeParams.size;
+                $scope.numPages = Math.floor($scope.totalResults / $scope.pageSize);
 
-                var pageOffset = (CurrentSearchState.getPageNumber()-1) * CurrentSearchState.getPageSize();
-                var pageOffsetEnd = pageOffset + parseInt(CurrentSearchState.getPageSize());
+                var pageOffset = ($scope.pageNumber-1) * $scope.pageSize;
+                var pageOffsetEnd = pageOffset + parseInt($scope.pageSize);
                 nv.addGraph(function() {
                     var chart = nv.models.scatterChart()
                         .showDistX(true)    //showDist, when true, will display those little distribution lines on the axis.
@@ -98,9 +95,8 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', '$locat
 
                     var myData = asChartData(
                         clusters.results,
-                        CurrentSearchState.getTotalResults(),
-                        CurrentSearchState.getPageNumber(),
-                        CurrentSearchState.getPageSize()
+                        $scope.pageNumber,
+                        $scope.pageSize
                     );
                     d3.select('#clusterChart svg')
                         .datum(myData)
@@ -118,7 +114,7 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', '$locat
     }
 ]);
 
-function asChartData(results, numResults, pageNumber, pageSize) {
+function asChartData(results, pageNumber, pageSize) {
     var pageOffset = (pageNumber-1) * pageSize;
     var chartData = [
         {
