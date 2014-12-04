@@ -1,15 +1,7 @@
 <!--Results-->
 <div class="clusters">
     <section class="grid_24">
-        <span class="grid_8">
-            <h4>
-                Showing {{totalResults}} clusters
-                <span ng-show="query"> for query '{{query}}'</span>
-            </h4>
-        </span>
-        <span class="grid_16">
-            <prc-cluster-list-paging total-results="totalResults"></prc-cluster-list-paging>
-        </span>
+        <prc-cluster-list-paging total-results="totalResults"></prc-cluster-list-paging>
     </section>
     <div id="clusterChart">
         <svg height="600"></svg>

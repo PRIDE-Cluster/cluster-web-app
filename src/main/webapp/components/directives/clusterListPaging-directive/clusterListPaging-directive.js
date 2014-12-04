@@ -22,6 +22,7 @@ clusterListPagingDirective.directive('prcClusterListPaging', function() {
 clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$routeParams', '$location',
     function($scope, $routeParams, $location) {
 
+        $scope.query = $routeParams.q;
         $scope.pageNumber = $routeParams.page;
         $scope.pageSize = $routeParams.size;
 
