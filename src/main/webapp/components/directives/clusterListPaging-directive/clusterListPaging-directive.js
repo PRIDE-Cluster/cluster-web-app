@@ -11,7 +11,9 @@ clusterListPagingDirective.directive('prcClusterListPaging', function() {
 
     return {
         restrict: 'E',
-//        scope: {},
+        scope: {
+            totalResults: '='
+        },
         controller: 'ClusterListPagingCtrl',
         templateUrl: 'components/directives/clusterListPaging-directive/clusterListPaging-directive.html'
     };
@@ -20,8 +22,8 @@ clusterListPagingDirective.directive('prcClusterListPaging', function() {
 clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$routeParams', '$location',
     function($scope, $routeParams, $location) {
 
-//        $scope.pageNumber = $routeParams.page;
-//        $scope.pageSize = $routeParams.size;
+        $scope.pageNumber = $routeParams.page;
+        $scope.pageSize = $routeParams.size;
 
         function updateState() {
             $location.search({
