@@ -8,18 +8,17 @@
 describe('prideClusterApp.clusterListView module', function() {
 
     beforeEach(module('prideClusterApp'));
-    beforeEach(module('prideClusterApp.appStateService'));
 
     describe('ClusterListViewCtrl', function(){
 
         var scope, ctrl, routeParams;
 
-        beforeEach(inject(function(CurrentSearchState, $rootScope, $controller) {
+        beforeEach(inject(function($rootScope, $controller) {
             scope = $rootScope.$new();
             routeParams = {q:"", page:1, pageSize:10};
 
             ctrl = $controller('ClusterListViewCtrl',
-                {$scope: scope, $routeParams: routeParams, CurrentSearchState: CurrentSearchState});
+                {$scope: scope, $routeParams: routeParams});
         }));
 
         it('should be defined', function() {
