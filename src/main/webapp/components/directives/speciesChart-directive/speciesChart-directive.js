@@ -32,7 +32,7 @@ speciesChartDirective.controller('SpeciesChartDirectiveCtrl', ['$scope', 'Cluste
     function($scope, ClusterSpecies) {
 
         ClusterSpecies.get({clusterId: $scope.sourceId}, function(species) {
-            $scope.speciesData = species;
+            $scope.speciesData = species.speciesCounts;
             $scope.xFunction = function(){
                 return function(d) {
                     return d.speciesName;
