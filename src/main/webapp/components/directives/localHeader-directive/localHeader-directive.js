@@ -7,7 +7,7 @@
 
 var localHeaderDirective = angular.module('prideClusterApp.localHeaderDirective', [])
 
-localHeaderDirective.directive('prcLocalHeader', ['CurrentSearchState', function() {
+localHeaderDirective.directive('prcLocalHeader', function() {
 
     return {
         restrict: 'E',
@@ -17,7 +17,7 @@ localHeaderDirective.directive('prcLocalHeader', ['CurrentSearchState', function
         controller: 'LocalHeaderCtrl',
         templateUrl: 'components/directives/localHeader-directive/localHeader-directive.html'
     };
-}]);
+});
 
 localHeaderDirective.controller('LocalHeaderCtrl', ['$scope', '$routeParams', '$location',
     function($scope, $routeParams, $location) {
