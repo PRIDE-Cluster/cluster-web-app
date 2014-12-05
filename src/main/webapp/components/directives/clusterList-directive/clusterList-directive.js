@@ -4,11 +4,13 @@
  * The prc-cluster-list directive allows us to reuse a list of cluster everywhere we want to show it (e.g.
  * in the clusterList-view)
  *
+ * NOTE: the Cluster WS uses 0-based paging while the app uses 1-based paging
+ *
  */
 
 var clusterListDirective = angular.module('prideClusterApp.clusterListDirective', [])
 
-clusterListDirective.directive('prcClusterList', ['ClusterSummary', function(ClusterSummary) {
+clusterListDirective.directive('prcClusterList', function() {
     return {
         restrict: 'E',
         scope: {
@@ -19,14 +21,18 @@ clusterListDirective.directive('prcClusterList', ['ClusterSummary', function(Clu
         controller: 'ClusterListDirectiveCtrl',
         templateUrl: 'components/directives/clusterList-directive/clusterList-directive.html'
     };
-}]);
+});
 
 
 clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routeParams', 'ClusterSummary',
     function($scope, $routeParams, ClusterSummary) {
 
         ClusterSummary.list(
-            { queryTerm:$scope.queryTerm, pageNumber:$scope.pageNumber, pageSize:$scope.pageSize },
+            {
+                queryTerm:$scope.queryTerm,
+                pageNumber:$scope.pageNumber - 1, // transform to 0-based paging
+                pageSize:$scope.pageSize
+            },
             function(clusters) {
                 $scope.clusters = clusters.results;
                 $scope.totalResults = clusters.totalResults;

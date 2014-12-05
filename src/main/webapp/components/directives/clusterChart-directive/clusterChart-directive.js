@@ -4,11 +4,13 @@
  * The prc-cluster-chart directive allows us to reuse a chart of cluster everywhere we want to show it (e.g.
  * in the clusterChart-view)
  *
+ * NOTE: the Cluster WS uses 0-based paging while the app uses 1-based paging
+ *
  */
 
 var clusterChartDirective = angular.module('prideClusterApp.clusterChartDirective', [])
 
-clusterChartDirective.directive('prcClusterChart', ['ClusterSummary', function(ClusterSummary) {
+clusterChartDirective.directive('prcClusterChart', function() {
 
     return {
         restrict: 'E',
@@ -20,7 +22,7 @@ clusterChartDirective.directive('prcClusterChart', ['ClusterSummary', function(C
         controller: 'ClusterChartDirectiveCtrl',
         templateUrl: 'components/directives/clusterChart-directive/clusterChart-directive.html'
     };
-}]);
+});
 
 
 clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', '$routeParams', '$location', 'ClusterSummary',
@@ -31,7 +33,11 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', '$route
         }
 
         ClusterSummary.list(
-            { queryTerm:$scope.queryTerm, pageNumber:$scope.pageNumber, pageSize:$scope.pageSize },
+            {
+                queryTerm:$scope.queryTerm,
+                pageNumber:$scope.pageNumber-1, // transform to 0-based paging
+                pageSize:$scope.pageSize
+            },
             function(clusters) {
 
                 $scope.totalResults = clusters.totalResults;
