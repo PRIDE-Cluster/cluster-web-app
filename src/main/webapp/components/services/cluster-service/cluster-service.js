@@ -10,8 +10,7 @@
  * NOTE: the Cluster WS uses 0-based paging
  *
  */
-var clusterDetailWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/clusterDetail";
-var clusterSummaryWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/clusterSummary";
+var clusterWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/cluster";
 
 var clusterService = angular.module('prideClusterApp.clusterService', ['ngResource'])
 
@@ -19,7 +18,7 @@ var clusterService = angular.module('prideClusterApp.clusterService', ['ngResour
 clusterService.factory('ClusterSummary', ['$resource',
     function($resource) {
         return $resource(
-                clusterSummaryWsUrl + '/search?q=:queryTerm&page=:pageNumber&size=:pageSize&callback=JSON_CALLBACK',
+                clusterWsUrl + '/search?q=:queryTerm&page=:pageNumber&size=:pageSize&callback=JSON_CALLBACK',
                 {queryTerm:'', pageNumber:0, pageSize:10},
                 {list: {method:'JSONP', params:{}, isArray:false, callback: 'JSON_CALLBACK'}}
         );
@@ -27,14 +26,14 @@ clusterService.factory('ClusterSummary', ['$resource',
 ]);
 clusterService.factory('ClusterDetail', ['$resource',
     function($resource){
-        return $resource(clusterDetailWsUrl + '/:clusterId' + '?callback=JSON_CALLBACK', {}, {
+        return $resource(clusterWsUrl + '/:clusterId' + '?callback=JSON_CALLBACK', {}, {
             get: {method:'JSONP', params:{clusterId:'cluster'}, isArray:false, callback: 'JSON_CALLBACK'}
         });
     }
 ]);
 clusterService.factory('ClusterSpecies', ['$resource',
     function($resource){
-        return $resource(clusterDetailWsUrl + '/:clusterId/species' + '?callback=JSON_CALLBACK',
+        return $resource(clusterWsUrl + '/:clusterId/species' + '?callback=JSON_CALLBACK',
             {},
             {get: {method:'JSONP', params:{clusterId:'cluster'}, isArray:false, callback: 'JSON_CALLBACK'}}
         );

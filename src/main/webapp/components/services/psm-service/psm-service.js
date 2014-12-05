@@ -8,7 +8,7 @@
  * Each singleton represents a web-service end point and can potentially define multiple operations.
  *
  */
-var psmSummaryWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/psmSummary";
+var psmSummaryWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/psm";
 
 var psmService = angular.module('prideClusterApp.psmService', ['ngResource'])
 
@@ -16,7 +16,7 @@ var psmService = angular.module('prideClusterApp.psmService', ['ngResource'])
 psmService.factory('PsmSummary', ['$resource',
     function($resource){
         return $resource(
-                psmSummaryWsUrl + '/:clusterId/list' + '?callback=JSON_CALLBACK',
+                psmSummaryWsUrl + '/list/:clusterId' + '?callback=JSON_CALLBACK',
                 {},
                 {list: {method:'JSONP', params:{clusterId:'cluster'}, isArray:true, callback: 'JSON_CALLBACK'}}
         );
