@@ -11,6 +11,7 @@
  *
  */
 var clusterWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/cluster";
+var clusterWsUrlLocal = "http://localhost:9091/cluster";
 
 var clusterService = angular.module('prideClusterApp.clusterService', ['ngResource'])
 
@@ -20,15 +21,33 @@ clusterService.factory('ClusterSummary', ['$resource',
         return $resource(
                 clusterWsUrl + '/search?q=:queryTerm&page=:pageNumber&size=:pageSize&callback=JSON_CALLBACK',
                 {queryTerm:'', pageNumber:0, pageSize:10},
-                {list: {method:'JSONP', params:{}, isArray:false, callback: 'JSON_CALLBACK'}}
+                {
+                    list: {
+                        method:'JSONP',
+                        params:{},
+                        isArray:false,
+                        callback: 'JSON_CALLBACK'
+                    },
+                    nearest: {
+                        method: 'JSONP',
+                        params: {},
+                        url: clusterWsUrlLocal+"/nearest?precursor=:precursor&peaks=:peaks&callback=JSON_CALLBACK",
+                        isArray:false,
+                        callback: 'JSON_CALLBACK'
+                    }
+                }
         );
     }
 ]);
 clusterService.factory('ClusterDetail', ['$resource',
     function($resource){
-        return $resource(clusterWsUrl + '/:clusterId' + '?callback=JSON_CALLBACK', {}, {
-            get: {method:'JSONP', params:{clusterId:'cluster'}, isArray:false, callback: 'JSON_CALLBACK'}
-        });
+        return $resource(
+                clusterWsUrl + '/:clusterId' + '?callback=JSON_CALLBACK',
+                {},
+                {
+                    get: {method:'JSONP', params:{clusterId:'cluster'}, isArray:false, callback: 'JSON_CALLBACK'}
+                }
+        );
     }
 ]);
 clusterService.factory('ClusterSpecies', ['$resource',

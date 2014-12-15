@@ -1,0 +1,24 @@
+
+<form class="grid_6">
+    <fieldset>
+        <span class="grid_23">
+            Precursor MZ
+        </span>
+
+        <input class="grid_23" type="text" ng-model="spectrum.precursorMz" required /><br />
+
+        <span class="grid_23">
+            Peaks
+        </span>
+
+        <textarea class="grid_23" style="min-height:200px" ng-model="spectrum.peaks" required ></textarea>
+
+        <span class="grid_23">
+            <input ng-click="search(spectrum)" type="submit" name="submit" value="Search" class="submit">
+        </span>
+    </fieldset>
+</form>
+<span ng-show="clusterId" class="grid_16">
+            <h5>Consensus Spectrum</h5>
+            <prc-spectrum-viewer viewerid="viewerId" sourceid="clusterId" isconsensus="true"></prc-spectrum-viewer>
+</span>
