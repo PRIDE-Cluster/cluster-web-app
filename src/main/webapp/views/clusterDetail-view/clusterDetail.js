@@ -27,6 +27,7 @@ clusterDetailView.controller('ClusterDetailViewCtrl', ['$scope', '$routeParams',
     function($scope, $routeParams) {
         $scope.clusterId = $routeParams.clusterId;
         $scope.viewerId = "consensusSpectrumViewer-" + $routeParams.clusterId;
+
     }
 ]);
 

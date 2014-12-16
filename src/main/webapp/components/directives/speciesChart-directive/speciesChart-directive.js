@@ -14,7 +14,7 @@ speciesChartDirective.directive('prcSpeciesChart', function() {
     return {
         restrict: 'E',
         scope: {
-            sourceId : '=sourceid'
+            sourceId : '='
         },
         controller: 'SpeciesChartDirectiveCtrl',
         link: link,

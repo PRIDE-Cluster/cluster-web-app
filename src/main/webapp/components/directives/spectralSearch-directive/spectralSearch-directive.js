@@ -10,7 +10,6 @@ var spectralSearchDirective = angular.module('prideClusterApp.spectralSearchDire
 spectralSearchDirective.directive('prcSpectralSearch', function() {
     return {
         restrict: 'E',
-        scope: {  },
         controller: 'SpectralSearchDirectiveCtrl',
         templateUrl: 'components/directives/spectralSearch-directive/spectralSearch-directive.html'
     };
@@ -22,23 +21,24 @@ spectralSearchDirective.directive('prcSpectralSearch', function() {
 spectralSearchDirective.controller('SpectralSearchDirectiveCtrl', ['$scope', 'ClusterSummary',
     function($scope, ClusterSummary) {
 
-        $scope.reset = function(searchForm) {
-            if (searchForm) {
-                searchForm.$setPristine();
-                searchForm.$setUntouched();
-            }
-        };
 
         $scope.search = function(spectrum) {
             ClusterSummary.nearest(
                 {
+                    page:0,
+                    size:1500,
                     precursor:spectrum.precursorMz,
                     peaks:spectrum.peaks
                 },
                 function(clusters) {
-                    console.log("hey");
-                    $scope.clusterId = clusters.results[1].id;
-                    console.log($scope.clusterId);
+//                    console.log("Total results is " + clusters.totalResults);
+                    $scope.clusterSequence = clusters.results[0].peptideSequence;
+                    $scope.clusterId = clusters.results[0].id;
+                    $scope.setSource(clusters.results[0].id, true);
+
+                    for (i=0; i<1500; i++) {
+//                        console.log("["+i+"] " + clusters.results[i].id);
+                    }
                 }
             );
         }

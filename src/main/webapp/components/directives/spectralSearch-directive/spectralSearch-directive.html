@@ -19,6 +19,12 @@
     </fieldset>
 </form>
 <span ng-show="clusterId" class="grid_16">
-            <h5>Consensus Spectrum</h5>
-            <prc-spectrum-viewer viewerid="viewerId" sourceid="clusterId" isconsensus="true"></prc-spectrum-viewer>
+    <span class="grid_8">
+        <h4>{{clusterSequence}}</h4>
+        <prc-cluster-detail cluster-id="clusterId"></prc-cluster-detail>
+    </span>
+    <span class="grid_16">
+        <h5>Consensus Spectrum</h5>
+        <prc-spectrum-viewer update-spectrum-source="setSource"></prc-spectrum-viewer>
+    </span>
 </span>

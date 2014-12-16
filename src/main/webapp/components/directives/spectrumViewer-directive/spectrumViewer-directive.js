@@ -8,18 +8,14 @@ var spectrumWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/cluster";
 var spectrumViewerDirective = angular.module('prideClusterApp.spectrumViewerDirective', [])
 
 spectrumViewerDirective.directive('prcSpectrumViewer', function() {
-    function link(scope, element, attrs) {
-
-    }
     return {
         restrict: 'E',
-        scope: {
-            viewerId : "=viewerid",
-            sourceId : '=sourceid',
-            isConsensus : '=isconsensus'
-        },
         controller: 'SpectrumViewerDirectiveCtrl',
-        link: link,
+        scope: {
+            sourceId: "=",
+            isConsensus: "=",
+            updateSpectrumSource: "="
+        },
         templateUrl: 'components/directives/spectrumViewer-directive/spectrumViewer-directive.html'
     };
 });
@@ -33,29 +29,34 @@ spectrumViewerDirective.directive('prcSpectrumViewer', function() {
 spectrumViewerDirective.controller('SpectrumViewerDirectiveCtrl', ['$scope',
     function($scope) {
 
-        if ($scope.isConsensus) {
-            // inject spectrum to SpeckTackle component
-            var chart = st.chart          // new chart
-                .ms()                 // of type MS
-                .xlabel("M/Z")        // x-axis label
-                .ylabel("Intensity"); // y-axis label
-            chart.render("#spectrum-viewer");     // render chart
-
-            var handle = st.data          // new handler
-                .set()                    // of type set
-//                .ylimits([0, 1000])       // y-domain limits
-                .x("peaks.mz")            // x-accessor
-                .y("peaks.intensity");    // y-accessor
-
-            // bind the data handler to the chart
-            chart.load(handle);
-            // load the spectrum
-            handle.add(spectrumWsUrl + "/" + $scope.sourceId + "/consensus");
-        } else {
-            $scope.spectrum = SpectrumDetail.get({spectrumId: $scope.sourceId}, function (spectrum) {
+        $scope.updateSpectrumSource = function(sourceId, isConsensus) {
+            if (isConsensus) {
                 // inject spectrum to SpeckTackle component
+                var chart = st.chart          // new chart
+                    .ms()                 // of type MS
+                    .xlabel("M/Z")        // x-axis label
+                    .ylabel("Intensity"); // y-axis label
+                chart.render("#spectrum-viewer");     // render chart
 
-            });
+                var handle = st.data          // new handler
+                    .set()                    // of type set
+//                .ylimits([0, 1000])       // y-domain limits
+                    .x("peaks.mz")            // x-accessor
+                    .y("peaks.intensity");    // y-accessor
+
+                // bind the data handler to the chart
+                chart.load(handle);
+                // load the spectrum
+                handle.add(spectrumWsUrl + "/" + sourceId + "/consensus");
+            } else {
+//                $scope.spectrum = SpectrumDetail.get({spectrumId: sourceId}, function (spectrum) {
+//                    // inject spectrum to SpeckTackle component
+//
+//                });
+            }
         }
+
+        $scope.updateSpectrumSource($scope.sourceId, $scope.isConsensus);
+
     }
 ]);

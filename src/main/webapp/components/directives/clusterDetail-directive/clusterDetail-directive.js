@@ -11,7 +11,7 @@ var clusterDetailDirective = angular.module('prideClusterApp.clusterDetailDirect
 clusterDetailDirective.directive('prcClusterDetail', function() {
     return {
         restrict: 'E',
-        scope: { clusterId : '=clusterid' },
+        scope: { clusterId : '=' },
         controller: 'ClusterDetailDirectiveCtrl',
         templateUrl: 'components/directives/clusterDetail-directive/clusterDetail-directive.html'
     };
@@ -26,35 +26,44 @@ clusterDetailDirective.directive('prcClusterDetail', function() {
 clusterDetailDirective.controller('ClusterDetailDirectiveCtrl', ['$scope', 'ClusterDetail',
     function($scope, ClusterDetail) {
         var maxRatio, numberOfSpectra;
-        $scope.cluster = ClusterDetail.get({clusterId: $scope.clusterId}, function(cluster) {
-            $scope.maxRatioData = {
-                "title": "",
-                "subtitle": "",
-                "ranges": [0.0, 1.0],
-                "measures": [cluster.maxRatio],
-                "markers": [0.7]
-            };
-            maxRatio = cluster.maxRatio;
-            $scope.numberOfSpectraData = {
-                "title": "",
-                "subtitle": "",
-                "ranges": [0, Math.max(cluster.numberOfSpectra,10)],
-                "measures": [cluster.numberOfSpectra],
-                "markers": [10]
-            };
-            numberOfSpectra = cluster.numberOfSpectra;
-        });
+        function getCluster(clusterId) {
+            $scope.cluster = ClusterDetail.get({clusterId: clusterId}, function (cluster) {
+                $scope.maxRatioData = {
+                    "title": "",
+                    "subtitle": "",
+                    "ranges": [0.0, 1.0],
+                    "measures": [cluster.maxRatio],
+                    "markers": [0.7]
+                };
+                maxRatio = cluster.maxRatio;
+                $scope.numberOfSpectraData = {
+                    "title": "",
+                    "subtitle": "",
+                    "ranges": [0, Math.max(cluster.numberOfSpectra, 10)],
+                    "measures": [cluster.numberOfSpectra],
+                    "markers": [10]
+                };
+                numberOfSpectra = cluster.numberOfSpectra;
+
+            });
+        }
 
         $scope.toolTipContentFunction = function(){
             return function(key, x, y, e, graph) {
                 return '<p>Max Ratio is ' + maxRatio + '</p>'
             }
-        }
+        };
 
         $scope.toolTipContentFunctionNumberOfSpectra = function(){
             return function(key, x, y, e, graph) {
                 return '<p>' + numberOfSpectra + ' spectra</p>'
             }
-        }
+        };
+
+        $scope.$watch('clusterId', function() {
+            getCluster($scope.clusterId);
+        });
+
+        getCluster($scope.clusterId);
     }
 ]);
