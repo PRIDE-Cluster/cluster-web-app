@@ -31,7 +31,7 @@ clusterService.factory('ClusterSummary', ['$resource',
                     nearest: {
                         method: 'JSONP',
                         params: {},
-                        url: clusterWsUrlLocal+"/nearest?precursor=:precursor&peaks=:peaks&callback=JSON_CALLBACK",
+                        url: clusterWsUrl+"/nearest?precursor=:precursor&peaks=:peaks&callback=JSON_CALLBACK",
                         isArray:false,
                         callback: 'JSON_CALLBACK'
                     }
