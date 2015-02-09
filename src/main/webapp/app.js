@@ -7,6 +7,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'ui.bootstrap',
 
     /* Views: thin layer containing layout+model_binding and routing elements */
+    'prideClusterApp.homePageView',
     'prideClusterApp.clusterListView',
     'prideClusterApp.clusterChartView',
     'prideClusterApp.clusterDetailView',
