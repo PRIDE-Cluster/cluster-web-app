@@ -24,7 +24,7 @@ homePageView.config(['$routeProvider',
  * needs to load the html template. We leave an empty controller here just in case we need to process some parameters
  * in the future.
  */
-clusterListView.controller('HomePageCtrl', ['$scope',
+homePageView.controller('HomePageCtrl', ['$scope',
     function($scope) {
 
     }

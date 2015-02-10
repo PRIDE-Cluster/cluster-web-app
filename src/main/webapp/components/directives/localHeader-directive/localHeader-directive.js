@@ -25,6 +25,7 @@ localHeaderDirective.controller('LocalHeaderCtrl', ['$scope', '$routeParams', '$
         $scope.searchTerm = $routeParams.q;
 
         function updateState() {
+            $location.path("/list");
             $location.search({
                 q:$scope.searchTerm,
                 page:$routeParams.page,
