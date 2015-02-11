@@ -10,7 +10,7 @@ var spectralLibrariesView = angular.module('prideClusterApp.spectralLibrariesVie
  * In this case the spectralLibrariesView.html template is associated with the SpectralLibrariesController when the app
  * navigates to the search interface
  */
-spectralSearchView.config(
+spectralLibrariesView.config(
     function($routeProvider) {
         $routeProvider.when('/libraries', {
             templateUrl: 'views/spectralLibraries-view/spectralLibraries.html',
