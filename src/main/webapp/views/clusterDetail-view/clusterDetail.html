@@ -10,29 +10,26 @@
             Detail
         </p>
     </nav>
-    <section class="grid_24" id="cluster-details">
-        <div class="grid_24 push_1">
+    <div class="grid_22 cluster-detail-container push_1">
+        <!--Header-->
+        <div class="grid_24">
             <h2>Cluster {{clusterId}}</h2>
         </div>
-
-
-        <div class="grid_24 push_1">
-            <div class="grid_6">
-                <prc-cluster-detail cluster-id="clusterId"></prc-cluster-detail>
+        <!--First section: key info and species distribution-->
+        <div class="grid_24">
+            <div class="grid_11 cluster-detail-panel">
+                <h4>Summary</h4>
+                <prc-cluster-key cluster-id="clusterId"></prc-cluster-key>
             </div>
-            <div class="grid_6 push_1">
+            <div class="grid_11 push_2 cluster-detail-panel">
                 <h4>Species Distribution</h4>
                 <prc-species-chart source-id="clusterId"></prc-species-chart>
             </div>
-            <div class="grid_6">
-                <h4>Consensus Spectrum</h4>
-                <prc-spectrum-viewer source-id="clusterId" is-consensus="true" update-spectrum-source="setSource"></prc-spectrum-viewer>
-            </div>
         </div>
 
-
-        <div class="grid_24 push_1">
-            <div class="grid_6 tiled-summary">
+        <!--Second section Projects & Publications and PTMs distribution-->
+        <div class="grid_24">
+            <div class="grid_11 cluster-detail-panel">
                 <h4>Related Publications</h4>
                 <div class="grid_24">
                     <h6>Authors</h6>
@@ -49,16 +46,30 @@
                     <p>Publication Title</p>
                     <p>In Journal A. Date X</p>
                 </div>
-                <div class="grid_24">
-                    <h6>Authors</h6>
-                    <p>Publication Title</p>
-                    <p>In Journal A. Date X</p>
-                </div>
             </div>
-            <div class="grid_14 push_1">
-                <h4>Clustered PSM</h4>
-                 <prc-psm-list clusterid="clusterId"></prc-psm-list>
+            <div class="grid_11 push_2 cluster-detail-panel">
+                <h4>PTM Distribution</h4>
+                <prc-species-chart source-id="clusterId"></prc-species-chart>
             </div>
         </div>
-    </section>
+
+        <!--Thirds section, confidence charts and consensus spectrum-->
+        <div class="grid_24">
+            <div class="grid_11 cluster-detail-panel">
+                <h4>Confidence Charts</h4>
+            </div>
+            <div class="grid_11 push_2 cluster-detail-panel">
+                <h4>Consensus Spectrum</h4>
+                <prc-spectrum-viewer source-id="clusterId" is-consensus="true" update-spectrum-source="setSource"></prc-spectrum-viewer>
+            </div>
+        </div>
+
+        <!--Fourth section, PSMs-->
+        <div class="grid_24">
+            <div class="grid_24 cluster-detail-panel">
+                <h4>Clustered PSM</h4>
+                <prc-psm-list clusterid="clusterId"></prc-psm-list>
+            </div>
+        </div>
+    </div>
 </div>

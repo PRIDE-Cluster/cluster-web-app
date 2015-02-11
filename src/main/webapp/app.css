@@ -58,21 +58,41 @@ body {
 }
 
 .HIGH {
-    background-color: #9999bb;
+    background-color: #eeeeee;
     margin-top: 1.5em;
     margin-bottom: 0em;
 }
 
 .MEDIUM {
-    background-color: #99bb99;
+    /*background-color: #99bb99;*/
+    background-color: #eeeeee;
     margin-top: 1.5em;
     margin-bottom: 0em;
 }
 
 .LOW {
-    background-color: #bb9999;
+    /*background-color: #bb9999;*/
+    background-color: #eeeeee;
     margin-top: 1.5em;
     margin-bottom: 0em;
+}
+
+.cluster-detail-container {
+    background-color: #ffffff;
+}
+
+.cluster-detail-panel {
+    /*background-color: #ddddee;*/
+    margin-top: 1.5em;
+    padding-bottom: 1.5em;
+}
+
+.cluster-detail-panel h4 {
+    color: #000000;
+    border-bottom: dashed;
+    border-bottom-width: 1px;
+    border-bottom-color: #000000;
+    /*border-bottom-color: #808080;*/
 }
 
 /* ngAnimage for ngRepeat */

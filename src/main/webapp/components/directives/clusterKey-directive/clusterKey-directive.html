@@ -1,0 +1,51 @@
+<div class="grid_24">
+    <div class="grid_12">
+        <h6>Precursor M/Z</h6>
+        <p>{{cluster.averagePrecursorMz | number:3}}</p>
+    </div>
+    <div class="grid_12">
+        <h6>Precursor Charge</h6>
+        <p>{{cluster.averagePrecursorCharge | number:2}}</p>
+    </div>
+</div>
+
+<div class="grid_24">
+    <div class="grid_12">
+        <h6>Number of species</h6>
+        <p>{{cluster.numberOfSpecies}}</p>
+    </div>
+    <div class="grid_12">
+        <h6>Number of PTM</h6>
+        <p>{{cluster.numberOfPtms}}</p>
+    </div>
+</div>
+
+<div class="grid_24">
+    <div class="grid_12">
+        <h6>Number of spectra</h6>
+        <p>{{cluster.numberOfSpectra}}</p>
+    </div>
+    <div class="grid_12">
+        <h6>Number of projects</h6>
+        <p>{{cluster.numberOfProjects}}</p>
+    </div>
+</div>
+
+<div class="grid_24">
+    <div class="grid_24">
+        <h6>Max ratio</h6>
+        <!--<p>{{cluster.maxRatio}}</p>-->
+        <nvd3-bullet-chart
+                data="maxRatioData"
+                id="maxRatioChart"
+                margin="{left:20,top:5,bottom:15,right:10}"
+                width="475"
+                height="35"
+                interactive="true"
+                tooltips="true"
+                tooltipcontent="toolTipContentFunction()">
+            <svg></svg>
+        </nvd3-bullet-chart>
+    </div>
+</div>
+

@@ -1,19 +1,19 @@
 /**
  * @author Jose A. Dianes <jdianes@ebi.ac.uk>
  *
- * The prc-cluster-detail directive allows us to reuse a cluster detail data element everywhere we want to show it (e.g.
+ * The prc-cluster-key directive allows us to reuse a cluster detail data element everywhere we want to show it (e.g.
  * in the clusterDetail-view)
  *
  */
 
-var clusterDetailDirective = angular.module('prideClusterApp.clusterDetailDirective', [])
+var clusterKeyDirective = angular.module('prideClusterApp.clusterKeyDirective', [])
 
-clusterDetailDirective.directive('prcClusterDetail', function() {
+clusterKeyDirective.directive('prcClusterKey', function() {
     return {
         restrict: 'E',
         scope: { clusterId : '=' },
-        controller: 'ClusterDetailDirectiveCtrl',
-        templateUrl: 'components/directives/clusterDetail-directive/clusterDetail-directive.html'
+        controller: 'ClusterKeyDirectiveCtrl',
+        templateUrl: 'components/directives/clusterKey-directive/clusterKey-directive.html'
     };
 });
 
@@ -23,7 +23,7 @@ clusterDetailDirective.directive('prcClusterDetail', function() {
  * individual Clusters. These details are assigned to model objects in order to be accessed later on
  * within the html template part of the view.
  */
-clusterDetailDirective.controller('ClusterDetailDirectiveCtrl', ['$scope', 'ClusterDetail',
+clusterKeyDirective.controller('ClusterKeyDirectiveCtrl', ['$scope', 'ClusterDetail',
     function($scope, ClusterDetail) {
         var maxRatio, numberOfSpectra;
         function getCluster(clusterId) {
@@ -32,8 +32,8 @@ clusterDetailDirective.controller('ClusterDetailDirectiveCtrl', ['$scope', 'Clus
                     "title": "",
                     "subtitle": "",
                     "ranges": [0.0, 1.0],
-                    "measures": [cluster.maxRatio],
-                    "markers": [0.7]
+                    "measures": [1.0],
+                    "markers": [cluster.maxRatio]
                 };
                 maxRatio = cluster.maxRatio;
                 $scope.numberOfSpectraData = {
