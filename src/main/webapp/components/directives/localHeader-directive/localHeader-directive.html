@@ -4,7 +4,7 @@
     <!-- NB: for additional title style patterns, see http://frontier.ebi.ac.uk/web/style/patterns -->
 
     <div class="grid_12 alpha" id="local-title">
-        <h1><a href="/pride/cluster/#/" title="Back to PRIDE Cluster homepage">PRIDE Cluster</a></h1>
+        <h1><a href="#" title="Back to PRIDE Cluster homepage">PRIDE Cluster</a></h1>
     </div>
 
     <!-- /local-title -->
@@ -22,16 +22,16 @@
                     </label>
                     <!-- Include some example searchterms - keep them short and few! -->
                     <span class="examples">Examples:
-                        <a href="/pride/cluster/#/list?q=elisn&page=1&size=10">ELISN</a>,
-                        <a href="/pride/cluster/#/list?q=ehewlrk&page=1&size=10">EHEWLRK</a>,
-                        <a href="/pride/cluster/#/list?q=TDRYTIHSQLEHLQSK&page=1&size=10">TDRYTIHSQLEHLQSK</a>
+                        <a href="#/list?q=elisn&page=1&size=10">ELISN</a>,
+                        <a href="#/list?q=ehewlrk&page=1&size=10">EHEWLRK</a>,
+                        <a href="#/list?q=TDRYTIHSQLEHLQSK&page=1&size=10">TDRYTIHSQLEHLQSK</a>
                     </span>
                 </div>
                 <div class="right">
                     <input ng-click="search()" type="submit" name="submit" value="Search" class="submit">
                     <!-- If your search is more complex than just a keyword search, you can link to an Advanced Search,
                          with whatever features you want available -->
-                    <span class="adv"><a href="/pride/cluster/#/spectral" id="adv-search" title="Spectral">Spectral</a></span>
+                    <span class="adv"><a href="#/spectral" id="adv-search" title="Spectral">Spectral</a></span>
                 </div>
             </fieldset>
         </form>
@@ -42,10 +42,11 @@
     <!-- local-nav -->
 
     <nav>
+        <!-- TODO needs the active class need to be dynamic-->
         <ul class="grid_24" id="local-nav">
-            <li class="first"><a href="#">Home</a></li>
-            <li class="active"><a href="/pride/cluster/#">Peptide Search</a></li>
-            <li><a href="/pride/cluster/#/libraries">Spectral Libraries</a></li>
+            <li class="first active"><a href="#">Home</a></li>
+            <li><a href="#/list">Peptide Search</a></li>
+            <li><a href="#/libraries">Spectral Libraries</a></li>
             <li><a href="#">Help</a></li>
             <li class="last"><a href="#">About PRIDE Cluster</a></li>
             <!-- If you need to include functional (as opposed to purely navigational) links in your local menu,

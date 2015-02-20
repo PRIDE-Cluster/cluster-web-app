@@ -50,7 +50,7 @@ body {
 }
 
 .cluster-summary h4 {
-    color: #ffffff;
+    /*color: #ffffff;*/
     border-bottom: dashed;
     border-bottom-width: 1px;
     border-bottom-color: #ffffff;
@@ -58,21 +58,21 @@ body {
 }
 
 .HIGH {
-    background-color: #eeeeee;
+    background-color: #82dbee;
     margin-top: 1.5em;
     margin-bottom: 0em;
 }
 
 .MEDIUM {
-    /*background-color: #99bb99;*/
-    background-color: #eeeeee;
+    background-color: #99bb99;
+    /*background-color: #eeeeee;*/
     margin-top: 1.5em;
     margin-bottom: 0em;
 }
 
 .LOW {
-    /*background-color: #bb9999;*/
-    background-color: #eeeeee;
+    background-color: #bb9999;
+    /*background-color: #eeeeee;*/
     margin-top: 1.5em;
     margin-bottom: 0em;
 }

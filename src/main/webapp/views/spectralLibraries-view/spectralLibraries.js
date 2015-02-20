@@ -24,6 +24,7 @@ spectralLibrariesView.config(
  */
 spectralLibrariesView.controller('SpectralLibrariesViewCtrl', ['$scope',
     function($scope) {
+        $scope.names = [{'name':'Juan', 'country': 'Spain'}]
 
     }
 ]);
