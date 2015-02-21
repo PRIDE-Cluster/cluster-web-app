@@ -1,13 +1,12 @@
 /**
  * @author Jose A. Dianes <jdianes@ebi.ac.uk>
  *
- * The prc-spectrum-viewer directive allows us to reuse a spectra visualisations using SpeckTackle.
  *
  */
 
-var speciesChartDirective = angular.module('prideClusterApp.speciesChartDirective', [])
+var ptmsChartDirective = angular.module('prideClusterApp.ptmsChartDirective', [])
 
-speciesChartDirective.directive('prcSpeciesChart', function() {
+ptmsChartDirective.directive('prcPtmsChart', function() {
     function link(scope, element, attrs) {
 
     }
@@ -16,9 +15,9 @@ speciesChartDirective.directive('prcSpeciesChart', function() {
         scope: {
             sourceId : '='
         },
-        controller: 'SpeciesChartDirectiveCtrl',
+        controller: 'PtmsChartDirectiveCtrl',
         link: link,
-        templateUrl: 'components/directives/speciesChart-directive/speciesChart-directive.html'
+        templateUrl: 'components/directives/ptmsChart-directive/ptmsChart-directive.html'
     };
 });
 
@@ -28,12 +27,12 @@ speciesChartDirective.directive('prcSpeciesChart', function() {
  * individual Clusters. These details are assigned to model objects in order to be accessed later on
  * within the html template part of the view.
  */
-speciesChartDirective.controller('SpeciesChartDirectiveCtrl', ['$scope', 'ClusterSpecies',
+ptmsChartDirective.controller('PtmsChartDirectiveCtrl', ['$scope', 'ClusterSpecies',
     function($scope, ClusterSpecies) {
 
         ClusterSpecies.get({clusterId: $scope.sourceId}, function(species) {
 
-            $scope.speciesData = species.speciesCounts;
+            $scope.ptmsData = species.speciesCounts;
             $scope.xFunction = function(){
                 return function(d) {
                     return d.speciesName;
