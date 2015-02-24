@@ -22,8 +22,10 @@ spectralLibrariesView.config(
 /**
  * This controller is injected with scope. Right now is not really needed...
  */
-spectralLibrariesView.controller('SpectralLibrariesViewCtrl', ['$scope',
-    function ($scope) {
+//spectralLibrariesView.controller('SpectralLibrariesViewCtrl', ['$scope',
+//    function ($scope) {
+spectralLibrariesView.controller('SpectralLibrariesViewCtrl', ['$scope', 'SpectralLibrary',
+    function ($scope, SpectralLibrary) {
         $scope.spectralLibraries = [
             {
                 'species': 'Human',
@@ -37,7 +39,10 @@ spectralLibrariesView.controller('SpectralLibrariesViewCtrl', ['$scope',
                 'spectraNum': 200,
                 'url': 'testUrl'
             }
-        ]
+        ];
+
+        //$scope.spectralLibraries = SpectralLibrary.latest({},function(spectralLibraries){});
+
     }
 ]);
 
