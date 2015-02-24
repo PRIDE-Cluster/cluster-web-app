@@ -120,3 +120,57 @@ body {
 .animate-repeat.ng-enter.ng-enter-active {
     opacity:1;
 }
+
+.species-img {
+    width: 40px;
+    background: #ffffff;
+    border: double lightgrey;
+    border-radius: 8pt;
+    padding: 5pt;
+}
+
+.spectral-library {
+    background: #e9fff4;
+}
+
+.spectral-library h4 {
+    border-bottom: dashed;
+    border-bottom-width: 1px;
+    border-bottom-color: #009488;
+}
+
+.spectral-library p {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.spectral-library a {
+    color: #ffffff;
+    border-bottom-style: none;
+}
+
+.button {
+    background: #38b4a9;
+    background-image: -webkit-linear-gradient(top, #37A89D, #008994);
+    background-image: -moz-linear-gradient(top, #37A89D, #008994);
+    background-image: -ms-linear-gradient(top, #37A89D, #008994);
+    background-image: -o-linear-gradient(top, #37A89D, #008994);
+    background-image: linear-gradient(to bottom, #37A89D, #009ea9);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.button:hover {
+    background: #3DCABF;
+    background-image: -webkit-linear-gradient(top, #3DCABF, #009EA9);
+    background-image: -moz-linear-gradient(top, #3DCABF, #009EA9);
+    background-image: -ms-linear-gradient(top, #3DCABF, #009EA9);
+    background-image: -o-linear-gradient(top, #3DCABF, #009EA9);
+    background-image: linear-gradient(to bottom, #3DCABF, #009EA9);
+    text-decoration: none;
+    color: #ffffff;
+}

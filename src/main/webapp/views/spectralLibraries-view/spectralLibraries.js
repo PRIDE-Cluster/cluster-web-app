@@ -11,7 +11,7 @@ var spectralLibrariesView = angular.module('prideClusterApp.spectralLibrariesVie
  * navigates to the search interface
  */
 spectralLibrariesView.config(
-    function($routeProvider) {
+    function ($routeProvider) {
         $routeProvider.when('/libraries', {
             templateUrl: 'views/spectralLibraries-view/spectralLibraries.html',
             controller: 'SpectralLibrariesViewCtrl'
@@ -22,9 +22,26 @@ spectralLibrariesView.config(
 /**
  * This controller is injected with scope. Right now is not really needed...
  */
-spectralLibrariesView.controller('SpectralLibrariesViewCtrl', ['$scope',
-    function($scope) {
-        $scope.names = [{'name':'Juan', 'country': 'Spain'}]
+//spectralLibrariesView.controller('SpectralLibrariesViewCtrl', ['$scope',
+//    function ($scope) {
+spectralLibrariesView.controller('SpectralLibrariesViewCtrl', ['$scope', 'SpectralLibrary',
+    function ($scope, SpectralLibrary) {
+        $scope.spectralLibraries = [
+            {
+                'species': 'Human',
+                'taxId': 9606,
+                'spectraNum': 200,
+                'url': 'testUrl'
+            },
+            {
+                'species': 'Mouse',
+                'taxId': 10090,
+                'spectraNum': 200,
+                'url': 'testUrl'
+            }
+        ];
+
+        //$scope.spectralLibraries = SpectralLibrary.latest({},function(spectralLibraries){});
 
     }
 ]);

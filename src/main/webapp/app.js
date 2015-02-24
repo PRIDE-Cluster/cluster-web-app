@@ -22,13 +22,16 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.clusterKeyDirective',
     'prideClusterApp.spectrumViewerDirective',
     'prideClusterApp.speciesChartDirective',
+    'prideClusterApp.ptmsChartDirective',
     'prideClusterApp.clusterListFiltersDirective',
     'prideClusterApp.clusterListPagingDirective',
     'prideClusterApp.spectralSearchDirective',
 
     /* Services: singletons used to access the backend or share data between modules */
     'prideClusterApp.clusterService',
-    'prideClusterApp.psmService'
+    'prideClusterApp.psmService',
+    'prideClusterApp.spectralLibraryService'
+
 ]);
 
 /* Default routing (not managed by any other View) */
