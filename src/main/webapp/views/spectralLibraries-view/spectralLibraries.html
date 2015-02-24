@@ -12,15 +12,27 @@
         </nav>
     </div>
 
-    <div class="grid_24">
+    <div class="grid_24" ng-controller="SpectralLibrariesViewCtrl">
         <h2>Spectral Libraries</h2>
 
-        <table ng-controller="SpectralLibrariesViewCtrl">
-            <tr ng-repeat="x in names">
-                <td>{{ x.name }}</td>
-                <td>{{ x.country }}</td>
-            </tr>
-        </table>
+        <section class="animate-repeat" ng-repeat="spectralLibrary in spectralLibraries">
+            <div class="grid_6 spectral-library">
+                <div class="grid_24">
+                    <div class="grid_18 alpha">
+                        <h4>{{ spectralLibrary.species }}</h4>
+                    </div>
+                    <div class="grid_6 omega">
+                        <img class="species-img" src="/img/{{ spectralLibrary.taxId }}.svg" title="Download">
+                    </div>
+                </div>
+                <div class="grid_24">
+                    <h5>Number of spectra: {{ spectralLibrary.spectraNum }}</h5>
+                </div>
+                <div class="grid_24">
+                    <p><a class="button" href="{{spectralLibrary.url}}">Download</a></p>
+                </div>
+            </div>
 
+        </section>
     </div>
 </div>
