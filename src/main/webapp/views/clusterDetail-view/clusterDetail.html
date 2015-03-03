@@ -58,29 +58,21 @@
             <div class="grid_11 cluster-detail-panel">
                 <h4>Confidence Charts</h4>
                 <h6>Precursor MZ distribution</h6>
-                <nvd3-line-chart
-                        data="exampleData"
-                        id="example1"
-                        xAxisTickFormat="xAxisTickFormatFunction()"
-                        yAxisTickFormat="yAxisTickFormatFunction()"
-                        width="550"
-                        height="200"
-                        showXAxis="true"
-                        showYAxis="true">
-                    <svg></svg>
-                </nvd3-line-chart>
-                <h6>Spectrum similarity distribution</h6>
-                <nvd3-line-chart
-                        data="exampleData"
-                        id="example2"
-                        xAxisTickFormat="xAxisTickFormatFunction()"
-                        yAxisTickFormat="yAxisTickFormatFunction()"
-                        width="550"
-                        height="200"
-                        showXAxis="true"
-                        showYAxis="true">
-                    <svg></svg>
-                </nvd3-line-chart>
+                <prc-box-plot source-id="clusterId"></prc-box-plot>
+
+                <!--<h6>Spectrum similarity distribution</h6>-->
+                <!---->
+                <!--<nvd3-line-chart-->
+                        <!--data="exampleData"-->
+                        <!--id="example2"-->
+                        <!--xAxisTickFormat="xAxisTickFormatFunction()"-->
+                        <!--yAxisTickFormat="yAxisTickFormatFunction()"-->
+                        <!--width="550"-->
+                        <!--height="200"-->
+                        <!--showXAxis="true"-->
+                        <!--showYAxis="true">-->
+                    <!--<svg></svg>-->
+                <!--</nvd3-line-chart>-->
             </div>
             <div class="grid_11 push_2 cluster-detail-panel">
                 <h4>Consensus Spectrum</h4>
