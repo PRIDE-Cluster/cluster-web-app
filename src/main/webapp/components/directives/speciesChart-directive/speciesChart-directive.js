@@ -8,16 +8,12 @@
 var speciesChartDirective = angular.module('prideClusterApp.speciesChartDirective', [])
 
 speciesChartDirective.directive('prcSpeciesChart', function() {
-    function link(scope, element, attrs) {
-
-    }
     return {
-        restrict: 'E',
+        restrict: 'EA',
         scope: {
             sourceId : '='
         },
         controller: 'SpeciesChartDirectiveCtrl',
-        link: link,
         templateUrl: 'components/directives/speciesChart-directive/speciesChart-directive.html'
     };
 });

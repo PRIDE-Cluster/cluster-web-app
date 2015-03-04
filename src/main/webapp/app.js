@@ -22,6 +22,8 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.clusterKeyDirective',
     'prideClusterApp.spectrumViewerDirective',
     'prideClusterApp.speciesChartDirective',
+    'prideClusterApp.deltaMzChartDirective',
+    'prideClusterApp.similarityChartDirective',
     'prideClusterApp.boxPlotDirective',
     'prideClusterApp.ptmsChartDirective',
     'prideClusterApp.clusterListFiltersDirective',

@@ -7,128 +7,124 @@
 var boxPlotDirective = angular.module('prideClusterApp.boxPlotDirective', [])
 
 boxPlotDirective.directive('prcBoxPlot', function() {
-    function link(scope, element, attrs) {
 
-    }
     return {
         restrict: 'EA',
         scope: {
-            sourceId : '=',
+            id: '@',
+            width: '@',
+            height: '@',
+            margin: '=',
+            ylabel: '@',
+            xlabel: '@',
             data: '='
         },
-        controller: 'BoxPlotDirectiveCtrl',
-        link: link,
-        templateUrl: 'components/directives/boxPlot-directive/boxPlot-directive.html'
+        controller: ['$scope', function($scope) {
+            // We may need to put something here in the future
+        }],
+        link: function(scope, element, attrs) {
+            scope.$watch('data', function() {
+                if (scope.data) {
+
+                    defineBoxPlot();
+
+                    var labels = true; // show the text labels beside individual boxplots?
+
+                    var margin = scope.margin;
+                    var width = scope.width - margin.left - margin.right;
+                    var height = scope.height - margin.top - margin.bottom;
+
+                    var min = Infinity,
+                        max = -Infinity;
+
+                    var boxData = scope.data;
+
+                    var minQ1 = Math.min.apply(null, boxData[0][1]);
+                    var minQ2 = Math.min.apply(null, boxData[1][1]);
+                    var maxQ1 = Math.max.apply(null, boxData[0][1]);
+                    var maxQ2 = Math.max.apply(null, boxData[1][1]);
+                    var min = Math.min(minQ1, minQ2);
+                    var max = Math.max(maxQ1, maxQ2);
+
+                    var chart = d3.box()
+                        .whiskers(iqr(1.5))
+                        .height(height)
+                        .domain([min, max])
+                        .showLabels(labels);
+
+                    var svg = d3.select("#"+scope.id).append("svg")
+                        .attr("width", width + margin.left + margin.right)
+                        .attr("height", height + margin.top + margin.bottom)
+                        .attr("class", "box")
+                        .append("g")
+                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                    // the x-axis
+                    var x = d3.scale.ordinal()
+                        .domain( boxData.map(function(d) { console.log(d); return d[0] } ) )
+                        .rangeRoundBands([0 , width], 0.7, 0.3);
+
+                    var xAxis = d3.svg.axis()
+                        .scale(x)
+                        .orient("bottom");
+
+                    // the y-axis
+                    var y = d3.scale.linear()
+                        .domain([min, max])
+                        .range([height + margin.top, 0 + margin.top]);
+
+                    var yAxis = d3.svg.axis()
+                        .scale(y)
+                        .orient("left");
+
+                    // draw the boxplots
+                    svg.selectAll(".box")
+                        .data(boxData)
+                        .enter().append("g")
+                        .attr("transform", function(d) { return "translate(" +  x(d[0])  + "," + margin.top + ")"; } )
+                        .call(chart.width(x.rangeBand()));
+
+
+                    // add a title
+                    //svg.append("text")
+                    //    .attr("x", (width / 2))
+                    //    .attr("y", 0 + (margin.top / 2))
+                    //    .attr("text-anchor", "middle")
+                    //    .style("font-size", "18px")
+                    //    //.style("text-decoration", "underline")
+                    //    .text("Revenue 2012");
+
+                    // draw y axis
+                    svg.append("g")
+                        .attr("class", "y axis")
+                        .call(yAxis)
+                        .append("text") // and text1
+                        .attr("transform", "rotate(-90)")
+                        .attr("y", 6)
+                        .attr("dy", ".71em")
+                        .style("text-anchor", "end")
+                        .style("font-size", "12px")
+                        .text(scope.ylabel);
+
+                    // draw x axis
+                    svg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + (height  + margin.top + 10) + ")")
+                        .call(xAxis)
+                        .append("text")             // text label for the x axis
+                        .attr("x", (width / 2) )
+                        .attr("y",  10 )
+                        .attr("dy", ".71em")
+                        .style("text-anchor", "middle")
+                        .style("font-size", "10px")
+                }
+            });
+        }
     };
 });
 
-boxPlotDirective.controller('BoxPlotDirectiveCtrl', ['$scope',
-    function($scope) {
-
-        defineBoxPlot();
-
-        var labels = true; // show the text labels beside individual boxplots?
-
-        var margin = {top: 30, right: 50, bottom: 70, left: 50};
-        var  width = 500 - margin.left - margin.right;
-        var height = 300 - margin.top - margin.bottom;
-
-        var min = Infinity,
-            max = -Infinity;
-
-        var data = [];
-        data[0] = [];
-        data[1] = [];
-        data[0][0] = "Max. Ratio Peptide";
-        data[1][0] = "Cluster";
-        data[0][1] = [20000,9879,5070,7343,9136,7943,10546,9385,8669,4000];
-        data[1][1] = [15000,9323,9395,8675,5354,6725,10899,9365,8238,7446];
-
-        var minQ1 = Math.min.apply(null, data[0][1]);
-        var minQ2 = Math.min.apply(null, data[1][1]);
-        var maxQ1 = Math.max.apply(null, data[0][1]);
-        var maxQ2 = Math.max.apply(null, data[1][1]);
-        var min = Math.min(minQ1, minQ2);
-        var max = Math.max(maxQ1, maxQ2);
-
-        var chart = d3.box()
-            .whiskers(iqr(1.5))
-            .height(height)
-            .domain([min, max])
-            .showLabels(labels);
-
-        var svg = d3.select(".prc-box-plot").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .attr("class", "box")
-            .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-        // the x-axis
-        var x = d3.scale.ordinal()
-            .domain( data.map(function(d) { console.log(d); return d[0] } ) )
-            .rangeRoundBands([0 , width], 0.7, 0.3);
-
-        var xAxis = d3.svg.axis()
-            .scale(x)
-            .orient("bottom");
-
-        // the y-axis
-        var y = d3.scale.linear()
-            .domain([min, max])
-            .range([height + margin.top, 0 + margin.top]);
-
-        var yAxis = d3.svg.axis()
-            .scale(y)
-            .orient("left");
-
-        // draw the boxplots
-        svg.selectAll(".box")
-            .data(data)
-            .enter().append("g")
-            .attr("transform", function(d) { return "translate(" +  x(d[0])  + "," + margin.top + ")"; } )
-            .call(chart.width(x.rangeBand()));
-
-
-        // add a title
-        //svg.append("text")
-        //    .attr("x", (width / 2))
-        //    .attr("y", 0 + (margin.top / 2))
-        //    .attr("text-anchor", "middle")
-        //    .style("font-size", "18px")
-        //    //.style("text-decoration", "underline")
-        //    .text("Revenue 2012");
-
-        // draw y axis
-        svg.append("g")
-            .attr("class", "y axis")
-            .call(yAxis)
-            .append("text") // and text1
-            .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", ".71em")
-            .style("text-anchor", "end")
-            .style("font-size", "12px")
-            .text("Precursor M/Z");
-
-        // draw x axis
-        svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + (height  + margin.top + 10) + ")")
-            .call(xAxis)
-            .append("text")             // text label for the x axis
-            .attr("x", (width / 2) )
-            .attr("y",  10 )
-            .attr("dy", ".71em")
-            .style("text-anchor", "middle")
-            .style("font-size", "10px")
-            //.text("Quarter");
-
-    }
-]);
-
 function defineBoxPlot() {
-    console.info("Defining box()")
+
     // Inspired by http://informationandvisualization.de/blog/box-plot
     d3.box = function() {
         var width = 1,

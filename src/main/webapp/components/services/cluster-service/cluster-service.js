@@ -11,7 +11,7 @@
  *
  */
 var clusterWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/cluster";
-var clusterWsUrlLocal = "http://localhost:9091/cluster";
+var statsWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/stats";
 
 var clusterService = angular.module('prideClusterApp.clusterService', ['ngResource'])
 
@@ -45,16 +45,53 @@ clusterService.factory('ClusterDetail', ['$resource',
                 clusterWsUrl + '/:clusterId' + '?callback=JSON_CALLBACK',
                 {},
                 {
-                    get: {method:'JSONP', params:{clusterId:'cluster'}, isArray:false, callback: 'JSON_CALLBACK'}
+                    get: {
+                        method:'JSONP',
+                        params:{clusterId:'cluster'},
+                        isArray:false,
+                        callback: 'JSON_CALLBACK'
+                    }
                 }
         );
     }
 ]);
 clusterService.factory('ClusterSpecies', ['$resource',
     function($resource){
-        return $resource(clusterWsUrl + '/:clusterId/species' + '?callback=JSON_CALLBACK',
+        return $resource(
+            clusterWsUrl + '/:clusterId/species' + '?callback=JSON_CALLBACK',
             {},
-            {get: {method:'JSONP', params:{clusterId:'cluster'}, isArray:false, callback: 'JSON_CALLBACK'}}
+            {
+                get: {
+                    method:'JSONP',
+                    params:{clusterId:'cluster'},
+                    isArray:false,
+                    callback: 'JSON_CALLBACK'
+                }
+            }
+        );
+    }
+]);
+clusterService.factory('ClusterStats', ['$resource',
+    function($resource){
+        return $resource(
+            clusterWsUrl + '/:clusterId/deltamz' + '?callback=JSON_CALLBACK',
+            {},
+            {
+                delta: {
+                    method:'JSONP',
+                    params:{clusterId:'cluster'},
+                    url: clusterWsUrl + '/:clusterId/deltamz' + '?callback=JSON_CALLBACK',
+                    isArray:false,
+                    callback: 'JSON_CALLBACK'
+                },
+                similarity: {
+                    method:'JSONP',
+                    params:{clusterId:'cluster'},
+                    url: clusterWsUrl + '/:clusterId/similarity' + '?callback=JSON_CALLBACK',
+                    isArray:false,
+                    callback: 'JSON_CALLBACK'
+                }
+            }
         );
     }
 ]);
