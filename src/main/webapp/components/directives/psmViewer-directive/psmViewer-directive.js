@@ -1,14 +1,14 @@
 /**
  * @author Jose A. Dianes <jdianes@ebi.ac.uk>
  *
- * The prc-psm-list directive allows us to reuse a list of PSMs everywhere we want to show it (e.g.
+ * The prc-psm-viewer directive allows us to reuse a list of PSMs everywhere we want to show it (e.g.
  * in the clusterDetail-view)
  *
  */
 
-var psmListDirective = angular.module('prideClusterApp.psmListDirective', [])
+var psmViewerDirective = angular.module('prideClusterApp.psmViewerDirective', [])
 
-psmListDirective.directive('prcPsmList', ['PsmSummary', function(PsmSummary) {
+psmViewerDirective.directive('prcPsmViewer', ['PsmSummary', function(PsmSummary) {
     function link(scope, element, attrs) {
         scope.psms = PsmSummary.list(
             { clusterId: scope.clusterId },
@@ -21,6 +21,6 @@ psmListDirective.directive('prcPsmList', ['PsmSummary', function(PsmSummary) {
             clusterId: '=clusterid'
         },
         link: link,
-        templateUrl: 'components/directives/psmList-directive/psmList-directive.html'
+        templateUrl: 'components/directives/psmViewer-directive/psmViewer-directive.html'
     };
 }]);

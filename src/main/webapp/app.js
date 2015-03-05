@@ -5,6 +5,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'ngAnimate',
     'nvd3ChartDirectives',
     'ui.bootstrap',
+    'angular-carousel',
 
     /* Views: thin layer containing layout+model_binding and routing elements */
     'prideClusterApp.homePageView',
@@ -16,7 +17,8 @@ var prideClusterApp = angular.module('prideClusterApp', [
 
     /* Directives: reusable view+controller components */
     'prideClusterApp.localHeaderDirective',
-    'prideClusterApp.psmListDirective',
+    'prideClusterApp.psmViewerDirective',
+    'prideClusterApp.projectViewerDirective',
     'prideClusterApp.clusterListDirective',
     'prideClusterApp.clusterChartDirective',
     'prideClusterApp.clusterKeyDirective',
@@ -32,7 +34,8 @@ var prideClusterApp = angular.module('prideClusterApp', [
 
     /* Services: singletons used to access the backend or share data between modules */
     'prideClusterApp.clusterService',
-    'prideClusterApp.psmService'
+    'prideClusterApp.psmService',
+    'prideClusterApp.projectService'
 ]);
 
 /* Default routing (not managed by any other View) */
