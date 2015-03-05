@@ -2,8 +2,8 @@
 <ul rn-carousel rn-carousel-controls rn-carousel-buffered rn-carousel-index="projectIndex" class="image">
     <li ng-repeat="project in projects" class="grid_24">
         <a href="http://www.ebi.ac.uk/pride/archive/projects/{{project.accession}}">
-            <h5 class="grid_24">{{project.accession}}</h5>
-            <h6 ng-show="project.title.length>64" class="grid_24" tooltip="{{project.title}}">{{project.title | limitTo: 64 }}...</h6>
+            <h5>{{project.accession}}</h5>
+            <h6 ng-show="project.title.length>64" class="grid_24">{{project.title | limitTo: 64 }}...</h6>
             <h6 ng-show="project.title.length<=64" class="grid_24">{{project.title}}</h6>
             <p ng-show="project.description.length>256" class="grid_24">{{project.description | limitTo: 256 }}...</p>
             <p ng-show="project.description.length<=256" class="grid_24">{{project.description}}</p>
