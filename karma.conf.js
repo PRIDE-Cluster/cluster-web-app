@@ -10,6 +10,8 @@ module.exports = function(config){
             'bower_components/angular-resource/angular-resource.js',
             'bower_components/angular-mocks/angular-mocks.js',
             'bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js',
+            'bower_components/angular-carousel/dist/angular-carousel.js',
+            'bower_components/angular-touch/angular-touch.js',
             'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
             'app.js',
             'components/**/*.js',
