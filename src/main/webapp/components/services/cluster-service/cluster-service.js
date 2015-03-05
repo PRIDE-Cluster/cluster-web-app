@@ -71,6 +71,22 @@ clusterService.factory('ClusterSpecies', ['$resource',
         );
     }
 ]);
+clusterService.factory('ClusterPtms', ['$resource',
+    function($resource){
+        return $resource(
+            clusterWsUrl + '/:clusterId/ptms' + '?callback=JSON_CALLBACK',
+            {},
+            {
+                get: {
+                    method:'JSONP',
+                    params:{clusterId:'cluster'},
+                    isArray:false,
+                    callback: 'JSON_CALLBACK'
+                }
+            }
+        );
+    }
+]);
 clusterService.factory('ClusterStats', ['$resource',
     function($resource){
         return $resource(
