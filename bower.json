@@ -20,6 +20,7 @@
       "nvd3": "~v1.1.15-beta",
     "angularjs-nvd3-directives": "0.0.7",
     "angular-carousel": "0.3.10",
+    "ng-table": "0.5.3",
     "angular-bootstrap": "0.12.0"
   },
   "ignore": [

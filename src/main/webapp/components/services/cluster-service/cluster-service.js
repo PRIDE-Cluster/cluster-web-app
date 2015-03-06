@@ -87,6 +87,22 @@ clusterService.factory('ClusterPtms', ['$resource',
         );
     }
 ]);
+clusterService.factory('ClusterPeptides', ['$resource',
+    function($resource){
+        return $resource(
+            clusterWsUrl + '/:clusterId/peptide' + '?callback=JSON_CALLBACK',
+            {},
+            {
+                list: {
+                    method:'JSONP',
+                    params:{clusterId:'cluster'},
+                    isArray:true,
+                    callback: 'JSON_CALLBACK'
+                }
+            }
+        );
+    }
+]);
 clusterService.factory('ClusterStats', ['$resource',
     function($resource){
         return $resource(
