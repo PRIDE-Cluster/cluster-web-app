@@ -93,10 +93,10 @@ clusterService.factory('ClusterPeptides', ['$resource',
             clusterWsUrl + '/:clusterId/peptide' + '?callback=JSON_CALLBACK',
             {},
             {
-                list: {
+                get: {
                     method:'JSONP',
                     params:{clusterId:'cluster'},
-                    isArray:true,
+                    isArray:false,
                     callback: 'JSON_CALLBACK'
                 }
             }

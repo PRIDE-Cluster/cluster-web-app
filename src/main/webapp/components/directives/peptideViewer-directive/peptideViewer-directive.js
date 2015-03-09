@@ -10,17 +10,17 @@ var peptideViewerDirective = angular.module('prideClusterApp.peptideViewerDirect
 
 peptideViewerDirective.directive('prcPeptideViewer', ['ClusterPeptides', 'ngTableParams', function(ClusterPeptides, ngTableParams) {
     function link(scope, element, attrs) {
-        ClusterPeptides.list(
+        ClusterPeptides.get(
             { clusterId: scope.clusterId },
             function(peptides) {
 
-                scope.peptides = peptides;
+                scope.peptides = peptides.clusteredPeptides;
 
                 scope.peptideTableParams = new ngTableParams({
                     page: 1,            // show first page
                     count: 10           // count per page
                 }, {
-                    total: peptides.length, // length of data
+                    total: scope.peptides.length, // length of data
                     getData: function($defer, params) {
                         $defer.resolve(peptides.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                     }

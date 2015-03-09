@@ -29,7 +29,7 @@ deltaMzChartDirective.controller('DeltaMzChartDirectiveCtrl', ['$scope', 'Cluste
             $scope.statsData[0][0] = "High Ratio Peptide";
             $scope.statsData[1][0] = "Cluster";
             $scope.statsData[0][1] = stats.highRatioPeptideDeltaMzs;
-            $scope.statsData[1][1] = stats.clusterDeltaMz;
+            $scope.statsData[1][1] = stats.clusterDeltaMzs;
         });
 
     }
