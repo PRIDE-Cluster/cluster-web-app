@@ -23,11 +23,13 @@ clusterDetailView.config(['$routeProvider',
  * Controllers are injected with routing parameters. In this case the clusterId in the route is put in the $scope
  * for the view template to use.
  */
-clusterDetailView.controller('ClusterDetailViewCtrl', ['$scope', '$routeParams',
-    function($scope, $routeParams) {
+clusterDetailView.controller('ClusterDetailViewCtrl', ['$scope', '$routeParams', 'ClusterDetail',
+    function($scope, $routeParams, ClusterDetail) {
         $scope.clusterId = $routeParams.clusterId;
+        $scope.cluster = ClusterDetail.get({clusterId: $routeParams.clusterId}, function (cluster) {
+            $scope.cluster = cluster;
+        });
         $scope.viewerId = "consensusSpectrumViewer-" + $routeParams.clusterId;
-
     }
 ]);
 

@@ -10,10 +10,10 @@ var projectViewerDirective = angular.module('prideClusterApp.projectViewerDirect
 
 projectViewerDirective.directive('prcProjectViewer', ['Projects', function(Projects) {
     function link(scope, element, attrs) {
-         Projects.list(
+         Projects.get(
             { clusterId: scope.clusterId },
             function(projects) {
-                scope.projects = projects;
+                scope.projects = projects.projects;
             }
         );
     }

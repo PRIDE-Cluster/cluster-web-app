@@ -18,7 +18,7 @@ projectService.factory('Projects', ['$resource',
         return $resource(
                 projectSummaryWsUrl + '/list/:clusterId' + '?callback=JSON_CALLBACK',
                 {},
-                {list: {method:'JSONP', params:{clusterId:'cluster'}, isArray:true, callback: 'JSON_CALLBACK'}}
+                {get: {method:'JSONP', params:{clusterId:'cluster'}, isArray:false, callback: 'JSON_CALLBACK'}}
         );
     }
 ]);
