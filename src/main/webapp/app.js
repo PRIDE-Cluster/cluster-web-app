@@ -36,13 +36,10 @@ var prideClusterApp = angular.module('prideClusterApp', [
 
     /* Services: singletons used to access the backend or share data between modules */
     'prideClusterApp.clusterService',
-<<<<<<< HEAD
     'prideClusterApp.psmService',
-    'prideClusterApp.spectrumLibraryService'
-
-=======
+    'prideClusterApp.spectrumLibraryService',
     'prideClusterApp.projectService'
->>>>>>> master
+
 ]);
 
 /* Default routing (not managed by any other View) */
