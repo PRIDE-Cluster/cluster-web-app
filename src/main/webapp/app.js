@@ -5,6 +5,8 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'ngAnimate',
     'nvd3ChartDirectives',
     'ui.bootstrap',
+    'angular-carousel',
+    'ngTable',
 
     /* Views: thin layer containing layout+model_binding and routing elements */
     'prideClusterApp.homePageView',
@@ -16,12 +18,17 @@ var prideClusterApp = angular.module('prideClusterApp', [
 
     /* Directives: reusable view+controller components */
     'prideClusterApp.localHeaderDirective',
-    'prideClusterApp.psmListDirective',
+    'prideClusterApp.peptideViewerDirective',
+    'prideClusterApp.projectViewerDirective',
     'prideClusterApp.clusterListDirective',
     'prideClusterApp.clusterChartDirective',
+    'prideClusterApp.clusterHeaderDirective',
     'prideClusterApp.clusterKeyDirective',
     'prideClusterApp.spectrumViewerDirective',
     'prideClusterApp.speciesChartDirective',
+    'prideClusterApp.deltaMzChartDirective',
+    'prideClusterApp.similarityChartDirective',
+    'prideClusterApp.boxPlotDirective',
     'prideClusterApp.ptmsChartDirective',
     'prideClusterApp.clusterListFiltersDirective',
     'prideClusterApp.clusterListPagingDirective',
@@ -29,9 +36,13 @@ var prideClusterApp = angular.module('prideClusterApp', [
 
     /* Services: singletons used to access the backend or share data between modules */
     'prideClusterApp.clusterService',
+<<<<<<< HEAD
     'prideClusterApp.psmService',
     'prideClusterApp.spectrumLibraryService'
 
+=======
+    'prideClusterApp.projectService'
+>>>>>>> master
 ]);
 
 /* Default routing (not managed by any other View) */

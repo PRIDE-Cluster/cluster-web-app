@@ -13,42 +13,28 @@
     <div class="grid_22 cluster-detail-container push_1">
         <!--Header-->
         <div class="grid_24">
-            <h2>Cluster {{clusterId}}</h2>
+            <prc-cluster-header cluster="cluster"></prc-cluster-header>
         </div>
         <!--First section: key info and species distribution-->
         <div class="grid_24">
             <div class="grid_11 cluster-detail-panel">
                 <h4>Summary</h4>
-                <prc-cluster-key cluster-id="clusterId"></prc-cluster-key>
+                <prc-cluster-key cluster="cluster"></prc-cluster-key>
             </div>
             <div class="grid_11 push_2 cluster-detail-panel">
-                <h4>Species Distribution</h4>
-                <prc-species-chart source-id="clusterId"></prc-species-chart>
+                <h4>Original Projects</h4>
+                <prc-project-viewer clusterid="clusterId"></prc-project-viewer>
             </div>
         </div>
 
         <!--Second section Projects & Publications and PTMs distribution-->
         <div class="grid_24">
             <div class="grid_11 cluster-detail-panel">
-                <h4>Related Publications</h4>
-                <div class="grid_24">
-                    <h6>Authors</h6>
-                    <p>Publication Title</p>
-                    <p>In Journal A. Date X</p>
-                </div>
-                <div class="grid_24">
-                    <h6>Authors</h6>
-                    <p>Publication Title</p>
-                    <p>In Journal A. Date X</p>
-                </div>
-                <div class="grid_24">
-                    <h6>Authors</h6>
-                    <p>Publication Title</p>
-                    <p>In Journal A. Date X</p>
-                </div>
+                <h4>Species Distribution</h4>
+                <prc-species-chart source-id="clusterId"></prc-species-chart>
             </div>
             <div class="grid_11 push_2 cluster-detail-panel">
-                <h4>PTM Distribution</h4>
+                <h4>Modification Distribution</h4>
                 <prc-ptms-chart source-id="clusterId"></prc-ptms-chart>
             </div>
         </div>
@@ -56,43 +42,33 @@
         <!--Thirds section, confidence charts and consensus spectrum-->
         <div class="grid_24">
             <div class="grid_11 cluster-detail-panel">
-                <h4>Confidence Charts</h4>
-                <h6>Precursor MZ distribution</h6>
-                <nvd3-line-chart
-                        data="exampleData"
-                        id="example1"
-                        xAxisTickFormat="xAxisTickFormatFunction()"
-                        yAxisTickFormat="yAxisTickFormatFunction()"
-                        width="550"
-                        height="200"
-                        showXAxis="true"
-                        showYAxis="true">
-                    <svg></svg>
-                </nvd3-line-chart>
-                <h6>Spectrum similarity distribution</h6>
-                <nvd3-line-chart
-                        data="exampleData"
-                        id="example2"
-                        xAxisTickFormat="xAxisTickFormatFunction()"
-                        yAxisTickFormat="yAxisTickFormatFunction()"
-                        width="550"
-                        height="200"
-                        showXAxis="true"
-                        showYAxis="true">
-                    <svg></svg>
-                </nvd3-line-chart>
+                <h4>Precursor MZ distribution</h4>
+                <prc-delta-mz-chart source-id="clusterId"></prc-delta-mz-chart>
             </div>
             <div class="grid_11 push_2 cluster-detail-panel">
-                <h4>Consensus Spectrum</h4>
-                <prc-spectrum-viewer source-id="clusterId" is-consensus="true" update-spectrum-source="setSource"></prc-spectrum-viewer>
+                <h4>Spectrum Similarity distribution</h4>
+                <prc-similarity-chart source-id="clusterId"></prc-similarity-chart>
             </div>
+
         </div>
 
+        <div class="grid_24">
+            <div class="grid_24 cluster-detail-panel">
+                <h4>Consensus Spectrum</h4>
+                <prc-spectrum-viewer
+                        xlabel="M/Z"
+                        ylabel="Intensity"
+                        source-id="clusterId"
+                        is-consensus="true"
+                        update-spectrum-source="setSource">
+                </prc-spectrum-viewer>
+            </div>
+        </div>
         <!--Fourth section, PSMs-->
         <div class="grid_24">
             <div class="grid_24 cluster-detail-panel">
-                <h4>Clustered PSM</h4>
-                <prc-psm-list clusterid="clusterId"></prc-psm-list>
+                <h4>Unique Peptides</h4>
+                <prc-peptide-viewer clusterid="clusterId"></prc-peptide-viewer>
             </div>
         </div>
     </div>

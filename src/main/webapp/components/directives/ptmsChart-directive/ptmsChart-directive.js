@@ -7,16 +7,12 @@
 var ptmsChartDirective = angular.module('prideClusterApp.ptmsChartDirective', [])
 
 ptmsChartDirective.directive('prcPtmsChart', function() {
-    function link(scope, element, attrs) {
-
-    }
     return {
-        restrict: 'E',
+        restrict: 'EA',
         scope: {
             sourceId : '='
         },
         controller: 'PtmsChartDirectiveCtrl',
-        link: link,
         templateUrl: 'components/directives/ptmsChart-directive/ptmsChart-directive.html'
     };
 });
@@ -27,25 +23,25 @@ ptmsChartDirective.directive('prcPtmsChart', function() {
  * individual Clusters. These details are assigned to model objects in order to be accessed later on
  * within the html template part of the view.
  */
-ptmsChartDirective.controller('PtmsChartDirectiveCtrl', ['$scope', 'ClusterSpecies',
-    function($scope, ClusterSpecies) {
+ptmsChartDirective.controller('PtmsChartDirectiveCtrl', ['$scope', 'ClusterPtms',
+    function($scope, ClusterPtms) {
 
-        ClusterSpecies.get({clusterId: $scope.sourceId}, function(species) {
+        ClusterPtms.get({clusterId: $scope.sourceId}, function(ptms) {
 
-            $scope.ptmsData = species.speciesCounts;
+            $scope.ptmsData = ptms.ptmCounts;
             $scope.xFunction = function(){
                 return function(d) {
-                    return d.speciesName;
+                    return d.ptmName;
                 };
             }
             $scope.yFunction = function(){
                 return function(d){
-                    return d.speciesCount;
+                    return d.count;
                 };
             }
             $scope.toolTipContentFunction = function(){
                 return function(key, x, y, e, graph) {
-                    return '<p>' + Math.round(x) + ' PSM for ' + key + '</p>';
+                    return '<p>' + Math.round(x) + ' peptides include ' + key + '</p>';
                 }
             }
         });

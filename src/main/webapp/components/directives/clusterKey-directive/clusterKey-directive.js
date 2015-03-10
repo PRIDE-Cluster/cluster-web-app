@@ -10,60 +10,28 @@ var clusterKeyDirective = angular.module('prideClusterApp.clusterKeyDirective', 
 
 clusterKeyDirective.directive('prcClusterKey', function() {
     return {
-        restrict: 'E',
-        scope: { clusterId : '=' },
-        controller: 'ClusterKeyDirectiveCtrl',
-        templateUrl: 'components/directives/clusterKey-directive/clusterKey-directive.html'
-    };
-});
+        restrict: 'EA',
+        scope: { cluster : '=' },
+        templateUrl: 'components/directives/clusterKey-directive/clusterKey-directive.html',
+        link: function(scope, element, attrs) {
+            var maxRatio, numberOfSpectra;
 
-/**
- * Controllers are injected with routing parameters and a singleton to access the backend Web-Service.
- * In this case the cluster detail controller accesses the ClusterDetail end point to get details of
- * individual Clusters. These details are assigned to model objects in order to be accessed later on
- * within the html template part of the view.
- */
-clusterKeyDirective.controller('ClusterKeyDirectiveCtrl', ['$scope', 'ClusterDetail',
-    function($scope, ClusterDetail) {
-        var maxRatio, numberOfSpectra;
-        function getCluster(clusterId) {
-            $scope.cluster = ClusterDetail.get({clusterId: clusterId}, function (cluster) {
-                $scope.maxRatioData = {
-                    "title": "",
-                    "subtitle": "",
-                    "ranges": [0.0, 1.0],
-                    "measures": [1.0],
-                    "markers": [cluster.maxRatio]
-                };
-                maxRatio = cluster.maxRatio;
-                $scope.numberOfSpectraData = {
-                    "title": "",
-                    "subtitle": "",
-                    "ranges": [0, Math.max(cluster.numberOfSpectra, 10)],
-                    "measures": [cluster.numberOfSpectra],
-                    "markers": [10]
-                };
-                numberOfSpectra = cluster.numberOfSpectra;
+            scope.maxRatioData = {
+                "title": "",
+                "subtitle": "",
+                "ranges": [0.0, 1.0],
+                "measures": [1.0],
+                "markers": [scope.cluster.maxRatio]
+            };
+            maxRatio = scope.cluster.maxRatio;
 
-            });
+            scope.toolTipContentFunction = function(){
+                return function(key, x, y, e, graph) {
+                    return '<p>Max Ratio is ' + scope.cluster.maxRatio + '</p>'
+                }
+            };
+
         }
 
-        $scope.toolTipContentFunction = function(){
-            return function(key, x, y, e, graph) {
-                return '<p>Max Ratio is ' + maxRatio + '</p>'
-            }
-        };
-
-        $scope.toolTipContentFunctionNumberOfSpectra = function(){
-            return function(key, x, y, e, graph) {
-                return '<p>' + numberOfSpectra + ' spectra</p>'
-            }
-        };
-
-        $scope.$watch('clusterId', function() {
-            getCluster($scope.clusterId);
-        });
-
-        getCluster($scope.clusterId);
-    }
-]);
+    };
+});

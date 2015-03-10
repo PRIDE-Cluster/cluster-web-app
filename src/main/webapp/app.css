@@ -26,6 +26,13 @@ body {
     float: left;
 }
 
+.stgraph11030 {
+    width: 1100px;
+    height: 300px;
+    margin-top: -10px;
+    float: left;
+}
+
 .stgraph93 {
     width: 900px;
     height: 300px;
@@ -84,7 +91,7 @@ body {
 .cluster-detail-panel {
     /*background-color: #ddddee;*/
     margin-top: 1.5em;
-    padding-bottom: 1.5em;
+    padding-bottom: 1em;
 }
 
 .cluster-detail-panel h4 {

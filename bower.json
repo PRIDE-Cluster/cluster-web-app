@@ -10,15 +10,17 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular": "1.2.x",
-    "angular-route": "1.2.x",
-    "angular-resource": "1.2.x",
-    "angular-animate": "1.2.x",
-    "angular-loader": "1.2.x",
-    "angular-mocks": "~1.2.x",
+    "angular": "1.3.x",
+    "angular-route": "1.3.x",
+    "angular-resource": "1.3.x",
+    "angular-animate": "1.3.x",
+    "angular-loader": "1.3.x",
+    "angular-mocks": "~1.3.x",
       "d3": "~3.4.1",
       "nvd3": "~v1.1.15-beta",
     "angularjs-nvd3-directives": "0.0.7",
+    "angular-carousel": "0.3.10",
+    "ng-table": "0.5.3",
     "angular-bootstrap": "0.12.0"
   },
   "ignore": [
@@ -29,6 +31,7 @@
     "tests"
   ],
   "resolutions": {
-    "d3": "~3.4.1"
+    "d3": "~3.4.1",
+    "angular": "1.3.14"
   }
 }

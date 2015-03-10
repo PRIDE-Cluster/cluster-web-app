@@ -13,6 +13,8 @@ spectrumViewerDirective.directive('prcSpectrumViewer', function() {
         controller: 'SpectrumViewerDirectiveCtrl',
         scope: {
             sourceId: "=",
+            xlabel: "@",
+            ylabel: "@",
             isConsensus: "=",
             updateSpectrumSource: "="
         },
@@ -34,8 +36,8 @@ spectrumViewerDirective.controller('SpectrumViewerDirectiveCtrl', ['$scope',
                 // inject spectrum to SpeckTackle component
                 var chart = st.chart          // new chart
                     .ms()                 // of type MS
-                    .xlabel("M/Z")        // x-axis label
-                    .ylabel("Intensity"); // y-axis label
+                    .xlabel($scope.xlabel)        // x-axis label
+                    .ylabel($scope.ylabel); // y-axis label
                 chart.render("#spectrum-viewer");     // render chart
 
                 var handle = st.data          // new handler
