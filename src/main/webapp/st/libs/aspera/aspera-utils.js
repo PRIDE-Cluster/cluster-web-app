@@ -3,15 +3,8 @@
  * User: florian
  * Date: 14/02/13
  * Time: 12:29
- * To change this template use File | Settings | File Templates.
  */
 
-
-function asperaDownload(sourceURL)
-{
-  document.getElementById('aspera-web').startDownload(sourceURL);
-
-}
 
 window.onload = function() {
     // Is Aspera Connect installed?

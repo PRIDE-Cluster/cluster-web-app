@@ -1,64 +1,56 @@
-<prc-local-header></prc-local-header>
+<prc-local-header menu="libraries"></prc-local-header>
 
 <div id="content" role="main" class="grid_24 clearfix view-animate-container" ng-controller="SpectrumLibrariesViewCtrl">
     <!-- If you require a breadcrumb trail, its root should be your service.
     You don't need a breadcrumb trail on the homepage of your service... -->
     <nav id="breadcrumb">
         <p>
-            <a href="#">PRIDE Cluster</a> &gt;
+            <a href="/">PRIDE Cluster</a> &gt;
             Spectrum Libraries
         </p>
     </nav>
 
-
     <section class="alpha grid_18">
-        <h2 id="spLib">Using the PRIDE spectral libraries</h2>
+        <h2 id="spInt">Spectrum libraries</h2>
 
-        <p>PRIDE spectral libraries do not contain protein annotations. Instead, you should use your spectral search
-            engine's inbuilt mapping function to map the identified peptides to a protein database of your choice.
-
-        <h3>Spectra ST</h3>
-        <p>1. Convert the library into SpectraST's binary format</p>
-
-        <p class="code">
-            spectrast -cNpride_human-2012_06 pride_human-2012_06.msp
-        </p>
-
-        <p>2. Search the library and add protein annotations (threshold of 3.0 m/z, search all charge states,
-            load library into memory)</p>
-
-        <p class="code">spectrast -sR -sM3.0 -sz -sLpride_human-2012_06.splib -sDswissprot_human.fasta
-            spectra.mgf</p>
-
-        <p>For more information on how to use SpectraST please refer to the SpectraST
-            <a href="http://tools.proteomecenter.org/wiki/index.php?title=Software:SpectraST">documentation</a>.
-        </p>
+        <p>Introduction</p>
     </section>
-
     <section class="omega grid_6">
         <h3>Menu</h3>
         <ul id="secondary-nav">
+            <!--TODO: Add active menu class="active" and ideally move the menu when you click-->
             <li class="first">
-                <a ng-click="jumpTo('spLib')">Using the PRIDE spectral libraries</a>
-                <!--<a ng-href="##spLib">Using the PRIDE spectral libraries</a>-->
+                <a ng-click="jumpTo('spInt')">Spectrum libraries</a>
+            </li>
+            <li >
+                <a ng-click="jumpTo('latRel')">Latest Release</a>
             </li>
             <li class="last">
-                <a ng-click="jumpTo('latRel')">Latest Release</a>
-                <!--<a ng-href="##latRel">Latest Release</a>-->
+                <a ng-click="jumpTo('spLib')">Using the PRIDE spectral libraries</a>
             </li>
-
         </ul>
     </section>
 
-    <section class="grid_24">
-        <h2 id="latRel">Latest Release</h2>
 
-        <div>
-            <h3>Release Date: {{ latestRelease.releaseDate }}</h3>
-
-            <h3>Version: {{ latestRelease.version }}</h3>
+    <h2 id="latRel">Latest Release</h2>
+    <section class="grid_18 alpha">
+        <h3>Release Date: {{ latestRelease.releaseDate }}</h3>
+        <h3>Version: {{ latestRelease.version }}</h3>
+    </section>
+    <section class="grid_6 omega">
+        <!--Aspera application object-->
+        <div class="aspera-content">
+            <object id="aspera-web" type="application/x-aspera-web" width="0" height="0"></object>
         </div>
 
+        <h5 ng-show="asperaplugincheck()">
+            <a href="http://www.asperasoft.com/connect/" class="icon icon-functional" data-icon="=">
+                Fast Download with (<a href="http://asperasoft.com/">Aspera</a>)
+            </a>
+        </h5>
+    </section>
+
+    <section class="grid_24">
         <!--<section class="animate-repeat" ng-repeat="spectrumLibrary in latestRelease.spectrumLibraries">-->
         <section class="animate-repeat" ng-repeat="spectrumLibrary in latestRelease.spectralLibraries">
 
@@ -91,24 +83,50 @@
                 </div>
                 <div class="grid_20 push_2 links">
                     <div class="grid_12" ng-repeat="downloadUrl in spectrumLibrary.downloadURLs">
-                        <a class="button" ng-href="{{downloadUrl.url}}">{{downloadUrl.protocol}} Download</a>
+
+                        <a ng-if="downloadUrl.protocol == 'FTP'"
+                           class="button"
+                           ng-href="{{downloadUrl.url}}">
+                            {{downloadUrl.protocol}} Download
+                        </a>
+                        <a ng-if="downloadUrl.protocol == 'ASPERA'"
+                           ng-hide="asperaplugincheck()"
+                           class="button"
+                           ng-href=""
+                           ng-click="asperaDownload(downloadUrl.url)">
+                            {{downloadUrl.protocol}} Download
+                        </a>
                     </div>
+
                 </div>
             </div>
         </section>
-
-
-        <!--Aspera application object-->
-        <div class="aspera-content">
-            <object id="aspera-web" type="application/x-aspera-web" width="0" height="0"></object>
-        </div>
-        <a ng-href="/libraries" class="aspera-content"
-           onClick="asperaDownload('fasp://prd_ascp@fasp.ebi.ac.uk/pride/resources/spectral-libraries/1.0.0/pride_arabidopsis-2014_09.msp.gz?auth=no&bwcap=300000&targetrate=100p&policy=fair&enc=none')">
-            Aspera2 Download</a>
-        <h5 class="aspera-plugin-link aspera-content-hidden">
-            <a href="http://www.asperasoft.com/connect/" class="icon icon-functional" data-icon="=">
-                Fast Download (<a href="http://asperasoft.com/">Aspera</a>)
-            </a>
-        </h5>
     </section>
+
+
+    <section class="grid_18 alpha">
+        <h2 id="spLib">Using the PRIDE Spectrum libraries</h2>
+
+        <p>PRIDE spectrum libraries do not contain protein annotations. Instead, you should use your spectrum search
+            engine's inbuilt mapping function to map the identified peptides to a protein database of your choice.
+
+        <h3>Spectra ST</h3>
+
+        <p>1. Convert the library into SpectraST's binary format</p>
+
+        <p class="code">
+            spectrast -cNpride_human-2012_06 pride_human-2012_06.msp
+        </p>
+
+        <p>2. Search the library and add protein annotations (threshold of 3.0 m/z, search all charge states,
+            load library into memory)</p>
+
+        <p class="code">spectrast -sR -sM3.0 -sz -sLpride_human-2012_06.splib -sDswissprot_human.fasta
+            spectra.mgf</p>
+
+        <p>For more information on how to use SpectraST please refer to the SpectraST
+            <a href="http://tools.proteomecenter.org/wiki/index.php?title=Software:SpectraST">documentation</a>.
+        </p>
+    </section>
+
 </div>

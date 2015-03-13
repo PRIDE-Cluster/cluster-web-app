@@ -12,7 +12,16 @@ localHeaderDirective.directive('prcLocalHeader', function() {
     return {
         restrict: 'E',
         scope: {
+          'menu':'@'
+        },
+        replace: true,
+        link: function (scope, element, attrs) {
 
+            scope.checkActive = function (val) {
+                console.log('Value ' + val);
+
+                return val === attrs.menu ? 'active' : null;
+            }
         },
         controller: 'LocalHeaderCtrl',
         templateUrl: 'components/directives/localHeader-directive/localHeader-directive.html'
