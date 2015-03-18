@@ -5,7 +5,7 @@
     You don't need a breadcrumb trail on the homepage of your service... -->
     <nav id="breadcrumb">
         <p>
-            <a href="/">PRIDE Cluster</a> &gt;
+            <a href="#/">PRIDE Cluster</a> &gt;
             Spectrum Libraries
         </p>
     </nav>
@@ -51,8 +51,7 @@
     </section>
 
     <section class="grid_24">
-        <!--<section class="animate-repeat" ng-repeat="spectrumLibrary in latestRelease.spectrumLibraries">-->
-        <section class="animate-repeat" ng-repeat="spectrumLibrary in latestRelease.spectralLibraries">
+        <section class="animate-repeat" ng-repeat="spectrumLibrary in latestRelease.spectrumLibraries">
 
             <div class="grid_8 spectral-library">
                 <div class="grid_24">
@@ -60,7 +59,7 @@
                         <h4>{{ spectrumLibrary.speciesName }}</h4>
                     </div>
                     <div class="grid_6 omega">
-                        <img class="species-img" ng-src="{{ '/img/' + spectrumLibrary.taxonomyId + '.svg'}}"
+                        <img class="species-img" ng-src="{{ './img/' + spectrumLibrary.taxonomyId + '.svg'}}"
                              title="Download">
                     </div>
                 </div>
@@ -92,6 +91,7 @@
                         <a ng-if="downloadUrl.protocol == 'ASPERA'"
                            ng-hide="asperaplugincheck()"
                            class="button"
+                           style="cursor: pointer"
                            ng-href=""
                            ng-click="asperaDownload(downloadUrl.url)">
                             {{downloadUrl.protocol}} Download

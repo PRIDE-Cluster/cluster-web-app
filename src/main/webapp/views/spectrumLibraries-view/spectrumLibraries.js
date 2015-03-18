@@ -39,10 +39,7 @@ spectrumLibrariesView.controller('SpectrumLibrariesViewCtrl', ['$scope', '$locat
         };
 
         $scope.asperaDownload = function(sourceURL) {
-            console.log(sourceURL);
-            var sourceURL2 = 'fasp://prd_ascp@fasp.ebi.ac.uk/pride/data/cluster/spectrum-libraries/1.0.0/pride_arabidopsis-2014_09.msp.gz?auth=no&bwcap=300000&targetrate=100p&policy=fair&enc=none';
-            $document.prop('aspera-web').startDownload(sourceURL2);
-
+            $document.prop('aspera-web').startDownload(sourceURL + '?auth=no&bwcap=300000&targetrate=100p&policy=fair&enc=none');
         };
 
         $scope.latestRelease = SpectrumLibrary.latest({},function(spectrumLibraries){});

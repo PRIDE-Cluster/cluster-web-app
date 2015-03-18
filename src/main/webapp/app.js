@@ -43,16 +43,11 @@ var prideClusterApp = angular.module('prideClusterApp', [
 ]);
 
 /* Default routing (not managed by any other View) */
-prideClusterApp.config(['$routeProvider', '$locationProvider',
-    function($routeProvider, $locationProvider) {
+prideClusterApp.config(['$routeProvider',
+    function($routeProvider) {
         $routeProvider.
             otherwise({
                 redirectTo: "/"
-
             });
-
-        $locationProvider.html5Mode(true);
-        $locationProvider.hashPrefix('!');
-
     }
 ]);

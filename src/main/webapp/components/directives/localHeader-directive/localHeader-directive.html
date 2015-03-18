@@ -4,7 +4,7 @@
     <!-- NB: for additional title style patterns, see http://frontier.ebi.ac.uk/web/style/patterns -->
 
     <div class="grid_12 alpha" id="local-title">
-        <h1><a href="/" title="Back to PRIDE Cluster homepage">PRIDE Cluster</a></h1>
+        <h1><a href="#" title="Back to PRIDE Cluster homepage">PRIDE Cluster</a></h1>
     </div>
 
     <!-- /local-title -->
@@ -22,9 +22,9 @@
                     </label>
                     <!-- Include some example searchterms - keep them short and few! -->
                     <span class="examples">Examples:
-                        <a href="/list?q=elisn&page=1&size=10">ELISN</a>,
-                        <a href="/list?q=ehewlrk&page=1&size=10">EHEWLRK</a>,
-                        <a href="/list?q=TDRYTIHSQLEHLQSK&page=1&size=10">TDRYTIHSQLEHLQSK</a>
+                        <a href="#/list?q=elisn&page=1&size=10">ELISN</a>,
+                        <a href="#/list?q=ehewlrk&page=1&size=10">EHEWLRK</a>,
+                        <a href="#/list?q=TDRYTIHSQLEHLQSK&page=1&size=10">TDRYTIHSQLEHLQSK</a>
                     </span>
                 </div>
                 <div class="right">
@@ -44,17 +44,17 @@
     <nav>
         <!-- TODO needs the active class need to be dynamic-->
         <ul class="grid_24" id="local-nav">
-            <li class="first" ng-class="checkActive('home')"><a href="/">Home</a></li>
-            <li ng-class="checkActive('list')"><a href="/list" >Peptide Search</a></li>
-            <li ng-class="checkActive('libraries')"><a href="/libraries">Spectrum Libraries</a></li>
-            <li ng-class="checkActive('help')"><a href="/" >Help</a></li>
-            <li class="last" ng-class="checkActive('about')" ><a href="/">About PRIDE Cluster</a></li>
+            <li class="first" ng-class="checkActive('home')"><a href="#/">Home</a></li>
+            <li ng-class="checkActive('list')"><a href="#/list" >Peptide Search</a></li>
+            <li ng-class="checkActive('libraries')"><a href="#/libraries">Spectrum Libraries</a></li>
+            <li ng-class="checkActive('help')"><a href="#/" >Help</a></li>
+            <li class="last" ng-class="checkActive('about')" ><a ng-href="#/">About PRIDE Cluster</a></li>
             <!-- If you need to include functional (as opposed to purely navigational) links in your local menu,
                  add them here, and give them a class of "functional". Remember: you'll need a class of "last" for
                  whichever one will show up last...
                  For example: -->
-            <li class="functional"><a href="/" class="icon icon-generic" data-icon="\">Feedback</a></li>
-            <li class="functional"><a href="/" class="icon icon-functional" data-icon="r">Share</a></li>
+            <li class="functional"><a href="#" class="icon icon-generic" data-icon="\">Feedback</a></li>
+            <li class="functional"><a href="#" class="icon icon-functional" data-icon="r">Share</a></li>
         </ul>
     </nav>
 

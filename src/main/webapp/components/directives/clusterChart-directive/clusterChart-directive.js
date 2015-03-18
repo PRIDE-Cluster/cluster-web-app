@@ -68,7 +68,7 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', '$route
                     });
                     chart.tooltipContent(function(key, x, y) {
                         var item = y - pageOffset;
-                        return '<h4>'+ clusters.results[item].peptideSequence + '</h4>' +
+                        return '<h4>'+ clusters.results[item].sequence + '</h4>' +
                         '<h6>'+ clusters.results[item].numberOfSpectra + ' spectra</h6>' +
                         '<h6>Prec. M/Z '+ clusters.results[item].averagePrecursorMz + '</h6>' +
                         '<h6>Prec. Charge '+ clusters.results[item].averagePrecursorCharge + '</h6>';
