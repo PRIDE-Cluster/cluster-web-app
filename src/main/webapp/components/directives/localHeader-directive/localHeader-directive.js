@@ -18,8 +18,6 @@ localHeaderDirective.directive('prcLocalHeader', function() {
         link: function (scope, element, attrs) {
 
             scope.checkActive = function (val) {
-                console.log('Value ' + val);
-
                 return val === attrs.menu ? 'active' : null;
             }
         },
@@ -34,7 +32,7 @@ localHeaderDirective.controller('LocalHeaderCtrl', ['$scope', '$routeParams', '$
         $scope.searchTerm = $routeParams.q;
 
         function updateState() {
-            $location.path("#/list");
+            $location.path("list");
             $location.search({
                 q:$scope.searchTerm,
                 page:$routeParams.page,
