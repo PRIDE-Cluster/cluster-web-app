@@ -13,6 +13,10 @@ div.rn-carousel-indicator {
 }
 
 ul[rn-carousel] {
-    height: 275px;
+    height: 300px;
     min-height: 100%;
+}
+
+p {
+    margin-top: 5px;
 }
