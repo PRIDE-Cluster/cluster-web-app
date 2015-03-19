@@ -10,8 +10,8 @@
                 <!--<h3>Cluster {{cluster.id}}</h3>-->
                 <!--</span>-->
             <span class="grid_24">
-                <h4 ng-show="cluster.peptideSequence.length<=20">{{cluster.peptideSequence}}</h4>
-                <h4 ng-show="cluster.peptideSequence.length>20">{{cluster.peptideSequence | limitTo: 20 }} ..</h4>
+                <h4 ng-show="cluster.sequence.length<=20">{{cluster.sequence}}</h4>
+                <h4 ng-show="cluster.sequence.length>20">{{cluster.sequence | limitTo: 20 }} ..</h4>
             </span>
             <span class="grid_24">
                 <span class="grid_8"><h6>Spectra</h6><p>{{cluster.numberOfSpectra}}</p></span>

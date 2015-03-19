@@ -3,11 +3,11 @@
 PRIDE Cluster web-app
 =====================
 
-A web application for the *EBI PRIDE Cluster* resource. We use mostly [`AngularJS`](https://angularjs.org/) as 
-a framework for a *JavaEE* container-based web app. For visualisation [NVD3](https://github.com/novus/nvd3) and 
-[Angularjs-nvd3-directives](http://cmaurer.github.io/angularjs-nvd3-directives/) are used.  
+A web application for the *EBI PRIDE Cluster* resource. We use mostly [`AngularJS`](https://angularjs.org/) as
+a framework for a *JavaEE* container-based web app. For visualisation [NVD3](https://github.com/novus/nvd3) and
+[Angularjs-nvd3-directives](http://cmaurer.github.io/angularjs-nvd3-directives/) are used.
 
-In-dev prototype deployed here: [http://wwwdev.ebi.ac.uk/pride/cluster](http://wwwdev.ebi.ac.uk/pride/cluster). 
+In-dev prototype deployed here: [http://wwwdev.ebi.ac.uk/pride/cluster](http://wwwdev.ebi.ac.uk/pride/cluster).
 
 ### Project structure
 
@@ -29,22 +29,22 @@ Defines `AngularJS` directives and services. Each component folder is names as `
 the folder `clusterDetail-directive` contains code that defines the `<prc-cluster-detail/>` directive and the folder
 `cluster-service` contains code defining the `Cluster` service to retrieve data from the *PRIDE Cluster* web-service.
 
-### Directives 
+### Directives
 
-`<prc-cluster-detail>`  
+`<prc-cluster-detail>`
 
-Displays information about a given cluster specified by its attribute `clusterid`.  
+Displays information about a given cluster specified by its attribute `clusterid`.
 
-`<prc-cluster-list>`  
+`<prc-cluster-list>`
 
-Displays a list of cluster summaries for a given `query` and `sortField` attributes.  
-  
-### Services 
+Displays a list of cluster summaries for a given `query` and `sortField` attributes.
 
-`ClusterService`  
+### Services
 
-Provides methods to query the *PRIDE Cluster* web-service at the `clustersummary`  and `clusterdetail` end points.  
- 
+`ClusterService`
+
+Provides methods to query the *PRIDE Cluster* web-service at the `clustersummary`  and `clusterdetail` end points.
+
 ## Build cycle
 
 ### Install Dependencies
@@ -65,7 +65,7 @@ Behind the scenes this will also call `bower install`.  Once this is done, you s
 folders in your project.
 
 * `node_modules` - contains the npm packages for the tools we need
-* `src/main/webapp/app/bower_components` - contains the angular framework files
+* `src/main/webapp/bower_components` - contains the angular framework files
 
 *Note that the `bower_components` folder would normally be installed in the root folder but
 angular-seed changes this location through the `.bowerrc` file.  Putting it in the app folder makes
@@ -80,11 +80,11 @@ this server is:
 npm start
 ```
 
-Now browse to the app at `http://localhost:8000/app/index.html`.  
-Right now, in order to see any data we need to deploy the 
-[PRIDE Cluster WS](https://github.com/PRIDE-Cluster/cluster-web-service) 
-locally and have it producing some data. This is something to change in the 
-near future.  
+Now browse to the app at `http://localhost:8000/index.html`.
+Right now, in order to see any data we need to deploy the
+[PRIDE Cluster WS](https://github.com/PRIDE-Cluster/cluster-web-service)
+locally and have it producing some data. This is something to change in the
+near future.
 
 ## Testing
 

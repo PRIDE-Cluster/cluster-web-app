@@ -127,3 +127,71 @@ body {
 .animate-repeat.ng-enter.ng-enter-active {
     opacity:1;
 }
+
+.species-img {
+    width: 40px;
+    background: #ffffff;
+    border: double lightgrey;
+    border-radius: 8pt;
+    padding: 5pt;
+}
+
+.spectral-library {
+    background: #e9fff4;
+    border-bottom: solid #ffffff 10px;
+    padding-bottom: 15px;
+    padding-top: 5px;
+
+}
+
+.spectral-library h4 {
+    border-bottom: 1px dashed #009488;
+}
+
+
+.links a {
+    color: #ffffff;
+    border-bottom-style: none;
+}
+
+.button {
+    background: #38b4a9;
+    background-image: -webkit-linear-gradient(top, #37A89D, #008994);
+    background-image: -moz-linear-gradient(top, #37A89D, #008994);
+    background-image: -ms-linear-gradient(top, #37A89D, #008994);
+    background-image: -o-linear-gradient(top, #37A89D, #008994);
+    background-image: linear-gradient(to bottom, #37A89D, #009ea9);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.button:hover {
+    background: #3DCABF;
+    background-image: -webkit-linear-gradient(top, #3DCABF, #009EA9);
+    background-image: -moz-linear-gradient(top, #3DCABF, #009EA9);
+    background-image: -ms-linear-gradient(top, #3DCABF, #009EA9);
+    background-image: -o-linear-gradient(top, #3DCABF, #009EA9);
+    background-image: linear-gradient(to bottom, #3DCABF, #009EA9);
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.code {
+    font: 1em 'Courier New', Courier, Fixed, monospace;
+    font-size : 100%;
+    color: #000;
+    background : #DFDFDF no-repeat left top;
+    overflow : auto;
+    text-align:left;
+    border : 1px dashed #666666;
+    padding : 5px 15px 5px 25px;
+    margin:1em 0 1em 0;
+    line-height:17px;
+    font-weight:normal!important;
+    font-family: monospace;
+}
+

@@ -14,7 +14,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.clusterChartView',
     'prideClusterApp.clusterDetailView',
     'prideClusterApp.spectralSearchView',
-    'prideClusterApp.spectralLibrariesView',
+    'prideClusterApp.spectrumLibrariesView',
 
     /* Directives: reusable view+controller components */
     'prideClusterApp.localHeaderDirective',
@@ -36,7 +36,10 @@ var prideClusterApp = angular.module('prideClusterApp', [
 
     /* Services: singletons used to access the backend or share data between modules */
     'prideClusterApp.clusterService',
+    'prideClusterApp.psmService',
+    'prideClusterApp.spectrumLibraryService',
     'prideClusterApp.projectService'
+
 ]);
 
 /* Default routing (not managed by any other View) */
@@ -45,7 +48,6 @@ prideClusterApp.config(['$routeProvider',
         $routeProvider.
             otherwise({
                 redirectTo: "/"
-
             });
     }
 ]);

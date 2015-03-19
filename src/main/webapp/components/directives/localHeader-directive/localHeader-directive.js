@@ -12,7 +12,14 @@ localHeaderDirective.directive('prcLocalHeader', function() {
     return {
         restrict: 'E',
         scope: {
+          'menu':'@'
+        },
+        replace: true,
+        link: function (scope, element, attrs) {
 
+            scope.checkActive = function (val) {
+                return val === attrs.menu ? 'active' : null;
+            }
         },
         controller: 'LocalHeaderCtrl',
         templateUrl: 'components/directives/localHeader-directive/localHeader-directive.html'
@@ -25,7 +32,7 @@ localHeaderDirective.controller('LocalHeaderCtrl', ['$scope', '$routeParams', '$
         $scope.searchTerm = $routeParams.q;
 
         function updateState() {
-            $location.path("/list");
+            $location.path("list");
             $location.search({
                 q:$scope.searchTerm,
                 page:$routeParams.page,

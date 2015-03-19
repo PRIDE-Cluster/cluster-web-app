@@ -7,13 +7,13 @@ var homePageView = angular.module('prideClusterApp.homePageView', ['ngRoute'])
 
 /**
  * Through routing we associate html templates with behaviour.
- * In this case the homaPage.html template is associated with the HomePageCtrl when the app
+ * In this case the homePage.html template is associated with the HomePageCtrl when the app
  * navigates to the / url
  */
 homePageView.config(['$routeProvider',
         function($routeProvider) {
             $routeProvider.when('/', {
-                templateUrl: 'views/homePage-view/homaPage.html',
+                templateUrl: 'views/homePage-view/homePage.html',
                 controller: 'HomePageCtrl'
             });
         }

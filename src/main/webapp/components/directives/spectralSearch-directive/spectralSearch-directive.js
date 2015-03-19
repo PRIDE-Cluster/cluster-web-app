@@ -32,7 +32,7 @@ spectralSearchDirective.controller('SpectralSearchDirectiveCtrl', ['$scope', 'Cl
                 },
                 function(clusters) {
 //                    console.log("Total results is " + clusters.totalResults);
-                    $scope.clusterSequence = clusters.results[0].peptideSequence;
+                    $scope.clusterSequence = clusters.results[0].sequence;
                     $scope.clusterId = clusters.results[0].id;
                     $scope.setSource(clusters.results[0].id, true);
 
