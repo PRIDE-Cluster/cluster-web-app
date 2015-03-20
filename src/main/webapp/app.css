@@ -57,15 +57,15 @@ body {
 }
 
 .cluster-summary h4 {
-    color: #ffffff;
+    color: #3C6363;
     border-bottom: dashed;
     border-bottom-width: 1px;
-    border-bottom-color: #ffffff;
+    border-bottom-color: #64B0B0;
     /*border-bottom-color: #808080;*/
 }
 
 .HIGH {
-    background-color: #eeeeee;
+    background-color: #ffffff;
     margin-top: 1.5em;
     margin-bottom: 0em;
 }
@@ -95,10 +95,10 @@ body {
 }
 
 .cluster-detail-panel h4 {
-    color: #000000;
+    color: #3C6363;
     border-bottom: dashed;
     border-bottom-width: 1px;
-    border-bottom-color: #000000;
+    border-bottom-color: #64B0B0;
     /*border-bottom-color: #808080;*/
 }
 
@@ -193,5 +193,12 @@ body {
     line-height:17px;
     font-weight:normal!important;
     font-family: monospace;
+}
+
+div.line-bottom {
+    border-bottom: dashed #64B0B0 1px;
+}
+div.line-left {
+    border-left: dashed #64B0B0 1px;
 }
 

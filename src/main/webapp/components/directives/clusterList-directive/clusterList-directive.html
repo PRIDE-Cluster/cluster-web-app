@@ -1,29 +1,52 @@
 <!--Results-->
 <div class="clusters">
-    <section class="grid_24">
+    <div class="grid_24 line-bottom">
         <prc-cluster-list-paging total-results="totalResults"></prc-cluster-list-paging>
-    </section>
-    <div class="animate-repeat" ng-repeat="cluster in clusters">
-        <section class="grid_8 cluster-summary {{cluster.clusterQuality}}">
-            <a href="#/cluster/{{cluster.id}}">
-                <!--<span class="grid_24">-->
-                <!--<h3>Cluster {{cluster.id}}</h3>-->
-                <!--</span>-->
-            <span class="grid_24">
-                <h4 ng-show="cluster.sequence.length<=20">{{cluster.sequence}}</h4>
-                <h4 ng-show="cluster.sequence.length>20">{{cluster.sequence | limitTo: 20 }} ..</h4>
-            </span>
-            <span class="grid_24">
-                <span class="grid_8"><h6>Spectra</h6><p>{{cluster.numberOfSpectra}}</p></span>
-                <span class="grid_12 push_4"><h6>Max ratio</h6><p>{{cluster.maxRatio | number:3}}</p></span>
-            </span>
-            <span class="grid_24">
-                <span class="grid_8"><h6>Prec. M/Z</h6><p>{{cluster.averagePrecursorMz | number:3}}</p></span>
-                <span class="grid_12 push_4"><h6>Prec. Charge</h6><p>{{cluster.averagePrecursorCharge |
-                    number:2}}</p></span>
-            </span>
+    </div>
+    <div class="grid_24">
+        <div class="grid_5">
+            <h4>Show results for</h4>
+            <h6>Species</h6>
+            <ul>
+                <li>Species 1</li>
+                <li>Species 2</li>
+                <li>Species 3</li>
+            </ul>
+            <h6>Tissue</h6>
+            <ul>
+                <li>Tissue 1</li>
+                <li>Tissue 2</li>
+                <li>Tissue 3</li>
+            </ul>
+            <h6>Instrument</h6>
+            <ul>
+                <li>Instrument 1</li>
+                <li>Instrument 2</li>
+                <li>Instrument 3</li>
+            </ul>
+        </div>
+        <div class="grid_18 push_1">
+            <div class="animate-repeat" ng-repeat="cluster in clusters">
+                <section class="grid_24 cluster-summary {{cluster.clusterQuality}}">
+                    <a href="#/cluster/{{cluster.id}}">
+                        <!--<span class="grid_24">-->
+                        <!--<h3>Cluster {{cluster.id}}</h3>-->
+                        <!--</span>-->
+                    <span class="grid_24">
+                        <h4 ng-show="cluster.sequence.length<=20">{{cluster.sequence}}</h4>
+                        <h4 ng-show="cluster.sequence.length>20">{{cluster.sequence | limitTo: 20 }} ..</h4>
+                    </span>
+                    <span class="grid_24">
+                        <span class="grid_6"><h6>Spectra</h6><p>{{cluster.numberOfSpectra}}</p></span>
+                        <span class="grid_6"><h6>Max ratio</h6><p>{{cluster.maxRatio | number:3}}</p></span>
+                        <span class="grid_6"><h6>Prec. M/Z</h6><p>{{cluster.averagePrecursorMz | number:3}}</p></span>
+                        <span class="grid_6"><h6>Prec. Charge</h6><p>{{cluster.averagePrecursorCharge |
+                            number:2}}</p></span>
+                    </span>
 
-            </a>
-        </section>
+                    </a>
+                </section>
+            </div>
+        </div>
     </div>
 </div>
