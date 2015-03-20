@@ -33,11 +33,11 @@ clusterListFiltersDirective.controller('ClusterListFiltersCtrl', ['$scope', '$ro
 
         // attach filter-submit function
         $scope.listSubmit = function() {
-            updateState("/list");
+            updateState("list");
         }
 
         $scope.chartSubmit = function() {
-            updateState("/chart");
+            updateState("chart");
         }
 
     }
