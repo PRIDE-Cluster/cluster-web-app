@@ -12,17 +12,23 @@
                 <li>Species 2</li>
                 <li>Species 3</li>
             </ul>
-            <h6>Tissue</h6>
+            <h6>Tissues</h6>
             <ul>
                 <li>Tissue 1</li>
                 <li>Tissue 2</li>
                 <li>Tissue 3</li>
             </ul>
-            <h6>Instrument</h6>
+            <h6>Instruments</h6>
             <ul>
                 <li>Instrument 1</li>
                 <li>Instrument 2</li>
                 <li>Instrument 3</li>
+            </ul>
+            <h6>Modifications</h6>
+            <ul>
+                <li>Modification 1</li>
+                <li>Modification 2</li>
+                <li>Modification 3</li>
             </ul>
         </div>
         <div class="grid_18 push_1">
@@ -37,11 +43,13 @@
                         <h4 ng-show="cluster.sequence.length>20">{{cluster.sequence | limitTo: 20 }} ..</h4>
                     </span>
                     <span class="grid_24">
-                        <span class="grid_6"><h6>Spectra</h6><p>{{cluster.numberOfSpectra}}</p></span>
-                        <span class="grid_6"><h6>Max ratio</h6><p>{{cluster.maxRatio | number:3}}</p></span>
-                        <span class="grid_6"><h6>Prec. M/Z</h6><p>{{cluster.averagePrecursorMz | number:3}}</p></span>
-                        <span class="grid_6"><h6>Prec. Charge</h6><p>{{cluster.averagePrecursorCharge |
-                            number:2}}</p></span>
+                        <span class="grid_4"><h6>#Spectra</h6><p>{{cluster.totalNumberOfSpectra}}</p></span>
+                        <span class="grid_4"><h6>Max ratio</h6><p>{{cluster.maxRatio | number:2}}</p></span>
+                        <span class="grid_4"><h6>Precursor</h6><p>{{cluster.averagePrecursorMz | number:2}} /{{cluster.averagePrecursorCharge |
+                            number:0}}</p></span>
+                        <span class="grid_4"><h6>#Projects</h6><p>{{cluster.totalNumberOfProjects}}</p></span>
+                        <span class="grid_4"><h6>#Species</h6><p>{{cluster.totalNumberOfSpecies}}</p></span>
+                        <span class="grid_4"><h6>#Modifications</h6><p>{{cluster.totalNumberOfPTMs}}</p></span>
                     </span>
 
                     </a>
