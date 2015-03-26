@@ -11,7 +11,10 @@ var clusterPrimaryPeptideDirective = angular.module('prideClusterApp.clusterPrim
 clusterPrimaryPeptideDirective.directive('prcClusterPrimaryPeptide', function() {
     return {
         restrict: 'EA',
-        scope: { cluster : '=' },
+        scope: {
+            sequence : '=',
+            modifications: '='
+        },
         templateUrl: 'components/directives/clusterPrimaryPeptide-directive/clusterPrimaryPeptide-directive.html'
     };
 });

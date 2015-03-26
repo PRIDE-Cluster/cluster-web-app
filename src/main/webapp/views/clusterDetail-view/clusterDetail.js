@@ -28,6 +28,10 @@ clusterDetailView.controller('ClusterDetailViewCtrl', ['$scope', '$routeParams',
         $scope.clusterId = $routeParams.clusterId;
         $scope.cluster = ClusterDetail.get({clusterId: $routeParams.clusterId}, function (cluster) {
             $scope.cluster = cluster;
+            $scope.mods = [];
+            for (i=0; i<cluster.modifications.length; i++) {
+                $scope.mods[cluster.modifications[i].mainPosition-1] = cluster.modifications[i].name;
+            }
         });
         $scope.viewerId = "consensusSpectrumViewer-" + $routeParams.clusterId;
     }
