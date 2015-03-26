@@ -27,6 +27,8 @@ clusterListDirective.directive('prcClusterList', function() {
 clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routeParams', 'ClusterSummary',
     function($scope, $routeParams, ClusterSummary) {
 
+
+
         ClusterSummary.list(
             {
                 queryTerm:$scope.queryTerm,
@@ -40,6 +42,16 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
                 $scope.pageNumber = $routeParams.page;
                 $scope.pageSize = $routeParams.size;
                 $scope.numPages = Math.floor($scope.totalResults / $scope.pageSize);
+
+                // Prepare modifications to be displayed
+                for (var j=0; j<$scope.clusters.length; j++) {
+                    var cluster = $scope.clusters[j];
+                    cluster.modificationNames = [];
+                    for (var i = 0; i < cluster.modifications.length; i++) {
+                        cluster.modificationNames[cluster.modifications[i].mainPosition - 1] =
+                            cluster.modifications[i].name;
+                    }
+                };
             }
         );
     }

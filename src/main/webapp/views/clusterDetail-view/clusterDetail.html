@@ -19,7 +19,14 @@
         <div class="grid_24">
             <div class="grid_24 cluster-detail-panel">
                 <h4>Primary Peptide</h4>
-                <prc-cluster-primary-peptide sequence="cluster.sequence" modifications="mods"></prc-cluster-primary-peptide>
+                <span class="grid_20">
+                    <h2>
+                        <prc-peptide-sequence-viewer
+                                sequence="cluster.sequence"
+                                modifications="mods">
+                        </prc-peptide-sequence-viewer>
+                    </h2>
+                </span>
             </div>
             <!--<div class="grid_11 push_2 cluster-detail-panel">-->
                 <!--<h4>Modifications</h4>-->
