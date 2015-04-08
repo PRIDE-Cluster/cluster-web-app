@@ -13,7 +13,9 @@ peptideSequenceViewer.directive('prcPeptideSequenceViewer', function() {
         restrict: 'EA',
         scope: {
             sequence : '=',
-            modifications: '='
+            modifications: '=',
+            charge: '=',
+            mz: '='
         },
         templateUrl: 'components/directives/peptideSequenceViewer-directive/peptideSequenceViewer-directive.html'
     };

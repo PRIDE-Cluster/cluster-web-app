@@ -42,18 +42,20 @@
                         <h4>
                             <prc-peptide-sequence-viewer
                                     sequence="cluster.sequence"
-                                    modifications="cluster.modificationNames">
+                                    modifications="cluster.modificationNames"
+                                    charge="cluster.averagePrecursorCharge"
+                                    mz="cluster.averagePrecursorMz | number:3">
                             </prc-peptide-sequence-viewer>
                         </h4>
                     </span>
                     <span class="grid_24">
                         <span class="grid_4"><h6>#Spectra</h6><p>{{cluster.totalNumberOfSpectra}}</p></span>
-                        <span class="grid_4"><h6>Max ratio</h6><p>{{cluster.maxRatio | number:2}}</p></span>
-                        <span class="grid_4"><h6>Precursor</h6><p>{{cluster.averagePrecursorMz | number:2}} /{{cluster.averagePrecursorCharge |
-                            number:0}}</p></span>
+                        <span class="grid_4"><h6>Max ratio</h6><p>{{100 * cluster.maxRatio | number:2}}%</p></span>
+                        <!--<span class="grid_4"><h6>Precursor</h6><p>{{cluster.averagePrecursorMz | number:2}} /{{cluster.averagePrecursorCharge |-->
+                            <!--number:0}}</p></span>-->
                         <span class="grid_4"><h6>#Projects</h6><p>{{cluster.totalNumberOfProjects}}</p></span>
                         <span class="grid_4"><h6>#Species</h6><p>{{cluster.totalNumberOfSpecies}}</p></span>
-                        <span class="grid_4"><h6>#Modifications</h6><p>{{cluster.totalNumberOfModifications}}</p></span>
+                        <!--<span class="grid_4"><h6>#Modifications</h6><p>{{cluster.totalNumberOfModifications}}</p></span>-->
                     </span>
 
                     </a>

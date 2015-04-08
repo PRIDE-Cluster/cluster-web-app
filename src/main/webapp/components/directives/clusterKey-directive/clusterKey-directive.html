@@ -1,38 +1,47 @@
-<div class="grid_24">
-    <div class="grid_5">
-        <h6>Precursor</h6>
-        <p>{{cluster.averagePrecursorMz | number:3}} / {{cluster.averagePrecursorCharge | number:2}}</p>
+<!--<div class="grid_24">-->
+    <!--<div class="grid_5">-->
+        <!--<h6>Precursor</h6>-->
+        <!--<p>{{cluster.averagePrecursorMz | number:3}} / {{cluster.averagePrecursorCharge | number:2}}</p>-->
+    <!--</div>-->
+    <div class="grid_8">
+        <span class="grid_9"><h6># Spectra</h6></span>
+        <span class="grid_15"><h6>
+            {{cluster.numberOfSpectra}}/{{cluster.totalNumberOfSpectra}}
+            ({{100 * cluster.numberOfSpectra/cluster.totalNumberOfSpectra}}%)
+        </h6></span>
     </div>
-    <div class="grid_5">
-        <h6># Species</h6>
-        <p>{{cluster.numberOfSpecies}} / {{cluster.totalNumberOfSpecies}}</p>
+    <div class="grid_8">
+        <span class="grid_10"><h6># Projects</h6></span>
+        <span class="grid_14"><h6>
+            {{cluster.numberOfProjects}}/{{cluster.totalNumberOfProjects}}
+            ({{100 * cluster.numberOfProjects/cluster.totalNumberOfProjects}}%)
+        </h6></span>
+    </div>
+    <div class="grid_8">
+        <span class="grid_9"><h6># Species</h6></span>
+        <span class="grid_15"><h6>
+            {{cluster.numberOfSpecies}}/{{cluster.totalNumberOfSpecies}}
+            ({{100 * cluster.numberOfSpecies/cluster.totalNumberOfSpecies}}%)
+        </h6></span>
     </div>
     <!--<div class="grid_4">-->
         <!--<h6># Modifications</h6>-->
         <!--<p>{{cluster.numberOfModifications}} / {{cluster.totalNumberOfModifications}}</p>-->
     <!--</div>-->
-    <div class="grid_5">
-        <h6># Spectra</h6>
-        <p>{{cluster.numberOfSpectra}} / {{cluster.totalNumberOfSpectra}}</p>
-    </div>
-    <div class="grid_5">
-        <h6># Projects</h6>
-        <p>{{cluster.numberOfProjects}} / {{cluster.totalNumberOfProjects}}</p>
-    </div>
-    <div class="grid_4">
-        <h6>Peptide Ratio</h6>
-        <p>{{cluster.maxRatio}}</p>
-        <!--<nvd3-bullet-chart-->
-                <!--data="maxRatioData"-->
-                <!--id="maxRatioChart"-->
-                <!--margin="{left:20,top:5,bottom:15,right:10}"-->
-                <!--width="475"-->
-                <!--height="35"-->
-                <!--interactive="true"-->
-                <!--tooltips="true"-->
-                <!--tooltipcontent="toolTipContentFunction()">-->
-            <!--<svg></svg>-->
-        <!--</nvd3-bullet-chart>-->
-    </div>
-</div>
+    <!--<div class="grid_4">-->
+        <!--<h6>Peptide Ratio</h6>-->
+        <!--<p>{{cluster.maxRatio}}</p>-->
+        <!--&lt;!&ndash;<nvd3-bullet-chart&ndash;&gt;-->
+                <!--&lt;!&ndash;data="maxRatioData"&ndash;&gt;-->
+                <!--&lt;!&ndash;id="maxRatioChart"&ndash;&gt;-->
+                <!--&lt;!&ndash;margin="{left:20,top:5,bottom:15,right:10}"&ndash;&gt;-->
+                <!--&lt;!&ndash;width="475"&ndash;&gt;-->
+                <!--&lt;!&ndash;height="35"&ndash;&gt;-->
+                <!--&lt;!&ndash;interactive="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;tooltips="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;tooltipcontent="toolTipContentFunction()">&ndash;&gt;-->
+            <!--&lt;!&ndash;<svg></svg>&ndash;&gt;-->
+        <!--&lt;!&ndash;</nvd3-bullet-chart>&ndash;&gt;-->
+    <!--</div>-->
+<!--</div>-->
 

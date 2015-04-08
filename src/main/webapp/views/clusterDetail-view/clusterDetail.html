@@ -19,29 +19,29 @@
         <div class="grid_24">
             <div class="grid_24 cluster-detail-panel">
                 <h4>Primary Peptide</h4>
-                <span class="grid_20">
+                <span class="grid_22">
                     <h2>
                         <prc-peptide-sequence-viewer
                                 sequence="cluster.sequence"
-                                modifications="mods">
+                                modifications="mods"
+                                charge="cluster.averagePrecursorCharge"
+                                mz="cluster.averagePrecursorMz | number:2">
                         </prc-peptide-sequence-viewer>
                     </h2>
                 </span>
+                <prc-cluster-key class="grid_16 alpha" cluster="cluster"></prc-cluster-key>
             </div>
-            <!--<div class="grid_11 push_2 cluster-detail-panel">-->
-                <!--<h4>Modifications</h4>-->
 
-            <!--</div>-->
         </div>
 
         <!--Second section: key info-->
-        <div class="grid_24">
-            <div class="grid_24 cluster-detail-panel">
-                <h4>Summary</h4>
-                <prc-cluster-key cluster="cluster"></prc-cluster-key>
-            </div>
+        <!--<div class="grid_24">-->
+            <!--<div class="grid_24 cluster-detail-panel">-->
+                <!--<h4>Summary</h4>-->
+                <!--<prc-cluster-key cluster="cluster"></prc-cluster-key>-->
+            <!--</div>-->
 
-        </div>
+        <!--</div>-->
 
         <!--Second section Projects & Publications and PTMs distribution-->
         <div class="grid_24">
