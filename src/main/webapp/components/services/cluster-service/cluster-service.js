@@ -71,10 +71,10 @@ clusterService.factory('ClusterSpecies', ['$resource',
         );
     }
 ]);
-clusterService.factory('ClusterPtms', ['$resource',
+clusterService.factory('ClusterModifications', ['$resource',
     function($resource){
         return $resource(
-            clusterWsUrl + '/:clusterId/ptms' + '?callback=JSON_CALLBACK',
+            clusterWsUrl + '/:clusterId/modifications' + '?callback=JSON_CALLBACK',
             {},
             {
                 get: {

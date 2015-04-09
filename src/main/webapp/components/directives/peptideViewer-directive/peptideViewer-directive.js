@@ -16,13 +16,14 @@ peptideViewerDirective.directive('prcPeptideViewer', ['ClusterPeptides', 'ngTabl
 
                 scope.peptides = peptides.clusteredPeptides;
 
-                scope.peptideTableParams = new ngTableParams({
+                scope.tableParams = new ngTableParams({
                     page: 1,            // show first page
                     count: 10           // count per page
                 }, {
                     total: scope.peptides.length, // length of data
                     getData: function($defer, params) {
-                        $defer.resolve(peptides.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                        scope.peptides_slice = scope.peptides.slice((params.page() - 1) * params.count(), params.page() * params.count());
+                        $defer.resolve(scope.peptides_slice);
                     }
                 });
             }

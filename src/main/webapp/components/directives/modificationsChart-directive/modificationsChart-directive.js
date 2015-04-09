@@ -1,19 +1,19 @@
 /**
- * @author Jose A. Dianes <jdianes@ebi.ac.uk>
+ * @author Jose A. Dianes <jadianes@gmail.com>
  *
  *
  */
 
-var ptmsChartDirective = angular.module('prideClusterApp.ptmsChartDirective', [])
+var modificationsChartDirective = angular.module('prideClusterApp.modificationsChartDirective', [])
 
-ptmsChartDirective.directive('prcPtmsChart', function() {
+modificationsChartDirective.directive('prcModificationsChart', function() {
     return {
         restrict: 'EA',
         scope: {
             sourceId : '='
         },
-        controller: 'PtmsChartDirectiveCtrl',
-        templateUrl: 'components/directives/ptmsChart-directive/ptmsChart-directive.html'
+        controller: 'ModificationsChartDirectiveCtrl',
+        templateUrl: 'components/directives/modificationsChart-directive/modificationsChart-directive.html'
     };
 });
 
@@ -23,15 +23,15 @@ ptmsChartDirective.directive('prcPtmsChart', function() {
  * individual Clusters. These details are assigned to model objects in order to be accessed later on
  * within the html template part of the view.
  */
-ptmsChartDirective.controller('PtmsChartDirectiveCtrl', ['$scope', 'ClusterPtms',
-    function($scope, ClusterPtms) {
+modificationsChartDirective.controller('ModificationsChartDirectiveCtrl', ['$scope', 'ClusterModifications',
+    function($scope, ClusterModifications) {
 
-        ClusterPtms.get({clusterId: $scope.sourceId}, function(ptms) {
+        ClusterModifications.get({clusterId: $scope.sourceId}, function(modifications) {
 
-            $scope.ptmsData = ptms.ptmCounts;
+            $scope.modificationsData = modifications.modificationCounts;
             $scope.xFunction = function(){
                 return function(d) {
-                    return d.ptmName;
+                    return d.modificationName;
                 };
             }
             $scope.yFunction = function(){
