@@ -1,24 +1,24 @@
 /**
  * @author Jose A. Dianes <jdianes@ebi.ac.uk>
  *
- * The prc-cluster-list-filters directive allows us to reuse a spectra visualisations using SpeckTackle.
+ * The prc-view-controls directive allows us to change view type.
  *
  */
 
-var clusterListFiltersDirective = angular.module('prideClusterApp.clusterListFiltersDirective', [])
+var viewControlsDirective = angular.module('prideClusterApp.viewControlsDirective', [])
 
-clusterListFiltersDirective.directive('prcClusterListFilters', function() {
+viewControlsDirective.directive('prcViewControls', function() {
     return {
-        restrict: 'E',
+        restrict: 'AE',
         scope: {
 
         },
-        controller: "ClusterListFiltersCtrl",
-        templateUrl: 'components/directives/clusterListFilters-directive/clusterListFilters-directive.html'
+        controller: "ViewControlsCtrl",
+        templateUrl: 'components/directives/viewControls-directive/viewControls-directive.html'
     };
 });
 
-clusterListFiltersDirective.controller('ClusterListFiltersCtrl', ['$scope', '$routeParams', '$location',
+viewControlsDirective.controller('ViewControlsCtrl', ['$scope', '$routeParams', '$location',
     function($scope, $routeParams, $location) {
 
         function updateState(view) {
