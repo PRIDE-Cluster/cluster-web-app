@@ -1,19 +1,22 @@
 <table ng-table="tableParams" class="table">
     <tr ng-repeat="peptide in peptides_slice">
         <td data-title="'Peptide'">
-            {{peptide.sequence}}
+            <prc-peptide-sequence-viewer
+                    sequence="peptide.sequence"
+                    modifications="peptide.mods"
+                    charge="cluster.averagePrecursorCharge"
+                    mz="cluster.averagePrecursorMz | number:2">
+            </prc-peptide-sequence-viewer>
+            <!--{{peptide.sequence}}-->
         </td>
-        <td data-title="'Modifications'">
-            <div ng-show="peptide.modifications.length<1">No modifications</div>
-            <div ng-repeat="modification in peptide.modifications">
-                {{modification.name}} at position {{modification.position}}
-            </div>
-        </td>
-        <td data-title="'Number of PSM'">
+        <td data-title="'# PSM'">
             {{peptide.numberOfPSMs}}
         </td>
-        <td data-title="'Number of Species'">
+        <td data-title="'# Species'">
             {{peptide.species.length}}
+        </td>
+        <td data-title="'# Projects'">
+            {{peptide.projectAccessions.length}}
         </td>
     </tr>
 </table>
