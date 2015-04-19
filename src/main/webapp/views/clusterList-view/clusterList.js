@@ -24,7 +24,7 @@ clusterListView.config(['$routeProvider',
  * for the view template to use.
  */
 clusterListView.controller('ClusterListViewCtrl', ['$scope', '$routeParams',
-    function($scope, $routeParams) {
+        function($scope, $routeParams) {
 
         if (!$routeParams.q) {
             $routeParams.q = "";
@@ -47,5 +47,18 @@ clusterListView.controller('ClusterListViewCtrl', ['$scope', '$routeParams',
             $scope.pageSize = $routeParams.size;
         }
 
+        if (!$routeParams.modFilters) {
+            $routeParams.modFilters = [];
+            $scope.modFilters = [];
+        } else {
+            $scope.modFilters = $routeParams.modFilters;
+        }
+
+        if (!$routeParams.speciesFilters) {
+            $routeParams.speciesFilters = [];
+            $scope.speciesFilters = [];
+        } else {
+            $scope.speciesFilters = $routeParams.speciesFilters;
+        }
     }
 ]);

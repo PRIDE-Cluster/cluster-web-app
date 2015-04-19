@@ -43,5 +43,19 @@ clusterChartView.controller('ClusterChartViewCtrl', ['$scope', '$routeParams',
         } else {
             $scope.pageSize = $routeParams.size;
         }
+
+        if (!$routeParams.modFilters) {
+            $routeParams.modFilters = [];
+            $scope.modFilters = [];
+        } else {
+            $scope.modFilters = $routeParams.modFilters;
+        }
+
+        if (!$routeParams.speciesFilters) {
+            $routeParams.speciesFilters = [];
+            $scope.speciesFilters = [];
+        } else {
+            $scope.speciesFilters = $routeParams.speciesFilters;
+        }
     }
 ]);

@@ -5,7 +5,7 @@
  *
  */
 
-var clusterListPagingDirective = angular.module('prideClusterApp.clusterListPagingDirective', [])
+var clusterListPagingDirective = angular.module('prideClusterApp.clusterListPagingDirective', []);
 
 clusterListPagingDirective.directive('prcClusterListPaging', function() {
 
@@ -25,12 +25,16 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$rout
         $scope.query = $routeParams.q;
         $scope.pageNumber = $routeParams.page;
         $scope.pageSize = $routeParams.size;
+        $scope.modFilters = $routeParams.modFilters;
+        $scope.speciesFilters = $routeParams.speciesFilters;
 
         function updateState() {
             $location.search({
                 q:$routeParams.q,
                 page:$scope.pageNumber,
-                size:$scope.pageSize
+                size:$scope.pageSize,
+                modFilters:$routeParams.modFilters,
+                speciesFilters:$routeParams.speciesFilters
             });
         }
 
@@ -59,14 +63,14 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$rout
                 $scope.pageNumber++;
                 updateState();
             }
-        }
+        };
 
         $scope.previousPage = function() {
             if ($scope.pageNumber!=1) {
                 $scope.pageNumber--;
                 updateState();
             }
-        }
+        };
 
         $scope.pageSizeChanged = function() {
             var newValue = $scope.pageSize;

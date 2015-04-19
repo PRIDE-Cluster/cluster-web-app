@@ -36,7 +36,9 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', '$route
             {
                 queryTerm:$scope.queryTerm,
                 pageNumber:$scope.pageNumber-1, // transform to 0-based paging
-                pageSize:$scope.pageSize
+                pageSize:$scope.pageSize,
+                modFilters:$scope.modFilters,
+                speciesFilters:$scope.speciesFilters
             },
             function(clusters) {
 
@@ -45,6 +47,8 @@ clusterChartDirective.controller('ClusterChartDirectiveCtrl', ['$scope', '$route
                 $scope.pageNumber = $routeParams.page;
                 $scope.pageSize = $routeParams.size;
                 $scope.numPages = Math.floor($scope.totalResults / $scope.pageSize);
+                $scope.modFilters = $routeParams.modFilters;
+                $scope.speciesFilters = $routeParams.speciesFilters;
 
                 var pageOffset = ($scope.pageNumber-1) * $scope.pageSize;
                 var pageOffsetEnd = pageOffset + parseInt($scope.pageSize);

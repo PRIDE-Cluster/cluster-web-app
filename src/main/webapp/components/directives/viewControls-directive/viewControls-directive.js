@@ -5,7 +5,7 @@
  *
  */
 
-var viewControlsDirective = angular.module('prideClusterApp.viewControlsDirective', [])
+var viewControlsDirective = angular.module('prideClusterApp.viewControlsDirective', []);
 
 viewControlsDirective.directive('prcViewControls', function() {
     return {
@@ -27,14 +27,16 @@ viewControlsDirective.controller('ViewControlsCtrl', ['$scope', '$routeParams', 
             $location.search({
                 q:$routeParams.q,
                 page:$routeParams.page,
-                size:$routeParams.size
+                size:$routeParams.size,
+                modFilters:$routeParams.modFilters,
+                speciesFilters:$routeParams.speciesFilters
             });
         }
 
         // attach filter-submit function
         $scope.listSubmit = function() {
             updateState("list");
-        }
+        };
 
         $scope.chartSubmit = function() {
             updateState("chart");

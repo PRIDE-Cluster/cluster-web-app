@@ -5,7 +5,7 @@
  *
  */
 
-var localHeaderDirective = angular.module('prideClusterApp.localHeaderDirective', [])
+var localHeaderDirective = angular.module('prideClusterApp.localHeaderDirective', []);
 
 localHeaderDirective.directive('prcLocalHeader', function() {
 
@@ -36,7 +36,9 @@ localHeaderDirective.controller('LocalHeaderCtrl', ['$scope', '$routeParams', '$
             $location.search({
                 q:$scope.searchTerm,
                 page:$routeParams.page,
-                size:$routeParams.size
+                size:$routeParams.size,
+                modFilters:$routeParams.modFilters,
+                speciesFilters:$routeParams.speciesFilters
             });
         }
 

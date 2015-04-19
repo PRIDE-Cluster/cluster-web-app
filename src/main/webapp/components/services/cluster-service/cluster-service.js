@@ -10,17 +10,24 @@
  * NOTE: the Cluster WS uses 0-based paging
  *
  */
-var clusterWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/cluster";
+//var clusterWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/cluster";
+var clusterWsUrl = "http://localhost:9091/pride/ws/cluster/cluster";
 var statsWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/stats";
 
-var clusterService = angular.module('prideClusterApp.clusterService', ['ngResource'])
+var clusterService = angular.module('prideClusterApp.clusterService', ['ngResource']);
 
 /* Services */
 clusterService.factory('ClusterSummary', ['$resource',
     function($resource) {
         return $resource(
-                clusterWsUrl + '/search?q=:queryTerm&page=:pageNumber&size=:pageSize&callback=JSON_CALLBACK',
-                {queryTerm:'', pageNumber:0, pageSize:10},
+                clusterWsUrl + '/search?q=:queryTerm&peptide=:peptide&modFilters:=modFilters&speciesFilters:=speciesFilters&facets=true&highlights=true&page=:pageNumber&size=:pageSize&callback=JSON_CALLBACK',
+                {
+                    queryTerm: '',
+                    pageNumber: 0,
+                    pageSize: 10,
+                    modFilters:[],
+                    speciesFilters:[]
+                },
                 {
                     list: {
                         method:'JSONP',
