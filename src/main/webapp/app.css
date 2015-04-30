@@ -202,3 +202,8 @@ div.line-left {
     border-left: dashed #64B0B0 1px;
 }
 
+.scroll-area {
+    height: 145px;
+    overflow: auto;
+    padding-bottom: 10px;
+}

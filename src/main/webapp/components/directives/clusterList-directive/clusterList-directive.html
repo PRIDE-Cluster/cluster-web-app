@@ -4,50 +4,37 @@
         <prc-cluster-list-paging total-results="totalResults"></prc-cluster-list-paging>
     </div>
     <div class="grid_24">
-        <div class="grid_5">
-
-            <!--<h4>Show results for</h4>-->
-
-            <!--<section>-->
-                <!--<h6>Species</h6>&lt;!&ndash; works but haven't found a way to abstract it to make it scalable for multiple filter groups  &ndash;&gt;-->
-                <!--<ul>-->
-                    <!--<li data-ng-repeat="(key, value) in speciesFacets | limitTo: maxSpecies">-->
-                        <!--{{key}} {{value}}-->
-                        <!--{{key}}<input type="checkbox" ng-model="speciesFacets[key]"></td>-->
-                    <!--</li>-->
-                <!--</ul>-->
-                <!--<span data-ng-show="maxSpecies<6" class="link" data-ng-click="maxSpecies = 100">More</span>-->
-                <!--<span data-ng-show="maxSpecies>5" class="link" data-ng-click="maxSpecies = 5">Less</span>-->
-            <!--</section>-->
+        <div class="grid_8 alpha">
 
             <h4>Show results for</h4>
 
             <section ng-if="speciesFacets.length > 0">
-                <h6>Species</h6>
-                <div ng-repeat="species in speciesFacets | limitTo: maxSpecies">
-                    <label class="checkbox">
-                        <input type="checkbox" ng-model="species.selected" data-ng-click="updateSpeciesFilters(species)"  />
-                        {{species.name}} <span>({{species.count}})</span>
-                    </label>
+                <h6>Species ({{speciesFacets.length}})</h6>
+                <p><input type="text" ng-model="spFilter"></p>
+                <div class="scroll-area">
+                    <div ng-repeat="species in speciesFacets | filter:spFilter">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-model="species.selected" data-ng-click="updateSpeciesFilters(species)" />
+                            {{species.name}} <span>({{species.count}})</span>
+                        </label>
+                    </div>
                 </div>
-                <!--<span data-ng-show="maxSpecies<6" class="link" data-ng-click="maxSpecies = 100">More</span>-->
-                <a data-ng-hide="speciesFacets.length<maxSpecies" ng-click="maxSpecies = 100">More</a>
-                <a data-ng-show="maxSpecies>5" class="link" ng-click="maxSpecies = 5">Less</a>
             </section>
 
             <section ng-if="modFacets.length > 0">
-                <h6>Modifications</h6>
-                <div data-ng-repeat="mods in modFacets | limitTo: maxMods">
-                    <label class="checkbox" ng-model="mods.selected" data-ng-click="updateModFilters(mods)">
-                        <input type="checkbox" data-ng-model="mods.selected"/>
-                        {{mods.name}} <span>({{ mods.count}})</span>
-                    </label>
+                <h6>Modifications ({{modFacets.length}})</h6>
+                <p><input type="text" ng-model="mFilter"></p>
+                <div class="scroll-area">
+                    <div data-ng-repeat="mods in modFacets | filter:mFilter">
+                        <label class="checkbox" ng-model="mods.selected" data-ng-click="updateModFilters(mods)">
+                            <input type="checkbox" data-ng-model="mods.selected"/>
+                            {{mods.name}} <span>({{ mods.count}})</span>
+                        </label>
+                    </div>
                 </div>
-                <a data-ng-hide="modFacets.length<maxMods" class="link" data-ng-click="maxMods = 100">More</a>
-                <a data-ng-show="maxMods>5" class="link" data-ng-click="maxMods = 5">Less</a>
             </section>
         </div>
-        <div class="grid_18 push_1">
+        <div class="grid_15 omega">
             <div class="animate-repeat" ng-repeat="cluster in clusters">
                 <section class="grid_24 cluster-summary {{cluster.clusterQuality}}">
                     <a href="#/cluster/{{cluster.id}}">
