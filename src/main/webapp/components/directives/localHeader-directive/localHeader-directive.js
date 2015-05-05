@@ -15,12 +15,6 @@ localHeaderDirective.directive('prcLocalHeader', function() {
           'menu':'@'
         },
         replace: true,
-        link: function (scope, element, attrs) {
-
-            scope.checkActive = function (val) {
-                return val === attrs.menu ? 'active' : null;
-            }
-        },
         controller: 'LocalHeaderCtrl',
         templateUrl: 'components/directives/localHeader-directive/localHeader-directive.html'
     };
@@ -31,7 +25,7 @@ localHeaderDirective.controller('LocalHeaderCtrl', ['$scope', '$routeParams', '$
 
         $scope.searchTerm = $routeParams.q;
 
-        function updateState() {
+        $scope.search = function updateState() {
             $location.path("list");
             $location.search({
                 q:$scope.searchTerm,
@@ -40,10 +34,20 @@ localHeaderDirective.controller('LocalHeaderCtrl', ['$scope', '$routeParams', '$
                 modFilters:$routeParams.modFilters,
                 speciesFilters:$routeParams.speciesFilters
             });
-        }
+        };
 
-        $scope.search = function() {
-            updateState();
-        }
+        $scope.isActive = function(path) {
+            if ($location.path().substr(0, path.length) == path) {
+                if (path == "/" && $location.path() == "/") {
+                    return true;
+                } else {
+                    return path != "/";
+                }
+
+            } else {
+                return false;
+            }
+        };
+
     }
 ]);

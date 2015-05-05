@@ -42,12 +42,12 @@
 
     <nav>
         <ul class="grid_24" id="local-nav">
-            <li class="first" ng-class="checkActive('home')"><a href="#/">Home</a></li>
-            <li ng-class="checkActive('list')"><a href="#/list" >Peptide Search</a></li>
-            <li ng-class="checkActive('libraries')"><a href="#/libraries">Spectrum Library</a></li>
-            <li ng-class="checkActive('api')"><a href="#/api">API</a></li>
-            <li ng-class="checkActive('help')"><a href="#/" >Help</a></li>
-            <li class="last" ng-class="checkActive('about')" ><a ng-href="#/">About PRIDE Cluster</a></li>
+            <li class="first"><a  ng-class="{'menu-active' : isActive('/')}" href="#/">Home</a></li>
+            <li><a ng-class="{'menu-active' : isActive('/list')}" href="#/list" >Peptide Search</a></li>
+            <li><a ng-class="{'menu-active' : isActive('/libraries')}" href="#/libraries">Spectrum Library</a></li>
+            <li><a href="#/api">API</a></li>
+            <li><a href="#/help" >Help</a></li>
+            <li class="last"><a ng-href="#/">About PRIDE Cluster</a></li>
             <!-- If you need to include functional (as opposed to purely navigational) links in your local menu,
                  add them here, and give them a class of "functional". Remember: you'll need a class of "last" for
                  whichever one will show up last...
