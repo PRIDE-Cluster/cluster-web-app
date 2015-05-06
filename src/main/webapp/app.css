@@ -211,3 +211,9 @@ div.line-left {
 .menu-active {
     background-color: #000;
 }
+
+.project-title {
+    margin: 40px 0px 20px 20px;
+    color: #1E4B7D;;
+    font-size: 130%;
+}

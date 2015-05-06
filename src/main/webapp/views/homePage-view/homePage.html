@@ -1,57 +1,146 @@
 <prc-local-header menu="home"></prc-local-header>
 
 <div id="content" role="main" class="grid_24 clearfix view-animate-container">
-    <section class="grid_24" id="cluster-intro">
-        <span class="grid_8">
-            <h2>About</h2>
-            <h5>
-                PRIDE Cluster contains all public identified experiments in the PRIDE repository
-                and clusters them using an algorithm based on the normalized dot product (see publication).
-                Thereby, similar spectra are grouped together solely based on their peaks.
-            </h5>
-        </span>
-        <span class="grid_16">
-            <h2>How to use PRIDE Cluster</h2>
-            <h5>
-                You can access PRIDE Cluster in two ways:
-            </h5>
+
+    <div id="top" class="grid_23 clearfix">
+        <section id="cluster-intro">
+            <span class="project-title">
+                PRIDE Cluster clusters all public identified experiments in the PRIDE Archive repository using spectrum clustering algorithms.
+                <a class="text-muted" href="#/about">Learn More</a>
+            </span>
+        </section>
+    </div>
+
+    <div id="middle" class="grid_24 clearfix">
+    </div>
+
+    <div id="bottom" class="grid_24 clearfix">
+        <section id="search-peptide" class="grid_6 alpha">
+            <h3 class="icon icon-functional" data-icon="1">
+                <a href="#/list">Search Peptide</a>
+            </h3>
+
+            <p class="justify-body-text">
+                <a href="#/list">Explore</a> the high quality peptide identifications that have been verified by our spectrum clustering algorithms.
+            </p>
+
+            <p class="justify-body-text">
+                Example peptides: <a href="">ELGITALHIK</a>, <a href="">LSVDYGK</a>
+            </p>
+        </section>
+
+        <section id="spectrum-library" class="grid_6">
+            <h3 class="icon icon-functional" data-icon="=">
+                <a href="#/libraries">Spectrum Libraries</a>
+            </h3>
+
+            <p class="justify-body-text">
+                <a href="#/libraries">Download</a> our spectrum libraries that can be used with spectrum library searching tool <a href="//tools.proteomecenter.org/wiki/index.php?title=Software:SpectraST">SpectraST</a>.
+            </p>
+
+            <p class="justify-body-text">
+                Popular spectrum libraries: <a href="">Human</a>, <a href="">Mouse</a>
+            </p>
+        </section>
+
+        <section id="api-access" class="grid_6">
+            <h3 class="icon icon-functional" data-icon="t">
+                <a href="#/api">Access</a>
+            </h3>
+
+            <p class="justify-body-text">
+                <a href="">Web API</a>: RESTful API allows programatically access and search clustering results.
+            </p>
+
+            <p class="justify-body-text">
+                <a href="">FTP</a>: download the original clustering result files from our FTP site.
+            </p>
+        </section>
+
+        <section id="statistics" class="grid_6 omega">
+            <h3 class="icon icon-functional" data-icon="z">
+                <a href="#/list">Statistics</a>
+            </h3>
+
+            <p class="justify-body-text">
             <ul>
-            <li><h5>
-                Search for all clusters that contain spectra identified as a given peptide sequence
-            </h5></li>
-            <li><h5>
-                Download cluster data in the form of Spectrum Libraries
-            </h5></li>
+                <li class="justify-body-text">3,822,526 clusters</li>
+                <li class="justify-body-text">252 species</li>
+                <li class="justify-body-text">23,758 experiments</li>
+                <li class="justify-body-text">8,662,818 distinct peptides</li>
             </ul>
+            </p>
+        </section>
 
-        </span>
-    </section>
+    </div>
 
-    <section class="grid_24" id="sections">
-        <span class="grid_8"><a href="#/list">
-            <h2>Peptide search</h2>
-            <h5>By its peptide search, PRIDE Cluster can help confirm protein identifications.</h5>
-            <h5>Just provide the peptide
-            sequence your are investigating and browse the consensual evidence found across high-quality datasets in PRIDE.</h5>
-        </a></span>
+    <div id="bottom1" class="grid_24 clearfix">
+        <section id="related-projects" class="grid_6 alpha">
+            <h3 class="icon icon-generic" data-icon="L">
+                <a href="#/list">Related Projects</a>
+            </h3>
 
-        <span class="grid_8"><a href="#/libraries">
-            <h2>Spectrum Libraries</h2>
-            <h5>The cluster results can be downloaded in the form of libraries
-            for its use off-line.</h5>
-        </a></span>
+            <p class="justify-body-text">
+                Discover the original mass spec projects provide the source for PRIDE Cluster project in the submission based <a href="//www.ebi.ac.uk/pride/archive">PRIDE Archive</a>.
+            </p>
 
-        <span class="grid_8">
-            <h2>PRIDE Cluster Stats</h2>
-            <h5>The current Cluster database contains:</h5>
-            <ul>
-            <li><h5>3,822,526 clusters</h5></li>
-            <li><h5>252 species</h5></li>
-            <li><h5>23,758 experiments</h5></li>
-            <li><h5>8,662,818 distinct peptides</h5></li>
-            <li><h5>54,159,998 identified spectra</h5></li>
-            <li><h5>16,557,497 (30.57%) spectra not in clusters</h5></li>
-            </ul>
-        </span>
-    </section>
+            <p class="justify-body-text">
+                Explore quality checked proteome-centric view of mass spec identification results in the <a href="//www.ebi.ac.uk/pride/proteome">PRIDE Proteomes</a>.
+            </p>
+        </section>
+
+        <section id="development" class="grid_6">
+            <h3 class="icon icon-generic" data-icon="R">
+                <a href="#/help">Development</a>
+            </h3>
+
+            <p class="justify-body-text">
+                You can contribute to our development on <a href="https://github.com/">GitHub</a>:
+            </p>
+
+            <p class="justify-body-text">
+                <a href="https://github.com/spectra-cluster">Algorithms</a>: clustering algorithms and pipeline related
+                codebase.
+            </p>
+
+            <p class="justify-body-text">
+                <a href="https://github.com/PRIDE-Cluster">Web</a>: cluster web site and web service codebase.
+            </p>
+
+        </section>
+
+        <section id="get-help" class="grid_6">
+            <h3 class="icon icon-functional" data-icon="?">
+                <a href="#/help">Help</a>
+            </h3>
+
+            <p class="justify-body-text">
+                Learn how we define <a href="">high quality</a> clustering results.
+            </p>
+
+            <p class="justify-body-text">
+                Find out how to <a href="">interrept</a> the cluster details.
+            </p>
+
+            <p class="justify-body-text">
+                Or ask for help directly though our <a href="//www.ebi.ac.uk/support/index.php?query=pride">Feedback</a> page.
+            </p>
+
+        </section>
+
+        <section id="citation" class="grid_6 omega">
+            <h3 class="icon icon-functional" data-icon="4">
+                <a href="#/about">Citation</a>
+            </h3>
+
+            <p class="justify-body-text">
+                If you use PRIDE Cluster, please cite the following paper:
+            </p>
+
+            <blockquote>
+                Griss J, Foster JM, Hermjakob H, Vizcaíno JA. PRIDE Cluster: building a consensus of proteomics data. Nat Methods. 2013 Feb;10(2):95-6. <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3667236/">PubMed</a>
+            </blockquote>
+        </section>
+
+    </div>
 </div>
