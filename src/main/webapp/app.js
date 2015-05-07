@@ -4,7 +4,6 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'ngRoute',
     'ngAnimate',
     'nvd3ChartDirectives',
-    'ui.bootstrap',
     'angular-carousel',
     'ngTable',
 
