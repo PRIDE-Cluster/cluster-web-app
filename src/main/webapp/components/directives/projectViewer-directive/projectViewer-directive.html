@@ -35,6 +35,14 @@
                 <p><span ng-repeat="instrument in project.instruments">{{instrument}}</span></p>
             </div>
         </div>
+        <div class=grid_24" ng-show="project.tissues.length>0">
+            <div class="grid_8">
+                <h6>Tissues</h6>
+            </div>
+            <div class="grid_16">
+                <p><span ng-repeat="tissue in project.tissues">{{tissue}}</span></p>
+            </div>
+        </div>
         <div class=grid_24">
             <div class="grid_8">
                 <h6>Description</h6>
@@ -48,3 +56,6 @@
     </li>
 </ul>
 <div rn-carousel-indicators ng-if="projects.length > 1" slides="projects" rn-carousel-index="projectIndex"></div>
+<!--<div class="rn-carousel-indicator custom-indicator">-->
+    <!--<span ng-repeat="project in projects" ng-class="{active: $index==$parent.projectIndex}" ng-click="$parent.projectIndex = $index">★</span>-->
+<!--</div>-->
