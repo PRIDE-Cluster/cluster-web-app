@@ -43,6 +43,7 @@ spectrumLibrariesView.controller('SpectrumLibrariesViewCtrl', ['$scope', '$locat
         };
 
         $scope.latestRelease = SpectrumLibrary.latest({},function(spectrumLibraries){});
+        console.log($scope.latestRelease)
     }
 ]);
 

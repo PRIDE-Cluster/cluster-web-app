@@ -64,10 +64,12 @@
 
             <p class="justify-body-text">
             <ul>
-                <li class="justify-body-text">3,822,526 clusters</li>
-                <li class="justify-body-text">252 species</li>
-                <li class="justify-body-text">23,758 experiments</li>
-                <li class="justify-body-text">8,662,818 distinct peptides</li>
+                <div ng-repeat="stat in generalStats.repoStatistics">
+                    <li ng-if="stat.name === 'Number of clusters'" class="justify-body-text">{{stat.value}} clusters</li>
+                    <li ng-if="stat.name === 'Number of species'" class="justify-body-text">{{stat.value}} species</li>
+                    <li ng-if="stat.name === 'Number of projects'" class="justify-body-text">{{stat.value}} projects</li>
+                    <li ng-if="stat.name === 'Number of assays'" class="justify-body-text">{{stat.value}} assays</li>
+                </div>
             </ul>
             </p>
         </section>

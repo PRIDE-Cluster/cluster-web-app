@@ -24,8 +24,9 @@ homePageView.config(['$routeProvider',
  * needs to load the html template. We leave an empty controller here just in case we need to process some parameters
  * in the future.
  */
-homePageView.controller('HomePageCtrl', ['$scope',
-    function($scope) {
-
+homePageView.controller('HomePageCtrl', ['$scope', 'Stats',
+    function($scope, Stats) {
+        $scope.generalStats = Stats.getGeneralStats({}, function(stats){});
+        console.log($scope.generalStats)
     }
 ]);
