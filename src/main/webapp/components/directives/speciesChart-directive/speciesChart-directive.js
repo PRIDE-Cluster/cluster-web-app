@@ -47,6 +47,12 @@ speciesChartDirective.controller('SpeciesChartDirectiveCtrl', ['$scope', 'Cluste
             // sort the species by count in decending order
             $scope.speciesData.sort(compare);
 
+            // truncate string
+            String.prototype.trunc = String.prototype.trunc ||
+                function(n){
+                    return this.length>n ? this.substr(0,n-1)+'...' : this;
+                };
+
             // format input species to group species with lower count into 'others' category
             function formatResults(inSpecies) {
                 var maxSpeciesShown = 4;
@@ -58,7 +64,7 @@ speciesChartDirective.controller('SpeciesChartDirectiveCtrl', ['$scope', 'Cluste
                     var otherCount = 0;
                     $.each(inSpecies,function(i, val) {
                         if (i < maxSpeciesShown) {
-                            formattedResults.push({'speciesName':val.speciesName, 'count':val.count});
+                            formattedResults.push({'speciesName':val.speciesName.trunc(40), 'count':val.count});
                         } else {
                             otherCount += val.count;
                         }
