@@ -27,14 +27,6 @@
                 <p><span ng-repeat="species in project.species">{{species}} </span></p>
             </div>
         </div>
-        <div class=grid_24">
-            <div class="grid_8">
-                <h6>Instruments</h6>
-            </div>
-            <div class="grid_16">
-                <p><span ng-repeat="instrument in project.instruments">{{instrument}}</span></p>
-            </div>
-        </div>
         <div class=grid_24" ng-show="project.tissues.length>0">
             <div class="grid_8">
                 <h6>Tissues</h6>
@@ -43,6 +35,15 @@
                 <p><span ng-repeat="tissue in project.tissues">{{tissue}}</span></p>
             </div>
         </div>
+        <div class=grid_24">
+            <div class="grid_8">
+                <h6>Instruments</h6>
+            </div>
+            <div class="grid_16">
+                <p><span ng-repeat="instrument in project.instruments">{{instrument}}</span></p>
+            </div>
+        </div>
+
         <div class=grid_24">
             <div class="grid_8">
                 <h6>Description</h6>
