@@ -13,7 +13,16 @@
     <section class="alpha grid_17">
         <h2 id="spInt">Spectrum Libraries</h2>
 
-        <p>Introduction</p>
+        <p>
+            These spectrum libraries are derived from the PRIDE Cluster results. They contain the consensus spectra
+            of all reliable clusters generated from the public experiments in PRIDE Archive. Therefore, they also
+            contain consensus spectra from labelled experiments as well as a wider array of species.
+        </p>
+        <p>
+            The PRIDE Cluster spectral libraries are available in NIST's MSP format, which is highly similar to
+            SpectraST's sptxt format. Thereby, these spectral libaries can be read and processed by most spectral
+            libary search tools.
+        </p>
     </section>
     <section class="omega grid_7">
         <h3>Menu</h3>
@@ -109,12 +118,14 @@
 
         <p>PRIDE spectrum libraries do not contain protein annotations. Instead, you should use your spectrum search
             engine's inbuilt mapping function to map the identified peptides to a protein database of your choice.
+        </p>
 
         <h3>Spectra ST</h3>
 
         <p>1. Convert the library into SpectraST's binary format</p>
 
         <p class="code">
+            # replace filenames with current version of PRIDE Cluster libraries
             spectrast -cNpride_human-2012_06 pride_human-2012_06.msp
         </p>
 
@@ -125,7 +136,18 @@
             spectra.mgf</p>
 
         <p>For more information on how to use SpectraST please refer to the SpectraST
-            <a href="http://tools.proteomecenter.org/wiki/index.php?title=Software:SpectraST">documentation</a>.
+            <a href="http://tools.proteomecenter.org/wiki/index.php?title=Software:SpectraST" target="_blank">documentation</a>.
+        </p>
+        
+        <h3>Pepitome</h3>
+        <p>
+            Pepitome can read PRIDE Cluster's spectral libraries directly without the need for any file conversion.
+            Additionally, the re-mapping of peptide identifications to an updated protein database is also done by default.
+            Therefore, no adaptions are necessary to use PRIDE Cluster's spectral libraries with Pepitome.
+        </p>
+        <p>
+            For more information please refer to the Pepitome 
+            <a href="http://forge.fenchurch.mc.vanderbilt.edu/scm/viewvc.php/*checkout*/trunk/doc/index.html?root=pepitome" target="_blank">documentation</a>.
         </p>
     </section>
 
