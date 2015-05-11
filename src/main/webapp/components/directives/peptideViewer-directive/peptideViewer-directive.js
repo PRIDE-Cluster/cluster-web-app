@@ -16,6 +16,20 @@ peptideViewerDirective.directive('prcPeptideViewer', ['ClusterPeptides', 'ngTabl
 
                 scope.peptides = peptides.clusteredPeptides;
 
+                function compare(p1, p2) {
+                    if (p1.numberOfPSMs < p2.numberOfPSMs) {
+                        return 1;
+                    }
+
+                    if (p1.numberOfPSMs > p2.numberOfPSMs) {
+                        return -1;
+                    }
+
+                    return 0;
+                }
+
+                scope.peptides.sort(compare);
+
                 // here we create a simplified modification list for each peptide that is used for
                 // showing tooltips as required by the <prc-peptide-sequence-viewer> directive
                 for (j = 0; j < scope.peptides.length; j++) {
