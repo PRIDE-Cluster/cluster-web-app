@@ -32,6 +32,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.viewControlsDirective',
     'prideClusterApp.clusterListPagingDirective',
     'prideClusterApp.spectralSearchDirective',
+    'prideClusterApp.peptideCountChartDirective',
 
     /* Services: singletons used to access the backend or share data between modules */
     'prideClusterApp.clusterService',

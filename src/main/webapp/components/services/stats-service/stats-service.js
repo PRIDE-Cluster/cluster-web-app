@@ -1,7 +1,7 @@
 /**
  * @author Rui Wang
  *
- * The Project Service represents the PRIDE Cluster Web-Service through a series of singletons
+ * The Statistics Service represents the PRIDE Cluster Web-Service through a series of singletons
  * that can be injected into other components (e.g. Controllers) in order to asynchronously access
  * the back-end data.
  *
@@ -19,7 +19,7 @@ statsService.factory('Stats', ['$resource',
             statsWsUrl + '/general?callback=JSON_CALLBACK',
             {},
             {
-                getGeneralStats: {
+                generalStats: {
                     method:'JSONP',
                     params:{},
                     isArray:false,

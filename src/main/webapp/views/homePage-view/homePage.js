@@ -26,7 +26,7 @@ homePageView.config(['$routeProvider',
  */
 homePageView.controller('HomePageCtrl', ['$scope', 'Stats',
     function($scope, Stats) {
-        $scope.generalStats = Stats.getGeneralStats({}, function(stats){});
+        $scope.generalStats = Stats.generalStats({}, function(stats){});
         console.log($scope.generalStats)
     }
 ]);

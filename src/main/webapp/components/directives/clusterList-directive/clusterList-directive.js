@@ -90,7 +90,7 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
 
                 //Prepare facets, todo change it in the ws to avoid the transformation
                 var speciesObject = clusters.facetsMap.species_names;
-                var modObject = clusters.facetsMap.mod_names;
+                var modObject = clusters.facetsMap.mod_synonyms;
 
                 var item;
                 $scope.speciesFacets = [];
