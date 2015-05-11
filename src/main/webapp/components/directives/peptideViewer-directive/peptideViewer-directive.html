@@ -1,4 +1,4 @@
-<table ng-table="tableParams" class="table">
+<table ng-table="tableParams" template-pagination="custom/pager" class="table">
     <tr ng-repeat="peptide in peptides_slice">
         <td data-title="'Peptide'">
             <prc-peptide-sequence-viewer
@@ -18,3 +18,14 @@
         </td>
     </tr>
 </table>
+
+<script type="text/ng-template" id="custom/pager">
+    <ul class="pager ng-cloak">
+        <li ng-repeat="page in pages"
+            ng-class="{'disabled': !page.active, 'previous': page.type == 'prev', 'next': page.type == 'next'}"
+            ng-show="page.type == 'prev' || page.type == 'next'" ng-switch="page.type">
+            <a ng-switch-when="prev" ng-click="params.page(page.number)" href="">&laquo; Previous</a>
+            <a ng-switch-when="next" ng-click="params.page(page.number)" href="">Next &raquo;</a>
+        </li>
+    </ul>
+</script>

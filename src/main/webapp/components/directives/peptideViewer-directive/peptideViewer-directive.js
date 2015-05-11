@@ -6,7 +6,7 @@
  *
  */
 
-var peptideViewerDirective = angular.module('prideClusterApp.peptideViewerDirective', [])
+var peptideViewerDirective = angular.module('prideClusterApp.peptideViewerDirective', ['ngTable'])
 
 peptideViewerDirective.directive('prcPeptideViewer', ['ClusterPeptides', 'ngTableParams', function(ClusterPeptides, ngTableParams) {
     function link(scope, element, attrs) {
@@ -16,19 +16,19 @@ peptideViewerDirective.directive('prcPeptideViewer', ['ClusterPeptides', 'ngTabl
 
                 scope.peptides = peptides.clusteredPeptides;
 
-                function compare(p1, p2) {
-                    if (p1.numberOfPSMs < p2.numberOfPSMs) {
-                        return 1;
-                    }
-
-                    if (p1.numberOfPSMs > p2.numberOfPSMs) {
-                        return -1;
-                    }
-
-                    return 0;
-                }
-
-                scope.peptides.sort(compare);
+                //function compare(p1, p2) {
+                //    if (p1.numberOfPSMs < p2.numberOfPSMs) {
+                //        return 1;
+                //    }
+                //
+                //    if (p1.numberOfPSMs > p2.numberOfPSMs) {
+                //        return -1;
+                //    }
+                //
+                //    return 0;
+                //}
+                //
+                //scope.peptides.sort(compare);
 
                 // here we create a simplified modification list for each peptide that is used for
                 // showing tooltips as required by the <prc-peptide-sequence-viewer> directive
@@ -44,7 +44,10 @@ peptideViewerDirective.directive('prcPeptideViewer', ['ClusterPeptides', 'ngTabl
 
                 scope.tableParams = new ngTableParams({
                     page: 1,            // show first page
-                    count: 10           // count per page
+                    count: 10,           // count per page
+                    sorting: {
+                        numberOfPSMs: 'asc'
+                    }
                 }, {
                     total: scope.peptides.length, // length of data
                     getData: function($defer, params) {
