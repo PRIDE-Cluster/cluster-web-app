@@ -1,31 +1,33 @@
-<table ng-table="tableParams" template-pagination="custom/pager" class="table">
-    <tr ng-repeat="peptide in peptides_slice">
-        <td data-title="'Peptide'">
-            <prc-peptide-sequence-viewer
-                    sequence="peptide.sequence"
-                    modifications="peptide.mods">
-            </prc-peptide-sequence-viewer>
-            <!--{{peptide.sequence}}-->
-        </td>
-        <td data-title="'# PSM'">
-            {{peptide.numberOfPSMs}}
-        </td>
-        <td data-title="'# Species'">
-            {{peptide.species.length}}
-        </td>
-        <td data-title="'# Projects'">
-            {{peptide.projectAccessions.length}}
-        </td>
-    </tr>
-</table>
+<div ng-init="getPeptides()">
+    <table ng-table="tableParams" template-pagination="custom/pager" class="table">
+        <tr ng-repeat="peptide in peptides_slice">
+            <td data-title="'Peptide'" sortable="'peptide.sequence'">
+                <prc-peptide-sequence-viewer
+                        sequence="peptide.sequence"
+                        modifications="peptide.mods">
+                </prc-peptide-sequence-viewer>
+                <!--{{peptide.sequence}}-->
+            </td>
+            <td data-title="'#PSM'" sortable="'numberOfPSMs'">
+                {{peptide.numberOfPSMs}}
+            </td>
+            <td data-title="'#Species'" sortable="'species.length'">
+                {{peptide.species.length}}
+            </td>
+            <td data-title="'#Projects'" sortable="'projectAccessions.length'">
+                {{peptide.projectAccessions.length}}
+            </td>
+        </tr>
+    </table>
 
-<script type="text/ng-template" id="custom/pager">
-    <ul class="pager ng-cloak">
-        <li ng-repeat="page in pages"
-            ng-class="{'disabled': !page.active, 'previous': page.type == 'prev', 'next': page.type == 'next'}"
-            ng-show="page.type == 'prev' || page.type == 'next'" ng-switch="page.type">
-            <a ng-switch-when="prev" ng-click="params.page(page.number)" href="">&laquo; Previous</a>
-            <a ng-switch-when="next" ng-click="params.page(page.number)" href="">Next &raquo;</a>
-        </li>
-    </ul>
-</script>
+    <script type="text/ng-template" id="custom/pager">
+        <ul class="pager ng-cloak">
+            <li ng-repeat="page in pages"
+                ng-class="{'disabled': !page.active, 'previous': page.type == 'prev', 'next': page.type == 'next'}"
+                ng-show="page.type == 'prev' || page.type == 'next'" ng-switch="page.type">
+                <a ng-switch-when="prev" ng-click="params.page(page.number)" href="">&laquo; Previous</a>
+                <a ng-switch-when="next" ng-click="params.page(page.number)" href="">Next &raquo;</a>
+            </li>
+        </ul>
+    </script>
+</div>
