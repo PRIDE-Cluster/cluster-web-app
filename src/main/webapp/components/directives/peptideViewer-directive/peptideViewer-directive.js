@@ -13,7 +13,8 @@ peptideViewerDirective.directive('prcPeptideViewer', function () {
     return {
         restrict: 'EA',
         scope: {
-            clusterId: '=clusterid'
+            clusterId: '=',
+            totalNumberOfPeptides: '='
         },
         controller: 'PeptideViewerCtrl',
         //link: link,
@@ -24,6 +25,9 @@ peptideViewerDirective.directive('prcPeptideViewer', function () {
 peptideViewerDirective.controller("PeptideViewerCtrl", ['$scope', '$filter', 'ClusterPeptides', 'ngTableParams', function($scope, $filter, ClusterPeptides, ngTableParams) {
     // init an empty array of peptides
     $scope.peptides = [];
+
+    // init total number of peptides
+    $scope.totalNumberOfPeptides = 0;
 
     // function to be called at init to get peptides using remote web service
     $scope.getPeptides = function() {
@@ -45,6 +49,8 @@ peptideViewerDirective.controller("PeptideViewerCtrl", ['$scope', '$filter', 'Cl
                     }
                 }
 
+                $scope.totalNumberOfPeptides = $scope.peptides.length;
+
                 $scope.tableParams.reload();
             }
         );
@@ -55,7 +61,7 @@ peptideViewerDirective.controller("PeptideViewerCtrl", ['$scope', '$filter', 'Cl
     // setup ng-table with sorting and pagination
     $scope.tableParams = new ngTableParams({
             page: 1,            // show first page
-            count: 10,           // count per page
+            count: 8,           // count per page
             sorting: {
                 numberOfPSMs: 'desc'
             }

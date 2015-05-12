@@ -56,12 +56,12 @@
         </div>
         <div class="grid_24">
             <div class="grid_11 cluster-detail-panel">
-                <h4>Unique Peptides</h4>
-                <prc-peptide-viewer clusterid="clusterId"></prc-peptide-viewer>
+                <h4>Unique Peptides ({{totalNumberOfPeptides}})</h4>
+                <prc-peptide-viewer cluster-id="clusterId" total-number-of-peptides="totalNumberOfPeptides"></prc-peptide-viewer>
             </div>
             <div class="grid_11 push_2 cluster-detail-panel">
                 <h4>Original Projects</h4>
-                <prc-project-viewer clusterid="clusterId"></prc-project-viewer>
+                <prc-project-viewer cluster-id="clusterId"></prc-project-viewer>
             </div>
         </div>
         <!--Thirds section, confidence charts and consensus spectrum-->

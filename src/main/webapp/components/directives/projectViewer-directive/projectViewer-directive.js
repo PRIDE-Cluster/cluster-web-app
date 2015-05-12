@@ -20,7 +20,7 @@ projectViewerDirective.directive('prcProjectViewer', ['Projects', function(Proje
     return {
         restrict: 'EA',
         scope: {
-            clusterId: '=clusterid'
+            clusterId: '='
         },
         link: link,
         templateUrl: 'components/directives/projectViewer-directive/projectViewer-directive.html'
