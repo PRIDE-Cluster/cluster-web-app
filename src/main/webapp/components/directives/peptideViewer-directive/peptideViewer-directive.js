@@ -21,8 +21,10 @@ peptideViewerDirective.directive('prcPeptideViewer', function () {
 });
 
 peptideViewerDirective.controller("PeptideViewerCtrl", ['$scope', '$filter', 'ClusterPeptides', 'ngTableParams', function($scope, $filter, ClusterPeptides, ngTableParams) {
+    // init an empty array of peptides
     $scope.peptides = [];
 
+    // function to be called at init to get peptides using remote web service
     $scope.getPeptides = function() {
         ClusterPeptides.get(
             {clusterId: $scope.clusterId},
@@ -49,6 +51,7 @@ peptideViewerDirective.controller("PeptideViewerCtrl", ['$scope', '$filter', 'Cl
 
     };
 
+    // setup ng-table with sorting and pagination
     $scope.tableParams = new ngTableParams({
             page: 1,            // show first page
             count: 10,           // count per page
