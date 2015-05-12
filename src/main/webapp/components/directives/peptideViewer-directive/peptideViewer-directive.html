@@ -1,5 +1,5 @@
 <div ng-init="getPeptides()">
-    <table ng-table="tableParams" template-pagination="custom/pager" class="table">
+    <table ng-table="tableParams" template-pagination="custom/pager" class="table table_border">
         <tr ng-repeat="peptide in peptides_slice">
             <td data-title="'Peptide'" sortable="'peptide.sequence'">
                 <prc-peptide-sequence-viewer
