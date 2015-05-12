@@ -7,21 +7,21 @@
     <!--</div>-->
     <div class="grid_8">
         <span class="grid_9"><h6># Spectra</h6></span>
-        <span class="grid_14"><h6>
+        <span class="grid_14" tooltip="Number of spectra identifing the consensus peptide ({{cluster.numberOfSpectra}}) / Total number of spectra in the cluster ({{cluster.totalNumberOfSpectra}}) " tooltip-placement="bottom"><h6>
             {{cluster.numberOfSpectra}}/{{cluster.totalNumberOfSpectra}}
             ({{100 * cluster.numberOfSpectra/cluster.totalNumberOfSpectra | number:2}}%)
         </h6></span>
     </div>
     <div class="grid_8">
         <span class="grid_10"><h6># Projects</h6></span>
-        <span class="grid_14"><h6>
+        <span class="grid_14" tooltip="Number of projects identifing the consensus peptide ({{cluster.numberOfProjects}}) / Total number of projects in the cluster ({{cluster.totalNumberOfProjects}}) " tooltip-placement="bottom"><h6>
             {{cluster.numberOfProjects}}/{{cluster.totalNumberOfProjects}}
             ({{100 * cluster.numberOfProjects/cluster.totalNumberOfProjects | number:2}}%)
         </h6></span>
     </div>
     <div class="grid_8">
         <span class="grid_9"><h6># Species</h6></span>
-        <span class="grid_15"><h6>
+        <span class="grid_15" tooltip="Number of species assigned to the consensus peptide ({{cluster.numberOfSpecies}}) / Total number of species in the cluster ({{cluster.totalNumberOfSpecies}})" tooltip-placement="bottom"><h6>
             {{cluster.numberOfSpecies}}/{{cluster.totalNumberOfSpecies}}
             ({{100 * cluster.numberOfSpecies/cluster.totalNumberOfSpecies | number:2}}%)
         </h6></span>
