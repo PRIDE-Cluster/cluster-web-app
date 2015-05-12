@@ -6,7 +6,7 @@
  *
  */
 
-var projectViewerDirective = angular.module('prideClusterApp.projectViewerDirective', [])
+var projectViewerDirective = angular.module('prideClusterApp.projectViewerDirective', []);
 
 projectViewerDirective.directive('prcProjectViewer', ['Projects', function(Projects) {
     function link(scope, element, attrs) {
@@ -14,13 +14,15 @@ projectViewerDirective.directive('prcProjectViewer', ['Projects', function(Proje
             { clusterId: scope.clusterId },
             function(projects) {
                 scope.projects = projects.projects;
+                scope.totalNumberOfProjects = scope.projects.length;
             }
         );
     }
     return {
         restrict: 'EA',
         scope: {
-            clusterId: '='
+            clusterId: '=',
+            totalNumberOfProjects: '='
         },
         link: link,
         templateUrl: 'components/directives/projectViewer-directive/projectViewer-directive.html'
