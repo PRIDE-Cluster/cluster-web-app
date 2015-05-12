@@ -1,5 +1,6 @@
 /**
  * @author Jose A. Dianes <jdianes@ebi.ac.uk>
+ * @author Rui Wang <rwang@ebi.ac.uk>
  *
  * The prc-peptide-viewer directive allows us to reuse a list of Peptides everywhere we want to show it (e.g.
  * in the clusterDetail-view)
