@@ -11,7 +11,8 @@ speciesChartDirective.directive('prcSpeciesChart', function() {
     return {
         restrict: 'EA',
         scope: {
-            sourceId : '='
+            sourceId : '=',
+            totalNumberOfSpecies : '='
         },
         controller: 'SpeciesChartDirectiveCtrl',
         templateUrl: 'components/directives/speciesChart-directive/speciesChart-directive.html'
@@ -46,6 +47,8 @@ speciesChartDirective.controller('SpeciesChartDirectiveCtrl', ['$scope', 'Cluste
 
             // sort the species by count in decending order
             $scope.speciesData.sort(compare);
+
+            $scope.totalNumberOfSpecies = $scope.speciesData.length;
 
             // truncate string
             String.prototype.trunc = String.prototype.trunc ||

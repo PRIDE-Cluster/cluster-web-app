@@ -46,12 +46,12 @@
         <!--Second section Projects & Publications and PTMs distribution-->
         <div class="grid_24">
             <div class="grid_11 cluster-detail-panel">
-                <h4>Species</h4>
-                <prc-species-chart source-id="clusterId"></prc-species-chart>
+                <h4>Species <span ng-show="totalNumberOfSpecies">({{totalNumberOfSpecies}})</span></h4>
+                <prc-species-chart source-id="clusterId" total-number-of-species="totalNumberOfSpecies"></prc-species-chart>
             </div>
             <div class="grid_11 push_2 cluster-detail-panel">
-                <h4>Modifications</h4>
-                <prc-modifications-chart source-id="clusterId"></prc-modifications-chart>
+                <h4>Modifications <span ng-show="totalNumberOfModifications">({{totalNumberOfModifications}})</span></h4>
+                <prc-modifications-chart source-id="clusterId" total-number-of-modifications="totalNumberOfModifications"></prc-modifications-chart>
             </div>
         </div>
         <div class="grid_24">

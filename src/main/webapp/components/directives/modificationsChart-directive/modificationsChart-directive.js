@@ -10,7 +10,8 @@ modificationsChartDirective.directive('prcModificationsChart', function() {
     return {
         restrict: 'EA',
         scope: {
-            sourceId : '='
+            sourceId : '=',
+            totalNumberOfModifications : '='
         },
         controller: 'ModificationsChartDirectiveCtrl',
         templateUrl: 'components/directives/modificationsChart-directive/modificationsChart-directive.html'
@@ -43,6 +44,8 @@ modificationsChartDirective.controller('ModificationsChartDirectiveCtrl', ['$sco
             }
 
             $scope.modificationsData.sort(compare);
+
+            $scope.totalNumberOfModifications = $scope.modificationsData.length;
 
             // format input mods to group modifications with lower count into 'others' category
             function formatResults(inMods) {
