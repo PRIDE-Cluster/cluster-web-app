@@ -24,28 +24,22 @@
             libary search tools.
         </p>
     </section>
+
     <section class="omega grid_7">
         <h3 class="icon icon-functional" data-icon="M">Topics</h3>
         <ul id="secondary-nav">
             <!--TODO: Add active menu class="active" and ideally move the menu when you click-->
-            <li class="first">
-                <a ng-click="jumpTo('spInt')">Spectrum Libraries</a>
-            </li>
             <li >
                 <a ng-click="jumpTo('latRel')">Latest Release</a>
             </li>
             <li class="last">
-                <a ng-click="jumpTo('spLib')">Using the PRIDE Spectrum Libraries</a>
+                <a ng-click="jumpTo('spLib')">How to use the libraries</a>
             </li>
         </ul>
     </section>
 
 
-    <h2 id="latRel">Latest Release</h2>
-    <section class="grid_18 alpha">
-        <h3>Release Date: {{ latestRelease.releaseDate }}</h3>
-        <h3>Version: {{ latestRelease.version }}</h3>
-    </section>
+    <h3 id="latRel">Latest Release (Release: {{ latestRelease.releaseDate }}, {{ latestRelease.version }})</h3>
     <section class="grid_6 omega">
         <!--Aspera application object-->
         <div class="aspera-content">
@@ -81,9 +75,9 @@
                             Taxonomy: <a ng-href="http://www.uniprot.org/taxonomy/{{ spectrumLibrary.taxonomyId }}">{{
                             spectrumLibrary.taxonomyId }}</a>
                         </li>
-                        <li>
-                            Number of spectra: {{ spectrumLibrary.numberOfSpectra }}
-                        </li>
+                        <!--<li>-->
+                            <!--Number of spectra: {{ spectrumLibrary.numberOfSpectra }}-->
+                        <!--</li>-->
                         <li>
                             File Size: {{ bytesToSize(spectrumLibrary.fileSize) }}
                         </li>
@@ -114,32 +108,37 @@
 
 
     <section class="grid_18 alpha">
-        <h2 id="spLib">Using the PRIDE Spectrum Libraries</h2>
+        <h3 id="spLib">How to use the libraries?</h3>
 
         <p>PRIDE spectrum libraries do not contain protein annotations. Instead, you should use your spectrum search
             engine's inbuilt mapping function to map the identified peptides to a protein database of your choice.
         </p>
 
-        <h3>Spectra ST</h3>
+        <h4>Spectra ST</h4>
 
         <p>1. Convert the library into SpectraST's binary format</p>
 
-        <p class="code">
-            # replace filenames with current version of PRIDE Cluster libraries
-            spectrast -cNpride_human-2012_06 pride_human-2012_06.msp
-        </p>
+<pre>
+<code>
+# replace filenames with current version of PRIDE Cluster libraries
+spectrast -cNpride_human-2012_06 pride_human-2012_06.msp
+</code>
+</pre>
+
 
         <p>2. Search the library and add protein annotations (threshold of 3.0 m/z, search all charge states,
             load library into memory)</p>
 
-        <p class="code">spectrast -sR -sM3.0 -sz -sLpride_human-2012_06.splib -sDswissprot_human.fasta
-            spectra.mgf</p>
-
+<pre>
+<code>
+spectrast -sR -sM3.0 -sz -sLpride_human-2012_06.splib -sDswissprot_human.fasta spectra.mgf
+</code>
+</pre>
         <p>For more information on how to use SpectraST please refer to the SpectraST
             <a href="http://tools.proteomecenter.org/wiki/index.php?title=Software:SpectraST" target="_blank">documentation</a>.
         </p>
         
-        <h3>Pepitome</h3>
+        <h4>Pepitome</h4>
         <p>
             Pepitome can read PRIDE Cluster's spectral libraries directly without the need for any file conversion.
             Additionally, the re-mapping of peptide identifications to an updated protein database is also done by default.
