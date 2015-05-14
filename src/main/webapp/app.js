@@ -19,6 +19,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.spectrumLibrariesView',
     'prideClusterApp.apiPageView',
     'prideClusterApp.aboutPageView',
+    'prideClusterApp.helpPageView',
 
     /* Directives: reusable view+controller components */
     'prideClusterApp.localHeaderDirective',
