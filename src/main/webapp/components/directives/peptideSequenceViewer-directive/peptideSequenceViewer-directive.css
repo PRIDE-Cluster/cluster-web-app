@@ -1,6 +1,12 @@
 .peptide-sequence {
     padding-right: 2px;
 }
+
+.precursor {
+    font-size: 70%;
+    color: lightslategrey;
+}
+
 .modified {
     color: #FF2049;
     text-decoration: underline;
