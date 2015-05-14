@@ -33,7 +33,7 @@ helpPageView.config(['$routeProvider',
     }
 ]);
 
-helpPageView.controller('AboutPageViewCtrl', function($scope, $location, $anchorScroll) {
+helpPageView.controller('HelpPageViewCtrl', function($scope, $location, $anchorScroll) {
     $scope.scrollTo = function(id) {
         $location.hash(id);
         $anchorScroll();
