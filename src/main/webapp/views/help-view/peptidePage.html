@@ -16,55 +16,56 @@ You don't need a breadcrumb trail on the homepage of your service... -->
             Search Peptide
         </h2>
 
+        <h3>How to search?</h3>
+        <div class="help-content">
+            <img src="./img/search_peptide.png" alt="Search peptide sequence">
+
+            <p>
+                The search box at the top right corner of the page is the main interface for searching peptide sequences. (see figure below)
+            </p>
+
+            <p>
+                Simply type or copy-and-paste the sequence of your interests, then click on the search button.
+            </p>
+
+        </div>
+
+        <h3>Interpret the results</h3>
         <div class="help-content">
             <p>
-                PRIDE Cluster contains all public identified experiments in the PRIDE repository and clusters them using an algorithm based on the normalized dot product (see publication). Thereby, similar spectra are grouped together solely based on their peaks.
+               The results returned by the search are a summary of a cluster. At the moment, we only show you the high quality clusters.
+                The summary include the following information:
+
+                <ul>
+                    <li><strong>Peptide sequence</strong>: the consensus peptide sequence for each cluster.</li>
+                    <li><strong>Precursor m/z</strong>: the consensus precursor m/z for each cluster.</li>
+                    <li><strong>Precursor charge</strong>: the consensus precursor charge for each cluster.</li>
+                    <li><strong>#Spectra</strong>: the number of spectra within a cluster.</li>
+                    <li><strong>#Projects</strong>: the number of original projects within a cluster.</li>
+                    <li><strong>#Species</strong>: the number of species within a cluster.</li>
+                    <li><strong>Max Ratio</strong>: The ratio between the largest number of spectra identify the same peptide and the total number of spectra within
+                        a cluster.</li>
+                </ul>
+
             </p>
         </div>
 
-        <h3 id="publication">Publications / how to cite</h3>
+        <h3>Filtering</h3>
         <div class="help-content">
-            <blockquote>
-                Griss J, Foster JM, Hermjakob H, Vizcaíno JA. PRIDE Cluster: building a consensus of proteomics data. Nat Methods. 2013 Feb;10(2):95-6. <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3667236/">PubMed</a>
-            </blockquote>
-        </div>
-
-        <h3 id="team">The team</h3>
-        <div class="help-content">
+            <img src="./img/species_filter.png">
             <p>
-                PRIDE is part of the EMBL-EBI Proteomics Services, led by <a href="http://www.ebi.ac.uk/about/people/henning-hermjakob" target="_blank">Henning Hermjakob</a>. The PRIDE team currently consists
-                of software developers, biocurators, trainees/visitors and one project coordinator.
+                At the moment, we are offering two kinds of filtering to restrict the number of results returned.
+
+                <ul>
+                    <li>Filter by species: you can filter the result by the species of your interests.</li>
+                    <li>Filter by modifications: you can filter the result by the modifications of your interests.</li>
+                </ul>
             </p>
 
             <p>
-                The main contributors to the PRIDE Cluster project include:
-            <ul>
-                <li>Johanness Griss</li>
-                <li>Rui Wang</li>
-                <li>Jose A Dianes</li>
-                <li>Noemi Del Toro Ayllon</li>
-                <li>Steve Lewis</li>
-                <li>Juan A Vizcaino</li>
-            </ul>
-            </p>
-        </div>
-
-        <h3 id="acknowledgement">Acknowledgement</h3>
-        <div class="help-content">
-            <p>
-                The PRIDE team would like to thank all data submitters for their contributions. The PRIDE team is funded at present by the Wellcome Trust [grant number WT101477MA], and the BBSRC grants BB/I00095X/1, BB/K01997X/1 and BB/L024225/1] and EMBL core funding.
+                You can also type into text box above each filter to search for a particular species or modification.
             </p>
 
-            <p>
-                In recent years, PRIDE has also been funded by the Wellcome Trust [grant number WT085949MA], the EU FP7 grants 'ProteomeXchange’ [grant number 260558], ‘PRIME-XS’ [grant number 262067], and ‘LipidomicNet’ [grant number 202272], and the BBSRC grant ‘PRIDE Converter’ [reference BB/I024204/1].
-            </p>
-
-            <p>
-                The PRIDE team would like to thank the following companies for their support through the offering of free software licenses:
-
-            <ul>
-                <li><a href="https://www.jetbrains.com/" target="_blank">JetBrains</a> for the most intelligent Java IDE - <a href="https://www.jetbrains.com/idea/index.html" target="_blank">IntelliJ IDEA</a>.</li>
-            </ul>
         </div>
     </div>
 
