@@ -16,57 +16,119 @@ You don't need a breadcrumb trail on the homepage of your service... -->
             Frequently Asked Questions
         </h2>
 
+        <h3>What is a spectrum cluster? </h3>
         <div class="help-content">
             <p>
-                PRIDE Cluster contains all public identified experiments in the PRIDE repository and clusters them using an algorithm based on the normalized dot product (see publication). Thereby, similar spectra are grouped together solely based on their peaks.
+                A spectrum cluster is a group of Mass Spec spectra that share the same characteristics,
+                namely the shapes of their peaks. The spectra that are similar are grouped together in the PRIDE Cluster pipeline.
             </p>
         </div>
 
-        <h3 id="publication">Publications / how to cite</h3>
-        <div class="help-content">
-            <blockquote>
-                Griss J, Foster JM, Hermjakob H, Vizcaíno JA. PRIDE Cluster: building a consensus of proteomics data. Nat Methods. 2013 Feb;10(2):95-6. <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3667236/">PubMed</a>
-            </blockquote>
-        </div>
-
-        <h3 id="team">The team</h3>
+        <h3>Where do the spectrum come from? </h3>
         <div class="help-content">
             <p>
-                PRIDE is part of the EMBL-EBI Proteomics Services, led by <a href="http://www.ebi.ac.uk/about/people/henning-hermjakob" target="_blank">Henning Hermjakob</a>. The PRIDE team currently consists
-                of software developers, biocurators, trainees/visitors and one project coordinator.
+                The original spectrum comes from <a href="//www.ebi.ac.uk/pride/archive">PRIDE Archive</a>, which is a submission based data
+                repository.
             </p>
 
             <p>
-                The main contributors to the PRIDE Cluster project include:
-            <ul>
-                <li>Johanness Griss</li>
-                <li>Rui Wang</li>
-                <li>Jose A Dianes</li>
-                <li>Noemi Del Toro Ayllon</li>
-                <li>Steve Lewis</li>
-                <li>Juan A Vizcaino</li>
-            </ul>
+                Due the diversity of PRIDE Archive submissions, we have spectrum from a large number of species and also covers many
+                post translational modifications.
+            </p>
+
+            <p>
+                In order to keep the data submitted to us save and secure, we only take the public experiments into account for running
+                the PRIDE Cluster production pipeline.
             </p>
         </div>
 
-        <h3 id="acknowledgement">Acknowledgement</h3>
+        <h3>What can I learn from a cluster? </h3>
         <div class="help-content">
             <p>
-                The PRIDE team would like to thank all data submitters for their contributions. The PRIDE team is funded at present by the Wellcome Trust [grant number WT101477MA], and the BBSRC grants BB/I00095X/1, BB/K01997X/1 and BB/L024225/1] and EMBL core funding.
+                While grouping spectrum into clusters, we also take into account their original metadata, such as: peptide, modification and species.
             </p>
 
             <p>
-                In recent years, PRIDE has also been funded by the Wellcome Trust [grant number WT085949MA], the EU FP7 grants 'ProteomeXchange’ [grant number 260558], ‘PRIME-XS’ [grant number 262067], and ‘LipidomicNet’ [grant number 202272], and the BBSRC grant ‘PRIDE Converter’ [reference BB/I024204/1].
+                For high quality cluster, we try to infer using statistical techniques the following information:
+                <ul>
+                    <li><strong>Consensus spectrum</strong></li>
+                    <li><strong>Consensus peptide</strong></li>
+                    <li><strong>Species</strong></li>
+                    <li><strong>Modifications</strong></li>
+                </ul>
             </p>
 
             <p>
-                The PRIDE team would like to thank the following companies for their support through the offering of free software licenses:
-
-            <ul>
-                <li><a href="https://www.jetbrains.com/" target="_blank">JetBrains</a> for the most intelligent Java IDE - <a href="https://www.jetbrains.com/idea/index.html" target="_blank">IntelliJ IDEA</a>.</li>
-            </ul>
+                For example, if there is a peptide of your interest, you can use our peptide search to identify whether this peptide has been seen before,
+                in which species it likely to be seen, what are the pontential modifications.
             </p>
         </div>
+
+        <h3>What do the numbers mean for each cluster? </h3>
+        <div class="help-content">
+            <p>
+                There are three key numbers that can help you to interrpret the cluster:
+                <ul>
+                    <li>
+                        <strong>Max ratio</strong>: The ratio between the largest number of spectra identify the same peptide and the total number of spectra within
+                        a cluster.
+                    </li>
+                    <li>
+                        <strong>Number of spectra</strong>: The number of spectra within a cluster.
+                    </li>
+                    <li>
+                        <strong>Number of projects</strong>: The number of original projects from PRIDE Archive.
+                    </li>
+                </ul>
+            </p>
+
+        </div>
+
+        <h3>What is a high quality cluster? </h3>
+        <div class="help-content">
+            <p>
+                We define high quality clusters using the following criteria:
+                <ul>
+                    <li>
+                        <strong>Max ratio >= 0.7</strong>: The ratio between the largest number of spectra identify the same peptide and the total number of spectra within
+                        a cluster. The ratio must be greater or equal to 0.7.
+                    </li>
+                    <li>
+                        <strong>Number of spectra >= 10</strong>: The number of spectra within a cluster must be greater or equal to 10.
+                    </li>
+                    <li>
+                        <strong>Number of projects >= 2</strong>: The number of original projects from PRIDE Archive must be greater or equal to 2.
+                    </li>
+                </ul>
+            </p>
+
+            <p>
+                These criterias are explained in details in the original <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3667236/">publication</a>
+            </p>
+        </div>
+
+        <h3>What is a consensus spectrum? </h3>
+        <div class="help-content">
+            <p>
+                A derived spectrum from all the spectra within a cluster, this spectrum is theoretically better quality and representative of the identification.
+            </p>
+        </div>
+
+        <h3>What is a consensus peptide? </h3>
+        <div class="help-content">
+            <p>
+                If the majority of the spectra within a cluster agrees on a particular peptide identification, we then infer that this peptide is the likely peptide
+                identification given the existing data.
+            </p>
+        </div>
+
+        <h3>How often is PRIDE Cluster released? </h3>
+        <div class="help-content">
+            <p>
+                We are planning to run clustering of the new data every three months, the release will follow immediately after we got the clustering results.
+            </p>
+        </div>
+
     </div>
 
     <div class="grid_6 clearfix" role="complementary">
