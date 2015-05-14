@@ -18,53 +18,95 @@ You don't need a breadcrumb trail on the homepage of your service... -->
 
         <div class="help-content">
             <p>
-                PRIDE Cluster contains all public identified experiments in the PRIDE repository and clusters them using an algorithm based on the normalized dot product (see publication). Thereby, similar spectra are grouped together solely based on their peaks.
+                For each cluster, we offer a detailed summary page where you can view the key statistics and quliaty metrics of a cluster.
             </p>
         </div>
 
-        <h3 id="publication">Publications / how to cite</h3>
+        <h3>Key cluster statistics</h3>
         <div class="help-content">
-            <blockquote>
-                Griss J, Foster JM, Hermjakob H, Vizcaíno JA. PRIDE Cluster: building a consensus of proteomics data. Nat Methods. 2013 Feb;10(2):95-6. <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3667236/">PubMed</a>
-            </blockquote>
-        </div>
-
-        <h3 id="team">The team</h3>
-        <div class="help-content">
+            <img src="./img/cluster_stats.png">
             <p>
-                PRIDE is part of the EMBL-EBI Proteomics Services, led by <a href="http://www.ebi.ac.uk/about/people/henning-hermjakob" target="_blank">Henning Hermjakob</a>. The PRIDE team currently consists
-                of software developers, biocurators, trainees/visitors and one project coordinator.
-            </p>
+                At the top of the cluster details page, you will see the consensus peptide of the cluster and cluster related statistics. The key statistics include:
 
-            <p>
-                The main contributors to the PRIDE Cluster project include:
-            <ul>
-                <li>Johanness Griss</li>
-                <li>Rui Wang</li>
-                <li>Jose A Dianes</li>
-                <li>Noemi Del Toro Ayllon</li>
-                <li>Steve Lewis</li>
-                <li>Juan A Vizcaino</li>
-            </ul>
+                <ul>
+                    <li><strong>#Spectra</strong>: Number of spectra identifing the consensus peptide / Total number of spectra in the cluster. </li>
+                    <li><strong>#Projects</strong>: Number of projects identifing the consensus peptide / Total number of projects in the cluster.</li>
+                    <li><strong>#Species</strong>: Number of species assigned to the consensus peptide / Total number of species in the cluster.</li>
+                </ul>
             </p>
         </div>
 
-        <h3 id="acknowledgement">Acknowledgement</h3>
+        <h3>Species chart</h3>
         <div class="help-content">
+            <img src="./img/species_stats.png">
             <p>
-                The PRIDE team would like to thank all data submitters for their contributions. The PRIDE team is funded at present by the Wellcome Trust [grant number WT101477MA], and the BBSRC grants BB/I00095X/1, BB/K01997X/1 and BB/L024225/1] and EMBL core funding.
+                This chart shows the percentage of species within a cluster. It is important to note that the numbers shown are the number of PSMs.
+                These numbers are likely to be larger than the number of spectra within a cluster.
+            </p>
+        </div>
+
+        <h3>Modification chart</h3>
+        <div class="help-content">
+            <img src="./img/mod_stats.png">
+            <p>
+                This chart shows the percentage of modifications within a cluster. It is important to note that the numbers shown are the number of PSMs.
+                These numbers are likely to be larger than the number of spectra within a cluster.
+            </p>
+        </div>
+
+        <h3>Unique peptides</h3>
+        <div class="help-content">
+            <img src="./img/unique_peptides.png">
+            <p>
+                This table show the number of unique peptide seqences with their modifiations. We also display the following metrics:
+                <ul>
+                    <li><strong>#PSM</strong>: the number of PSMs identify the peptide.</li>
+                    <li><strong>#Species</strong>: the number of species identify the peptide.</li>
+                    <li><strong>#Projects</strong>: the number of original projects identify the peptide.</li>
+                </ul>
+            </p>
+        </div>
+
+        <h3>Original projects</h3>
+        <div class="help-content">
+            <img src="./img/original_projects.png">
+            <p>
+                The details of the original projects from the PRIDE Archive within the cluster. You can flip thought the
+                projects using the arrows on either side of the panel.
+            </p>
+        </div>
+
+        <h3>Precursor m/z chart</h3>
+        <div class="help-content">
+            <img src="./img/precursor_boxplot.png">
+            <p>
+                This boxplot shows the delta m/z distribution for the PSMs identify the consensus peptide and the whole of the cluster.
             </p>
 
             <p>
-                In recent years, PRIDE has also been funded by the Wellcome Trust [grant number WT085949MA], the EU FP7 grants 'ProteomeXchange’ [grant number 260558], ‘PRIME-XS’ [grant number 262067], and ‘LipidomicNet’ [grant number 202272], and the BBSRC grant ‘PRIDE Converter’ [reference BB/I024204/1].
+                Delta m/z is the different between the experimental m/z and the theoritical m/z. As a rule of thumb, the smaller of delta m/z the better.
+            </p>
+        </div>
+
+        <h3>Spectrum similarity chart</h3>
+        <div class="help-content">
+            <img src="./img/similarity_boxplot.png">
+            <p>
+                This boxplot shows the spectrum similarity distribution between the spectra within the cluster and its consensus spectrum.
             </p>
 
             <p>
-                The PRIDE team would like to thank the following companies for their support through the offering of free software licenses:
+                For the similarity value, the higher the similarity value the better. A value of 1 means highly similary and almost identical.
+                A value of 0 means not similar at all.
+            </p>
+        </div>
 
-            <ul>
-                <li><a href="https://www.jetbrains.com/" target="_blank">JetBrains</a> for the most intelligent Java IDE - <a href="https://www.jetbrains.com/idea/index.html" target="_blank">IntelliJ IDEA</a>.</li>
-            </ul>
+        <h3>Consensus spectrum</h3>
+        <div class="help-content">
+            <img src="./img/consensus_spectrum.png">
+            <p>
+               The peak list shows the peaks of the consensus spectrum of the cluster.
+            </p>
         </div>
     </div>
 
