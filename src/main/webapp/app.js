@@ -7,6 +7,8 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'ui.bootstrap',
     'angular-carousel',
     'ngTable',
+    //'btford.markdown',
+    'hc.marked',
 
     /* Views: thin layer containing layout+model_binding and routing elements */
     'prideClusterApp.homePageView',
@@ -16,6 +18,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.spectralSearchView',
     'prideClusterApp.spectrumLibrariesView',
     'prideClusterApp.apiPageView',
+    'prideClusterApp.aboutPageView',
 
     /* Directives: reusable view+controller components */
     'prideClusterApp.localHeaderDirective',

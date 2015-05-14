@@ -1,22 +1,186 @@
-<prc-local-header menu="home"></prc-local-header>
+<prc-local-header menu="api"></prc-local-header>
 
-<div id="all-content" class="grid_24">
 
-    <div role="main" class="grid_20">
 
+<div id="content" class="grid_24 clearfix">
+
+    <!-- If you require a breadcrumb trail, its root should be your service.
+You don't need a breadcrumb trail on the homepage of your service... -->
+    <nav id="breadcrumb">
+        <p>
+            <a href="#/">PRIDE Cluster</a> &gt;
+            Web API
+        </p>
+    </nav>
+
+    <div role="main" class="grid_18">
+        <h2 id="rest-api" class="icon icon-functional" data-icon="t">
+            Web API
+        </h2>
+
+        <div class="help-content">
+            <p>
+                The <a href="http://wwwdev.ebi.ac.uk/pride/ws/cluster" target="_blank">PRIDE Cluster RESTful APIs</a> provide programmatic
+                access to read our cluster data. Query a particular peptide, gather general statistics, read cluster details, and more.
+            </p>
+
+            <p>
+                <a href="http://wwwdev.ebi.ac.uk/pride/ws/cluster" target="_blank">Browse the API</a>
+            </p>
+        </div>
+
+        <h3 id="update">Latest updates</h3>
+        <div class="help-content">
+            <p>
+                The current release of the PRIDE Cluster API is version 1. To find out more about this version, please refer to its <a ng-click="scrollTo('api-v1')">documentaiton</a>.
+            </p>
+        </div>
+
+        <h3 id="browsable">Web browsable API</h3>
+        <div class="help-content">
+            <p>
+                The PRIDE Cluster RESTful API is web browsable, which means that:
+                <ul>
+                    <li>The query results returned by the API are available in <a href="http://json.org/" target="_blank">JSON</a> format. This ensures that they can be viewed by human and accessed programmatically by computer.</li>
+                    <li>The main <a href="http://wwwdev.ebi.ac.uk/pride/ws/cluster" target="_blank">RESTful API</a> page provides a simple web-based user interface, which allows developers can familiarise themselves with the API and get a better sense of the PRIDE Cluster data before writing single line of code.</li>
+                </ul>
+            </p>
+        </div>
+
+        <h3 id="versioning">Versioning</h3>
+        <div class="help-content">
+            <p>
+                To ensure that changes in the PRIDE Cluster API don't break the applications relying on it, the API is versioned, and the version is included in the API's URL.
+            </p>
+
+            <p>
+                For example, the current API is at Version 1 and is available at http://www.ebi.ac.uk/pride/ws/cluster/v1, and the next version will be available at http://www.ebi.ac.uk/pride/ws/cluster/v2.
+            </p>
+
+            <p>
+                The latest version of the API can be accessed at http://www.ebi.ac.uk/pride/ws/cluster/current, but it's not recommended to use this endpoint for long-term development as the underlying data model may change.
+            </p>
+
+            <p>
+                No backward-incompatible changes are made to each version after it's been made public. More specifically, it's guaranteed that within one version there will be no:
+            </p>
+
+            <ul>
+                <li>changing urls</li>
+                <li>deleting or renaming data fields</li>
+                <li>changing data field types</li>
+            </ul>
+
+            <p>
+                The following non-disruptive changes may be implemented to a public API:
+            </p>
+
+            <ul>
+                <li>adding new endpoints</li>
+                <li>adding new data fields</li>
+                <li>adding new filtering methods</li>
+            </ul>
+
+            <p>
+                An advance notice will be given before obsoleting an API version. To stay up to date, please consider signing up for the PRIDE <a href="https://twitter.com/pride_ebi">Twitter</a> account.
+            </p>
+        </div>
+
+        <h3 id="api-v1">API version 1 documentation</h3>
+        <div class="help-content">
+            <p>
+                The PRIDE Cluster RESTful API contains the following URL main endpoints:
+            <ul>
+                <li><strong>project</strong>: provide the details of all original projects where a cluster's spectra and peptide identifications come from.</li>
+                <li><strong>cluster</strong>: main endpoint for retrieving the details related to a cluster, such as: species, modifications, and peptides.</li>
+                <li><strong>stats</strong>: main endpoint for retrieving general statistics on the whole of the PRIDE cluster database.</li>
+                <li><strong>psm</strong>: provide the details of all peptide-spectrum-match within a cluster</li>
+                <li><strong>library</strong>: details on the spectrum libraries.</li>
+            </ul>
+        </div>
+
+        <h4 id="search-peptide">Search peptide</h4>
+        <div class="help-content">
+            <p>
+                To search peptide, you can using the following web service endpoint.
+
+                <ul>
+                    <li><a href="http://wwwdev.ebi.ac.uk/pride/ws/cluster/#!/cluster/simpleSearchClusters">/cluster/list</a></li>
+                </ul>
+            </p>
+
+            <p>
+                This web service endpoint provide a number of options to help you navigate the results:
+                <ul>
+                    <li><strong>Filtering</strong>: Filter the results using modification name (modFilters) or species name (speciesFilters).</li>
+                    <li><strong>Pagination</strong>: If there are too many resutls, it is possible to paginate the results (page).</li>
+                    <li><strong>Sort</strong>: The results can be sorted using the number of spectra, the number of projects and the ratio of the peptide identifications within a cluster.</li>
+                    <li><strong>Facets</strong>: Facets can be retrieved for both species and modifications which show the result counts.</li>
+                </ul>
+            </p>
+
+        </div>
+
+        <h4 id="example-response">Example responses</h4>
+<pre>
+<code>
+    http://www.ebi.ac.uk/pride/ws/cluster/v1/cluster/list?order=desc&facets=false&highligts=false&page=0&size=1
+    {
+    "totalResults": 101000,
+    "pageNumber": 0,
+    "pageSize": 1,
+    "results": [
+    {
+    "id": 475694,
+    "averagePrecursorMz": 421.7799987792969,
+    "averagePrecursorCharge": 1,
+    "numberOfSpectra": 5749,
+    "totalNumberOfSpectra": 6869,
+    "numberOfSpecies": 17,
+    "totalNumberOfSpecies": 24,
+    "numberOfModifications": 0,
+    "totalNumberOfModifications": 10,
+    "numberOfProjects": 23,
+    "totalNumberOfProjects": 43,
+    "maxRatio": 0.8370000123977661,
+    "sequence": "VATVSLPR",
+    "modifications": [],
+    "proteinAccession": "Q5F226",
+    "clusterQuality": "HIGH"
+    }
+    ],
+    "highlightsMap": {},
+    "facetsMap": {}
+    }
+</code>
+</pre>
+
+        <h3 id="implementation">Implementation</h3>
+        <div class="help-content">
+            <p>
+                The API implementation is implemented using the <a href="http://projects.spring.io/spring-framework/">Spring MVC
+                framework</a>.
+            </p>
+        </div>
     </div>
 
-    <div class="grid_4 clearfix" role="complementary">
-        <h3>API topics</h3>
+    <div class="grid_6 clearfix" role="complementary">
+        <h3 class="icon icon-functional" data-icon="M">Topics</h3>
 
-        <nav class="panel hidden-print" >
-            <ul class="nav">
-                <li><a href="{% url 'help' %}">Frequently Asked Questions</a></li>
-                <li><a href="{% url 'help-genomic-mapping' %}">Genomic mapping</a></li>
-                <li><a href="{% url 'help-metadata-search' %}">Metadata search</a></li>
-                <li><a href="{% url 'api-docs' %}">API documentation</a></li>
-                <li><a href="{% url 'help-browser-compatibility' %}">Browser compatibility</a></li>
+        <div class="help-content">
+            <ul>
+                <li><a ng-click="scrollTo('update')">Latest updates</a></li>
+                <li><a ng-click="scrollTo('browsable')">Web browsable API</a></li>
+                <li><a ng-click="scrollTo('browsable')">Versioning</a></li>
+                <li>
+                    <a ng-click="scrollTo('api-v1')">API version 1 documentation</a>
+                    <ul>
+                        <li><a ng-click="scrollTo('search-peptide')">Search peptide</a></li>
+                        <li><a ng-click="scrollTo('example-response')">Example responses</a></li>
+                    </ul>
+                </li>
+                <li><a ng-click="scrollTo('implementation')">Implementation</a></li>
             </ul>
-        </nav>
+        </div>
     </div>
 </div>
