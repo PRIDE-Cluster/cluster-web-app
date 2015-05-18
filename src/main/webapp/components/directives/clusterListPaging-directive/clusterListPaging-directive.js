@@ -40,7 +40,7 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$rout
 
         $scope.Math = window.Math;
 
-        $scope.pageSizes = [10, 50, 100, 200];
+        $scope.pageSizes = [20, 50, 100, 200];
 
         $scope.firstPage = function() {
             if ($scope.pageNumber>1) {

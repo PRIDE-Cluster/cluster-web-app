@@ -8,7 +8,7 @@
  *
  */
 
-var clusterChartDirective = angular.module('prideClusterApp.clusterChartDirective', [])
+var clusterChartDirective = angular.module('prideClusterApp.clusterChartDirective', []);
 
 clusterChartDirective.directive('prcClusterChart', function() {
 

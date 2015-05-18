@@ -18,7 +18,9 @@ clusterListDirective.directive('prcClusterList', function () {
             pageNumber: '=page',
             pageSize: '=size',
             modFilters: '=mods',
-            speciesFilters: '=species'
+            speciesFilters: '=species',
+            sortField: '=sort',
+            sortOrder: '=order'
         },
         controller: 'ClusterListDirectiveCtrl',
         templateUrl: 'components/directives/clusterList-directive/clusterList-directive.html'
@@ -38,16 +40,42 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
                 page: $routeParams.pageNumber,
                 size: $routeParams.pageSize,
                 modFilters: $scope.modFilters,
-                speciesFilters: $scope.speciesFilters
+                speciesFilters: $scope.speciesFilters,
+                sortField: $scope.sortField,
+                sortOrder: $scope.sortOrder
             });
+            console.log($location.search());
         }
+
+        $scope.isSorted = function(filedName) {
+            return filedName === $scope.sortField;
+        };
+
+        $scope.isOrdered = function(fieldOrder) {
+            return fieldOrder === $scope.sortOrder;
+        };
+
+        $scope.setSortField = function(fieldName) {
+            if (fieldName === $scope.sortField) {
+                // change sort order
+                if ($scope.sortOrder === "desc") {
+                    $scope.sortOrder = "asc";
+                } else {
+                    $scope.sortOrder = "desc";
+                }
+            } else {
+                $scope.sortField = fieldName;
+                $scope.sortOrder = "desc";
+            }
+
+            updateState();
+        };
 
         $scope.updateSpeciesFilters = function (value) {
 
             if (value.selected === true) {
                 $scope.speciesFilters.push(value.name);
-            }
-            else {
+            } else {
                 $scope.speciesFilters = $scope.speciesFilters.filter(function (item) {
                     return item !== value.name;
                 });
@@ -77,7 +105,9 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
                 pageNumber: $scope.pageNumber - 1, // transform to 0-based paging
                 pageSize: $scope.pageSize,
                 modFilters: $scope.modFilters,
-                speciesFilters: $scope.speciesFilters
+                speciesFilters: $scope.speciesFilters,
+                sortField: $scope.sortField,
+                sortOrder: $scope.sortOrder
             },
             function (clusters) {
                 $scope.clusters = clusters.results;

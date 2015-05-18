@@ -41,8 +41,8 @@ clusterListView.controller('ClusterListViewCtrl', ['$scope', '$routeParams',
         }
 
         if (!$routeParams.size) {
-            $routeParams.size = 10;
-            $scope.pageSize = 10;
+            $routeParams.size = 20;
+            $scope.pageSize = 20;
         } else {
             $scope.pageSize = $routeParams.size;
         }
@@ -59,6 +59,20 @@ clusterListView.controller('ClusterListViewCtrl', ['$scope', '$routeParams',
             $scope.speciesFilters = [];
         } else {
             $scope.speciesFilters = $routeParams.speciesFilters;
+        }
+
+        if (!$routeParams.sortField) {
+            $routeParams.sortField = "";
+            $scope.sortField = "";
+        } else {
+            $scope.sortField = $routeParams.sortField;
+        }
+
+        if (!$routeParams.sortOrder) {
+            $routeParams.sortOrder = "";
+            $scope.sortOrder = "";
+        } else {
+            $scope.sortOrder = $routeParams.sortOrder;
         }
     }
 ]);

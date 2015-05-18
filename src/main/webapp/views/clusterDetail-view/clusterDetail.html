@@ -64,17 +64,6 @@
                 <prc-project-viewer cluster-id="clusterId" total-number-of-projects="totalNumberOfProjects"></prc-project-viewer>
             </div>
         </div>
-        <!--Thirds section, confidence charts and consensus spectrum-->
-        <div class="grid_24">
-            <div class="grid_11 cluster-detail-panel">
-                <h4>Precursor M/Z</h4>
-                <prc-delta-mz-chart source-id="clusterId"></prc-delta-mz-chart>
-            </div>
-            <div class="grid_11 push_2 cluster-detail-panel">
-                <h4>Spectrum Similarity</h4>
-                <prc-similarity-chart source-id="clusterId"></prc-similarity-chart>
-            </div>
-        </div>
 
         <div class="grid_24">
             <div class="grid_24 cluster-detail-panel">
@@ -88,6 +77,20 @@
                 </prc-spectrum-viewer>
             </div>
         </div>
+
+        <!--Thirds section, confidence charts and consensus spectrum-->
+        <div class="grid_24">
+            <div class="grid_11 cluster-detail-panel">
+                <h4>Precursor M/Z</h4>
+                <prc-delta-mz-chart source-id="clusterId"></prc-delta-mz-chart>
+            </div>
+            <div class="grid_11 push_2 cluster-detail-panel">
+                <h4>Spectrum Similarity</h4>
+                <prc-similarity-chart source-id="clusterId"></prc-similarity-chart>
+            </div>
+        </div>
+
+
 
     </div>
 </div>

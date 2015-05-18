@@ -2,7 +2,7 @@
     <!--Page Controls-->
     <span class="grid_16">
         <h5>
-            <span class="grid_24">Showing {{(pageNumber-1) * pageSize + 1}} to {{ Math.min((pageNumber*pageSize),totalResults) }} of {{totalResults}} clusters
+            <span class="grid_24">Showing {{(pageNumber-1) * pageSize + 1}} to {{ Math.min((pageNumber*pageSize),totalResults) }} of {{totalResults}} results
             <span ng-show="query"> for query '{{query}}'</span></span>
         </h5>
     </span>
@@ -19,7 +19,7 @@
             <h6>
             <span>Page size</span>
             <select ng-model="pageSize" ng-change="pageSizeChanged()">
-                <option value="10">10</option>
+                <option value="20">20</option>
                 <option value="50">50</option>
                 <option value="100">100</option>
                 <option value="200">200</option>
