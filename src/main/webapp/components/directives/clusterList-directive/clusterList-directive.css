@@ -32,14 +32,20 @@
     font-size: 105%;
 }
 
+.search-table-header.not-sorted{
+    background-image: url("/img/sort.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
 .search-table-header.desc{
-    background-image: url("http://www.ebi.ac.uk/pride/archive/resources/img/sortDesc.png");
+    background-image: url("/img/sortDesc.png");
     background-repeat: no-repeat;
     background-position: right 10px;
 }
 
 .search-table-header.asc{
-    background-image: url("http://www.ebi.ac.uk/pride/archive/resources/img/sortAsc.png");
+    background-image: url("/img/sortAsc.png");
     background-repeat: no-repeat;
     background-position: right 10px;
 }
