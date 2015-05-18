@@ -67,7 +67,7 @@
                     </th>
                 </tr>
                 </thead>
-                <tr ng-repeat="cluster in clusters">
+                <tr ng-repeat="cluster in clusters" ng-click="go('/cluster/{{cluster.id}}')" class="pointer">
                     <td>
                         <a ng-href="#/cluster/{{cluster.id}}">
                             <span class="grid_24">

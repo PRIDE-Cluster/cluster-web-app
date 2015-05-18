@@ -47,6 +47,10 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
             console.log($location.search());
         }
 
+        $scope.go = function(path) {
+            $location.path(path);
+        };
+
         $scope.isSorted = function(filedName) {
             return filedName === $scope.sortField;
         };

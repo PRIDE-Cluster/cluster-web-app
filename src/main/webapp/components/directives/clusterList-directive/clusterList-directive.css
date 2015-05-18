@@ -44,7 +44,9 @@
     background-position: right 10px;
 }
 
-
+tr.pointer > td{
+    cursor: pointer;
+}
 
 .scroll-area {
     /*width: 270px;*/
