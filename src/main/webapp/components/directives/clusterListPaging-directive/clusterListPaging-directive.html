@@ -1,30 +1,26 @@
-<div class="grid_24">
+<div class="grid_24 search-header">
     <!--Page Controls-->
-    <span class="grid_16">
-        <h5>
-            <span class="grid_24">Showing {{(pageNumber-1) * pageSize + 1}} to {{ Math.min((pageNumber*pageSize),totalResults) }} of {{totalResults}} results
-            <span ng-show="query"> for query '{{query}}'</span></span>
-        </h5>
+    <span class="grid_9" ng-show="getMaxPages()">
+            <span class="search-paging">Page</span>
+            <a href="" ng-click="firstPage()" ng-class="{'search-paging':true, 'selected':isSelected(1)}">1</a>
+            <span ng-show="!isFirstPages()">..</span>
+            <a href="" data-ng-repeat="page in getPages()" ng-click="setPage(page)" ng-class="{'search-paging':true, 'selected':isSelected(page)}">{{page}}</a>
+            <span ng-show="!isLastPages()">..</span>
+            <a href="" ng-click="lastPage()" ng-class="{'search-paging':true, 'selected':isSelected(getMaxPages())}">{{getMaxPages()}}</a>
     </span>
-    <span class="grid_8">
-        <span class="grid_12">
-            <h6>Page
-            <a href="" ng-click="firstPage()">First</a>
-            <a href="" ng-click="previousPage()"><</a>
-            {{pageNumber}}
-            <a href="" ng-click="nextPage()">></a>
-            <a href="" ng-click="lastPage()">Last</a></h6>
-        </span>
-        <span class="grid_12">
-            <h6>
+
+    <span class="grid_11 search-count" ng-show="getMaxPages()">
+        <span class="grid_24">Showing <span class="selected">{{(pageNumber-1) * pageSize + 1}} - {{ Math.min((pageNumber*pageSize),totalResults) }} </span>  of <span class="selected"> {{totalResults}} </span> results
+        <span ng-show="query"> for query '{{query}}'</span></span>
+    </span>
+
+    <span class="grid_4" ng-show="getMaxPages()">
             <span>Page size</span>
-            <select ng-model="pageSize" ng-change="pageSizeChanged()">
+            <select ng-model="pageSize" ng-change="pageSizeChanged()" class="search-header">
                 <option value="20">20</option>
                 <option value="50">50</option>
                 <option value="100">100</option>
                 <option value="200">200</option>
             </select>
-            </h6>
-        </span>
     </span>
 </div>

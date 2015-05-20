@@ -7,7 +7,7 @@
 
 var clusterListPagingDirective = angular.module('prideClusterApp.clusterListPagingDirective', []);
 
-clusterListPagingDirective.directive('prcClusterListPaging', function() {
+clusterListPagingDirective.directive('prcClusterListPaging', function () {
 
     return {
         restrict: 'E',
@@ -20,7 +20,7 @@ clusterListPagingDirective.directive('prcClusterListPaging', function() {
 });
 
 clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$routeParams', '$location',
-    function($scope, $routeParams, $location) {
+    function ($scope, $routeParams, $location) {
 
         $scope.query = $routeParams.q;
         $scope.pageNumber = $routeParams.page;
@@ -30,52 +30,109 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$rout
 
         function updateState() {
             $location.search({
-                q:$routeParams.q,
-                page:$scope.pageNumber,
-                size:$scope.pageSize,
-                modFilters:$routeParams.modFilters,
-                speciesFilters:$routeParams.speciesFilters
+                q: $routeParams.q,
+                page: $scope.pageNumber,
+                size: $scope.pageSize,
+                modFilters: $routeParams.modFilters,
+                speciesFilters: $routeParams.speciesFilters
             });
         }
 
         $scope.Math = window.Math;
 
+        function calcMaxNumOfPages() {
+            return Math.floor($scope.totalResults / $scope.pageSize);
+        }
+
         $scope.pageSizes = [20, 50, 100, 200];
 
-        $scope.firstPage = function() {
-            if ($scope.pageNumber>1) {
+        $scope.isSelected = function(page) {
+            return $scope.pageNumber === page;
+        };
+
+        $scope.setPage = function (page) {
+            if ($scope.pageNumber !== page) {
+                $scope.pageNumber = page;
+                updateState();
+            }
+        };
+
+        $scope.isFirstPages = function() {
+            return parseInt($scope.pageNumber) - 2 <= 2;
+        };
+
+        $scope.firstPage = function () {
+            if ($scope.pageNumber > 1) {
                 $scope.pageNumber = 1;
                 updateState();
             }
         };
 
-        $scope.lastPage = function() {
-            var maxPages = Math.floor($scope.totalResults / $scope.pageSize) + 1;
-            if ($scope.pageNumber!=maxPages) {
+        $scope.isLastPages = function() {
+            return $scope.pageNumber + 2 >= calcMaxNumOfPages() - 1;
+        };
+
+        $scope.lastPage = function () {
+            var maxPages = calcMaxNumOfPages();
+            if ($scope.pageNumber != maxPages) {
                 $scope.pageNumber = maxPages;
                 updateState();
             }
         };
 
-        $scope.nextPage = function() {
-            var maxPages = Math.floor($scope.totalResults / $scope.pageSize) + 1;
-            if ($scope.pageNumber<maxPages) {
-                $scope.pageNumber++;
-                updateState();
-            }
+        $scope.getMaxPages = function () {
+            return calcMaxNumOfPages();
         };
 
-        $scope.previousPage = function() {
-            if ($scope.pageNumber!=1) {
-                $scope.pageNumber--;
-                updateState();
+        $scope.getPages = function () {
+            var maxPages = calcMaxNumOfPages();
+            var initPage = parseInt($scope.pageNumber);
+            if (initPage === 1) {
+                initPage++;
             }
+
+            if (initPage === maxPages) {
+                initPage--;
+            }
+
+            var left = initPage;
+            var right = initPage;
+
+            var pageNumbers = [];
+
+            // push the current page number to the array
+            pageNumbers.push(initPage);
+
+            // left
+            for (i = 0; i < 2; i++) {
+                left--;
+                if (left > 1) {
+                    pageNumbers.unshift(left);
+                } else {
+                    right++;
+                    pageNumbers.push(right);
+                }
+            }
+
+            // right
+            for (i = 0; i < 2; i++) {
+                right++;
+                if (right < maxPages) {
+                    pageNumbers.push(right);
+                } else {
+                    left--;
+                    pageNumbers.unshift(left);
+                }
+            }
+
+            return pageNumbers;
         };
 
-        $scope.pageSizeChanged = function() {
+        $scope.pageSizeChanged = function () {
             var newValue = $scope.pageSize;
             var oldValue = $routeParams.size;
-            if (newValue && newValue!=oldValue) {
+            if (newValue && newValue != oldValue) {
+                $scope.pageNumber = 1;
                 updateState();
             }
         };
