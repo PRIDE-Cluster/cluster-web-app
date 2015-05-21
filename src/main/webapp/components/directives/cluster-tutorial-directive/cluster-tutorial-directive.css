@@ -1,0 +1,45 @@
+/* Redefine style of rn-carousel indicators */
+div.rn-carousel-indicator span {
+    cursor: pointer;
+    color: #333333; }
+div.rn-carousel-indicator span.active {
+    color: #4682b4; }
+
+
+div.rn-carousel-indicator {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+ul[rn-carousel] {
+    height: 300px;
+    min-height: 100%;
+}
+
+p {
+    margin-top: 5px;
+}
+
+.tutorial-slides {
+    height: 300px;
+    border: 2px solid #f1f1f1;
+    border-radius: 4px;
+    padding: 5px 5px 5px 5px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tutorial-slides-header {
+    font-size: 115%;
+    color: #996a44;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #f1f1f1;
+}
+
+.tutorial-slides-navigator {
+    font-size: 140%;
+    text-align: center;
+}

@@ -2,19 +2,36 @@
 
 <div id="content" role="main" class="grid_24 clearfix view-animate-container">
 
-    <div id="top" class="grid_23 clearfix">
-        <section id="cluster-intro">
-            <span class="project-title">
-                PRIDE Cluster clusters all public identified experiments in the PRIDE Archive repository using spectrum clustering algorithms.
-                <a class="text-muted" href="#/about">Learn More</a>
-            </span>
-        </section>
-    </div>
+    <!--<div id="top" class="grid_23 clearfix">-->
+        <!--<section id="cluster-intro">-->
+            <!--<span class="project-title">-->
+                <!--PRIDE Cluster clusters all public identified experiments in the PRIDE Archive repository using spectrum clustering algorithms.-->
+                <!--<a class="text-muted" href="#/about">Learn More</a>-->
+            <!--</span>-->
+        <!--</section>-->
+    <!--</div>-->
 
     <div id="middle" class="grid_24 clearfix">
-        <!--<section class="grid 6 alpha">-->
-            <!--<prc-peptide-count-chart></prc-peptide-count-chart>-->
-        <!--</section>-->
+        <div class="grid_18">
+            <prc-tutorial-viewer slides="slides"></prc-tutorial-viewer>
+        </div>
+
+        <section class="grid_6 omega">
+            <h3 class="icon icon-functional" data-icon="z">
+                <a href="#/list">Statistics</a>
+            </h3>
+
+            <p class="justify-body-text">
+            <ul>
+                <div ng-repeat="stat in generalStats.repoStatistics">
+                    <li ng-if="stat.name === 'Number of clusters'" class="justify-body-text">{{stat.value}} clusters</li>
+                    <li ng-if="stat.name === 'Number of species'" class="justify-body-text">{{stat.value}} species</li>
+                    <li ng-if="stat.name === 'Number of projects'" class="justify-body-text">{{stat.value}} projects</li>
+                    <li ng-if="stat.name === 'Number of assays'" class="justify-body-text">{{stat.value}} assays</li>
+                </div>
+            </ul>
+            </p>
+        </section>
     </div>
 
     <div id="bottom" class="grid_24 clearfix">
