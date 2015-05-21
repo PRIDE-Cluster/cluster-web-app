@@ -1,7 +1,6 @@
 /**
+ *
  * @author Rui Wang
- *
- *
  */
 
 var peptideCountChartDirective = angular.module('prideClusterApp.peptideCountChartDirective', []);
@@ -21,72 +20,47 @@ peptideCountChartDirective.directive('prcPeptideCountChart', function() {
  * individual Clusters. These details are assigned to model objects in order to be accessed later on
  * within the html template part of the view.
  */
-peptideCountChartDirective.controller('PeptideCountChartDirectiveCtrl', ['$scope', 'ClusterModifications',
-    function($scope, ClusterModifications) {
+peptideCountChartDirective.controller('PeptideCountChartDirectiveCtrl', ['$scope', function($scope) {
 
-        ClusterModifications.get({}, function(modifications) {
+    $scope.peptideCountData = [
+        {
+            "speciesName": "Human sapiens (Human)",
+            "count": 10000
+        },
+        {
+            "speciesName": "Mus musculus (Mouse)",
+            "count": 20000
+        },
+        {
+            "speciesName": "Rattus norvegicus (Rat)",
+            "count":1000
+        },
+        {
+            "speciesName": "Glia",
+            "count":10000
+        },
+        {
+            "speciesName": "Others",
+            "count":2000
+        }
+    ];
 
-            $scope.modificationsData = modifications.modificationCounts;
-            $scope.xFunction = function(){
-                return function(d) {
-                    return d.modificationName;
-                };
-            }
-            $scope.yFunction = function(){
-                return function(d){
-                    return d.count;
-                };
-            }
-            $scope.toolTipContentFunction = function(){
-                return function(key, x, y, e, graph) {
-                    return '<p>' + Math.round(x) + ' peptides include ' + key + '</p>';
-                }
-            }
-        });
+    $scope.xFunction = function(){
+        return function(d) {
+            return d.speciesName;
+        };
+    };
 
-        //Stats.peptideCountStats({}, function(peptideCounts) {
-        //
-        //    $scope.peptideCountData = [
-        //        {
-        //            "speciesName": "Human sapiens (Human)",
-        //            "count": 10000
-        //        },
-        //        {
-        //            "speciesName": "Mus musculus (Mouse)",
-        //            "count": 20000
-        //        },
-        //        {
-        //            "speciesName": "Rattus norvegicus (Rat)",
-        //            "count":1000
-        //        },
-        //        {
-        //            "speciesName": "Glia",
-        //            "count":10000
-        //        },
-        //        {
-        //            "speciesName": "Others",
-        //            "count":2000
-        //        }
-        //    ];
-        //
-        //    $scope.xFunction = function(){
-        //        return function(d) {
-        //            return d.speciesName;
-        //        };
-        //    };
-        //
-        //    $scope.yFunction = function(){
-        //        return function(d){
-        //            return d.count;
-        //        };
-        //    };
-        //
-        //    $scope.toolTipContentFunction = function(){
-        //        return function(key, x, y, e, graph) {
-        //            return '<p>' + Math.round(x) + ' peptides include ' + key + '</p>';
-        //        }
-        //    }
-        //});
+    $scope.yFunction = function(){
+        return function(d){
+            return d.count;
+        };
+    };
 
-    }
-]);
+    $scope.toolTipContentFunction = function(){
+        return function(key, x, y, e, graph) {
+            return '<p>' + Math.round(x) + ' peptides include ' + key + '</p>';
+        }
+    };
+
+}]);
