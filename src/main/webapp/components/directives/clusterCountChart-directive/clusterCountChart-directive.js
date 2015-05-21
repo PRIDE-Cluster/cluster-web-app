@@ -51,9 +51,9 @@ clusterCountChartDirective.controller('ClusterCountChartDirectiveCtrl', ['$scope
 
     $scope.toolTipContentFunction = function(){
         return function(key, x, y, e, graph) {
-            return  'Super New Tooltip' +
-                '<h5>' + x + '</h5>' +
-                '<p>' +  y + ' unique peptide sequences</p>'
+            var countStr = y.toString();
+            return '<h5>' + x + '</h5>' +
+                '<p>' +  countStr.substring(0, countStr.length - 2) + ' unique peptide sequences</p>'
         }
     };
 }]);
