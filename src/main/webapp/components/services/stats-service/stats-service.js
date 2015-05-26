@@ -36,7 +36,7 @@ statsService.factory('ClusterPerSpecies', ['$resource',
             statsWsUrl + '/species/cluster/count?callback=JSON_CALLBACK',
             {},
             {
-                generalStats: {
+                getStats: {
                     method:'JSONP',
                     params:{},
                     isArray:false,
@@ -53,7 +53,7 @@ statsService.factory('PeptidePerSpecies', ['$resource',
             statsWsUrl + '/species/peptide/count?callback=JSON_CALLBACK',
             {},
             {
-                generalStats: {
+                getStats: {
                     method:'JSONP',
                     params:{},
                     isArray:false,

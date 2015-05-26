@@ -20,22 +20,37 @@ clusterCountChartDirective.directive('prcClusterCountChart', function() {
  * individual Clusters. These details are assigned to model objects in order to be accessed later on
  * within the html template part of the view.
  */
-clusterCountChartDirective.controller('ClusterCountChartDirectiveCtrl', ['$scope', function($scope) {
+clusterCountChartDirective.controller('ClusterCountChartDirectiveCtrl', ['$scope', 'ClusterPerSpecies', function($scope, ClusterPerSpecies) {
 
-    $scope.clusterCountData = [
-        {
-            "key": "species",
-            "values": [
-                        ["Human sapiens (Human)", 200000],
-                        ["Mus musculus (Mouse)", 20000],
-                        ["Rattus norvegicus (Rat)", 1000],
-                        ["Glia", 10000],
-                        ["Test species", 20000],
-                        ["Test species 1", 30000],
-                        ["Others", 2000]
-                      ]
+
+    ClusterPerSpecies.getStats({}, function(stats){
+        // sort the statistics according the number of
+        stats.sort(function (a, b) {
+            return a.value - b.value;
+        });
+
+        // summarise the count
+        var values = [];
+        var othersCnt = 0;
+        for (i = 0; i < stat.length; i++) {
+            if (i < 6) {
+                values.push([stat.name, stat.value]);
+            } else {
+                othersCnt += stat.value;
+            }
         }
-    ];
+        values.push(["Others", othersCnt]);
+
+        // prepare for display
+        $scope.clusterCountData = [
+            {
+                "key": "species",
+                "values": values
+            }
+        ];
+
+    });
+
 
     $scope.xFunction = function(){
         return function(d){
