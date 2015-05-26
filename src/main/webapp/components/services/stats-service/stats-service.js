@@ -29,3 +29,56 @@ statsService.factory('Stats', ['$resource',
         );
     }
 ]);
+
+statsService.factory('ClusterPerSpecies', ['$resource',
+    function($resource){
+        return $resource(
+            statsWsUrl + '/species/cluster/count?callback=JSON_CALLBACK',
+            {},
+            {
+                generalStats: {
+                    method:'JSONP',
+                    params:{},
+                    isArray:false,
+                    callback: 'JSON_CALLBACK'
+                }
+            }
+        );
+    }
+]);
+
+statsService.factory('PeptidePerSpecies', ['$resource',
+    function($resource){
+        return $resource(
+            statsWsUrl + '/species/peptide/count?callback=JSON_CALLBACK',
+            {},
+            {
+                generalStats: {
+                    method:'JSONP',
+                    params:{},
+                    isArray:false,
+                    callback: 'JSON_CALLBACK'
+                }
+            }
+        );
+    }
+]);
+
+statsService.factory('OverlappingPeptidePerSpeciesPair', ['$resource',
+    function($resource){
+        return $resource(
+            statsWsUrl + '/species/peptide/overlap?callback=JSON_CALLBACK',
+            {},
+            {
+                generalStats: {
+                    method:'JSONP',
+                    params:{},
+                    isArray:false,
+                    callback: 'JSON_CALLBACK'
+                }
+            }
+        );
+    }
+]);
+
+
