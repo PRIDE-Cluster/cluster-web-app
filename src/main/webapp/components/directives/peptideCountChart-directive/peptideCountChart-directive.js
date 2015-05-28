@@ -22,71 +22,50 @@ peptideCountChartDirective.directive('prcPeptideCountChart', function() {
  */
 peptideCountChartDirective.controller('PeptideCountChartDirectiveCtrl', ['$scope', 'PeptidePerSpecies', function($scope, PeptidePerSpecies) {
 
+
+
     PeptidePerSpecies.getStats({}, function(stats){
-        // sort the statistics according the number of
-        stats.sort(function (a, b) {
-            return a.value - b.value;
+        $scope.peptideCountData = [];
+
+        // sort the statistics according the number of unique peptides
+        var repoStatistics = stats.repoStatistics;
+
+        repoStatistics.sort(function (a, b) {
+            return b.value - a.value;
         });
 
         // summarise the count
-        var othersCnt = 0;
-        for (i = 0; i < stat.length; i++) {
-            if (i < 6) {
-                $scope.peptideCountData.push({
-                    "speciesName": stat.name,
-                    "count" : stat.value
-                });
-            } else {
-                othersCnt += stat.value;
+        for (i = 0; i < repoStatistics.length; i++) {
+            if (i > 9) {
+                break;
             }
+
+            $scope.peptideCountData.push({
+                "speciesName": repoStatistics[i].name,
+                "count" : repoStatistics[i].value
+            });
         }
 
-        $scope.peptideCountData.push(
-        {
-            "speciesName": "Others",
-            "count" : othersCnt
-        });
+        $scope.xFunction = function(){
+            return function(d) {
+                return d.speciesName;
+            };
+        };
+
+        $scope.yFunction = function(){
+            return function(d){
+                return d.count;
+            };
+        };
+
+        $scope.toolTipContentFunction = function(){
+            return function(key, x, y, e, graph) {
+                var countStr = x.toString();
+                return '<p>' + countStr.substring(0, countStr.length - 3) + ' unique peptides for ' + key + '</p>';
+            }
+        };
     });
 
-    //$scope.peptideCountData = [
-    //    {
-    //        "speciesName": "Human sapiens (Human)",
-    //        "count": 10000
-    //    },
-    //    {
-    //        "speciesName": "Mus musculus (Mouse)",
-    //        "count": 20000
-    //    },
-    //    {
-    //        "speciesName": "Rattus norvegicus (Rat)",
-    //        "count":1000
-    //    },
-    //    {
-    //        "speciesName": "Glia",
-    //        "count":10000
-    //    },
-    //    {
-    //        "speciesName": "Others",
-    //        "count":2000
-    //    }
-    //];
 
-    $scope.xFunction = function(){
-        return function(d) {
-            return d.speciesName;
-        };
-    };
-
-    $scope.yFunction = function(){
-        return function(d){
-            return d.count;
-        };
-    };
-
-    $scope.toolTipContentFunction = function(){
-        return function(key, x, y, e, graph) {
-            return '<p>' + Math.round(x) + ' peptides include ' + key + '</p>';
-        }
-    };
 
 }]);

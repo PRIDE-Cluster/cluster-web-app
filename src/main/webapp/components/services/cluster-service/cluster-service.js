@@ -12,7 +12,6 @@
  */
 var clusterWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/cluster";
 //var clusterWsUrl = "http://localhost:9091/pride/ws/cluster/cluster";
-var statsWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/stats";
 
 var clusterService = angular.module('prideClusterApp.clusterService', ['ngResource']);
 

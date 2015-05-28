@@ -24,22 +24,21 @@ clusterCountChartDirective.controller('ClusterCountChartDirectiveCtrl', ['$scope
 
 
     ClusterPerSpecies.getStats({}, function(stats){
-        // sort the statistics according the number of
-        stats.sort(function (a, b) {
-            return a.value - b.value;
+        // sort the statistics according the number of clusters
+        var repoStatistics = stats.repoStatistics;
+
+        repoStatistics.sort(function (a, b) {
+            return b.value - a.value;
         });
 
         // summarise the count
         var values = [];
-        var othersCnt = 0;
-        for (i = 0; i < stat.length; i++) {
-            if (i < 6) {
-                values.push([stat.name, stat.value]);
-            } else {
-                othersCnt += stat.value;
+        for (i = 0; i < repoStatistics.length; i++) {
+            if (i > 9) {
+                break;
             }
+            values.push([repoStatistics[i].name, repoStatistics[i].value]);
         }
-        values.push(["Others", othersCnt]);
 
         // prepare for display
         $scope.clusterCountData = [
@@ -49,26 +48,25 @@ clusterCountChartDirective.controller('ClusterCountChartDirectiveCtrl', ['$scope
             }
         ];
 
+        $scope.xFunction = function(){
+            return function(d){
+                return d[0];
+            };
+        };
+
+        $scope.yFunction = function(){
+            return function(d){
+                return d[1];
+            };
+        };
+
+        $scope.toolTipContentFunction = function(){
+            return function(key, x, y, e, graph) {
+                var countStr = y.toString();
+                return '<h5>' + x + '</h5>' +
+                    '<p>' +  countStr.substring(0, countStr.length - 2) + ' high quality clusters</p>'
+            }
+        };
+
     });
-
-
-    $scope.xFunction = function(){
-        return function(d){
-            return d[0];
-        };
-    };
-
-    $scope.yFunction = function(){
-        return function(d){
-            return d[1];
-        };
-    };
-
-    $scope.toolTipContentFunction = function(){
-        return function(key, x, y, e, graph) {
-            var countStr = y.toString();
-            return '<h5>' + x + '</h5>' +
-                '<p>' +  countStr.substring(0, countStr.length - 2) + ' unique peptide sequences</p>'
-        }
-    };
 }]);

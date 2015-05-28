@@ -19,50 +19,73 @@ peptideSpeciesChartDirective.directive('prcPeptideSpeciesChart', function() {
     };
 });
 
-peptideSpeciesChartDirective.controller('PeptideSpeciesChartDirectiveCtrl', ['$scope',
-    function($scope) {
+peptideSpeciesChartDirective.controller('PeptideSpeciesChartDirectiveCtrl', ['$scope', 'OverlappingPeptidePerSpeciesPair',
+    function($scope, OverlappingPeptidePerSpeciesPair) {
 
-        $scope.statsData = {
-            labels: [
-                {
-                    name: "Human sapiens (Human)",
-                    color: "#E41A1C"
-                },
-                {
-                    name: "Mus musculus (Mouse)",
-                    color: "#FFFF33"
-                },
-                {
-                    name: "Rattus norvegicus (Rat)",
-                    color: "#FF7F00"
-                },
-                {
-                    name: "Glia",
-                    color: "#FF7F00"
-                },
-                {
-                    name: "Test species",
-                    color: "#E41A1C"
-                },
-                {
-                    name: "Test species 1",
-                    color: "#E41A1C"
-                },
-                {
-                    name: "Others",
-                    color: "#E41A1C"
+        OverlappingPeptidePerSpeciesPair.getStats({}, function(stats){
+            // sort the statistics according the name
+            stats.sort(function (a, b) {
+                if (a.name > b.name) {
+                    return 1;
                 }
-            ],
-            matrix: [
-                [0, 100, 200, 300, 400, 500, 600],
-                [100, 0, 200, 300, 400, 500, 600],
-                [200, 100, 0, 300, 400, 500, 600],
-                [300, 100, 200, 0, 400, 500, 600],
-                [400, 100, 200, 300, 0, 500, 600],
-                [500, 100, 200, 300, 400, 0, 600],
-                [600, 100, 200, 300, 400, 500, 0]
-            ]
-        }
+                if (a.name < b.name) {
+                    return -1;
+                }
+                // a must be equal to b
+                return 0;
+            });
+
+            var aggregateValues = {};
+
+            for (var stat in stats) {
+                if (stat.value > 50) {
+                    // split name into two species
+                }
+            }
+
+        });
+
+        //$scope.statsData = {
+        //    labels: [
+        //        {
+        //            name: "Human sapiens (Human)",
+        //            color: "#E41A1C"
+        //        },
+        //        {
+        //            name: "Mus musculus (Mouse)",
+        //            color: "#FFFF33"
+        //        },
+        //        {
+        //            name: "Rattus norvegicus (Rat)",
+        //            color: "#FF7F00"
+        //        },
+        //        {
+        //            name: "Glia",
+        //            color: "#FF7F00"
+        //        },
+        //        {
+        //            name: "Test species",
+        //            color: "#E41A1C"
+        //        },
+        //        {
+        //            name: "Test species 1",
+        //            color: "#E41A1C"
+        //        },
+        //        {
+        //            name: "Others",
+        //            color: "#E41A1C"
+        //        }
+        //    ],
+        //    matrix: [
+        //        [0, 100, 200, 300, 400, 500, 600],
+        //        [100, 0, 200, 300, 400, 500, 600],
+        //        [200, 100, 0, 300, 400, 500, 600],
+        //        [300, 100, 200, 0, 400, 500, 600],
+        //        [400, 100, 200, 300, 0, 500, 600],
+        //        [500, 100, 200, 300, 400, 0, 600],
+        //        [600, 100, 200, 300, 400, 500, 0]
+        //    ]
+        //}
 
     }
 ]);

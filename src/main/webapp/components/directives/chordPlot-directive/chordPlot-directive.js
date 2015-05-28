@@ -65,8 +65,6 @@ chordPlotDirective.directive('prcChordPlot', function() {
 
                     // Add a mouseover title.
                     group.append("title").text(function(d, i) {
-                        console.log(chordPlotData.labels[i]);
-                        console.log(chordPlotData.labels[i]);
                         return chordPlotData.labels[i].name;
                     });
 
