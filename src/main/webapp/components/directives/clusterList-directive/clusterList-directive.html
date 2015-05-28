@@ -11,7 +11,7 @@
             <section ng-if="speciesFacets.length > 0" class="facet-box">
                 <h6>Species ({{speciesFacets.length}})</h6>
 
-                <p><input type="text" ng-model="spFilter" class="facet-input" placeholder="Search species"></p>
+                <p><input type="text" ng-model="spFilter" class="facet-input" placeholder="Find species"></p>
 
                 <div class="scroll-area">
                     <div ng-repeat="species in speciesFacets | filter:spFilter">
@@ -27,7 +27,7 @@
             <section ng-if="modFacets.length > 0" class="facet-box">
                 <h6>Modifications ({{modFacets.length}})</h6>
 
-                <p><input type="text" ng-model="mFilter" class="facet-input" placeholder="Search modification"></p>
+                <p><input type="text" ng-model="mFilter" class="facet-input" placeholder="Find modification"></p>
 
                 <div class="scroll-area">
                     <div data-ng-repeat="mods in modFacets | filter:mFilter">
