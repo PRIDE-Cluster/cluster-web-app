@@ -9,6 +9,7 @@
  *
  */
 var spectrumLibraryWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/library";
+//var spectrumLibraryWsUrl = "http://localhost:9091/pride/ws/cluster/library";
 
 var spectrumLibraryService = angular.module('prideClusterApp.spectrumLibraryService', ['ngResource']);
 

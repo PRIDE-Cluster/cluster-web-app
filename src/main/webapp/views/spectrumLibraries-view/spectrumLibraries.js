@@ -22,8 +22,8 @@ spectrumLibrariesView.config(
 /**
  * This controller is injected with scope. Right now is not really needed...
  */
-spectrumLibrariesView.controller('SpectrumLibrariesViewCtrl', ['$scope', '$location', '$document', '$anchorScroll', 'SpectrumLibrary',
-    function ($scope, $location, $document, $anchorScroll, SpectrumLibrary) {
+spectrumLibrariesView.controller('SpectrumLibrariesViewCtrl', ['$scope', '$location', '$document', '$anchorScroll', 'SpectrumLibrary', '$http',
+    function ($scope, $location, $document, $anchorScroll, SpectrumLibrary, $http) {
         $scope.jumpTo = function(id) {
             var old = $location.hash();
             $location.hash(id);
@@ -42,8 +42,36 @@ spectrumLibrariesView.controller('SpectrumLibrariesViewCtrl', ['$scope', '$locat
             $document.prop('aspera-web').startDownload(sourceURL + '?auth=no&bwcap=300000&targetrate=100p&policy=fair&enc=none');
         };
 
-        $scope.latestRelease = SpectrumLibrary.latest({},function(spectrumLibraries){});
-        console.log($scope.latestRelease)
+        $scope.latestRelease = SpectrumLibrary.latest({},function(spectrumLibraries){
+
+            function compare(s1, s2) {
+                if (s1.numberOfSpectra < s2.numberOfSpectra) {
+                    return 1;
+                }
+
+                if (s1.numberOfSpectra > s2.numberOfSpectra) {
+                    return -1;
+                }
+
+                return 0;
+            }
+
+            spectrumLibraries.spectrumLibraries.sort(compare)
+        });
+
+        //$scope.hasImage = function(url) {
+        //    console.log(url);
+        //    var exist = true;
+        //    //$http.get(url).
+        //    //    success(function(data, status, headers, config) {
+        //    //        exist = true;
+        //    //    }).
+        //    //    error(function(data, status, headers, config) {
+        //    //        exist = false;
+        //    //    });
+        //
+        //    return exist;
+        //}
     }
 ]);
 

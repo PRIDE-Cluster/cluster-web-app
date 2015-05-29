@@ -18,6 +18,7 @@
             of all reliable clusters generated from the public experiments in PRIDE Archive. Therefore, they also
             contain consensus spectra from labelled experiments as well as a wider array of species.
         </p>
+
         <p class="help-content">
             The PRIDE Cluster spectral libraries are available in NIST's MSP format, which is highly similar to
             SpectraST's sptxt format. Thereby, these spectral libaries can be read and processed by most spectral
@@ -29,7 +30,7 @@
         <h3 class="icon icon-functional" data-icon="M">Topics</h3>
         <ul id="secondary-nav" class="help-content">
             <!--TODO: Add active menu class="active" and ideally move the menu when you click-->
-            <li >
+            <li>
                 <a ng-click="jumpTo('latRel')">Latest Release</a>
             </li>
             <li class="last">
@@ -58,13 +59,14 @@
 
             <div class="grid_8 spectral-library">
                 <div class="grid_24">
-                    <div class="grid_18 alpha">
+                    <!--<div class="grid_4 alpha">-->
+                        <!--<img class="species-img" alt="Test" ng-src="{{ './img/' + spectrumLibrary.taxonomyId + '.svg' }}"-->
+                             <!--title="Download">-->
+                    <!--</div>-->
+                    <div class="grid_24">
                         <h4>{{ spectrumLibrary.speciesName }}</h4>
                     </div>
-                    <div class="grid_6 omega">
-                        <img class="species-img" ng-src="{{ './img/' + spectrumLibrary.taxonomyId + '.svg'}}"
-                             title="Download">
-                    </div>
+
                 </div>
                 <div class="grid_24">
                     <ul>
@@ -75,9 +77,12 @@
                             Taxonomy: <a ng-href="http://www.uniprot.org/taxonomy/{{ spectrumLibrary.taxonomyId }}">{{
                             spectrumLibrary.taxonomyId }}</a>
                         </li>
-                        <!--<li>-->
-                            <!--Number of spectra: {{ spectrumLibrary.numberOfSpectra }}-->
-                        <!--</li>-->
+                        <li>
+                            Number of spectra: {{ spectrumLibrary.numberOfSpectra }}
+                        </li>
+                        <li>
+                            Number of peptides: {{ spectrumLibrary.numberOfPeptides }}
+                        </li>
                         <li>
                             File Size: {{ bytesToSize(spectrumLibrary.fileSize) }}
                         </li>
@@ -110,7 +115,8 @@
     <section class="grid_18 alpha">
         <h3 id="spLib">How to use the libraries?</h3>
 
-        <p class="help-content">PRIDE spectrum libraries do not contain protein annotations. Instead, you should use your spectrum search
+        <p class="help-content">PRIDE spectrum libraries do not contain protein annotations. Instead, you should use
+            your spectrum search
             engine's inbuilt mapping function to map the identified peptides to a protein database of your choice.
         </p>
 
@@ -120,33 +126,38 @@
 
 <pre>
 <code class="help-content">
-# replace filenames with current version of PRIDE Cluster libraries
-spectrast -cNpride_human-2012_06 pride_human-2012_06.msp
+    # replace filenames with current version of PRIDE Cluster libraries
+    spectrast -cNpride_human-2012_06 pride_human-2012_06.msp
 </code>
 </pre>
 
 
-        <p class="help-content">2. Search the library and add protein annotations (threshold of 3.0 m/z, search all charge states,
+        <p class="help-content">2. Search the library and add protein annotations (threshold of 3.0 m/z, search all
+            charge states,
             load library into memory)</p>
 
 <pre>
 <code class="help-content">
-spectrast -sR -sM3.0 -sz -sLpride_human-2012_06.splib -sDswissprot_human.fasta spectra.mgf
+    spectrast -sR -sM3.0 -sz -sLpride_human-2012_06.splib -sDswissprot_human.fasta spectra.mgf
 </code>
 </pre>
         <p class="help-content">For more information on how to use SpectraST please refer to the SpectraST
             <a href="http://tools.proteomecenter.org/wiki/index.php?title=Software:SpectraST" target="_blank">documentation</a>.
         </p>
-        
+
         <h4>Pepitome</h4>
+
         <p class="help-content">
             Pepitome can read PRIDE Cluster's spectral libraries directly without the need for any file conversion.
-            Additionally, the re-mapping of peptide identifications to an updated protein database is also done by default.
+            Additionally, the re-mapping of peptide identifications to an updated protein database is also done by
+            default.
             Therefore, no adaptions are necessary to use PRIDE Cluster's spectral libraries with Pepitome.
         </p>
+
         <p class="help-content">
-            For more information please refer to the Pepitome 
-            <a href="http://forge.fenchurch.mc.vanderbilt.edu/scm/viewvc.php/*checkout*/trunk/doc/index.html?root=pepitome" target="_blank">documentation</a>.
+            For more information please refer to the Pepitome
+            <a href="http://forge.fenchurch.mc.vanderbilt.edu/scm/viewvc.php/*checkout*/trunk/doc/index.html?root=pepitome"
+               target="_blank">documentation</a>.
         </p>
     </section>
 
