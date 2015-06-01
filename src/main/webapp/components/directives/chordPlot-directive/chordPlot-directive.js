@@ -99,10 +99,7 @@ chordPlotDirective.directive('prcChordPlot', function() {
                     chord.append("title").text(function(d) {
                         return chordPlotData.labels[d.source.index].name
                             + " → " + chordPlotData.labels[d.target.index].name
-                            + ": " + formatPercent(d.source.value)
-                            + "\n" + chordPlotData.labels[d.target.index].name
-                            + " → " + chordPlotData.labels[d.source.index].name
-                            + ": " + formatPercent(d.target.value);
+                            + ": " + d.source.value;
                     });
 
                     function mouseover(d, i) {

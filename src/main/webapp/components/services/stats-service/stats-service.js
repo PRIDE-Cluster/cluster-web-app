@@ -8,8 +8,8 @@
  * Each singleton represents a web-service end point and can potentially define multiple operations.
  *
  */
-var statsWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/stats";
-//var statsWsUrl = "http://localhost:9091/pride/ws/cluster/stats";
+//var statsWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/stats";
+var statsWsUrl = "http://localhost:9091/pride/ws/cluster/stats";
 
 var statsService = angular.module('prideClusterApp.statsService', ['ngResource']);
 
@@ -68,10 +68,10 @@ statsService.factory('PeptidePerSpecies', ['$resource',
 statsService.factory('OverlappingPeptidePerSpeciesPair', ['$resource',
     function($resource){
         return $resource(
-            statsWsUrl + '/species/peptide/overlap?callback=JSON_CALLBACK',
+            statsWsUrl + '/species/peptide/overlap/20?callback=JSON_CALLBACK',
             {},
             {
-                generalStats: {
+                getStats: {
                     method:'JSONP',
                     params:{},
                     isArray:false,

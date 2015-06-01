@@ -2,20 +2,26 @@
 
 <div id="content" role="main" class="grid_24 clearfix view-animate-container">
 
-    <!--<div class="grid_24 clearfix">-->
-        <!--<prc-peptide-species-chart></prc-peptide-species-chart>-->
-    <!--</div>-->
-
     <div class="grid_24 clearfix">
-        <div class="grid_12">
+
+        <div class="grid_12 cluster-detail-panel">
+            <h4>Unique peptide per species</h4>
+            <p> A diagram showing the number of unique peptides sequences per top species</p>
             <prc-peptide-count-chart></prc-peptide-count-chart>
         </div>
 
-        <div class="grid_12 clearfix">
+        <div class="grid_12 cluster-detail-panel">
+            <h4>Clusters per species</h4>
+            <p> A diagram showing the number of high quality clusters per top species</p>
             <prc-cluster-count-chart></prc-cluster-count-chart>
         </div>
     </div>
 
-
-
+    <div class="grid_23 clearfix">
+        <div class="grid_24 cluster-detail-panel">
+            <h4>Shared unique peptide</h4>
+            <p> A chord diagram showing the unqiue peptide sequences shared among the top species</p>
+            <prc-peptide-species-chart class="grid_20 alpha"></prc-peptide-species-chart>
+        </div>
+    </div>
 </div>
