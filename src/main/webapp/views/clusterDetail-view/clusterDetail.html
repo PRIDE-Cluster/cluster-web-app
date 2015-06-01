@@ -69,11 +69,10 @@
             <div class="grid_24 cluster-detail-panel">
                 <h4>Consensus Spectrum</h4>
                 <prc-spectrum-viewer
-                        xlabel="M/Z"
-                        ylabel="Intensity"
                         source-id="clusterId"
-                        is-consensus="true"
-                        update-spectrum-source="setSource">
+                        sequence="cluster.sequence"
+                        charge="cluster.averagePrecursorCharge"
+                        mz="cluster.averagePrecursorMz | number:3">
                 </prc-spectrum-viewer>
             </div>
         </div>

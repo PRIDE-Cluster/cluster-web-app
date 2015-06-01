@@ -13,10 +13,9 @@ spectrumViewerDirective.directive('prcSpectrumViewer', function() {
         controller: 'SpectrumViewerDirectiveCtrl',
         scope: {
             sourceId: "=",
-            xlabel: "@",
-            ylabel: "@",
-            isConsensus: "=",
-            updateSpectrumSource: "="
+            sequence: "=",
+            mz: "=",
+            charge: "="
         },
         templateUrl: 'components/directives/spectrumViewer-directive/spectrumViewer-directive.html'
     };
@@ -28,37 +27,46 @@ spectrumViewerDirective.directive('prcSpectrumViewer', function() {
  * individual Clusters. These details are assigned to model objects in order to be accessed later on
  * within the html template part of the view.
  */
-spectrumViewerDirective.controller('SpectrumViewerDirectiveCtrl', ['$scope',
-    function($scope) {
+spectrumViewerDirective.controller('SpectrumViewerDirectiveCtrl', ['$scope', 'ConsensusSpectrumDetail',
+    function($scope, ConsensusSpectrumDetail) {
 
-        $scope.updateSpectrumSource = function(sourceId, isConsensus) {
-            if (isConsensus) {
-                // inject spectrum to SpeckTackle component
-                var chart = st.chart          // new chart
-                    .ms()                 // of type MS
-                    .xlabel($scope.xlabel)        // x-axis label
-                    .ylabel($scope.ylabel); // y-axis label
-                chart.render("#spectrum-viewer");     // render chart
+        ConsensusSpectrumDetail.get({clusterId: $scope.sourceId}, function(spectrum) {
+            var options = {
+                "sequence": $scope.sequence,
+                "staticMods": [],
+                "variableMods": [],
+                "ntermMod": 0, // additional mass to be added to the n-term
+                "ctermMod": 0, // additional mass to be added to the c-term
+                "peaks": [],
+                "massError": 0.5,
+                "scanNum": null,
+                "fileName": null,
+                "charge": $scope.charge,
+                "precursorMz": $scope.mz,
+                "ms1peaks": null,
+                "ms1scanLabel": null,
+                "precursorPeaks": null,
+                "precursorPeakClickFn": null,
+                "zoomMs1": false,
+                "width": 800, 	  // width of the ms/ms plot
+                "height": 600, 	  // height of the ms/ms plot
+                "extraPeakSeries": [],
+                "showIonTable": true,
+                "showViewingOptions": true,
+                "showOptionsTable": true,
+                "showSequenceInfo": true,
+                "labelImmoniumIons": true,
+                "labelPrecursorPeak": true,
+                "labelReporters": true,
+                "showMassErrorPlot": true,
+                "massErrorPlotDefaultUnit": 'Da'
+            };
 
-                var handle = st.data          // new handler
-                    .set()                    // of type set
-//                .ylimits([0, 1000])       // y-domain limits
-                    .x("peaks.mz")            // x-accessor
-                    .y("peaks.intensity");    // y-accessor
+            $.each(spectrum.peaks,function(i, val) {
+                options.peaks.push([val.mz, val.intensity]);
+            });
 
-                // bind the data handler to the chart
-                chart.load(handle);
-                // load the spectrum
-                handle.add(spectrumWsUrl + "/" + sourceId + "/consensus");
-            } else {
-//                $scope.spectrum = SpectrumDetail.get({spectrumId: sourceId}, function (spectrum) {
-//                    // inject spectrum to SpeckTackle component
-//
-//                });
-            }
-        }
-
-        $scope.updateSpectrumSource($scope.sourceId, $scope.isConsensus);
-
+            $("#spectrum-viewer").specview(options);
+        });
     }
 ]);

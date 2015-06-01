@@ -194,7 +194,9 @@
 
 <link rel="stylesheet" href="app.css">
 <link rel="stylesheet" href="mini-bootstrap.css">
-<link rel="stylesheet" type="text/css" href="st/css/st.css">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<!--<link rel="stylesheet" type="text/css" href="st/css/st.css">-->
+<link rel="stylesheet" type="text/css" href="asset/css/lorikeet/lorikeet.css">
 <link rel="stylesheet" type="text/css" href="st/css/index.css">
 <link rel="stylesheet" href="bower_components/nvd3/nv.d3.css"/>
 <link rel="stylesheet" type="text/css" href="bower_components/angular-carousel/dist/angular-carousel.min.css"/>
@@ -210,6 +212,8 @@
 <link rel="stylesheet" href="components/directives/chordPlot-directive/chordPlot-directive.css"/>
 
 <!-- JavaScript at the bottom for fast page loading -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/angular-resource/angular-resource.min.js"></script>
@@ -269,11 +273,22 @@
 <script src="components/services/sp-library-service/sp-library-service.js"></script>
 <script src="components/services/project-service/project-service.js"></script>
 <script src="components/services/stats-service/stats-service.js"></script>
+<script src="components/services/spectrum-service/spectrum-service.js"></script>
 
+<!-- spectrum viewer-->
+<!--<script src="st/st.js"></script>-->
+<!--<script src="st/libs/d3/d3.js"></script>-->
+<!--<script src="st/libs/jquery/jquery.js"></script>-->
 
-<script src="st/st.js"></script>
-<script src="st/libs/d3/d3.js"></script>
-<script src="st/libs/jquery/jquery.js"></script>
+<!-- lorikeet spectrum viewer -->
+<script src="asset/js/lorikeet/specview.js"></script>
+<script src="asset/js/lorikeet/aminoacid.js"></script>
+<script src="asset/js/lorikeet/ion.js"></script>
+<script src="asset/js/lorikeet/peptide.js"></script>
+<script src="asset/js/lorikeet/excanvas.min.js"></script>
+<script src="asset/js/lorikeet/jquery.flot.js"></script>
+<script src="asset/js/lorikeet/jquery.flot.selection.js"></script>
+
 <!-- Aspera -->
 <script src="st/libs/aspera/aspera-utils.js"></script>
 
