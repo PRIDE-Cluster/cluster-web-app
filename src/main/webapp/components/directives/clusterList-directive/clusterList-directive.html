@@ -45,7 +45,7 @@
                 <thead>
                 <tr>
                     <th>
-                        <span tooltip="Peptide sequence plus its modifications" tooltip-placement="bottom">Peptide</span>
+                        <a href tooltip="Peptide sequence plus its modifications" tooltip-placement="bottom" data-ng-click="setSortField('sequence')" ng-class="{'search-table-header':true, 'sorted':isSorted('sequence'), 'not-sorted':!isSorted('sequence'), 'desc':isSorted('sequence') && isOrdered('desc'), 'asc':isSorted('sequence') && isOrdered('asc')}">Peptide</a>
                     </th>
                     <th>
                         <a href tooltip="Precursor charge" tooltip-placement="bottom" data-ng-click="setSortField('averagePrecursorCharge')" ng-class="{'search-table-header':true, 'sorted':isSorted('averagePrecursorCharge'), 'not-sorted':!isSorted('averagePrecursorCharge'), 'desc':isSorted('averagePrecursorCharge') && isOrdered('desc'), 'asc':isSorted('averagePrecursorCharge') && isOrdered('asc')}">Pre Charge</a>
