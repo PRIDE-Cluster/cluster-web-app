@@ -41,7 +41,7 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$rout
         $scope.Math = window.Math;
 
         function calcMaxNumOfPages() {
-            return Math.floor($scope.totalResults / $scope.pageSize);
+            return Math.ceil($scope.totalResults / $scope.pageSize);
         }
 
         $scope.pageSizes = [20, 50, 100, 200];
@@ -101,7 +101,9 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$rout
             var pageNumbers = [];
 
             // push the current page number to the array
-            pageNumbers.push(initPage);
+            if (initPage !== 1) {
+                pageNumbers.push(initPage);
+            }
 
             // left
             for (i = 0; i < 2; i++) {
@@ -110,7 +112,9 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$rout
                     pageNumbers.unshift(left);
                 } else {
                     right++;
-                    pageNumbers.push(right);
+                    if (right < maxPages) {
+                        pageNumbers.push(right);
+                    }
                 }
             }
 
@@ -121,7 +125,9 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$rout
                     pageNumbers.push(right);
                 } else {
                     left--;
-                    pageNumbers.unshift(left);
+                    if (left > 1) {
+                        pageNumbers.unshift(left);
+                    }
                 }
             }
 
