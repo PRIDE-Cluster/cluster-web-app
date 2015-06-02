@@ -6,7 +6,7 @@
             <span ng-show="!isFirstPages()">..</span>
             <a href="" data-ng-repeat="page in getPages()" ng-click="setPage(page)" ng-class="{'search-paging':true, 'selected':isSelected(page)}">{{page}}</a>
             <span ng-show="!isLastPages()">..</span>
-            <a href="" ng-click="lastPage()" ng-class="{'search-paging':true, 'selected':isSelected(getMaxPages())}">{{getMaxPages()}}</a>
+            <a href="" ng-click="lastPage()" ng-class="{'search-paging':true, 'selected':isSelected(getMaxPages())}" ng-show="getMaxPages()!==1">{{getMaxPages()}}</a>
     </span>
 
     <span class="grid_11 search-count" ng-show="getMaxPages()">

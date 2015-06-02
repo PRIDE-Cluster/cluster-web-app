@@ -86,6 +86,10 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$rout
 
         $scope.getPages = function () {
             var maxPages = calcMaxNumOfPages();
+            if (maxPages === 1) {
+                return [];
+            }
+
             var initPage = parseInt($scope.pageNumber);
             if (initPage === 1) {
                 initPage++;
