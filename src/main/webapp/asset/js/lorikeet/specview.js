@@ -2016,7 +2016,7 @@
             keys.sort();
 
 			modInfo += '<div style="margin-top:5px;">';
-			modInfo += 'Variable Modifications: ';
+			modInfo += 'Modifications: ';
             modInfo += "<table class='varModsTable'>";
 			for(var k = 0; k < keys.length; k++) {
 				var varmods = uniqVarMods[keys[k]];
