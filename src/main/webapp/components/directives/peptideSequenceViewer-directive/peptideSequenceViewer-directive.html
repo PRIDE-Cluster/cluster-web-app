@@ -1,6 +1,6 @@
 <span class="peptide-sequence"
     ng-repeat="aminoacid in sequence track by $index"
     ng-class='{modified: modifications[$index]!=undefined}'
-    tooltip="{{modifications[$index]}}"
+    tooltip="{{modifications[$index].name}}"
     tooltip-placement="bottom">{{aminoacid}}</span>
 <span ng-show="charge" class="precursor">(Charge: {{charge}}+ @ {{mz}} m/z units)</span>

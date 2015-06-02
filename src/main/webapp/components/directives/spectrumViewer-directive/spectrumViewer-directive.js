@@ -14,6 +14,7 @@ spectrumViewerDirective.directive('prcSpectrumViewer', function() {
         scope: {
             sourceId: "=",
             sequence: "=",
+            modifications: "=",
             mz: "=",
             charge: "="
         },
@@ -64,6 +65,18 @@ spectrumViewerDirective.controller('SpectrumViewerDirectiveCtrl', ['$scope', 'Co
 
             $.each(spectrum.peaks,function(i, val) {
                 options.peaks.push([val.mz, val.intensity]);
+            });
+
+            $.each($scope.modifications, function(i, val) {
+                if (val !== undefined) {
+                    var modification = {
+                        "index": val.mainPosition,
+                        "modMass": val.monoMass,
+                        "aminoAcid": $scope.sequence.charAt(val.mainPosition - 1)
+                    };
+
+                    options.variableMods.push(modification);
+                }
             });
 
             $("#spectrum-viewer").specview(options);
