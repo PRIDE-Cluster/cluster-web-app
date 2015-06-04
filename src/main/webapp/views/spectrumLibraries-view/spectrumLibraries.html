@@ -64,14 +64,14 @@
                              <!--title="Download">-->
                     <!--</div>-->
                     <div class="grid_24">
-                        <h4>{{ spectrumLibrary.speciesName }}</h4>
+                        <h4>{{ spectrumLibrary.speciesScientificName }}</h4>
                     </div>
 
                 </div>
                 <div class="grid_24">
                     <ul>
                         <li>
-                            Scientific name: {{ spectrumLibrary.speciesScientificName }}
+                            Common name: {{ spectrumLibrary.speciesName}}
                         </li>
                         <li>
                             Taxonomy: <a ng-href="http://www.uniprot.org/taxonomy/{{ spectrumLibrary.taxonomyId }}">{{
