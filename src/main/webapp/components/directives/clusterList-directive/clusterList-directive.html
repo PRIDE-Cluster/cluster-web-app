@@ -82,7 +82,7 @@
                         {{cluster.averagePrecursorCharge}}
                     </td>
                     <td>
-                        {{cluster.averagePrecursorMz | number:3}}
+                        {{cluster.averagePrecursorMz | number:2}}
                     </td>
                     <td>
                         {{cluster.totalNumberOfSpectra}}
@@ -94,7 +94,7 @@
                         {{cluster.totalNumberOfSpecies}}
                     </td>
                     <td>
-                        {{100 * cluster.maxRatio | number:2}}%
+                        {{100 * cluster.maxRatio | number:1}}%
                     </td>
                 </tr>
                 <!--<div class="animate-repeat" ng-repeat="cluster in clusters">-->
