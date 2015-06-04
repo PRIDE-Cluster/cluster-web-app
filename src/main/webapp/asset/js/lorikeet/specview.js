@@ -2254,12 +2254,12 @@
 		myTable += '</td> </tr> ';
 		
 		// sliders to change plot size
-		myTable += '<tr><td class="optionCell"> ';
-		myTable += '<div>Width: <span id="'+getElementId(container, elementIds.slider_width_val)+'">'+options.width+'</span></div> ';
-		myTable += '<div id="'+getElementId(container, elementIds.slider_width)+'" style="margin-bottom:15px;"></div> ';
-		myTable += '<div>Height: <span id="' + getElementId(container, elementIds.slider_height_val) + '">' + options.height + '</span></div> ';
-		myTable += '<div id="'+getElementId(container, elementIds.slider_height)+'"></div> ';
-		myTable += '</td> </tr> ';
+		//myTable += '<tr><td class="optionCell"> ';
+		//myTable += '<div>Width: <span id="'+getElementId(container, elementIds.slider_width_val)+'">'+options.width+'</span></div> ';
+		//myTable += '<div id="'+getElementId(container, elementIds.slider_width)+'" style="margin-bottom:15px;"></div> ';
+		//myTable += '<div>Height: <span id="' + getElementId(container, elementIds.slider_height_val) + '">' + options.height + '</span></div> ';
+		//myTable += '<div id="'+getElementId(container, elementIds.slider_height)+'"></div> ';
+		//myTable += '</td> </tr> ';
 
 		myTable += '</tbody>';
 		myTable += '</table>';
