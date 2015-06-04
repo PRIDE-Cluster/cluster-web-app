@@ -215,3 +215,7 @@ div.line-left {
 .help-content {
     font-size: 110%;
 }
+
+.help-snippet {
+    color: grey;
+}

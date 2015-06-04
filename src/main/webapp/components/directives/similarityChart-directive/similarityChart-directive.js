@@ -26,7 +26,7 @@ similarityChartDirective.controller('SimilarityChartDirectiveCtrl', ['$scope', '
             $scope.statsData = [];
             $scope.statsData[0] = [];
             $scope.statsData[1] = [];
-            $scope.statsData[0][0] = "High Ratio Peptide";
+            $scope.statsData[0][0] = "Consensus Peptide";
             $scope.statsData[1][0] = "Cluster";
             $scope.statsData[0][1] = stats.highRatioPeptideSpectrumSimilarities;
             $scope.statsData[1][1] = stats.clusterSpectrumSimilarities;
