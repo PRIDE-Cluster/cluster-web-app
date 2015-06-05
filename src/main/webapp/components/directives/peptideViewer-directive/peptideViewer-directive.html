@@ -1,7 +1,7 @@
 <div ng-init="getPeptides()">
     <table ng-table="tableParams" template-pagination="custom/pager" class="table table_border">
         <tr ng-repeat="peptide in peptides_slice">
-            <td data-title="'Peptide'">
+            <td data-title="'Peptide'" ng-class="{'bold-text': isConsensusPeptide(peptide)}">
                 <prc-peptide-sequence-viewer
                         sequence="peptide.sequence"
                         modifications="peptide.mods">

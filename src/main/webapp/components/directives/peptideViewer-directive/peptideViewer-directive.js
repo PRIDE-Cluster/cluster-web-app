@@ -29,6 +29,10 @@ peptideViewerDirective.controller("PeptideViewerCtrl", ['$scope', '$filter', 'Cl
     // init total number of peptides
     $scope.totalNumberOfPeptides = 0;
 
+    $scope.isConsensusPeptide = function(peptide) {
+        return peptide.consensusPeptide.toString() === 'true';
+    };
+
     // function to be called at init to get peptides using remote web service
     $scope.getPeptides = function() {
         ClusterPeptides.get(
@@ -52,7 +56,7 @@ peptideViewerDirective.controller("PeptideViewerCtrl", ['$scope', '$filter', 'Cl
                 }
 
                 for (j = 0; j < $scope.peptides.length; j++) {
-                    var peptide = $scope.peptides[j];
+                    peptide = $scope.peptides[j];
                     peptide.psmPercentage = peptide.numberOfPSMs / totalNumberOfPsms;
                 }
 

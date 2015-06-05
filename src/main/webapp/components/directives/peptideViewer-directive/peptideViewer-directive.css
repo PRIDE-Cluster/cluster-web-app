@@ -5,3 +5,7 @@ body {
 .table_border {
     border: 1px solid #64B0B0;
 }
+
+.bold-text span{
+     font-weight: 600 !important;
+ }
