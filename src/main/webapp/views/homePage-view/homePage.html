@@ -24,10 +24,11 @@
             <p class="justify-body-text">
             <ul>
                 <div ng-repeat="stat in generalStats.repoStatistics">
-                    <li ng-if="stat.name === 'Number of clusters'" class="justify-body-text">{{stat.value}} clusters</li>
-                    <li ng-if="stat.name === 'Number of species'" class="justify-body-text">{{stat.value}} species</li>
-                    <li ng-if="stat.name === 'Number of projects'" class="justify-body-text">{{stat.value}} projects</li>
-                    <li ng-if="stat.name === 'Number of assays'" class="justify-body-text">{{stat.value}} assays</li>
+                    <li ng-if="stat.name === 'Number of clusters'" class="justify-body-text">{{stat.value | number : 0}} clusters</li>
+                    <li ng-if="stat.name === 'Number of species'" class="justify-body-text">{{stat.value | number : 0}} species</li>
+                    <li ng-if="stat.name === 'Number of projects'" class="justify-body-text">{{stat.value | number : 0}} projects</li>
+                    <li ng-if="stat.name === 'Number of assays'" class="justify-body-text">{{stat.value | number : 0}} assays</li>
+                    <li ng-if="stat.name === 'Number of spectra'" class="justify-body-text">{{stat.value | number : 0}} assays</li>
                 </div>
             </ul>
             </p>
