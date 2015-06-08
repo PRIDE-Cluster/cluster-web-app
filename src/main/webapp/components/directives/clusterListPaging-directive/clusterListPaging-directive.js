@@ -27,6 +27,8 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$rout
         $scope.pageSize = $routeParams.size;
         $scope.modFilters = $routeParams.modFilters;
         $scope.speciesFilters = $routeParams.speciesFilters;
+        $scope.sortFiled = $routeParams.sortField;
+        $scope.sortOrder = $routeParams.sortOrder;
 
         function updateState() {
             $location.search({
@@ -34,7 +36,9 @@ clusterListPagingDirective.controller('ClusterListPagingCtrl', ['$scope', '$rout
                 page: $scope.pageNumber,
                 size: $scope.pageSize,
                 modFilters: $routeParams.modFilters,
-                speciesFilters: $routeParams.speciesFilters
+                speciesFilters: $routeParams.speciesFilters,
+                sortField: $routeParams.sortField,
+                sortOrder: $routeParams.sortOrder
             });
         }
 
