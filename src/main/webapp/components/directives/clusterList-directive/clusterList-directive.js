@@ -155,7 +155,6 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
                     $scope.speciesFilters = [];
                 } else {
                     $scope.speciesFilters = angular.fromJson($routeParams.speciesFilters);
-                    console.info('Species Filters: ' + $scope.speciesFilters);
                 }
 
                 for (var species in $scope.speciesFacets) {
@@ -172,7 +171,6 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
                     $scope.modFilters = [];
                 } else {
                     $scope.modFilters = angular.fromJson($routeParams.modFilters);
-                    console.info('Mod Filters: ' + $scope.modFilters);
                 }
 
                 for (var mod in $scope.modFacets) {

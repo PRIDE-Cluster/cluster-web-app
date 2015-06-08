@@ -61,3 +61,8 @@ tr.pointer > td{
     /*white-space:nowrap;*/
     padding-bottom: 10px;
 }
+
+.search-suggestion {
+    font-size: 110%;
+    padding-bottom: 40px;
+}

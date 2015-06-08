@@ -1,5 +1,22 @@
 <!--Results-->
-<div class="clusters">
+<div class="grid_24" ng-if="totalResults === 0">
+    <h2 class="icon icon-generic" data-icon="l">No results found for "{{queryTerm}}"</h2>
+
+    <h3>Suggestions</h3>
+    <ul class="search-suggestion">
+        <li>Make sure the input peptide sequence is correct</li>
+
+        <li>Check your spelling is correct</li>
+        <span>Example: misspelled terms like <code>Carbamidometyl</code> (missing "h") won't find any results </span>
+
+        <li>Use full names</li>
+        <span>Exmaple: use <code>Escherichia coli</code> and not <code>E. coli</code> as your search terms</span>
+
+        <li>Read more from our <a href="#/help">help</a> page</li>
+    </ul>
+</div>
+
+<div class="clusters" ng-if="totalResults > 0">
     <div class="grid_24 line-bottom">
         <prc-cluster-list-paging total-results="totalResults"></prc-cluster-list-paging>
     </div>

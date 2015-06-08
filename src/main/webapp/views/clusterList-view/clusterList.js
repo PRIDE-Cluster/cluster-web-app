@@ -3,7 +3,7 @@
  *
  * Each view must define its own routing
  */
-var clusterListView = angular.module('prideClusterApp.clusterListView', ['ngRoute'])
+var clusterListView = angular.module('prideClusterApp.clusterListView', ['ngRoute']);
 
 /**
  * Through routing we associate html templates with behaviour.
