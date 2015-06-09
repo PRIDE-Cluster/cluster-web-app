@@ -59,9 +59,11 @@ chordPlotDirective.directive('prcChordPlot', function() {
                     var group = svg.selectAll(".group")
                         .data(layout.groups)
                         .enter().append("g")
-                        .attr("class", "group")
-                        .on("mouseover", mouseover);
+                        .attr("class", "group");
 
+                    if (!bowser.firefox) {
+                        group.on("mouseover", mouseover);
+                    }
 
                     // Add a mouseover title.
                     group.append("title").text(function(d, i) {
