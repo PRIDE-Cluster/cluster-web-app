@@ -61,6 +61,7 @@ chordPlotDirective.directive('prcChordPlot', function() {
                         .enter().append("g")
                         .attr("class", "group");
 
+                    // firefox has problem recognize mouse over event
                     if (!bowser.firefox) {
                         group.on("mouseover", mouseover);
                     }
