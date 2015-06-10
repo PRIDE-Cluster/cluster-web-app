@@ -111,6 +111,24 @@ clusterService.factory('ClusterPeptides', ['$resource',
         );
     }
 ]);
+
+clusterService.factory('ClusterProjects', ['$resource',
+    function($resource){
+        return $resource(
+            clusterWsUrl + '/:clusterId/project' + '?callback=JSON_CALLBACK',
+            {},
+            {
+                get: {
+                    method:'JSONP',
+                    params:{clusterId:'cluster'},
+                    isArray:false,
+                    callback: 'JSON_CALLBACK'
+                }
+            }
+        );
+    }
+]);
+
 clusterService.factory('ClusterStats', ['$resource',
     function($resource){
         return $resource(
