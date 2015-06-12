@@ -23,10 +23,14 @@ clusterDetailView.config(['$routeProvider',
  * Controllers are injected with routing parameters. In this case the clusterId in the route is put in the $scope
  * for the view template to use.
  */
-clusterDetailView.controller('ClusterDetailViewCtrl', ['$scope', '$routeParams', 'ClusterDetail',
-    function($scope, $routeParams, ClusterDetail) {
+clusterDetailView.controller('ClusterDetailViewCtrl', ['$scope', '$routeParams', 'ClusterDetail', 'ngProgress',
+    function($scope, $routeParams, ClusterDetail, ngProgress) {
         $scope.clusterId = $routeParams.clusterId;
+
+        ngProgress.start();
+
         $scope.cluster = ClusterDetail.get({clusterId: $routeParams.clusterId}, function (cluster) {
+            ngProgress.set(50);
             $scope.cluster = cluster;
             $scope.mods = [];
             for (i=0; i<cluster.modifications.length; i++) {
@@ -36,8 +40,11 @@ clusterDetailView.controller('ClusterDetailViewCtrl', ['$scope', '$routeParams',
                     "monoMass": cluster.modifications[i].monoMass
                 };
             }
+            ngProgress.set(100);
         });
         $scope.viewerId = "consensusSpectrumViewer-" + $routeParams.clusterId;
+
+        ngProgress.complete();
     }
 ]);
 

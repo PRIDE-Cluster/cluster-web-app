@@ -28,8 +28,8 @@ clusterListDirective.directive('prcClusterList', function () {
 });
 
 
-clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routeParams', '$location', 'ClusterSummary',
-    function ($scope, $routeParams, $location, ClusterSummary) {
+clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routeParams', '$location', 'ClusterSummary', 'ngProgress',
+    function ($scope, $routeParams, $location, ClusterSummary, ngProgress) {
 
         $scope.maxSpecies = 5;
         $scope.maxMods = 5;
@@ -103,6 +103,8 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
         };
 
 
+        ngProgress.start();
+
         ClusterSummary.list(
             {
                 queryTerm: $scope.queryTerm,
@@ -130,6 +132,8 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
                 $scope.speciesFacets = [];
                 $scope.modFacets = [];
 
+                ngProgress.set(10);
+
                 for (var mod in modObject) {
                     if (modObject.hasOwnProperty(mod)) {
                         item = {};
@@ -139,6 +143,8 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
                         $scope.modFacets.push(item);
                     }
                 }
+
+                ngProgress.set(20);
 
                 for (var species in speciesObject) {
                     if (speciesObject.hasOwnProperty(species)) {
@@ -150,12 +156,16 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
                     }
                 }
 
+                ngProgress.set(30);
+
                 if (!$routeParams.speciesFilters) {
                     $routeParams.speciesFilters = [];
                     $scope.speciesFilters = [];
                 } else {
                     $scope.speciesFilters = angular.fromJson($routeParams.speciesFilters);
                 }
+
+                ngProgress.set(50);
 
                 for (var species in $scope.speciesFacets) {
                     for (var speciesFilter in $scope.speciesFilters) {
@@ -166,12 +176,16 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
                     }
                 }
 
+                ngProgress.set(60);
+
                 if (!$routeParams.modFilters) {
                     $routeParams.modFilters = [];
                     $scope.modFilters = [];
                 } else {
                     $scope.modFilters = angular.fromJson($routeParams.modFilters);
                 }
+
+                ngProgress.set(70);
 
                 for (var mod in $scope.modFacets) {
                     for (var modFilter in $scope.modFilters) {
@@ -181,6 +195,8 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
                         }
                     }
                 }
+
+                ngProgress.set(80);
 
                 // Prepare modifications to be displayed
                 for (var j = 0; j < $scope.clusters.length; j++) {
@@ -192,7 +208,11 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
                         };
                     }
                 }
+
+                ngProgress.set(100);
             }
         );
+
+        ngProgress.complete();
     }
 ]);

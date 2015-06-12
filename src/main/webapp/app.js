@@ -9,6 +9,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'ngTable',
     //'btford.markdown',
     'hc.marked',
+    'ngProgress',
 
     /* Views: thin layer containing layout+model_binding and routing elements */
     'prideClusterApp.homePageView',
