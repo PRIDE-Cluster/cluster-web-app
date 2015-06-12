@@ -187,8 +187,9 @@ clusterListDirective.controller('ClusterListDirectiveCtrl', ['$scope', '$routePa
                     var cluster = $scope.clusters[j];
                     cluster.modificationNames = [];
                     for (var i = 0; i < cluster.modifications.length; i++) {
-                        cluster.modificationNames[cluster.modifications[i].mainPosition - 1] =
-                            cluster.modifications[i].name;
+                        cluster.modificationNames[cluster.modifications[i].mainPosition - 1] = {
+                            "name" : cluster.modifications[i].name
+                        };
                     }
                 }
             }

@@ -49,7 +49,9 @@ peptideViewerDirective.controller("PeptideViewerCtrl", ['$scope', '$filter', 'Cl
                     peptide.mods = [];
                     if (peptide.modifications != null) {
                         for (i = 0; i < peptide.modifications.length; i++) {
-                            peptide.mods[peptide.modifications[i].mainPosition - 1] = peptide.modifications[i].name;
+                            peptide.mods[peptide.modifications[i].mainPosition - 1] = {
+                                "name" : peptide.modifications[i].name
+                            };
                         }
                     }
                     totalNumberOfPsms += peptide.numberOfPSMs;
