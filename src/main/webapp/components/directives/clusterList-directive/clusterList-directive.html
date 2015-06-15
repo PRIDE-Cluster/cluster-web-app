@@ -91,7 +91,7 @@
                     </thead>
                     <tr ng-repeat="cluster in clusters" ng-click="go('/cluster/{{cluster.id}}')" class="pointer">
                         <td>
-                            <a ng-href="#/cluster/{{cluster.id}}">
+                            <a ng-href="#/id/{{cluster.id}}">
                                 <span class="grid_24">
                                     <prc-peptide-sequence-viewer
                                             sequence="cluster.sequence"
@@ -121,7 +121,7 @@
                     </tr>
                     <!--<div class="animate-repeat" ng-repeat="cluster in clusters">-->
                         <!--<section class="grid_24 cluster-summary {{cluster.clusterQuality}}">-->
-                            <!--<a href="#/cluster/{{cluster.id}}">-->
+                            <!--<a href="#/id/{{cluster.id}}">-->
                                 <!--&lt;!&ndash;<span class="grid_24">&ndash;&gt;-->
                                 <!--&lt;!&ndash;<h3>Cluster {{cluster.id}}</h3>&ndash;&gt;-->
                                 <!--&lt;!&ndash;</span>&ndash;&gt;-->
