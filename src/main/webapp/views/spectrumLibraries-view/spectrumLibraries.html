@@ -55,6 +55,8 @@
     </section>
 
     <section class="grid_24">
+
+
         <section class="animate-repeat" ng-repeat="spectrumLibrary in latestRelease.spectrumLibraries">
 
             <div class="grid_8 spectral-library">
@@ -73,7 +75,7 @@
                         <li>
                             Common name: {{ spectrumLibrary.speciesName}}
                         </li>
-                        <li>
+                        <li ng-show="spectrumLibrary.taxonomyId !== 0">
                             Taxonomy: <a ng-href="http://www.uniprot.org/taxonomy/{{ spectrumLibrary.taxonomyId }}">{{
                             spectrumLibrary.taxonomyId }}</a>
                         </li>
@@ -134,7 +136,8 @@
 
         <p class="help-content">2. Search the library and add protein annotations (threshold of 3.0 m/z, search all
             charge states,
-            load library into memory)</p>
+            load library into memory)
+        </p>
 
 <pre>
 <code class="help-content">
