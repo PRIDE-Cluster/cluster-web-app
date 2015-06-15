@@ -6,7 +6,7 @@
  *
  */
 
-var clusterKeyDirective = angular.module('prideClusterApp.clusterKeyDirective', [])
+var clusterKeyDirective = angular.module('prideClusterApp.clusterKeyDirective', []);
 
 clusterKeyDirective.directive('prcClusterKey', function() {
     return {
@@ -30,8 +30,6 @@ clusterKeyDirective.directive('prcClusterKey', function() {
                     return '<p>Max Ratio is ' + scope.cluster.maxRatio + '</p>'
                 }
             };
-
         }
-
     };
 });
