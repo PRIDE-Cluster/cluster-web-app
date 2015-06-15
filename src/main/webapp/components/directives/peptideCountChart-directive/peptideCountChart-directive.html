@@ -1,4 +1,8 @@
-<div>
+<div class="grid_24 clearfix spinning-wheel" ng-if="peptideCountData === undefined">
+    <span us-spinner="{radius:20, width:8, length: 20}"></span>
+</div>
+
+<div ng-if="peptideCountData !== undefined">
     <nvd3-pie-chart
         data="peptideCountData"
         id="peptideCountChart"
