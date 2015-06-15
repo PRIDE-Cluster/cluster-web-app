@@ -10,6 +10,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     //'btford.markdown',
     'hc.marked',
     'ngProgress',
+    'angularSpinner',
 
     /* Views: thin layer containing layout+model_binding and routing elements */
     'prideClusterApp.homePageView',

@@ -219,3 +219,8 @@ div.line-left {
 .help-snippet {
     color: grey;
 }
+
+.spinning-wheel {
+    margin-top: 70px;
+    margin-bottom: 70px;
+}

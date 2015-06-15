@@ -4,7 +4,6 @@
  * The prc-spectrum-viewer directive allows us to reuse a spectra visualisations using SpeckTackle.
  *
  */
-var spectrumWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/cluster";
 var spectrumViewerDirective = angular.module('prideClusterApp.spectrumViewerDirective', [])
 
 spectrumViewerDirective.directive('prcSpectrumViewer', function() {
@@ -32,6 +31,8 @@ spectrumViewerDirective.controller('SpectrumViewerDirectiveCtrl', ['$scope', 'Co
     function($scope, ConsensusSpectrumDetail) {
 
         ConsensusSpectrumDetail.get({clusterId: $scope.sourceId}, function(spectrum) {
+            $scope.spectrum = spectrum;
+
             var options = {
                 "sequence": $scope.sequence,
                 "staticMods": [],

@@ -65,3 +65,9 @@ tr.pointer > td{
 .search-suggestion {
     font-size: 120%;
 }
+
+.spinning-wheel-text {
+    margin-left: 25px;
+    margin-top: 20px;
+    font-size: 250%;
+}

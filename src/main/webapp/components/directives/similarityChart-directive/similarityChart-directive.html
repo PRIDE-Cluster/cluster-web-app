@@ -1,4 +1,8 @@
-<div>
+<div class="grid_24 clearfix spinning-wheel" ng-if="statsData === undefined">
+    <span us-spinner="{radius:20, width:8, length: 20}"></span>
+</div>
+
+<div ng-if="statsData !== undefined">
     <prc-box-plot
             id="similarity-chart"
             width="450"

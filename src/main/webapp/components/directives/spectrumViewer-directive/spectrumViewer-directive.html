@@ -1,4 +1,8 @@
-<div>
+<div class="grid_24 clearfix spinning-wheel" ng-show="spectrum === undefined">
+    <span us-spinner="{radius:20, width:8, length: 20}"></span>
+</div>
+
+<div ng-show="spectrum !== undefined">
 <!--<div id="spectrum-viewer" class="stgraph11030"></div>-->
 <div id="spectrum-viewer"></div>
 </div>

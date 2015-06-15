@@ -1,149 +1,155 @@
-<!--Results-->
-<div class="grid_24" ng-if="totalResults === 0">
-    <h2 class="icon icon-generic" data-icon="l">No results found for "{{queryTerm}}"</h2>
-
-    <h3>Suggestions</h3>
-    <ul class="search-suggestion">
-        <li>Make sure the input peptide sequence is correct</li>
-
-        <li>Check your spelling is correct</li>
-        <span>Example: misspelled terms like <code>Carbamidometyl</code> (missing "h") won't find any results </span>
-
-        <li>Use full names</li>
-        <span>Exmaple: use <code>Escherichia coli</code> and not <code>E. coli</code> as your search terms</span>
-
-        <li>Read more from our <a href="#/help">help</a> page</li>
-    </ul>
+<div class="grid_24 clearfix spinning-wheel" ng-if="totalResults === undefined">
+    <span us-spinner="{radius:10, width:3, length: 10, left: '0%', color:'#996a44'}"></span><h3 class="spinning-wheel-text">Searching for results ... </h3>
 </div>
 
-<div class="clusters" ng-if="totalResults > 0">
-    <div class="grid_24 line-bottom">
-        <prc-cluster-list-paging total-results="totalResults"></prc-cluster-list-paging>
+<!--Results-->
+<div ng-show="totalResults !== undefined">
+    <div class="grid_24" ng-if="totalResults === 0">
+        <h2 class="icon icon-generic" data-icon="l">No results found for "{{queryTerm}}"</h2>
+
+        <h3>Suggestions</h3>
+        <ul class="search-suggestion">
+            <li>Make sure the input peptide sequence is correct</li>
+
+            <li>Check your spelling is correct</li>
+            <span>Example: misspelled terms like <code>Carbamidometyl</code> (missing "h") won't find any results </span>
+
+            <li>Use full names</li>
+            <span>Exmaple: use <code>Escherichia coli</code> and not <code>E. coli</code> as your search terms</span>
+
+            <li>Read more from our <a href="#/help">help</a> page</li>
+        </ul>
     </div>
-    <div class="grid_24">
-        <div class="grid_6 alpha">
 
-            <h4 class="icon icon-functional" data-icon="f">Filter by</h4>
-
-            <section ng-if="speciesFacets.length > 0" class="facet-box">
-                <h6>Species ({{speciesFacets.length}})</h6>
-
-                <p><input type="text" ng-model="spFilter" class="facet-input" placeholder="Find species"></p>
-
-                <div class="scroll-area">
-                    <div ng-repeat="species in speciesFacets | filter:spFilter">
-                        <label class="checkbox">
-                            <input type="checkbox" ng-model="species.selected"
-                                   data-ng-click="updateSpeciesFilters(species)"/>
-                            {{species.name}} <span>({{species.count}})</span>
-                        </label>
-                    </div>
-                </div>
-            </section>
-
-            <section ng-if="modFacets.length > 0" class="facet-box">
-                <h6>Modifications ({{modFacets.length}})</h6>
-
-                <p><input type="text" ng-model="mFilter" class="facet-input" placeholder="Find modification"></p>
-
-                <div class="scroll-area">
-                    <div data-ng-repeat="mods in modFacets | filter:mFilter">
-                        <label class="checkbox" ng-model="mods.selected" data-ng-click="updateModFilters(mods)">
-                            <input type="checkbox" data-ng-model="mods.selected"/>
-                            {{mods.name}} <span>({{ mods.count}})</span>
-                        </label>
-                    </div>
-                </div>
-            </section>
+    <div class="clusters" ng-if="totalResults > 0">
+        <div class="grid_24 line-bottom">
+            <prc-cluster-list-paging total-results="totalResults"></prc-cluster-list-paging>
         </div>
+        <div class="grid_24">
+            <div class="grid_6 alpha">
 
-        <div class="grid_18 omega">
-            <table class="table table_border">
-                <thead>
-                <tr>
-                    <th>
-                        <a href tooltip="Peptide sequence plus its modifications" tooltip-placement="bottom" data-ng-click="setSortField('sequence_sort')" ng-class="{'search-table-header':true, 'sorted':isSorted('sequence_sort'), 'not-sorted':!isSorted('sequence_sort'), 'desc':isSorted('sequence_sort') && isOrdered('desc'), 'asc':isSorted('sequence_sort') && isOrdered('asc')}">Peptide</a>
-                    </th>
-                    <th>
-                        <a href tooltip="Precursor charge" tooltip-placement="bottom" data-ng-click="setSortField('averagePrecursorCharge')" ng-class="{'search-table-header':true, 'sorted':isSorted('averagePrecursorCharge'), 'not-sorted':!isSorted('averagePrecursorCharge'), 'desc':isSorted('averagePrecursorCharge') && isOrdered('desc'), 'asc':isSorted('averagePrecursorCharge') && isOrdered('asc')}">Pre Charge</a>
-                    </th>
-                    <th>
-                        <a href tooltip="Precursor m/z" tooltip-placement="bottom" data-ng-click="setSortField('averagePrecursorMz')" ng-class="{'search-table-header':true, 'sorted':isSorted('averagePrecursorMz'), 'not-sorted':!isSorted('averagePrecursorMz'), 'desc':isSorted('averagePrecursorMz') && isOrdered('desc'), 'asc':isSorted('averagePrecursorMz') && isOrdered('asc')}">Pre m/z</a>
-                    </th>
-                    <th>
-                        <a href tooltip="Total number of spectra" tooltip-placement="bottom" data-ng-click="setSortField('totalNumberOfSpectra')" ng-class="{'search-table-header':true, 'sorted':isSorted('totalNumberOfSpectra'), 'not-sorted':!isSorted('totalNumberOfSpectra'), 'desc':isSorted('totalNumberOfSpectra') && isOrdered('desc'), 'asc':isSorted('totalNumberOfSpectra') && isOrdered('asc')}">#Spectra</a>
-                    </th>
-                    <th>
-                        <a href tooltip="Total number of projects" tooltip-placement="bottom" data-ng-click="setSortField('totalNumberOfProjects')" ng-class="{'search-table-header':true, 'sorted':isSorted('totalNumberOfProjects'), 'not-sorted':!isSorted('totalNumberOfProjects'), 'desc':isSorted('totalNumberOfProjects') && isOrdered('desc'), 'asc':isSorted('totalNumberOfProjects') && isOrdered('asc')}">#Projects</a>
-                    </th>
-                    <th>
-                        <a href tooltip="Total number of species" tooltip-placement="bottom" data-ng-click="setSortField('totalNumberOfSpecies')" ng-class="{'search-table-header':true, 'sorted':isSorted('totalNumberOfSpecies'), 'not-sorted':!isSorted('totalNumberOfSpecies'), 'desc':isSorted('totalNumberOfSpecies') && isOrdered('desc'), 'asc':isSorted('totalNumberOfSpecies') && isOrdered('asc')}">#Species</a>
-                    </th>
-                    <th>
-                        <a href tooltip="The ratio of spectra within a cluster identify the peptide" tooltip-placement="bottom" data-ng-click="setSortField('maxRatio')" ng-class="{'search-table-header':true, 'sorted':isSorted('maxRatio'), 'not-sorted':!isSorted('maxRatio'), 'desc':isSorted('maxRatio') && isOrdered('desc'), 'asc':isSorted('maxRatio') && isOrdered('asc')}">Ratio</a>
-                    </th>
-                </tr>
-                </thead>
-                <tr ng-repeat="cluster in clusters" ng-click="go('/cluster/{{cluster.id}}')" class="pointer">
-                    <td>
-                        <a ng-href="#/cluster/{{cluster.id}}">
-                            <span class="grid_24">
-                                <prc-peptide-sequence-viewer
-                                        sequence="cluster.sequence"
-                                        modifications="cluster.modificationNames">
-                                </prc-peptide-sequence-viewer>
-                            </span>
-                        </a>
-                    </td>
-                    <td>
-                        {{cluster.averagePrecursorCharge}}
-                    </td>
-                    <td>
-                        {{cluster.averagePrecursorMz | number:2}}
-                    </td>
-                    <td>
-                        {{cluster.totalNumberOfSpectra}}
-                    </td>
-                    <td>
-                        {{cluster.totalNumberOfProjects}}
-                    </td>
-                    <td>
-                        {{cluster.totalNumberOfSpecies}}
-                    </td>
-                    <td>
-                        {{100 * cluster.maxRatio | number:1}}%
-                    </td>
-                </tr>
-                <!--<div class="animate-repeat" ng-repeat="cluster in clusters">-->
-                    <!--<section class="grid_24 cluster-summary {{cluster.clusterQuality}}">-->
-                        <!--<a href="#/cluster/{{cluster.id}}">-->
-                            <!--&lt;!&ndash;<span class="grid_24">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<h3>Cluster {{cluster.id}}</h3>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</span>&ndash;&gt;-->
-                        <!--<span class="grid_24">-->
-                            <!--<h4>-->
-                                <!--<prc-peptide-sequence-viewer-->
-                                        <!--sequence="cluster.sequence"-->
-                                        <!--modifications="cluster.modificationNames"-->
-                                        <!--charge="cluster.averagePrecursorCharge"-->
-                                        <!--mz="cluster.averagePrecursorMz | number:3">-->
-                                <!--</prc-peptide-sequence-viewer>-->
-                            <!--</h4>-->
-                        <!--</span>-->
-                        <!--<span class="grid_24">-->
-                            <!--<span class="grid_4"><h6>#Spectra</h6><p>{{cluster.totalNumberOfSpectra}}</p></span>-->
-                            <!--<span class="grid_4"><h6>Max ratio</h6><p>{{100 * cluster.maxRatio | number:2}}%</p></span>-->
-                            <!--&lt;!&ndash;<span class="grid_4"><h6>Precursor</h6><p>{{cluster.averagePrecursorMz | number:2}} /{{cluster.averagePrecursorCharge |&ndash;&gt;-->
-                                <!--&lt;!&ndash;number:0}}</p></span>&ndash;&gt;-->
-                            <!--<span class="grid_4"><h6>#Projects</h6><p>{{cluster.totalNumberOfProjects}}</p></span>-->
-                            <!--<span class="grid_4"><h6>#Species</h6><p>{{cluster.totalNumberOfSpecies}}</p></span>-->
-                            <!--&lt;!&ndash;<span class="grid_4"><h6>#Modifications</h6><p>{{cluster.totalNumberOfModifications}}</p></span>&ndash;&gt;-->
-                        <!--</span>-->
+                <h4 class="icon icon-functional" data-icon="f">Filter by</h4>
 
-                        <!--</a>-->
-                    <!--</section>-->
-                <!--</div>-->
-            </table>
+                <section ng-if="speciesFacets.length > 0" class="facet-box">
+                    <h6>Species ({{speciesFacets.length}})</h6>
+
+                    <p><input type="text" ng-model="spFilter" class="facet-input" placeholder="Find species"></p>
+
+                    <div class="scroll-area">
+                        <div ng-repeat="species in speciesFacets | filter:spFilter">
+                            <label class="checkbox">
+                                <input type="checkbox" ng-model="species.selected"
+                                       data-ng-click="updateSpeciesFilters(species)"/>
+                                {{species.name}} <span>({{species.count}})</span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <section ng-if="modFacets.length > 0" class="facet-box">
+                    <h6>Modifications ({{modFacets.length}})</h6>
+
+                    <p><input type="text" ng-model="mFilter" class="facet-input" placeholder="Find modification"></p>
+
+                    <div class="scroll-area">
+                        <div data-ng-repeat="mods in modFacets | filter:mFilter">
+                            <label class="checkbox" ng-model="mods.selected" data-ng-click="updateModFilters(mods)">
+                                <input type="checkbox" data-ng-model="mods.selected"/>
+                                {{mods.name}} <span>({{ mods.count}})</span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="grid_18 omega">
+                <table class="table table_border">
+                    <thead>
+                    <tr>
+                        <th>
+                            <a href tooltip="Peptide sequence plus its modifications" tooltip-placement="bottom" data-ng-click="setSortField('sequence_sort')" ng-class="{'search-table-header':true, 'sorted':isSorted('sequence_sort'), 'not-sorted':!isSorted('sequence_sort'), 'desc':isSorted('sequence_sort') && isOrdered('desc'), 'asc':isSorted('sequence_sort') && isOrdered('asc')}">Peptide</a>
+                        </th>
+                        <th>
+                            <a href tooltip="Precursor charge" tooltip-placement="bottom" data-ng-click="setSortField('averagePrecursorCharge')" ng-class="{'search-table-header':true, 'sorted':isSorted('averagePrecursorCharge'), 'not-sorted':!isSorted('averagePrecursorCharge'), 'desc':isSorted('averagePrecursorCharge') && isOrdered('desc'), 'asc':isSorted('averagePrecursorCharge') && isOrdered('asc')}">Pre Charge</a>
+                        </th>
+                        <th>
+                            <a href tooltip="Precursor m/z" tooltip-placement="bottom" data-ng-click="setSortField('averagePrecursorMz')" ng-class="{'search-table-header':true, 'sorted':isSorted('averagePrecursorMz'), 'not-sorted':!isSorted('averagePrecursorMz'), 'desc':isSorted('averagePrecursorMz') && isOrdered('desc'), 'asc':isSorted('averagePrecursorMz') && isOrdered('asc')}">Pre m/z</a>
+                        </th>
+                        <th>
+                            <a href tooltip="Total number of spectra" tooltip-placement="bottom" data-ng-click="setSortField('totalNumberOfSpectra')" ng-class="{'search-table-header':true, 'sorted':isSorted('totalNumberOfSpectra'), 'not-sorted':!isSorted('totalNumberOfSpectra'), 'desc':isSorted('totalNumberOfSpectra') && isOrdered('desc'), 'asc':isSorted('totalNumberOfSpectra') && isOrdered('asc')}">#Spectra</a>
+                        </th>
+                        <th>
+                            <a href tooltip="Total number of projects" tooltip-placement="bottom" data-ng-click="setSortField('totalNumberOfProjects')" ng-class="{'search-table-header':true, 'sorted':isSorted('totalNumberOfProjects'), 'not-sorted':!isSorted('totalNumberOfProjects'), 'desc':isSorted('totalNumberOfProjects') && isOrdered('desc'), 'asc':isSorted('totalNumberOfProjects') && isOrdered('asc')}">#Projects</a>
+                        </th>
+                        <th>
+                            <a href tooltip="Total number of species" tooltip-placement="bottom" data-ng-click="setSortField('totalNumberOfSpecies')" ng-class="{'search-table-header':true, 'sorted':isSorted('totalNumberOfSpecies'), 'not-sorted':!isSorted('totalNumberOfSpecies'), 'desc':isSorted('totalNumberOfSpecies') && isOrdered('desc'), 'asc':isSorted('totalNumberOfSpecies') && isOrdered('asc')}">#Species</a>
+                        </th>
+                        <th>
+                            <a href tooltip="The ratio of spectra within a cluster identify the peptide" tooltip-placement="bottom" data-ng-click="setSortField('maxRatio')" ng-class="{'search-table-header':true, 'sorted':isSorted('maxRatio'), 'not-sorted':!isSorted('maxRatio'), 'desc':isSorted('maxRatio') && isOrdered('desc'), 'asc':isSorted('maxRatio') && isOrdered('asc')}">Ratio</a>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tr ng-repeat="cluster in clusters" ng-click="go('/cluster/{{cluster.id}}')" class="pointer">
+                        <td>
+                            <a ng-href="#/cluster/{{cluster.id}}">
+                                <span class="grid_24">
+                                    <prc-peptide-sequence-viewer
+                                            sequence="cluster.sequence"
+                                            modifications="cluster.modificationNames">
+                                    </prc-peptide-sequence-viewer>
+                                </span>
+                            </a>
+                        </td>
+                        <td>
+                            {{cluster.averagePrecursorCharge}}
+                        </td>
+                        <td>
+                            {{cluster.averagePrecursorMz | number:2}}
+                        </td>
+                        <td>
+                            {{cluster.totalNumberOfSpectra}}
+                        </td>
+                        <td>
+                            {{cluster.totalNumberOfProjects}}
+                        </td>
+                        <td>
+                            {{cluster.totalNumberOfSpecies}}
+                        </td>
+                        <td>
+                            {{100 * cluster.maxRatio | number:1}}%
+                        </td>
+                    </tr>
+                    <!--<div class="animate-repeat" ng-repeat="cluster in clusters">-->
+                        <!--<section class="grid_24 cluster-summary {{cluster.clusterQuality}}">-->
+                            <!--<a href="#/cluster/{{cluster.id}}">-->
+                                <!--&lt;!&ndash;<span class="grid_24">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<h3>Cluster {{cluster.id}}</h3>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                            <!--<span class="grid_24">-->
+                                <!--<h4>-->
+                                    <!--<prc-peptide-sequence-viewer-->
+                                            <!--sequence="cluster.sequence"-->
+                                            <!--modifications="cluster.modificationNames"-->
+                                            <!--charge="cluster.averagePrecursorCharge"-->
+                                            <!--mz="cluster.averagePrecursorMz | number:3">-->
+                                    <!--</prc-peptide-sequence-viewer>-->
+                                <!--</h4>-->
+                            <!--</span>-->
+                            <!--<span class="grid_24">-->
+                                <!--<span class="grid_4"><h6>#Spectra</h6><p>{{cluster.totalNumberOfSpectra}}</p></span>-->
+                                <!--<span class="grid_4"><h6>Max ratio</h6><p>{{100 * cluster.maxRatio | number:2}}%</p></span>-->
+                                <!--&lt;!&ndash;<span class="grid_4"><h6>Precursor</h6><p>{{cluster.averagePrecursorMz | number:2}} /{{cluster.averagePrecursorCharge |&ndash;&gt;-->
+                                    <!--&lt;!&ndash;number:0}}</p></span>&ndash;&gt;-->
+                                <!--<span class="grid_4"><h6>#Projects</h6><p>{{cluster.totalNumberOfProjects}}</p></span>-->
+                                <!--<span class="grid_4"><h6>#Species</h6><p>{{cluster.totalNumberOfSpecies}}</p></span>-->
+                                <!--&lt;!&ndash;<span class="grid_4"><h6>#Modifications</h6><p>{{cluster.totalNumberOfModifications}}</p></span>&ndash;&gt;-->
+                            <!--</span>-->
+
+                            <!--</a>-->
+                        <!--</section>-->
+                    <!--</div>-->
+                </table>
+            </div>
         </div>
     </div>
 </div>
