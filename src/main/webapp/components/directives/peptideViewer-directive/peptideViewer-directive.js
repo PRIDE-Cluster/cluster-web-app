@@ -41,16 +41,19 @@ peptideViewerDirective.controller("PeptideViewerCtrl", ['$scope', '$filter', 'Cl
 
                 $scope.peptides = data.clusteredPeptides;
 
+
                 // here we create a simplified modification list for each peptide that is used for
                 // showing tooltips as required by the <prc-peptide-sequence-viewer> directive
                 var totalNumberOfPsms = 0;
                 for (j = 0; j < $scope.peptides.length; j++) {
                     var peptide = $scope.peptides[j];
+
                     peptide.mods = [];
                     if (peptide.modifications != null) {
                         for (i = 0; i < peptide.modifications.length; i++) {
                             peptide.mods[peptide.modifications[i].mainPosition - 1] = {
-                                "name" : peptide.modifications[i].name
+                                "name" : peptide.modifications[i].name,
+                                "modificationAsString" : peptide.modifications[i].modificationAsString,
                             };
                         }
                     }
