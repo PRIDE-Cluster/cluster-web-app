@@ -4,9 +4,9 @@
  * The prc-spectrum-viewer directive allows us to reuse a spectra visualisations using SpeckTackle.
  *
  */
-var spectrumViewerDirective = angular.module('prideClusterApp.spectrumViewerDirective', [])
+var spectrumViewerDirective = angular.module('prideClusterApp.spectrumViewerDirective', []);
 
-spectrumViewerDirective.directive('prcSpectrumViewer', function() {
+spectrumViewerDirective.directive('prcSpectrumViewer', function () {
     return {
         restrict: 'E',
         controller: 'SpectrumViewerDirectiveCtrl',
@@ -28,11 +28,9 @@ spectrumViewerDirective.directive('prcSpectrumViewer', function() {
  * within the html template part of the view.
  */
 spectrumViewerDirective.controller('SpectrumViewerDirectiveCtrl', ['$scope', 'ConsensusSpectrumDetail',
-    function($scope, ConsensusSpectrumDetail) {
+    function ($scope, ConsensusSpectrumDetail) {
 
-        ConsensusSpectrumDetail.get({clusterId: $scope.sourceId}, function(spectrum) {
-            $scope.spectrum = spectrum;
-
+        var drawSpectrum = function() {
             var options = {
                 "sequence": $scope.sequence,
                 "staticMods": [],
@@ -64,23 +62,42 @@ spectrumViewerDirective.controller('SpectrumViewerDirectiveCtrl', ['$scope', 'Co
                 "massErrorPlotDefaultUnit": 'Da'
             };
 
-            $.each(spectrum.peaks,function(i, val) {
+            $.each($scope.spectrum.peaks, function (i, val) {
                 options.peaks.push([val.mz, val.intensity]);
             });
 
-            $.each($scope.modifications, function(i, val) {
-                if (val !== undefined) {
-                    var modification = {
-                        "index": val.mainPosition,
-                        "modMass": val.monoMass,
-                        "aminoAcid": $scope.sequence.charAt(val.mainPosition - 1)
-                    };
+            if ($scope.modifications !== undefined) {
+                $.each($scope.modifications, function (i, val) {
+                    if (val !== undefined) {
+                        var modification = {
+                            "index": val.mainPosition,
+                            "modMass": val.monoMass,
+                            "aminoAcid": $scope.sequence.charAt(val.mainPosition - 1)
+                        };
 
-                    options.variableMods.push(modification);
-                }
-            });
+                        options.variableMods.push(modification);
+                    }
+                });
+            }
 
             $("#spectrum-viewer").specview(options);
+        };
+
+        ConsensusSpectrumDetail.get({clusterId: $scope.sourceId}, function (spectrum) {
+            $scope.spectrum = spectrum;
         });
-    }
-]);
+
+        $scope.$watch('sequence', function() {
+            if ($scope.sequence !== undefined && $scope.spectrum !== undefined) {
+                drawSpectrum();
+            }
+        });
+
+        $scope.$watch('spectrum', function() {
+            if ($scope.sequence !== undefined && $scope.spectrum !== undefined) {
+                drawSpectrum();
+            }
+        });
+}
+])
+;

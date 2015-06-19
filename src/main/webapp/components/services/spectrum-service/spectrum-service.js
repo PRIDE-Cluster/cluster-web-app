@@ -19,7 +19,7 @@ var spectrumService = angular.module('prideClusterApp.spectrumService', ['ngReso
 spectrumService.factory('ConsensusSpectrumDetail', ['$resource',
     function($resource){
         return $resource(
-            spectrumWsUrl + '/:clusterId' + '/consensus?callback=JSON_CALLBACK',
+            spectrumWsUrl + '/:clusterId' + '/consensusSpectrum?callback=JSON_CALLBACK',
                 {},
                 {
                     get: {

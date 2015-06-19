@@ -22,7 +22,8 @@ peptideViewerDirective.directive('prcPeptideViewer', function () {
     };
 });
 
-peptideViewerDirective.controller("PeptideViewerCtrl", ['$scope', '$filter', 'ClusterPeptides', 'ngTableParams', function($scope, $filter, ClusterPeptides, ngTableParams) {
+peptideViewerDirective.controller("PeptideViewerCtrl", ['$scope', '$filter', 'ClusterPeptides', 'ngTableParams',
+                                                    function($scope, $filter, ClusterPeptides, ngTableParams) {
     // init an empty array of peptides
     $scope.peptides = [];
 
@@ -53,7 +54,7 @@ peptideViewerDirective.controller("PeptideViewerCtrl", ['$scope', '$filter', 'Cl
                         for (i = 0; i < peptide.modifications.length; i++) {
                             peptide.mods[peptide.modifications[i].mainPosition - 1] = {
                                 "name" : peptide.modifications[i].name,
-                                "modificationAsString" : peptide.modifications[i].modificationAsString,
+                                "modificationAsString" : peptide.modifications[i].modificationAsString
                             };
                         }
                     }

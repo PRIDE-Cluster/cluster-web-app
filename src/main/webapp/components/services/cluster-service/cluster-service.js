@@ -82,7 +82,7 @@ clusterService.factory('ClusterSpecies', ['$resource',
 clusterService.factory('ClusterModifications', ['$resource',
     function($resource){
         return $resource(
-            clusterWsUrl + '/:clusterId/modifications' + '?callback=JSON_CALLBACK',
+            clusterWsUrl + '/:clusterId/modification' + '?callback=JSON_CALLBACK',
             {},
             {
                 get: {
@@ -132,13 +132,13 @@ clusterService.factory('ClusterProjects', ['$resource',
 clusterService.factory('ClusterStats', ['$resource',
     function($resource){
         return $resource(
-            clusterWsUrl + '/:clusterId/deltamz' + '?callback=JSON_CALLBACK',
+            clusterWsUrl + '/:clusterId/deltaMz' + '?callback=JSON_CALLBACK',
             {},
             {
                 delta: {
                     method:'JSONP',
                     params:{clusterId:'cluster'},
-                    url: clusterWsUrl + '/:clusterId/deltamz' + '?callback=JSON_CALLBACK',
+                    url: clusterWsUrl + '/:clusterId/deltaMz' + '?callback=JSON_CALLBACK',
                     isArray:false,
                     callback: 'JSON_CALLBACK'
                 },

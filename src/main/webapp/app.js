@@ -49,9 +49,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
 
     /* Services: singletons used to access the backend or share data between modules */
     'prideClusterApp.clusterService',
-    'prideClusterApp.psmService',
     'prideClusterApp.spectrumLibraryService',
-    'prideClusterApp.projectService',
     'prideClusterApp.statsService',
     'prideClusterApp.spectrumService'
 ]);

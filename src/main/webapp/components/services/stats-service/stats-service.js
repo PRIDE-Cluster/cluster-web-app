@@ -8,8 +8,8 @@
  * Each singleton represents a web-service end point and can potentially define multiple operations.
  *
  */
-var statsWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/stats";
-//var statsWsUrl = "http://localhost:9091/pride/ws/cluster/stats";
+var statsWsUrl = "http://wwwdev.ebi.ac.uk/pride/ws/cluster/statistic";
+//var statsWsUrl = "http://localhost:9091/pride/ws/cluster/statistic";
 
 var statsService = angular.module('prideClusterApp.statsService', ['ngResource']);
 
@@ -34,7 +34,7 @@ statsService.factory('Stats', ['$resource',
 statsService.factory('ClusterPerSpecies', ['$resource',
     function($resource){
         return $resource(
-            statsWsUrl + '/species/cluster/count?callback=JSON_CALLBACK',
+            statsWsUrl + '/species/clusterCount?callback=JSON_CALLBACK',
             {},
             {
                 getStats: {
@@ -51,7 +51,7 @@ statsService.factory('ClusterPerSpecies', ['$resource',
 statsService.factory('PeptidePerSpecies', ['$resource',
     function($resource){
         return $resource(
-            statsWsUrl + '/species/peptide/count?callback=JSON_CALLBACK',
+            statsWsUrl + '/species/peptideCount?callback=JSON_CALLBACK',
             {},
             {
                 getStats: {
@@ -68,7 +68,7 @@ statsService.factory('PeptidePerSpecies', ['$resource',
 statsService.factory('OverlappingPeptidePerSpeciesPair', ['$resource',
     function($resource){
         return $resource(
-            statsWsUrl + '/species/peptide/overlap/20?callback=JSON_CALLBACK',
+            statsWsUrl + '/species/peptideOverlap/20?callback=JSON_CALLBACK',
             {},
             {
                 getStats: {
