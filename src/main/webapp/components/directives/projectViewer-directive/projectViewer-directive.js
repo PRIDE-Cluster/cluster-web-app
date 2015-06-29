@@ -22,7 +22,8 @@ projectViewerDirective.directive('prcProjectViewer', function () {
     };
 });
 
-projectViewerDirective.controller("ProjectViewerCtrl", ['$scope', '$filter', 'ClusterProjects', 'ngTableParams', function($scope, $filter, ClusterProjects, ngTableParams) {
+projectViewerDirective.controller("ProjectViewerCtrl", ['$scope', '$filter', 'ClusterProjects', 'ngTableParams',
+    function($scope, $filter, ClusterProjects, ngTableParams) {
     // init an empty array of peptides
     $scope.projects = [];
 

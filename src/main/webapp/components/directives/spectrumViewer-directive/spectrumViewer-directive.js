@@ -30,7 +30,7 @@ spectrumViewerDirective.directive('prcSpectrumViewer', function () {
 spectrumViewerDirective.controller('SpectrumViewerDirectiveCtrl', ['$scope', 'ConsensusSpectrumDetail',
     function ($scope, ConsensusSpectrumDetail) {
 
-        var drawSpectrum = function() {
+        drawSpectrum = function() {
             var options = {
                 "sequence": $scope.sequence,
                 "staticMods": [],

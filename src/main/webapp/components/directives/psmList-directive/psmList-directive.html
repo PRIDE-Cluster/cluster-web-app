@@ -1,0 +1,79 @@
+<div class="grid_24 clearfix spinning-wheel" ng-if="totalResults === undefined">
+    <span us-spinner="{radius:10, width:3, length: 10, left: '0%', color:'#996a44'}"></span><h3 class="spinning-wheel-text">Searching for results ... </h3>
+</div>
+
+<!--Results-->
+<div ng-show="totalResults !== undefined">
+
+    <div ng-if="totalResults > 0">
+        <div class="grid_24 line-bottom">
+            <prc-psm-list-paging total-results="totalResults"></prc-psm-list-paging>
+        </div>
+
+        <div class="grid_24 omega">
+            <table class="table table_border">
+                <thead>
+                <tr>
+                    <th>
+                        <a href tooltip="Peptide sequence plus its modifications" tooltip-placement="bottom">Peptide</a>
+                    </th>
+                    <th>
+                        <a href tooltip="PSM Ratio within the cluster" tooltip-placement="bottom">Ratio</a>
+                    </th>
+                    <th>
+                        <a href tooltip="Search engine used" tooltip-placement="bottom">Search engine</a>
+                    </th>
+                    <th>
+                        <a href tooltip="Search engine score" tooltip-placement="bottom">Search engine score</a>
+                    </th>
+                    <th>
+                        <a href tooltip="Search database used" tooltip-placement="bottom">Search database</a>
+                    </th>
+                    <th>
+                        <a href tooltip="Protein identified" tooltip-placement="bottom">Protein accession</a>
+                    </th>
+                    <th>
+                        <a href tooltip="Start position" tooltip-placement="bottom">Start</a>
+                    </th>
+                    <th>
+                        <a href tooltip="Start position" tooltip-placement="bottom">Stop</a>
+                    </th>
+                </tr>
+                </thead>
+                <tr ng-repeat="psm in psms" ng-click="go('/cluster/{{cluster.id}}')" class="pointer">
+                    <td>
+                        <a ng-href="#/id/{{cluster.id}}">
+                            <span class="grid_24">
+                                <prc-peptide-sequence-viewer
+                                        sequence="psm.sequence"
+                                        modifications="psm.modificationNames">
+                                </prc-peptide-sequence-viewer>
+                            </span>
+                        </a>
+                    </td>
+                    <td>
+                        {{100 * psm.psmRatio | number:1}}%
+                    </td>
+                    <td>
+                        {{psm.searchEngine}}
+                    </td>
+                    <td>
+                        {{psm.searchEngineScores}}
+                    </td>
+                    <td>
+                        {{psm.searchDatabase}}
+                    </td>
+                    <td>
+                        {{psm.proteinAccession}}
+                    </td>
+                    <td>
+                        {{psm.startPosition}}
+                    </td>
+                    <td>
+                        {{psm.stopPosition}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -14,13 +14,13 @@
                 <!--{{peptide.sequence}}-->
             </td>
             <td data-title="'#PSM'" sortable="'numberOfPSMs'">
-                {{peptide.numberOfPSMs}} ({{100 * peptide.psmPercentage | number:1}}%)
+                <a href ng-click="showPSMs(peptide.sequence, peptide.modAsString)">{{peptide.numberOfPSMs}}</a> ({{100 * peptide.psmPercentage | number:1}}%)
             </td>
             <td data-title="'#Species'" sortable="'species.length'">
                 {{peptide.species.length}}
             </td>
             <td data-title="'#Projects'" sortable="'projectAccessions.length'">
-                {{peptide.projectAccessions.length}}
+                <a href ng-click="showProjects(peptide.sequence, peptide.modAsString)">{{peptide.projectAccessions.length}}</a>
             </td>
             <td data-title="'BLAST'">
                 <a ng-href="http://www.uniprot.org/blast/?blastQuery={{peptide.sequence}}" target="_blank"><img src="./img/uniprot.png"></a>
