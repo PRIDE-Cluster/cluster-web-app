@@ -64,8 +64,6 @@ psmListDirective.controller('PSMListDirectiveCtrl', ['$scope', '$routeParams', '
                 $scope.pageSize = $routeParams.size;
                 $scope.numPages = Math.floor($scope.totalResults / $scope.pageSize);
 
-                console.log(psms);
-
                 ngProgress.set(80);
 
                 // Prepare modifications to be displayed

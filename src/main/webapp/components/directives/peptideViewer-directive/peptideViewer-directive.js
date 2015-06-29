@@ -44,7 +44,7 @@ peptideViewerDirective.controller("PeptideViewerCtrl", ['$scope', '$filter', 'Cl
                 sequence: sequence,
                 modFilters: modifications,
                 projectFilters: projectAccession,
-                pageNumber: 0,
+                pageNumber: 1,
                 pageSize: 20
             });
         };
