@@ -21,6 +21,9 @@
                         <a href tooltip="PSM Ratio within the cluster" tooltip-placement="bottom">Ratio</a>
                     </th>
                     <th>
+                        <a href tooltip="Delta m/z" tooltip-placement="bottom">Delta m/z</a>
+                    </th>
+                    <th>
                         <a href tooltip="Search engine used" tooltip-placement="bottom">Search engine</a>
                     </th>
                     <th>
@@ -40,19 +43,22 @@
                     </th>
                 </tr>
                 </thead>
-                <tr ng-repeat="psm in psms" ng-click="go('/cluster/{{cluster.id}}')" class="pointer">
+                <tr ng-repeat="psm in psms">
                     <td>
-                        <a ng-href="#/id/{{cluster.id}}">
-                            <span class="grid_24">
+                        <span class="grid_24">
+                            <a ng-href="//www.ebi.ac.uk/pride/archive/projects/{{psm.projectAccession}}/psms?q={{psm.archivePSMId}}" target="_blank">
                                 <prc-peptide-sequence-viewer
                                         sequence="psm.sequence"
                                         modifications="psm.modificationNames">
                                 </prc-peptide-sequence-viewer>
-                            </span>
-                        </a>
+                            </a>
+                        </span>
                     </td>
                     <td>
                         {{100 * psm.psmRatio | number:1}}%
+                    </td>
+                    <td>
+                        {{psm.deltaMZ | number: 2}}
                     </td>
                     <td>
                         {{psm.searchEngine}}
