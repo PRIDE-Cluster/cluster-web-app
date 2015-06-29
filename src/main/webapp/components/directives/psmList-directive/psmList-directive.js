@@ -75,6 +75,15 @@ psmListDirective.controller('PSMListDirectiveCtrl', ['$scope', '$routeParams', '
                             "name" : psm.modifications[i].name
                         };
                     }
+
+                    // remove -1 values for start and stop positions
+                    if (psm.startPosition === -1) {
+                        psm.startPosition = '';
+                    }
+
+                    if (psm.stopPosition === -1) {
+                        psm.stopPosition = '';
+                    }
                 }
 
                 ngProgress.set(100);
