@@ -52,7 +52,7 @@
                 <tr ng-repeat="psm in psms">
                     <td>
                         <span class="grid_24">
-                            <a ng-href="//www.ebi.ac.uk/pride/archive/projects/{{psm.projectAccession}}/psms?q={{psm.archivePSMId}}" target="_blank">
+                            <a ng-href="//www.ebi.ac.uk/pride/archive/projects/{{psm.projectAccession}}/psms?q={{psm.archivePSMId}}" target="_blank" tooltip="Show original PSM" tooltip-placement="bottom">
                                 <prc-peptide-sequence-viewer
                                         sequence="psm.sequence"
                                         modifications="psm.modificationNames">
@@ -61,10 +61,10 @@
                         </span>
                     </td>
                     <td>
-                        <a ng-href="//www.ebi.ac.uk/pride/archive/projects/{{psm.projectAccession}}" target="_blank">{{psm.projectAccession}}</a>
+                        <a ng-href="//www.ebi.ac.uk/pride/archive/projects/{{psm.projectAccession}}" target="_blank" tooltip="Show project details" tooltip-placement="bottom">{{psm.projectAccession}}</a>
                     </td>
                     <td>
-                        <a ng-href="//www.ebi.ac.uk/pride/archive/assays/{{psm.assayAccession}}" target="_blank">{{psm.assayAccession}}</a>
+                        <a ng-href="//www.ebi.ac.uk/pride/archive/assays/{{psm.assayAccession}}" target="_blank" tooltip="Show assay details" tooltip-placement="bottom">{{psm.assayAccession}}</a>
                     </td>
                     <td>
                         {{psm.species}}
