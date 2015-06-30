@@ -9,7 +9,7 @@
                 <a ng-href="http://www.ebi.ac.uk/pride/archive/projects/{{project.accession}}" target="_blank">{{project.accession}}</a>
             </td>
             <td data-title="'#PSM'" sortable="'numberOfPSMs'">
-                {{project.numberOfPSMs}} ({{100 * project.psmPercentage | number:1}}%)
+                <a href ng-click="showPSMs(project.accession)">{{project.numberOfPSMs}}</a> ({{100 * project.psmPercentage | number:1}}%)
             </td>
             <td data-title="'Species'" sortable="'species'">
                 {{project.species}}

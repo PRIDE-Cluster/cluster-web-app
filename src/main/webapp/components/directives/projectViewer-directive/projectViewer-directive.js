@@ -22,15 +22,22 @@ projectViewerDirective.directive('prcProjectViewer', function () {
     };
 });
 
-projectViewerDirective.controller("ProjectViewerCtrl", ['$scope', '$filter', 'ClusterProjects', 'ngTableParams',
-    function($scope, $filter, ClusterProjects, ngTableParams) {
+projectViewerDirective.controller("ProjectViewerCtrl", ['$scope', '$filter', '$location', 'ClusterProjects', 'ngTableParams',
+    function($scope, $filter, $location, ClusterProjects, ngTableParams) {
     // init an empty array of peptides
     $scope.projects = [];
 
     // init total number of peptides
     $scope.totalNumberOfProjects = 0;
 
-
+    $scope.showPSMs = function (projectAccession) {
+        var psmPath = 'id/' + $scope.clusterId + '/psm';
+        $location.url(psmPath).search({
+            projectFilters: projectAccession,
+            pageNumber: 1,
+            pageSize: 20
+        });
+    };
 
     // function to be called at init to get peptides using remote web service
     $scope.getProjects = function() {
