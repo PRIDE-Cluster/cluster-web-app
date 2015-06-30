@@ -1,0 +1,60 @@
+<div class="grid_24 clearfix spinning-wheel" ng-if="totalResults === undefined">
+    <span us-spinner="{radius:10, width:3, length: 10, left: '0%', color:'#996a44'}"></span><h3 class="spinning-wheel-text">Loading for results ... </h3>
+</div>
+
+<!--Results-->
+<div ng-show="totalResults !== undefined">
+
+    <div ng-if="totalResults > 0">
+        <div class="grid_24 omega">
+            <table class="table table_border">
+                <thead>
+                <tr>
+                    <th>
+                        <span tooltip="Project accession" tooltip-placement="bottom">Project</span>
+                    </th>
+                    <th>
+                        <span tooltip="Species" tooltip-placement="bottom">Species</span>
+                    </th>
+                    <th>
+                        <span tooltip="Tissue" tooltip-placement="bottom">Tissue</span>
+                    </th>
+                    <th>
+                        <span tooltip="Disease" tooltip-placement="bottom">Disease</span>
+                    </th>
+                    <th>
+                        <span tooltip="Instrument" tooltip-placement="bottom">Instrument</span>
+                    </th>
+                    <th>
+                        <span tooltip="Search engine used" tooltip-placement="bottom">Search engine</span>
+                    </th>
+                </tr>
+                </thead>
+                <tr ng-repeat="project in projects">
+                    <td>
+                        <span class="grid_24">
+                            <a ng-href="//www.ebi.ac.uk/pride/archive/projects/{{project.accession}}" target="_blank">
+                                {{project.accession}}
+                            </a>
+                        </span>
+                    </td>
+                    <td>
+                        {{project.species}}
+                    </td>
+                    <td>
+                        {{project.tissues}}
+                    </td>
+                    <td>
+                        {{project.diseases}}
+                    </td>
+                    <td>
+                        {{project.instruments}}
+                    </td>
+                    <td>
+                        {{project.searchEngines}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -50,7 +50,12 @@ peptideViewerDirective.controller("PeptideViewerCtrl", ['$scope', '$filter', 'Cl
         };
 
         $scope.showProjects = function (sequence, modifications) {
-            $location.url('#/id/' + $scope.clusterId + '/project').search({
+            var projectPath = 'id/' + $scope.clusterId + '/project';
+            if (modifications === "" || modifications === undefined) {
+                modifications = "NONE";
+            }
+
+            $location.url(projectPath).search({
                 sequence: sequence,
                 modFilters: modifications
             });

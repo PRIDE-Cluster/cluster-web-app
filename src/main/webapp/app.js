@@ -24,6 +24,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.helpPageView',
     'prideClusterApp.statsPageView',
     'prideClusterApp.psmView',
+    'prideClusterApp.projectView',
 
     /* Directives: reusable view+controller components */
     'prideClusterApp.localHeaderDirective',
@@ -49,6 +50,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.peptideSpeciesChartDirective',
     'prideClusterApp.psmListDirective',
     'prideClusterApp.psmListPagingDirective',
+    'prideClusterApp.projectListDirective',
 
     /* Services: singletons used to access the backend or share data between modules */
     'prideClusterApp.clusterService',
