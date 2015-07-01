@@ -5,11 +5,12 @@
 <div ng-init="getPeptides()" ng-show="peptides.length !== 0">
     <table ng-table="tableParams" template-pagination="custom/pager" class="table table_border">
         <tr ng-repeat="peptide in peptides_slice">
-            <td data-title="'Peptide'" ng-class="{'bold-text': isConsensusPeptide(peptide)}">
+            <td data-title="'Peptide'">
                 <prc-peptide-sequence-viewer
                         sequence="peptide.sequence"
                         modifications="peptide.mods">
                 </prc-peptide-sequence-viewer>
+                <span ng-show="isConsensusPeptide(peptide)" class="icon icon-functional" data-icon="/" tooltip="Consensus peptide" tooltip-placement="bottom"></span>
                 <!--(<a ng-href="http://www.uniprot.org/blast/?blastQuery={{peptide.sequence}}" target="_blank">BLAST</a>)-->
                 <!--{{peptide.sequence}}-->
             </td>
