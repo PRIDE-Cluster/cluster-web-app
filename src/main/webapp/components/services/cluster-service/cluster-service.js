@@ -47,6 +47,7 @@ clusterService.factory('ClusterSummary', ['$resource',
         );
     }
 ]);
+
 clusterService.factory('ClusterDetail', ['$resource',
     function($resource){
         return $resource(
@@ -63,6 +64,7 @@ clusterService.factory('ClusterDetail', ['$resource',
         );
     }
 ]);
+
 clusterService.factory('ClusterSpecies', ['$resource',
     function($resource){
         return $resource(
@@ -79,6 +81,7 @@ clusterService.factory('ClusterSpecies', ['$resource',
         );
     }
 ]);
+
 clusterService.factory('ClusterModifications', ['$resource',
     function($resource){
         return $resource(
@@ -95,11 +98,35 @@ clusterService.factory('ClusterModifications', ['$resource',
         );
     }
 ]);
+
 clusterService.factory('ClusterPeptides', ['$resource',
     function($resource){
         return $resource(
-            clusterWsUrl + '/:clusterId/peptide' + '?callback=JSON_CALLBACK',
+            clusterWsUrl + '/:clusterId/peptide?callback=JSON_CALLBACK',
             {},
+            {
+                get: {
+                    method:'JSONP',
+                    params:{clusterId:'cluster'},
+                    isArray:false,
+                    callback: 'JSON_CALLBACK'
+                }
+            }
+        );
+    }
+]);
+
+clusterService.factory('ClusterPSMs', ['$resource',
+    function($resource){
+        return $resource(
+            clusterWsUrl + '/:clusterId/psm?sequence=:sequence&mod=:modifications&project=:projects&page=:pageNumber&size=:pageSize&callback=JSON_CALLBACK',
+            {
+                sequence: '',
+                modifications: '',
+                projects: '',
+                pageNumber: 0,
+                pageSize: 20
+            },
             {
                 get: {
                     method:'JSONP',
@@ -115,8 +142,11 @@ clusterService.factory('ClusterPeptides', ['$resource',
 clusterService.factory('ClusterProjects', ['$resource',
     function($resource){
         return $resource(
-            clusterWsUrl + '/:clusterId/project' + '?callback=JSON_CALLBACK',
-            {},
+            clusterWsUrl + '/:clusterId/project?sequence=:sequence&mod=:modifications&callback=JSON_CALLBACK',
+            {
+                sequence: '',
+                modifications: ''
+            },
             {
                 get: {
                     method:'JSONP',
@@ -132,20 +162,20 @@ clusterService.factory('ClusterProjects', ['$resource',
 clusterService.factory('ClusterStats', ['$resource',
     function($resource){
         return $resource(
-            clusterWsUrl + '/:clusterId/deltaMz' + '?callback=JSON_CALLBACK',
+            clusterWsUrl + '/:clusterId/deltaMz?callback=JSON_CALLBACK',
             {},
             {
                 delta: {
                     method:'JSONP',
                     params:{clusterId:'cluster'},
-                    url: clusterWsUrl + '/:clusterId/deltaMz' + '?callback=JSON_CALLBACK',
+                    url: clusterWsUrl + '/:clusterId/deltaMz?callback=JSON_CALLBACK',
                     isArray:false,
                     callback: 'JSON_CALLBACK'
                 },
                 similarity: {
                     method:'JSONP',
                     params:{clusterId:'cluster'},
-                    url: clusterWsUrl + '/:clusterId/similarity' + '?callback=JSON_CALLBACK',
+                    url: clusterWsUrl + '/:clusterId/similarity?callback=JSON_CALLBACK',
                     isArray:false,
                     callback: 'JSON_CALLBACK'
                 }
