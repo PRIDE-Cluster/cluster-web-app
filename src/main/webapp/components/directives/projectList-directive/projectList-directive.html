@@ -31,11 +31,12 @@
                 </tr>
                 </thead>
                 <tr ng-repeat="project in projects">
-                    <td>
+                    <td style="min-width: 100px">
                         <span class="grid_24">
                             <a ng-href="//www.ebi.ac.uk/pride/archive/projects/{{project.accession}}" target="_blank" tooltip="Show project details" tooltip-placement="bottom">
                                 {{project.accession}}
                             </a>
+                            <span class="icon icon-generic" data-icon="x"></span>
                         </span>
                     </td>
                     <td>
@@ -50,7 +51,7 @@
                     <td>
                         {{project.instruments}}
                     </td>
-                    <td>
+                    <td style="max-width: 250px">
                         {{project.searchEngines}}
                     </td>
                 </tr>

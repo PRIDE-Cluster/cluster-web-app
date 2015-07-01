@@ -44,9 +44,9 @@
                     <th>
                         <span tooltip="Search database used" tooltip-placement="bottom">Search database</span>
                     </th>
-                    <th>
-                        <span tooltip="Protein identified" tooltip-placement="bottom">Protein accession</span>
-                    </th>
+                    <!--<th>-->
+                        <!--<span tooltip="Protein identified" tooltip-placement="bottom">Protein accession</span>-->
+                    <!--</th>-->
                 </tr>
                 </thead>
                 <tr ng-repeat="psm in psms">
@@ -58,13 +58,20 @@
                                         modifications="psm.modificationNames">
                                 </prc-peptide-sequence-viewer>
                             </a>
+                            <span class="icon icon-generic" data-icon="x"></span>
                         </span>
                     </td>
                     <td>
-                        <a ng-href="//www.ebi.ac.uk/pride/archive/projects/{{psm.projectAccession}}" target="_blank" tooltip="Show project details" tooltip-placement="bottom">{{psm.projectAccession}}</a>
+                        <a ng-href="//www.ebi.ac.uk/pride/archive/projects/{{psm.projectAccession}}" target="_blank" tooltip="Show project details" tooltip-placement="bottom">
+                            {{psm.projectAccession}}
+                        </a>
+                        <span class="icon icon-generic" data-icon="x"></span>
                     </td>
                     <td>
-                        <a ng-href="//www.ebi.ac.uk/pride/archive/assays/{{psm.assayAccession}}" target="_blank" tooltip="Show assay details" tooltip-placement="bottom">{{psm.assayAccession}}</a>
+                        <a ng-href="//www.ebi.ac.uk/pride/archive/assays/{{psm.assayAccession}}" target="_blank" tooltip="Show assay details" tooltip-placement="bottom">
+                            {{psm.assayAccession}}
+                        </a>
+                        <span class="icon icon-generic" data-icon="x"></span>
                     </td>
                     <td>
                         {{psm.species}}
@@ -87,9 +94,9 @@
                     <td>
                         {{psm.searchDatabase}}
                     </td>
-                    <td>
-                        {{psm.proteinAccession}}
-                    </td>
+                    <!--<td>-->
+                        <!--{{psm.proteinAccession}}-->
+                    <!--</td>-->
                 </tr>
             </table>
         </div>

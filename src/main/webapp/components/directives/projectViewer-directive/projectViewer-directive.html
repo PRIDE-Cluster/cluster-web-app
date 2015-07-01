@@ -5,8 +5,9 @@
 <div ng-init="getProjects()" ng-show="projects.length !== 0">
     <table ng-table="tableParams" template-pagination="custom/pager" class="table table_border">
         <tr ng-repeat="project in projects_slice">
-            <td data-title="'Project'" sortable="'accession'">
+            <td data-title="'Project'" sortable="'accession'" style="min-width: 100px">
                 <a ng-href="http://www.ebi.ac.uk/pride/archive/projects/{{project.accession}}" target="_blank">{{project.accession}}</a>
+                <span class="icon icon-generic" data-icon="x"></span>
             </td>
             <td data-title="'#PSM'" sortable="'numberOfPSMs'">
                 <a href ng-click="showPSMs(project.accession)" tooltip="Show PSMs belong to this project" tooltip-placement="bottom">{{project.numberOfPSMs}}</a> ({{100 * project.psmPercentage | number:1}}%)
