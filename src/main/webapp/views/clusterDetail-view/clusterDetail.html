@@ -58,11 +58,13 @@
         </div>
         <div class="grid_24">
             <div class="grid_11 cluster-detail-panel">
-                <h4>Peptide Sequences <span ng-show="totalNumberOfPeptides">({{totalNumberOfPeptides}})</span></h4>
+                <h4>Peptides <span ng-show="totalNumberOfPeptides">({{totalNumberOfPeptides}})</span></h4>
+                <div class="icon icon-generic help-snippet" data-icon="i"> Unique peptide sequence and modification combinations within the cluster. </div>
                 <prc-peptide-viewer cluster-id="clusterId" total-number-of-peptides="totalNumberOfPeptides"></prc-peptide-viewer>
             </div>
             <div class="grid_11 push_2 cluster-detail-panel">
-                <h4>Original Projects <span ng-show="totalNumberOfProjects">({{totalNumberOfProjects}})</span></h4>
+                <h4>Original Experiments <span ng-show="totalNumberOfProjects">({{totalNumberOfProjects}})</span></h4>
+                <div class="icon icon-generic help-snippet" data-icon="i"> Original experiements where the spectra and the PSMs from.</div>
                 <prc-project-viewer cluster-id="clusterId" total-number-of-projects="totalNumberOfProjects"></prc-project-viewer>
             </div>
         </div>

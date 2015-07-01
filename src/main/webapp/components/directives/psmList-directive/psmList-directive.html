@@ -33,9 +33,6 @@
                         <span tooltip="Instrument" tooltip-placement="bottom">Instrument</span>
                     </th>
                     <th>
-                        <span tooltip="Delta m/z" tooltip-placement="bottom">Delta m/z</span>
-                    </th>
-                    <th>
                         <span tooltip="Search engine used" tooltip-placement="bottom">Search engine</span>
                     </th>
                     <th>
@@ -43,6 +40,9 @@
                     </th>
                     <th>
                         <span tooltip="Search database used" tooltip-placement="bottom">Search database</span>
+                    </th>
+                    <th>
+                        <span tooltip="Delta m/z" tooltip-placement="bottom">Delta m/z</span>
                     </th>
                     <!--<th>-->
                         <!--<span tooltip="Protein identified" tooltip-placement="bottom">Protein accession</span>-->
@@ -83,9 +83,6 @@
                         {{psm.instruments}}
                     </td>
                     <td>
-                        {{psm.deltaMZ | number: 2}}
-                    </td>
-                    <td>
                         {{psm.searchEngine}}
                     </td>
                     <td>
@@ -93,6 +90,9 @@
                     </td>
                     <td>
                         {{psm.searchDatabase}}
+                    </td>
+                    <td>
+                        {{psm.deltaMZ | number: 2}}
                     </td>
                     <!--<td>-->
                         <!--{{psm.proteinAccession}}-->
