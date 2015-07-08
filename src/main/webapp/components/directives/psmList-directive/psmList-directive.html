@@ -1,5 +1,5 @@
 <div class="grid_24 clearfix spinning-wheel" ng-if="totalResults === undefined">
-    <span us-spinner="{radius:10, width:3, length: 10, left: '0%', color:'#996a44'}"></span><h3 class="spinning-wheel-text">Loading for results ... </h3>
+    <span us-spinner="{radius:10, width:3, length: 10, left: '0%', color:'#996a44'}"></span><h3 class="spinning-wheel-text">Loading results ... </h3>
 </div>
 
 <!--Results-->
@@ -52,13 +52,13 @@
                 <tr ng-repeat="psm in psms">
                     <td>
                         <span class="grid_24">
-                            <a ng-href="//www.ebi.ac.uk/pride/archive/projects/{{psm.projectAccession}}/psms?q={{psm.archivePSMId}}" target="_blank" tooltip="Show original PSM" tooltip-placement="bottom">
+                            <a ng-href="//www.ebi.ac.uk/pride/archive/projects/{{psm.projectAccession}}/psms?q={{psm.archivePSMId}}" target="_blank" >
                                 <prc-peptide-sequence-viewer
                                         sequence="psm.sequence"
                                         modifications="psm.modificationNames">
                                 </prc-peptide-sequence-viewer>
                             </a>
-                            <span class="icon icon-generic" data-icon="x"></span>
+                            <span class="icon icon-generic" data-icon="x" tooltip="Show original PSM" tooltip-placement="bottom"></span>
                         </span>
                     </td>
                     <td>
