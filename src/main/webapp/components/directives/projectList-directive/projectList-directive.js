@@ -58,6 +58,7 @@ projectListDirective.controller('ProjectListDirectiveCtrl', ['$scope', '$routePa
                     var originalProject = data.clusteredProjects[j];
                     var project = {};
                     project.accession = originalProject.accession;
+                    project.title = originalProject.title;
                     project.numberOfPSMs = originalProject.numberOfPSMs;
                     project.species = originalProject.species.join();
                     project.tissues = originalProject.tissues.join();
