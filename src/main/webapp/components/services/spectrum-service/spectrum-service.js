@@ -10,8 +10,8 @@
  * NOTE: the Cluster WS uses 0-based paging
  *
  */
-var spectrumWsUrl = "http://www.ebi.ac.uk/pride/ws/cluster/cluster";
-//var spectrumWsUrl = "http://localhost:9091/pride/ws/cluster/cluster";
+var spectrumWsUrl = "//www.ebi.ac.uk/pride/ws/cluster/cluster";
+//var spectrumWsUrl = "//localhost:9091/pride/ws/cluster/cluster";
 
 var spectrumService = angular.module('prideClusterApp.spectrumService', ['ngResource']);
 

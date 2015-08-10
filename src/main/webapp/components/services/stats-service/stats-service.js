@@ -8,8 +8,8 @@
  * Each singleton represents a web-service end point and can potentially define multiple operations.
  *
  */
-var statsWsUrl = "http://www.ebi.ac.uk/pride/ws/cluster/statistic";
-//var statsWsUrl = "http://localhost:9091/pride/ws/cluster/statistic";
+var statsWsUrl = "//www.ebi.ac.uk/pride/ws/cluster/statistic";
+//var statsWsUrl = "//localhost:9091/pride/ws/cluster/statistic";
 
 var statsService = angular.module('prideClusterApp.statsService', ['ngResource']);
 

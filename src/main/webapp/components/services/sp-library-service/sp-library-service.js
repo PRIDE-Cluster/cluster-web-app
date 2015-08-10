@@ -8,8 +8,8 @@
  * Each singleton represents a web-service end point and can potentially define multiple operations.
  *
  */
-var spectrumLibraryWsUrl = "http://www.ebi.ac.uk/pride/ws/cluster/spectrumLibrary";
-//var spectrumLibraryWsUrl = "http://localhost:9091/pride/ws/cluster/spectrumLibrary";
+var spectrumLibraryWsUrl = "//www.ebi.ac.uk/pride/ws/cluster/spectrumLibrary";
+//var spectrumLibraryWsUrl = "//localhost:9091/pride/ws/cluster/spectrumLibrary";
 
 var spectrumLibraryService = angular.module('prideClusterApp.spectrumLibraryService', ['ngResource']);
 
