@@ -5,7 +5,7 @@
  *
  */
 
-var spectralSearchDirective = angular.module('prideClusterApp.spectralSearchDirective', [])
+var spectralSearchDirective = angular.module('prideClusterApp.spectralSearchDirective', []);
 
 spectralSearchDirective.directive('prcSpectralSearch', function() {
     return {
