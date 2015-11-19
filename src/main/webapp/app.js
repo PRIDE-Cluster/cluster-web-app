@@ -19,6 +19,7 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.clusterDetailView',
     'prideClusterApp.spectralSearchView',
     'prideClusterApp.spectrumLibrariesView',
+    'prideClusterApp.resultsView',
     'prideClusterApp.apiPageView',
     'prideClusterApp.aboutPageView',
     'prideClusterApp.helpPageView',
@@ -56,7 +57,8 @@ var prideClusterApp = angular.module('prideClusterApp', [
     'prideClusterApp.clusterService',
     'prideClusterApp.spectrumLibraryService',
     'prideClusterApp.statsService',
-    'prideClusterApp.spectrumService'
+    'prideClusterApp.spectrumService',
+    'prideClusterApp.resultService'
 ]);
 
 /* Default routing (not managed by any other View) */
