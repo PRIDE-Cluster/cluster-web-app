@@ -21,7 +21,11 @@
     "angularjs-nvd3-directives": "0.0.7",
     "angular-carousel": "0.3.10",
     "ng-table": "0.5.3",
-    "angular-bootstrap": "0.12.0"
+    "angular-bootstrap": "0.12.0",
+    "ngprogress": "1.0.6",
+    "angular-marked": "0.0.21",
+    "angular-spinner": "0.8.0",
+    "bowser": "1.0.0"
   },
   "ignore": [
     "**/.*",

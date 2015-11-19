@@ -79,6 +79,9 @@
                             Taxonomy: <a ng-href="http://www.uniprot.org/taxonomy/{{ spectrumLibrary.taxonomyId }}">{{
                             spectrumLibrary.taxonomyId }}</a>
                         </li>
+                        <li ng-show="spectrumLibrary.taxonomyId == 0">
+                            Taxonomy: Unknown
+                        </li>
                         <li>
                             Number of spectra: {{ spectrumLibrary.numberOfSpectra }}
                         </li>
