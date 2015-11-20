@@ -14,10 +14,10 @@ var resultWsUrl = "//www.ebi.ac.uk/pride/ws/cluster/result";
 var resultService = angular.module('prideClusterApp.resultService', ['ngResource']);
 
 /* Services */
-resultService.factory('result', ['$resource',
+resultService.factory('resultFiles', ['$resource',
     function ($resource) {
         return $resource(
-            spectrumLibraryWsUrl + '/latest/' + '?callback=JSON_CALLBACK',
+            resultWsUrl + '/latest/' + '?callback=JSON_CALLBACK',
             {},
             {
                 latest: {

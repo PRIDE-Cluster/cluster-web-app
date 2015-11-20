@@ -37,9 +37,9 @@
     <!--</section>-->
 
 
-    <!--<h3 id="latRel">Latest Release (Release: {{ latestRelease.releaseDate }}, Version: {{ latestRelease.version }})</h3>-->
-    <!--<section class="grid_6 omega">-->
-        <!--&lt;!&ndash;Aspera application object&ndash;&gt;-->
+    <h3 id="latRel">Latest Release (Release: {{ latestRelease.releaseDate }}, Version: {{ latestRelease.version }})</h3>
+    <section class="grid_6 omega">
+        <!--Aspera application object-->
         <!--<div class="aspera-content">-->
             <!--<object id="aspera-web" type="application/x-aspera-web" width="0" height="0"></object>-->
         <!--</div>-->
@@ -49,12 +49,12 @@
                 <!--Fast Download with (<a href="http://asperasoft.com/">Aspera</a>)-->
             <!--</a>-->
         <!--</h5>-->
-    <!--</section>-->
+    </section>
 
     <section class="grid_24">
 
 
-        <section class="animate-repeat" ng-repeat="spectrumLibrary in latestRelease.spectrumLibraries">
+        <section class="animate-repeat" ng-repeat="resultFile in latestRelease.resultFiles">
 
             <div class="grid_8 spectral-library">
                 <div class="grid_24">
@@ -70,29 +70,15 @@
                 <div class="grid_24">
                     <ul>
                         <li>
-                            Common name: {{ resultFile.description}}
-                        </li>
-                        <li>
-                            File Size: {{ bytesToSize(spectrumLibrary.fileSize) }}
+                            {{ resultFile.description}}
                         </li>
                     </ul>
                 </div>
                 <div class="grid_20 push_2 links">
-                    <div class="grid_12" ng-repeat="downloadUrl in spectrumLibrary.downloadURLs">
+                    <div class="grid_12" ng-repeat="downloadUrl in resultFile.downloadURLs">
 
-                        <a ng-if="downloadUrl.protocol == 'FTP'"
-                           class="button"
-                           ng-href="{{downloadUrl.url}}">
-                            {{downloadUrl.protocol}} Download
-                        </a>
-                        <a ng-if="downloadUrl.protocol == 'ASPERA'"
-                           ng-hide="asperaplugincheck()"
-                           class="button"
-                           style="cursor: pointer"
-                           ng-href=""
-                           ng-click="asperaDownload(downloadUrl.url)">
-                            {{downloadUrl.protocol}} Download
-                        </a>
+                        <a ng-if="downloadUrl.type == 'MGF'" class="button" ng-href="{{downloadUrl.url}}"> MGF Download</a>
+                        <a ng-if="downloadUrl.type == 'mzML'" class="button" ng-href="{{downloadUrl.url}}"> mzML Download</a>
                     </div>
 
                 </div>
